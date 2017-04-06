@@ -1,0 +1,83 @@
+{
+  "friends":[
+    {
+      "name": "Inbox",
+      "head_portrait":"img/b0.jpg",
+      "newest":"今天中午吃什么？今天中午吃什么？今天中午吃什么？",
+      "date":"2:20",
+      "filter":"Inbox"
+    },
+    {
+      "name": "Starred",
+      "head_portrait":"img/b1.jpg",
+      "newest":"今天中午吃什么？",
+      "date":"2:20",
+      "filter":"starred"},
+    {
+      "name": "Sent",
+      "head_portrait":"img/b2.jpg",
+      "newest":"今天中午吃什么？",
+      "date":"昨天",
+      "filter":"sent"},
+    {
+      "name": "Important",
+      "head_portrait":"img/b3.jpg",
+      "newest":"今天中午吃什么？",
+      "date":"2:20",
+      "filter":"important"},
+    {
+      "name": "Draft",
+      "head_portrait":"img/b4.jpg",
+      "newest":"今天中午吃什么？",
+      "date":"2:20",
+      "filter":"draft"
+    },
+    {
+      "name": "Trash",
+      "head_portrait":"img/b5.jpg",
+      "newest":"今天中午吃什么？",
+      "date":"2:20",
+      "filter":"trash"},
+    {
+      "name": "张三",
+      "head_portrait":"img/b0.jpg",
+      "newest":"今天中午吃什么？",
+      "date":"2:20",
+      "filter":"zhangsan"
+    },
+    {
+      "name": "Starred",
+      "head_portrait":"img/b1.jpg",
+      "newest":"今天中午吃什么？",
+      "date":"2:20",
+      "filter":"starred"},
+    {
+      "name": "Sent",
+      "head_portrait":"img/b2.jpg",
+      "newest":"今天中午吃什么？",
+      "date":"2:20",
+      "filter":"sent"
+    },
+    {
+      "name": "Important",
+      "head_portrait":"img/b3.jpg",
+      "newest":"今天中午吃什么？",
+      "date":"2:20",
+      "filter":"important"
+    },
+    {
+      "name": "Draft",
+      "head_portrait":"img/b4.jpg",
+      "newest":"今天中午吃什么？",
+      "date":"2:20",
+      "filter":"draft"
+    },
+    {
+      "name": "Trash",
+      "head_portrait":"img/b5.jpg",
+      "newest":"今天中午吃什么？",
+      "date":"2:20",
+      "filter":"trash"
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "_id":"1",
+  "name":"北京公安局",
+  "info":"抓坏人",
+  "leader":"231",
+  "deputyleader" : ["12312","123213"],
+  "create_date":"20170228",
+  "persons":[
+    {"_id":"231",
+      "name" : "多少等方式等",
+      "sex" : "男",
+      "nation": "中国",
+      "birthday": "2010-10-25",
+      "residence":"北京",
+      "idNum": "1321654649878941321",
+      "mobileUUid":"46465465",
+      "title" : "队长",
+      "mobile":"135228786678",
+      "age":"40",
+      "create_date" : "2017-02-28",
+     "images" :{
+        "coverSmall":"/img/jjj.jpg",
+        "coverBig":"/img/ggg.jpg"
+      }
+
+    }
+,{"_id":"12312",
+      "name" : "是否为",
+      "sex" : "男",
+      "nation": "中国",
+      "birthday": "2010-10-25",
+      "residence":"北京",
+      "idNum": "1321654649878941321",
+      "mobileUUid":"46465465",
+      "title" : "队长",
+      "mobile":"135228786678",
+      "age":"40",
+      "create_date" : "2017-02-28",
+     "images" :{
+        "coverSmall":"/img/jjj.jpg",
+        "coverBig":"/img/ggg.jpg"
+      }
+
+    },{"_id":"123213",
+      "name" : "速度发多少分",
+      "sex" : "女",
+      "nation": "中国",
+      "birthday": "2010-10-25",
+      "residence":"北京",
+      "idNum": "1321654649878941321",
+      "mobileUUid":"46465465",
+      "title" : "队长",
+      "mobile":"135228786678",
+      "age":"40",
+      "create_date" : "2017-02-28",
+     "images" :{
+        "coverSmall":"/img/jjj.jpg",
+        "coverBig":"/img/ggg.jpg"
+      }
+
+    }
+],
+  "Departments":[
+    {"name":"朝阳派出所",
+  "info":"抓坏人",
+    "leader":"khkh",
+    "deputyleader" : ["123123sdfdsf1"],
+    "create_date":"20170228",
+  "persons":[
+    {"_id":"khkh",
+      "name" : "vbfe",
+      "sex" : "男",
+      "nation": "中国",
+      "birthday": "2010-10-25",
+      "residence":"北京",
+      "idNum": "1321654649878941321",
+      "mobileUUid":"46465465",
+      "title" : "队长",
+      "mobile":"135228786678",
+      "age":"40",
+      "create_date" : "2017-02-28",
+     "images" :{
+        "coverSmall":"/img/jjj.jpg",
+        "coverBig":"/img/ggg.jpg"
+      }
+
+    }
+  ,{"_id":"1dsfgdgs",
+      "name" : "大是大非",
+      "sex" : "男",
+      "nation": "中国",
+      "birthday": "2010-10-25",
+      "residence":"北京",
+      "idNum": "1321654649878941321",
+      "mobileUUid":"46465465",
+      "title" : "队长",
+      "mobile":"135228786678",
+      "age":"40",
+      "create_date" : "2017-02-28",
+     "images" :{
+        "coverSmall":"/img/jjj.jpg",
+        "coverBig":"/img/ggg.jpg"
+      }
+    },{"_id":"vbssfds1",
+      "name" : "考虑进来看进来看",
+      "sex" : "男",
+      "nation": "中国",
+      "birthday": "2010-10-25",
+      "residence":"北京",
+      "idNum": "1321654649878941321",
+      "mobileUUid":"46465465",
+      "title" : "队长",
+      "mobile":"135228786678",
+      "age":"40",
+      "create_date" : "2017-02-28",
+     "images" :{
+        "coverSmall":"/img/jjj.jpg",
+        "coverBig":"/img/ggg.jpg"
+      }
+    },{"_id":"123123sdfdsf1",
+      "name" : "为二位",
+      "sex" : "男",
+      "nation": "中国",
+      "birthday": "2010-10-25",
+      "residence":"北京",
+      "idNum": "1321654649878941321",
+      "mobileUUid":"46465465",
+      "title" : "队长",
+      "mobile":"135228786678",
+      "age":"40",
+      "create_date" : "2017-02-28",
+     "images" :{
+        "coverSmall":"/img/jjj.jpg",
+        "coverBig":"/img/ggg.jpg"
+      }
+    }]},
+    {"name":"东安派出所",
+      "info":"抓坏人",
+      "leader":"1sdfsadf",
+      "deputyleader" : ["1asdfasdf"],
+      "create_date":"20170228",
+      "persons":[
+        {"_id":"1sdfsadf",
+          "name" : "士大夫撒",
+          "sex" : "男",
+          "nation": "中国",
+          "birthday": "2010-10-25",
+          "residence":"北京",
+          "idNum": "1321654649878941321",
+          "mobileUUid":"46465465",
+          "title" : "队长",
+          "mobile":"135228786678",
+          "age":"40",
+          "create_date" : "2017-02-28",
+         "images" :{
+            "coverSmall":"/img/jjj.jpg",
+            "coverBig":"/img/ggg.jpg"
+          }
+
+        }
+      ,{"_id":"1asdfasdf",
+          "name" : "相册vv",
+          "sex" : "男",
+          "nation": "中国",
+          "birthday": "2010-10-25",
+          "residence":"北京",
+          "idNum": "1321654649878941321",
+          "mobileUUid":"46465465",
+          "title" : "队长",
+          "mobile":"135228786678",
+          "age":"40",
+          "create_date" : "2017-02-28",
+         "images" :{
+            "coverSmall":"/img/jjj.jpg",
+            "coverBig":"/img/ggg.jpg"
+          }
+        },{"_id":"1sdfs",
+          "name" : "玩儿",
+          "sex" : "男",
+          "nation": "中国",
+          "birthday": "2010-10-25",
+          "residence":"北京",
+          "idNum": "1321654649878941321",
+          "mobileUUid":"46465465",
+          "title" : "队长",
+          "mobile":"135228786678",
+          "age":"40",
+          "create_date" : "2017-02-28",
+         "images" :{
+            "coverSmall":"/img/jjj.jpg",
+            "coverBig":"/img/ggg.jpg"
+          }
+        },{"_id":"1123ff",
+          "name" : "任何人",
+          "sex" : "男",
+          "nation": "中国",
+          "birthday": "2010-10-25",
+          "residence":"北京",
+          "idNum": "1321654649878941321",
+          "mobileUUid":"46465465",
+          "title" : "队长",
+          "mobile":"135228786678",
+          "age":"40",
+          "create_date" : "2017-02-28",
+         "images" :{
+            "coverSmall":"/img/jjj.jpg",
+            "coverBig":"/img/ggg.jpg"
+          }
+        }]}
+  ]
+}
+
+

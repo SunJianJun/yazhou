@@ -1,0 +1,71 @@
+<div ng-controller="messageDetailCtrl">
+    <!-- header -->
+    <div class="wrapper bg-light lter b-b current_dialogue">
+        <div class="text-center">当前对话 {{$stateParams.name}}</div>
+        <a class="refresh" ng-click="message()" title="点击刷新"><i class="icon-refresh"></i></a>
+    </div>
+    <!-- / header -->
+
+
+    <!-- list -->
+    <div class="top">
+        <div class="bg-light lter">
+            <div ng-repeat="mails in fakemessages | filter:{'id':fold}">
+                <ul id="scrolldIV"
+                    class="list-group list-group-lg no-radius m-b-none m-t-n-xxs mail-list-hei mail-list-win">
+                    <li ng-repeat="mail in mails.message" ng-class="mail.isFromeMe&&'transfer'"
+                        class="list-group-item clearfix b-l-3x">
+                        <a ui-sref="app.page.profile" class="avatar thumb pull-left m-r">
+                            <img ng-src="{{mails.pic}}">
+                        </a>
+
+                        <div class="text-center time">
+                            <span>{{mail.time}}</span></div>
+                        <div class="clear mail-receiver">
+                            <p>
+                                <a>
+                                    <span ng-if="mail.content">{{mail.content}}</span>
+                                    <img ng-src={{mail.con_img}} ng-if="mail.con_img">
+                                    <video ng-src={{mail.video}} ng-if="mail.video" controls></video>
+                                </a>
+                                <!--<span class="label bg-light m-l-sm" ng-hide="mail.transfer">{{mail.state=='unread'?'未读':'已读'}}</span>-->
+                            </p>
+                            <!--<div class="text-ellipsis m-t-xs">{{mail.content | limitTo:100}}</div>-->
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- / list -->
+
+
+    <!--发送消息框-->
+
+
+    <div class="wrapper-md">
+        <form>
+            <div class="emoji btn-group">
+                <span class="list-icon btn btn-group-sm btn-file">
+                    <i class="icon-picture"></i>
+                    <input type="file" class="file"/>
+                </span>
+                <span class="list-icon btn btn-group-sm btn-file">
+                <i class="icon-camcorder"></i>
+                <input type="file" class="file"/>
+                </span>
+            </div>
+            <div class="send_massage" contenteditable>
+                <div class="send">
+                    <div>
+                    </div>
+                    <div ng-controller="ChatsCtrl">
+
+                    </div>
+                </div>
+            </div>
+            <input type="button" class="action-con" ng-click="send_Message()" value="发送"/>
+        </form>
+    </div>
+</div>

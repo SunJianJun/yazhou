@@ -1,0 +1,79 @@
+
+<div class="hbox hbox-auto-xs" ng-controller="ChatsCtrl">
+
+
+
+
+
+  <div class="col lter b-r w-lg bg-light dk bg-auto">
+    <div class="vbox">
+      <div class="wrapper b-b">
+        <div class="font-thin h4">当前用户：{{userName}}</div>
+      </div>
+      <div class="nav-tabs-alt">
+        <ul class="nav nav-tabs nav-justified">
+          <li ng-class="{'active': tabs[0]}">
+            <a href ng-click="tab(0)">个人</a>
+          </li>
+          <li ng-class="{'active': tabs[1]}">
+            <a href ng-click="tab(1)">部门</a>
+          </li>
+        </ul>
+      </div>
+      <div class="row-row">
+        <div class="cell scrollable hover">
+          <div class="cell-inner">
+            <div class="tab-content">
+              <div class="tab-pane" ng-class="{'active': tabs[0]}">
+                <div class="wrapper-md">
+                  <ul class="nav nav-bg nav-stacked nav-sm">
+                    <li ng-repeat="fold in fakemessages" ui-sref-active="active">
+                      <a class="media friend" ng-click="mailList(fold.id,fold.name)">
+                        <div class="media-left">
+                          <img ng-src={{fold.pic}}/>
+                        </div>
+                        <div class="media-body">
+                          <h4>{{fold.name}}</h4>
+                          <p>{{fold.lastMessage.content}}</p>
+                        </div>
+                        <div class="media-right">
+                          <p>
+                            {{messageDate(fold.lastMessage.originalTime)}}
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="tab-pane" ng-class="{'active': tabs[1]}">
+                <div class="wrapper-md">
+                  <ul class="nav nav-bg nav-stacked nav-sm">
+                    <li ng-repeat="fold in department" ui-sref-active="active">
+                      <a class="media friend">
+                        <div class="media-body">
+                          <h4>{{fold.name}}</h4>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  <div class="col">
+    <div ui-view ></div>
+  </div>
+</div>

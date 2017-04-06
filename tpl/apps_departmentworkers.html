@@ -1,0 +1,333 @@
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  " ng-controller="departmentworkerCtrl">
+
+  <!--<div class="col w-lg bg-light b-r bg-auto">-->
+    <!--<div class="wrapper-md">-->
+      <!--<button ng-click="try_changing_the_tree_data()" class="btn btn-default btn-block m-b">Change The Tree Definition</button>-->
+      <!--<button ng-click="try_async_load()" class="btn btn-default btn-block">Load Tree Data Asynchronously</button>-->
+      <!--<div class="line b-b line-lg"></div>-->
+      <!--<h5>Test the Tree Control API:</h5>-->
+      <!--<button ng-click="my_tree.select_first_branch()" class="btn btn-default btn-sm">First Branch</button>-->
+      <!--<div class="m-t-sm m-b-sm">-->
+        <!--<button ng-click="my_tree.select_next_sibling()" class="btn btn-default btn-sm">Next Sibling</button>-->
+        <!--<button ng-click="my_tree.select_prev_sibling()" class="btn btn-default btn-sm">Prev Sibling</button>-->
+      <!--</div>-->
+      <!--<div class="m-b-sm">-->
+        <!--<button ng-click="my_tree.select_next_branch()" class="btn btn-default btn-sm">Next Branch</button>-->
+        <!--<button ng-click="my_tree.select_prev_branch()" class="btn btn-default btn-sm">Prev Branch</button>-->
+      <!--</div>-->
+      <!--<button ng-click="my_tree.select_parent_branch()" class="btn btn-default btn-sm">Parent</button>-->
+      <!--<div class="m-t-sm m-b-sm">-->
+        <!--<button ng-click="my_tree.expand_branch()" class="btn btn-default btn-sm">Expand</button>-->
+        <!--<button ng-click="my_tree.collapse_branch()" class="btn btn-default btn-sm">Collapse</button>-->
+      <!--</div>-->
+      <!--<div class="m-t-sm m-b-sm">-->
+        <!--<button ng-click="my_tree.expand_all()" class="btn btn-default btn-sm">Expand All</button>-->
+        <!--<button ng-click="my_tree.collapse_all()" class="btn btn-default btn-sm">Collapse All</button>-->
+      <!--</div>  </div>-->
+
+  <!--</div>-->
+
+  <div class="col .3">
+    <div class="wrapper-md">
+      <div class="b-a bg-light dk r r-2x">
+        <div>
+            <div class="btn-group" ng-init="checkModel = {option1: true, option2: false}">
+              <label class="btn btn-sm btn-default" ng-model="checkModel.option1" btn-checkbox>全部</label>
+              <label class="btn btn-sm btn-default" ng-model="checkModel.option3" btn-checkbox>离岗</label>
+              <label class="btn btn-sm btn-default" ng-model="checkModel.option3" btn-checkbox>外业</label>
+            </div>
+          <button ng-click="try_adding_a_branch()"   ng-hide="item.editing" class="btn btn-success btn-sm"><i class="fa fa-fw m-r-xs fa-plus"></i>添加单位</button>
+          <button ng-click="try_delete_a_branch()"   ng-show="item.data && item.data.info && !item.editing" class="btn btn-success btn-sm"><i class="fa fa-fw m-r-xs fa-minus"></i>删除单位</button>
+          <!--<button ng-click="initialDatabase()"   ng-hide="item.editing" class="btn btn-success btn-sm"><i class="fa fa-fw m-r-xs fa-plus"></i>测试初始化数据库</button>-->
+          <button ng-click="initialdepartmentTree()"   ng-hide="item.editing" class="btn btn-success btn-sm"><i class="fa fa-fw m-r-xs fa-plus"></i>获取全部数据</button>
+        </div>
+        <span ng-if="doing_async">...loading...</span>
+        <!---->
+        <!--<abn-tree-->
+                <!--tree-data         = "my_data"-->
+                <!--tree-control      = "my_tree"-->
+                <!--on-select         = "my_tree_handler(branch)"-->
+                <!--expand-level      = "2"-->
+                <!--initial-selection = "Granny Smith"-->
+                <!--icon-leaf         = "fa fa-user"-->
+                <!--icon-expand       = "fa fa-plus"-->
+                <!--icon-collapse     = "fa fa-minus"-->
+        <!--&gt;-->
+        <!--</abn-tree>-->
+        <!---->
+
+        <!-- Nested node template -->
+        <script type="text/ng-template" id="nodes_renderer.html">
+          <div ui-tree-handle class="tree-node tree-node-content">
+            <a class="btn btn-success btn-xs" ng-if="node.children && node.children.length > 0" data-nodrag ng-click="toggle(this)"><span
+                    class="glyphicon"
+                    ng-class="{
+          'glyphicon-chevron-right': collapsed,
+          'glyphicon-chevron-down': !collapsed
+        }"></span></a>
+            {{node.label}}
+            <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span
+                    class="glyphicon glyphicon-remove"></span></a>
+            <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;"><span
+                    class="glyphicon glyphicon-plus"></span></a>
+          </div>
+          <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+            <li ng-repeat="node in node.children" ui-tree-node ng-include="'nodes_renderer.html'">
+            </li>
+          </ol>
+        </script>
+
+        <div ui-tree>
+          <ol ui-tree-nodes="" ng-model="my_data">
+            <li ng-repeat="node in my_data" ui-tree-node ng-include="'nodes_renderer.html'"></li>
+
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 人员的编辑，人员不是手工录入的，所以只需要设定单位，设置状态：在岗、请假、离职、退休 -->
+  <div class="col bg-white-only"  ng-hide="item.data.info">
+                <!-- fields -->
+                <!--{"_id":"231",-->
+                <!--"name" : "多少等方式等",-->
+                <!--"sex" : "男",-->
+                <!--"nation": "中国",-->
+                <!--"birthday": "2010-10-25",-->
+                <!--"residence":"北京",-->
+                <!--"idNum": "1321654649878941321",-->
+                <!--"mobileUUid":"46465465",-->
+                <!--"title" : "队长",-->
+                <!--"mobile":"135228786678",-->
+                <!--"age":"40",-->
+                <!--"create_date" : "2017-02-28",-->
+                <!--"images" :{-->
+                <!--"coverSmall":"/img/jjj.jpg",-->
+                <!--"coverBig":"/img/ggg.jpg"-->
+                <!--}-->
+                <div class="panel b-a">
+                  <div class="panel-heading no-border bg-primary">
+                    <span class="text-lt">人员信息</span>
+                    <!--<a class="btn btn-xs btn-default pull-right" ng-hide="!item" ng-click="deleteItem(item)"><i class="fa fa-times"></i></a>-->
+                    <a class="btn btn-xs btn-default" ng-hide="item.editing" ng-click="editItem(item)">编辑</a>
+                    <a class="btn btn-xs btn-default" ng-show="item.editing" ng-click="doneEditing(item)">确认保存</a>
+                  </div>
+                  <div class="list-group">
+                    <a href="" class="list-group-item">
+                      <i class="fa fa-envelope fa-fw m-r-xs"></i> 姓名
+                      <p class="form-control-static">{{item.label}}</p>
+                    </a>
+                    <a href="" class="list-group-item">
+                      <i class="fa fa-envelope fa-fw m-r-xs"></i> 数据库id
+                      <p class="form-control-static">{{item.data._id}}</p>
+                    </a>
+                    <a href="" class="list-group-item">
+                      <!--<span class="badge bg-info"></span>-->
+                      <i class="fa fa-eye fa-fw m-r-xs"></i> 姓名
+                      <p class="form-control-static">{{item.data.name}}</p>
+                    </a>
+                    <a href="" class="list-group-item">
+                      <i class="fa fa-chevron-right text-muted"></i>
+                      <i class="fa fa-phone fa-fw m-r-xs"></i> 性别
+                      <p class="form-control-static">{{item.data.sex}}</p>
+                    </a>
+                    <a href="" class="list-group-item">
+                      <i class="fa fa-comments-o fa-fw m-r-xs"></i> 手机号
+                      <p class="form-control-static" ng-hide="item.editing">{{item.data.mobile}}</p>
+                      <input type="text" class="form-control" ng-show="item.editing" ng-model="item.data.mobile" >
+                    </a>
+                    <a href="" class="list-group-item">
+                      <i class="fa fa-bookmark fa-fw m-r-xs"></i> 国籍
+                      <p class="form-control-static">{{item.data.nation}}</p>
+                    </a>
+                    <a href="" class="list-group-item">
+                      <i class="fa fa-bell fa-fw m-r-xs"></i> 生日
+                      <p class="form-control-static">{{item.data.birthday}}</p>
+                    </a>
+                    <a href="" class="list-group-item">
+                      <i class="fa fa-clock-o fa-fw m-r-xs"></i> 籍贯
+                      <p class="form-control-static">{{item.data.residence}}</p>
+                    </a>
+                    <a href="" class="list-group-item">
+                      <i class="fa fa-clock-o fa-fw m-r-xs"></i> 身份证号
+                      <p class="form-control-static">{{item.data.idNum}}</p>
+                    </a>
+                    <a href="" class="list-group-item">
+                      <i class="fa fa-clock-o fa-fw m-r-xs"></i> 系统绑定手机UUID
+                      <p class="form-control-static">{{item.data.mobileUUid}}</p>
+                    </a>
+                    <a href="" class="list-group-item">
+                      <i class="fa fa-clock-o fa-fw m-r-xs"></i> 头衔
+                      <p class="form-control-static">{{item.data.title}}</p>
+                      <input type="text" class="form-control" ng-show="item.editing" ng-model="item.data.title" >
+                    </a>
+                    <a href="" class="list-group-item">
+                      <i class="fa fa-clock-o fa-fw m-r-xs"></i> 年龄
+                      <p class="form-control-static">{{item.data.age}}</p>
+                    </a>
+                    <a href="" class="list-group-item">
+                      <i class="fa fa-clock-o fa-fw m-r-xs"></i> 录入时间
+                      <p class="form-control-static">{{item.data.create_date}}</p>
+                    </a>
+                    <a href="" class="list-group-item">
+                      <i class="fa fa-clock-o fa-fw m-r-xs"></i> 身份证照片
+                      <p class="form-control-static">{{item.data.images.coverSmall}}</p>
+                    </a>
+                  <div class="hbox text-center b-b b-light text-sm">
+                    <a href="" class="col padder-v text-muted b-r b-light">
+                      <i class="fa fa-institution block m-b-xs fa-2x"></i>
+                      <span>调整单位</span>
+                    </a>
+                    <a href="" class="col padder-v text-muted b-r b-light">
+                      <i class="icon-pointer block m-b-xs fa-2x"></i>
+                      <span>定位</span>
+                    </a>
+                    <a href="" class="col padder-v text-muted">
+                      <i class="icon-speech block m-b-xs fa-2x"></i>
+                      <span>发送即时消息</span>
+                    </a>
+                  </div>
+                  <div class="hbox text-center text-sm">
+                    <a href="" class="col padder-v text-muted b-r b-light">
+                      <i class="icon-calendar block m-b-xs fa-2x"></i>
+                      <span>查看考勤情况</span>
+                    </a>
+                    <a href="" class="col padder-v text-muted b-r b-light">
+                      <i class="icon-loop block m-b-xs fa-2x"></i>
+                      <span>查看事件处理情况</span>
+                    </a>
+                    <a href="" class="col padder-v text-muted">
+                      <i class="icon-flag block m-b-xs fa-2x"></i>
+                      <span>调整岗位状态</span>
+                    </a>
+                  </div>
+                </div>
+                <!--}-->
+                <div class="form-horizontal">
+                  <div class="form-group m-b-sm" ng-hide="!item.mobile && !item.editing">
+                    <label class="col-sm-3 control-label">Mobile</label>
+                    <div class="col-sm-9">
+                      <p class="form-control-static" ng-hide="item.editing">{{item.mobile}}</p>
+                      <input type="text" class="form-control" ng-show="item.editing" ng-model="item.mobile" >
+                    </div>
+                  </div>
+                  <div class="form-group m-b-sm" ng-hide="!item.home && !item.editing">
+                    <label class="col-sm-3 control-label">Home</label>
+                    <div class="col-sm-9">
+                      <p class="form-control-static" ng-hide="item.editing">{{item.home}}</p>
+                      <input type="text" class="form-control" ng-show="item.editing" ng-model="item.home" >
+                    </div>
+                  </div>
+                  <div class="form-group m-b-sm" ng-hide="!item.work && !item.editing">
+                    <label class="col-sm-3 control-label">Work</label>
+                    <div class="col-sm-9">
+                      <p class="form-control-static" ng-hide="item.editing">{{item.work}}</p>
+                      <input type="text" class="form-control" ng-show="item.editing" ng-model="item.work" >
+                    </div>
+                  </div>
+                  <div class="form-group m-b-sm" ng-hide="!item.company && !item.editing">
+                    <label class="col-sm-3 control-label">Company</label>
+                    <div class="col-sm-9">
+                      <p class="form-control-static" ng-hide="item.editing">{{item.company}}</p>
+                      <input type="text" class="form-control" ng-show="item.editing" ng-model="item.company" >
+                    </div>
+                  </div>
+                  <div class="form-group m-b-sm" ng-hide="!item.note && !item.editing">
+                    <label class="col-sm-3 control-label">Note</label>
+                    <div class="col-sm-9">
+                      <p class="form-control-static" ng-hide="item.editing">{{item.note}}</p>
+                      <textarea class="form-control" ng-show="item.editing" ng-model="item.note" rows="5"></textarea>
+                    </div>
+                  </div>
+                </div>
+                <!-- / fields -->
+              </div>
+            </div>
+
+  <!-- /column -->
+  <!-- 单位的编辑 -->
+  <div class="col bg-white-only"   ng-show="item.data && item.data.info">
+    <div class="panel b-a">
+      <div class="panel-heading no-border bg-primary">
+        <span class="text-lt">单位或机构信息</span>
+        <a class="btn btn-xs btn-default" ng-hide="item.editing" ng-click="editItem(item)">编辑</a>
+        <a class="btn btn-xs btn-default" ng-show="item.editing" ng-click="doneEditing(item)">确认保存</a>
+        <!--"_id":"1",-->
+        <!--"name":"北京公安局",-->
+        <!--"info":"抓坏人",-->
+        <!--"leader":"231",-->
+        <!--"deputyleader" : ["12312","123213"],-->
+        <!--"create_date":"20170228",-->
+      </div>
+      <div class="list-group">
+        <a href="" class="list-group-item">
+          <i class="fa fa-envelope fa-fw m-r-xs"></i> 单位名称
+          <p class="form-control-static" ng-hide="item.editing">{{item.label}}</p>
+          <input type="text" class="form-control" ng-show="item.editing" ng-model="item.label" >
+        </a>
+        <!--<a href="" class="list-group-item">-->
+          <!--<i class="fa fa-envelope fa-fw m-r-xs"></i> 数据库id-->
+          <!--<p class="form-control-static" ng-hide="item.editing">{{item.data._id}}</p>-->
+          <!--<input type="text" class="form-control" ng-show="item.editing" ng-model="item.data._id" >-->
+        <!--</a>-->
+        <!--<a href="" class="list-group-item">-->
+          <!--&lt;!&ndash;<span class="badge bg-info"></span>&ndash;&gt;-->
+          <!--<i class="fa fa-eye fa-fw m-r-xs"></i> 姓名-->
+          <!--<p class="form-control-static" ng-hide="item.editing">{{item.data.name}}</p>-->
+          <!--<input type="text" class="form-control" ng-show="item.editing" ng-model="item.data.name" >-->
+        <!--</a>-->
+        <a href="" class="list-group-item">
+          <i class="fa fa-chevron-right text-muted"></i>
+          <i class="fa fa-phone fa-fw m-r-xs"></i> 描述信息
+          <p class="form-control-static" ng-hide="item.editing">{{item.data.info}}</p>
+          <input type="text" class="form-control" ng-show="item.editing" ng-model="item.data.info" >
+        </a>
+
+        <a href="" class="list-group-item">
+          <i class="fa fa-clock-o fa-fw m-r-xs"></i> 录入时间
+          <p class="form-control-static" ng-hide="item.editing">{{item.data.create_date}}</p>
+          <input type="text" class="form-control" ng-show="item.editing" ng-model="item.data.create_date" >
+        </a>
+        <div class="hbox text-center b-b b-light text-sm">
+          <a href="" class="col padder-v text-muted b-r b-light">
+            <i class="fa fa-institution block m-b-xs fa-2x"></i>
+            <span>单位运行情况</span>
+          </a>
+          <a href="" class="col padder-v text-muted b-r b-light">
+            <i class="icon-users block m-b-xs fa-2x"></i>
+            <span>定位该部门全体</span>
+          </a>
+          <a href="" class="col padder-v text-muted">
+            <i class="icon-bubbles block m-b-xs fa-2x"></i>
+            <span>发送集体消息</span>
+          </a>
+        </div>
+        <div class="hbox text-center text-sm">
+          <a href="" class="col padder-v text-muted b-r b-light">
+            <i class="icon-calendar block m-b-xs fa-2x"></i>
+            <span>查看考勤情况</span>
+          </a>
+          <a href="" class="col padder-v text-muted b-r b-light">
+            <i class="icon-loop block m-b-xs fa-2x"></i>
+            <span>查看事件处理情况</span>
+          </a>
+          <a href="" class="col padder-v text-muted">
+            <i class="icon-flag block m-b-xs fa-2x"></i>
+            <span>调整单位状态</span>
+          </a>
+        </div>
+      </div>
+      <!--}-->
+    </div>
+  </div>
+  <!-- /column -->
+</div>
+<!-- /hbox layout -->

@@ -1,0 +1,152 @@
+﻿(function (angular) {
+
+    function controller($scope,$rootScope) {
+
+        $scope.init = function () {
+            $scope.point;
+        }
+
+        $scope.$on('map-click', function (event, e) {
+            $scope.point = {
+                lat: e.lnglat.getLat(),
+                lng: e.lnglat.getLng()
+            }
+            //$scope.$apply()
+        })
+
+        $scope.search = function (q) {
+            AMap.service(["AMap.PlaceSearch"], function () {
+                var placeSearch = new AMap.PlaceSearch({ //构造地点查询类
+                    pageSize: 1,
+                    pageIndex: 1,
+                    //city: "010", //城市
+                    //map: self.map,
+                    //panel: "panel"
+                })
+
+                //关键字查询
+                placeSearch.search(q, function (status, result) {
+                    //TODO : 按照自己需求处理查询结果
+                    var poiList = result.poiList
+
+                    if (poiList.count > 0) {
+                        var p = poiList.pois[0]
+                        $scope.$broadcast('setCenter', [p.location.lng, p.location.lat])
+                    }
+                })
+            })
+        }
+
+        $scope.ok = function () {
+            $uibModalInstance.close($scope.point);
+        }
+
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        }
+        
+        $scope.engineConfig={
+        	showWorkMates:true,
+        	showSubDepartments:true,
+        	timeFrequency:10,//秒
+        	showOnlineWarning:true,
+        	showOffdutyWarning:true,
+        	showLastMessage:true
+        	
+        	}
+               	
+	      $scope.engineInitialise =function(params) {
+	      	var config=$scope.engineConfig;
+					if (config.showWorkMates) {
+						if ($rootScope.workmates && $rootScope.workmates.length>0) {
+							
+						}
+						
+					}
+				}
+				
+				$scope.engineRun =function(params) {
+							//在地图页面启动周期性函数	
+					window.setInterval(function(){
+						//开始定位刷新
+						$scope.refeshLocation($scope.uploadLocation);
+						
+					//获取信号强度，进行提示
+			  	//需要在设施准备好之后才能实施
+				  window.SignalStrength.dbm(function(db){
+			  			//alert(db);
+			  	});
+			  	
+					},$rootScope.locationRefreshTime);
+				}			
+				
+				$scope.enginePause =function(params) {
+					
+				}
+				
+				$scope.engineResum =function(params) {
+					
+				}
+				
+				$scope.engineStop =function(params) {
+					
+				}		
+        
+    }
+
+    
+
+    app.directive('gdMap', function ($timeout,$window) {
+        return {
+            restrict: 'EA',
+            scope: {
+                point: '=?',
+            },
+            template: '<div></div>',
+            replace: true,
+            link: function (scope, el, attr, ctrl) {
+
+                scope.map = new AMap.Map(el[0], {
+                    resizeEnable: true,
+                    zoom: 12,
+                });
+                
+                //自动最大化高度
+                var winowHeight = $window.innerHeight; //获取窗口高度
+                var headerHeight = 80;
+                var footerHeight = 20;
+                el.css('min-height',
+                        (winowHeight - headerHeight - footerHeight) + 'px');
+/*                        
+                if (scope.point.lat && scope.point.lng) {
+                    var center = [scope.point.lng, scope.point.lat]
+                    scope.map.setCenter(center)
+                    scope.marker = new AMap.Marker({ map: scope.map })
+                    scope.marker.setPosition(center)
+                }
+*/
+
+								//加入缩放工具栏
+								scope.map.addControl(new AMap.ToolBar());
+								//加入鹰眼
+								scope.map.addControl(new AMap.OverView());
+								
+                scope.map.on('click', function (e) {
+                    scope.$emit('map-click', e)
+
+                    if (!scope.marker) {
+                        scope.marker = new AMap.Marker({ map: scope.map })
+                    }
+
+                    scope.marker.setPosition([e.lnglat.getLng(), e.lnglat.getLat()])
+                })
+
+                scope.$on('setCenter', function (event, center) {
+                    if (!scope.map) return
+                    scope.map.setCenter(center)
+                })
+            }
+        }
+    })
+
+})(window.angular)
