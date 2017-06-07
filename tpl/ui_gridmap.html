@@ -10,11 +10,337 @@
         </span>
     </div> /input-group
     <br /> -->
+<div style="position: relative;">
+    <div gd-map></div>
+    <div class="control-group">
+        <!--<button onclick="$('.regionInfo').addClass('e')">从右边浮出</button>-->
+        <div class="control-group_region">
+            <div>
+                <button type="button" class="btn btn-info" ng-click="refreshMap()"><i class="icon-refresh"></i> 刷新区域</button>
+            </div>
+            <div>
+                <button type="button" class="btn btn-info" ng-click="historypath.dom()()"><i class="icon-users"></i> 历史轨迹</button>
+            </div>
+            <div>
+                <button type="button" class="btn btn-info" ng-click=""><i class="icon-printer"></i> 人员统计</button>
+            </div>
+            <div>
+                <button type="button" class="btn btn-info" ng-click="drawgeographicarea.startEditPolygon()"><i class="icon-magic-wand"></i>
+                    添加区域
+                </button>
+            </div>
+            <div>
+                <button type="button" class="btn btn-info" ng-click="drawgeographicarea.closeEditPolygon()"><i class="icon-bell"></i> 完成添加
+                </button>
+            </div>
+            <div class="control-group_position">
+                <span id="position_information"></span>
+            </div>
+        </div>
+    </div>
+    <!--<div class="regionInfo"></div>-->
+    <!-- Modal -->
+    <div class="modal fade in" id="addregionalinformation">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"
+                                                                                                      onclick="$('.modal.fade.in').hide()">&times;</span>
+                    </button>
+                    <h4 class="modal-title">区域信息</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="firstname" class="col-sm-2 control-label">区域名称</label>
 
-    <div  gd-map  ></div>
-    <!--
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="firstname" value="默认名称"
+                                       placeholder="请输入名称：比如：“市场、加油站、水库等”">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" class="col-sm-2 control-label">区域类型</label>
+
+                            <div class="col-sm-10">
+                                <div>
+                                    <select class="region-name" id="lastname">
+                                        <option value="市场">市场</option>
+                                        <option value="加油站">加油站</option>
+                                        <option value="地铁站">地铁站</option>
+                                        <option value="水库">水库</option>
+                                        <option value="企业">企业</option>
+                                        <option value="学校">学校</option>
+                                        <option value="医院">医院</option>
+                                        <option value="公园">公园</option>
+                                        <option value="景点">景点</option>
+                                        <option value="住宅区">住宅区</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-default">
+                        <span class="font-bold" ng-click="saveGeographicArea()">确定</span>
+                    </a>
+                </div>
+            </div>
+            <!--<script>$('.modal-content').draggable();</script>-->
+        </div>
+    </div>
+    <!-- Modal end-->
+    <div class="modal fade in" id="peopleinfo">
+    </div>
+
+    <div id="st-container" class="st-container">
+        <nav class="st-menu st-effect-1" id="menu-1">
+            <!--地区人员详细信息--><!-- list
+            <ul class="nav">
+                <li class="hidden-folded padder m-t m-b-sm text-white">
+                    <h2>{{properdata.name}}</h2>
+                </li>
+                <li class="line"></li>
+                <li>
+                    <div class="current_personnel">
+                        <h5 class="font-bold">当前员工</h5>
+
+                        <div class="clear">
+                            <div class="current_name" ng-repeat="aa in properdata.persons" ng-init="index=$index">
+                                <span ng-click="peopleinfo(aa,properdata.name)">{{aa.name}}</span>
+                                <span ng-click="deleteAddpeople(index)" class="close">&times;</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="line"></li>
+                <li>
+                    <a onclick="onlad.pull_person(this)">
+                    <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i></span>
+                        <span class="font-bold">添加巡逻员</span>
+                    </a>
+
+                    <div class="add_persons">
+                        <div class="add_person">
+                            <div class="add_person_con">
+                                <h5>巡逻员</h5>
+                                <select name="" id="add_person_con_name" size="6" class="add_person_con_name">
+                                    <option value="{{obj.name}}" ng-repeat="obj in movingObjs">{{obj.name}}</option>
+                                </select>
+                            </div>
+                            <div class="clear">
+                                <button class="pull-right" onclick="onlad.next_step(this)">下一步</button>
+                            </div>
+                        </div>
+                        <div class="add_person">
+                            <div class="add_person_con">
+                                <h5>
+                                    <span class="">时间段次数</span>
+                                </h5>
+
+                                <div class="demo add_person_con_timeStart">
+                                    <div class="alreadyAddtime">
+                                    </div>
+                                    <div class="clear">
+                                        <div class="pull-left" id="add_person_con_timeStart">
+                                            <select name="" class="week">
+                                                <option value="1">周一</option>
+                                                <option value="2">周二</option>
+                                                <option value="3">周三</option>
+                                                <option value="4">周四</option>
+                                                <option value="5">周五</option>
+                                                <option value="6">周六</option>
+                                                <option value="7">周日</option>
+                                            </select>
+                                            <select name="" class="time">
+                                                <option value="00:00:00">00:00:00</option>
+                                                <option value="01:00:00">01:00:00</option>
+                                                <option value="02:00:00">02:00:00</option>
+                                                <option value="03:00:00">03:00:00</option>
+                                                <option value="04:00:00">04:00:00</option>
+                                                <option value="05:00:00">05:00:00</option>
+                                                <option value="06:00:00">06:00:00</option>
+                                                <option value="07:00:00">07:00:00</option>
+                                                <option value="08:00:00" selected>08:00:00</option>
+                                                <option value="09:00:00">09:00:00</option>
+                                                <option value="10:00:00">10:00:00</option>
+                                                <option value="11:00:00">11:00:00</option>
+                                                <option value="12:00:00">12:00:00</option>
+                                                <option value="13:00:00">13:00:00</option>
+                                                <option value="14:00:00">14:00:00</option>
+                                                <option value="15:00:00">15:00:00</option>
+                                                <option value="16:00:00">16:00:00</option>
+                                                <option value="17:00:00">17:00:00</option>
+                                                <option value="18:00:00">18:00:00</option>
+                                                <option value="19:00:00">19:00:00</option>
+                                                <option value="20:00:00">20:00:00</option>
+                                                <option value="21:00:00">21:00:00</option>
+                                                <option value="22:00:00">22:00:00</option>
+                                                <option value="23:00:00">23:00:00</option>
+                                            </select>
+                                            ~
+                                        </div>
+
+                                        <div class="pull-left" id="add_person_con_timeEnd">
+                                            <select name="" class="week">
+                                                <option value="1">周一</option>
+                                                <option value="2">周二</option>
+                                                <option value="3">周三</option>
+                                                <option value="4">周四</option>
+                                                <option value="5">周五</option>
+                                                <option value="6">周六</option>
+                                                <option value="7">周日</option>
+                                            </select>
+                                            <select name="" class="time">
+                                                <option value="00:00:00">00:00:00</option>
+                                                <option value="01:00:00">01:00:00</option>
+                                                <option value="02:00:00">02:00:00</option>
+                                                <option value="03:00:00">03:00:00</option>
+                                                <option value="04:00:00">04:00:00</option>
+                                                <option value="05:00:00">05:00:00</option>
+                                                <option value="06:00:00">06:00:00</option>
+                                                <option value="07:00:00">07:00:00</option>
+                                                <option value="08:00:00">08:00:00</option>
+                                                <option value="09:00:00">09:00:00</option>
+                                                <option value="10:00:00">10:00:00</option>
+                                                <option value="11:00:00">11:00:00</option>
+                                                <option value="12:00:00" selected>12:00:00</option>
+                                                <option value="13:00:00">13:00:00</option>
+                                                <option value="14:00:00">14:00:00</option>
+                                                <option value="15:00:00">15:00:00</option>
+                                                <option value="16:00:00">16:00:00</option>
+                                                <option value="17:00:00">17:00:00</option>
+                                                <option value="18:00:00">18:00:00</option>
+                                                <option value="19:00:00">19:00:00</option>
+                                                <option value="20:00:00">20:00:00</option>
+                                                <option value="21:00:00">21:00:00</option>
+                                                <option value="22:00:00">22:00:00</option>
+                                                <option value="23:00:00">23:00:00</option>
+                                            </select>
+                                            <select name="" id="add_person_con_frequency">
+                                                <option value="1">1</option>
+                                                <option value="2" selected>2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
+                                        </div>
+                                        <div class="btn btn-xs" ng-click="showalreadytime.alreadyAddtime()"><i
+                                                class="glyphicon glyphicon-ok"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear">
+                                <button class="pull-right" ng-click="add_personnel()">确定</button>
+                                <button class="pull-right" onclick="onlad.last_step(this)">上一步</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li ui-sref-active="active">
+                    <a ng-click="checkregionalppersonnelinfo(this)">
+                    <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i></span>
+                        <span class="font-bold">查看区域人员</span>
+                    </a>
+
+                    <div class="">
+                        renyuan
+                    </div>
+                </li>
+
+
+                <li ui-sref-active="active">
+                    <a>
+                    <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i></span>
+                        <span class="font-bold" ng-click="deletepolylayer(properdata)">删除该区域</span>
+                    </a>
+                </li>
+            </ul>
+             / list -->
+        </nav>
+        <nav class="st-menu st-effect-1" id="menu-2">
+            <!--人员活动路线详细信息-->
+            <form class="form-horizontal peoplesearch">
+                <div class="panel panel-default">
+                    <div class="panel-heading">查看人员历史路线</div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <label class="col-sm-3 control-label">人员</label>
+
+                            <div class=col-sm-9>
+                                <select class="form-control search-name" id="search-name">
+                                    <option value="{{people._id}}" ng-repeat="people in movingObjs">{{people.name}}
+                                    </option>
+                                </select>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <label class="col-sm-3 control-label">开始时间</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control search-dateStartTime" value="2017-05-16 07:45"
+                                       onclick="SelectDate(this,'yyyy-MM-dd hh:mm')"/></span>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div>
+                                <label class="col-sm-3 control-label">结束时间</label>
+
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control search-dateEndTime" value="2017-05-16 10:45"
+                                           onclick="SelectDate(this,'yyyy-MM-dd hh:mm')"/></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="control-label">
+                                <button class="btn btn-default" ng-click="historypath.search()">查询</button>
+                            </div>
+                        </li>
+                        <li class="list-group-item historical_routebtn" style="display: none;">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default" id="starthistory">开始</button>
+                                <button type="button" class="btn btn-default" id="pausehistory">暂停</button>
+                                <button type="button" class="btn btn-default" id="resumehistory">继续</button>
+                                <button type="button" class="btn btn-default" id="stophistory">清除</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+            <div id="Location_list"></div>
+        </nav>
+    </div>
+    <script>
+        var onlad = {
+            pull_person: function (e) {
+                var add_person = $('.add_person');
+                $(add_person[0]).slideToggle(300, function () {
+                    for (var i = 1; i < add_person.length; i++) {
+                        $(add_person[i]).hide();
+                    }
+                });
+                var day = new Date().getDay();
+                for (var j = 0; j < 7; j++) {
+                    $('#add_person_con_timeStart .week')[0][day - 1].setAttribute('selected', true);
+                    $('#add_person_con_timeEnd .week')[0][day - 1].setAttribute('selected', true);
+                }
+            },
+            next_step: function (e) {
+                var parent = $(e).parents(".add_person");
+                if (!parent.find('select').val()) {
+                    return;
+                }
+                $(parent).next().show().siblings().hide();
+            },
+            last_step: function (e) {
+                var parent = $(e).parents(".add_person");
+                $(parent).prev().show().siblings().hide();
+            }
+        }
+    </script>
 </div>
-<div class="modal-footer">
-    <button class="btn btn-sm btn-default" type="button" ng-click="cancel()">取消</button>
-    <button class="btn btn-sm btn-primary" type="button" ng-click="ok()">确定</button>
-</div>-->

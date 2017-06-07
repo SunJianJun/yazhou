@@ -8,7 +8,7 @@ app.controller('SigninFormController', ['$rootScope','$scope', '$http', '$state'
     //$scope.user.email='admin';
     //$scope.user.password='123456';
     $scope.user.email='谭剑';
-    $scope.user.password='420302198010291213';
+    $scope.user.password='131321231321321231321';
     $scope.login = function() {
             //保存提交到服务器
             $http(
@@ -32,9 +32,10 @@ app.controller('SigninFormController', ['$rootScope','$scope', '$http', '$state'
 
                     $state.go('app.gridmap');
                     console.log('请求成功');
-                    if(resp.data==''){
-                        console.log('用户名和密码可能输入错误，没有返回数据')
-                    }
+                    console.log($rootScope.curUser);
+                    //if(resp.data==''){
+                    //    console.log('用户名和密码可能输入错误，没有返回数据')
+                    //}
                 }else{
                     $scope.authError = '请求出错';
                     //$scope.authError = '用户名和密码可能输入错误';

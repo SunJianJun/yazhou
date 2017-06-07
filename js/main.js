@@ -22,9 +22,9 @@ angular.module('app')
         //是否异步载入部门和人员，如果真，就是点一下载入一次
         $rootScope.lazyloadDepartmentAndWorkers=true;
         //定时器的刷新频率
-        $rootScope.locationRefreshTime=6000;
+        $rootScope.locationRefreshTime=10000;
         //全局基础路径
-        $rootScope.serverpath='http://120.76.228.172:2000/pcclient/';
+        $rootScope.serverpath='http://localhost:2000/pcclient/';
         //全局加载图层路径，名字，参数
 
         $rootScope.polylayers=[
@@ -39,7 +39,21 @@ angular.module('app')
                 params:''
             }
         ];
-        $rootScope.applicationServerpath='http://120.76.228.172:2000/';
+        $rootScope.applicationServerpath='http://localhost:2000/';
+
+      //根据用户id获得用户照片
+      $rootScope.getUserPicById=function(personId,callback) {
+        //将查询来的用户信息赋给本地全局对象
+        var personPic=localStorageService.get('UserPIc_'+personId,60*24);//在缓存中得到长期保存的照片
+        // console.log('根据用户id获得用户照片curUser：', personId);	  //子级能得到值
+        if(!personPic){
+          //如果没有照片，就去服务器取
+          userService.refreshUserPicById(personId,$rootScope.applicationServer,callback);
+          return;
+        }
+        if(callback) {callback(personId,personPic);return;}
+        return personPic;
+      };
 
         // 桌面端的用户需要登录信息，用户名就是人名，密码第一次可以是身份证号，之后可以修改，pwd
         $rootScope.confirmUser = function(callback) {
@@ -140,13 +154,13 @@ angular.module('app')
           //console.log(fromState.name); //上个路由地址
           $rootScope.curUser=localStorageService.get('user',30,'请重新登录');
           console.log($rootScope.curUser);
-
           $scope.userName=$rootScope.curUser.name;
             if(toState.name=='access.signin')return;// 如果是进入登录界面则允许
 
             // 如果用户不存在
             localStorageService.update('user',$rootScope.curUser);//每次跳转重新计时
             if((!$rootScope.curUser|| !$rootScope.curUser.role)){
+                console.log('阻止跳转');
                 event.preventDefault();// 取消默认跳转行为
                 $state.go("access.signin",{from:fromState.name,w:'notLogin'});//跳转到登录界面
             }
@@ -192,6 +206,8 @@ angular.module('app')
              var mail_contacts=winHei - 50 + 'px';
              var mail_list_win=winHei - 220 + 'px';
              var app_content=winHei + 'px';
+             $('.amap-container').css('min-height',app_content);
+             //console.log(app_content);
             $('#myStyle').html('.mail-contacts{height:'+mail_list_win+';}.mail-list-win{height:'+mail_list_win+';}.app-content{height:'+app_content+';}');
              //console.log(winHei);
         }
