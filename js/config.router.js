@@ -32,8 +32,7 @@ angular.module('app')
                   	//ͨ��lazyload���ض�Ӧ��javascript
                       deps: ['$ocLazyLoad',
                         function( $ocLazyLoad){
-                          return $ocLazyLoad.load(['js/controllers/gridmap.js',
-                            'js/app/map/adddate.js']);
+                          return $ocLazyLoad.load('js/controllers/gridmap.js');
                       }]
                   }
               })
@@ -391,7 +390,7 @@ angular.module('app')
                                                 //'js/app/mail/mail-service.js',
                                                 'vendor/libs/moment.min.js',
                               'js/app/mail/chatsctrl.js',
-                              //'js/app/mail/services.js',
+                              'js/app/mail/services.js',
                               'js/app/mail/chatsdetailctrl.js'
                                                   ]
                           )

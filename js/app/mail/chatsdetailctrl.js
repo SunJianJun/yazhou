@@ -55,7 +55,7 @@ app.controller('messageDetailCtrl', [
     $scope.refreshMessages = function () {
 
       $scope.curSender= localStorageService.get("messagedetail"+$stateParams.senderId,30);
-        console.log($rootScope.curUser);
+
       if (!$rootScope.curUser) {$rootScope.refreshCurUser();return;};
 
       //消息详细
@@ -75,7 +75,7 @@ startTime=new Date();
       //stTime=stTime==curTime?startTime.formate("yyyy-MM-dd"):stTime;
 
       if(!$scope.messageDetils){
-        messageService.initMessageListInTimeSpanByPersonIds($stateParams.senderId,$rootScope.curUser._id,stTime,curTime,$rootScope.applicationServerpath);
+        messageService.initMessageListInTimeSpanByPersonIds($stateParams.senderId,$rootScope.curUser._id,stTime,curTime,$rootScope.applicationServer);
         return;
       }
       for (var index = 0; index < $scope.messageDetils.length; index++) {
