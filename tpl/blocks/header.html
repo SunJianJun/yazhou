@@ -1,4 +1,4 @@
-﻿      <!-- navbar header -->
+﻿﻿      <!-- navbar header -->
       <div class="navbar-header {{app.settings.navbarHeaderColor}}">
         <button class="pull-right visible-xs dk" ui-toggle-class="show" data-target=".navbar-collapse">
           <i class="glyphicon glyphicon-cog"></i>
@@ -287,10 +287,11 @@
           <li class="dropdown" dropdown>
             <a href class="dropdown-toggle clear" dropdown-toggle>
               <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                <img src="img/a0.jpg" alt="...">
+                <img src="img/a0.jpg" alt="..."/>
+                <!--<img src=data:image/jpeg;base64,{{curUser.images.coverSmall}} alt="...">-->
                 <i class="on md b-white bottom"></i>
               </span>
-              <span class="hidden-sm hidden-md">John.Smith</span> <b class="caret"></b>
+              <span class="hidden-sm hidden-md">{{curUser.name}}</span> <b class="caret"></b>
             </a>
             <!-- dropdown -->
             <ul class="dropdown-menu animated fadeInRight w">
@@ -303,21 +304,21 @@
               <li>
                 <a href>
                   <span class="badge bg-danger pull-right">30%</span>
-                  <span>Settings</span>
+                  <span>设置</span>
                 </a>
               </li>
               <li>
-                <a ui-sref="app.page.profile">Profile</a>
+                <a ui-sref="app.page.profile">简介</a>
               </li>
               <li>
                 <a ui-sref="app.docs">
                   <span class="label bg-info pull-right">new</span>
-                  Help
+                  帮助
                 </a>
               </li>
               <li class="divider"></li>
               <li>
-                <a ui-sref="access.signin">Logout</a>
+                <a ui-sref="access.signin">注销</a>
               </li>
             </ul>
             <!-- / dropdown -->
