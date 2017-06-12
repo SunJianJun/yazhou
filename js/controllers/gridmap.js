@@ -1105,7 +1105,7 @@ app.controller('gridmapctl',
 		</h3>
 	</div>
 </div>`;
-
+//通过字符串的形式制作菜单
           $('#menu-1').html($compile(menu)($scope))
         }
       }
