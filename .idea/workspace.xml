@@ -2,8 +2,109 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e152cf9f-6cd1-4dff-afad-b906294644e3" name="默认的" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/personiconsmall.png" afterPath="$PROJECT_DIR$/img/personiconsmall.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fonts/sourcesanspro/sourcesanspro-bold.woff" afterPath="$PROJECT_DIR$/fonts/sourcesanspro/sourcesanspro-bold.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fonts/sourcesanspro/sourcesanspro-light.woff" afterPath="$PROJECT_DIR$/fonts/sourcesanspro/sourcesanspro-light.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fonts/sourcesanspro/sourcesanspro.woff" afterPath="$PROJECT_DIR$/fonts/sourcesanspro/sourcesanspro.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular/.bower.json" afterPath="$PROJECT_DIR$/bower_components/angular/.bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/.bower.json" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/.bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/.bowerrc" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/.bowerrc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/.gitignore" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/.jscsrc" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/.jscsrc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/.jshintrc" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/.jshintrc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/.travis.yml" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/.travis.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/CHANGELOG.md" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/CHANGELOG.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/CONTRIBUTING.md" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/CONTRIBUTING.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/.github/ISSUE_TEMPLATE.md" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/.github/ISSUE_TEMPLATE.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular/LICENSE.md" afterPath="$PROJECT_DIR$/bower_components/angular/LICENSE.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/LICENSE" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular/README.md" afterPath="$PROJECT_DIR$/bower_components/angular/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/README.md" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/angular/angular-animate/angular-animate.js" afterPath="$PROJECT_DIR$/vendor/angular/angular-animate/angular-animate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/angular/angular-cookies/angular-cookies.js" afterPath="$PROJECT_DIR$/vendor/angular/angular-cookies/angular-cookies.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular/angular-csp.css" afterPath="$PROJECT_DIR$/bower_components/angular/angular-csp.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/modules/angular-file-upload/angular-file-upload.min.js" afterPath="$PROJECT_DIR$/vendor/modules/angular-file-upload/angular-file-upload.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/angular/angular-resource/angular-resource.js" afterPath="$PROJECT_DIR$/vendor/angular/angular-resource/angular-resource.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/angular/angular-sanitize/angular-sanitize.js" afterPath="$PROJECT_DIR$/vendor/angular/angular-sanitize/angular-sanitize.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/weather/angular-skycons.js" afterPath="$PROJECT_DIR$/js/app/weather/angular-skycons.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/modules/angular-slider/angular-slider.min.js" afterPath="$PROJECT_DIR$/vendor/modules/angular-slider/angular-slider.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/angular/angular-touch/angular-touch.js" afterPath="$PROJECT_DIR$/vendor/angular/angular-touch/angular-touch.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/angular/angular-translate/angular-translate.js" afterPath="$PROJECT_DIR$/vendor/angular/angular-translate/angular-translate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/angular/angular-ui-router/angular-ui-router.js" afterPath="$PROJECT_DIR$/vendor/angular/angular-ui-router/angular-ui-router.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/dist/angular-ui-tree.css" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/dist/angular-ui-tree.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/dist/angular-ui-tree.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/dist/angular-ui-tree.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/dist/angular-ui-tree.min.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/dist/angular-ui-tree.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular/angular.js" afterPath="$PROJECT_DIR$/bower_components/angular/angular.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/angular/angular.js" afterPath="$PROJECT_DIR$/vendor/angular/angular.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular/angular.min.js.map" afterPath="$PROJECT_DIR$/bower_components/angular/angular.min.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular/angular.min.js" afterPath="$PROJECT_DIR$/bower_components/angular/angular.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/dist/app.css" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/dist/app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/app.css" afterPath="$PROJECT_DIR$/css/app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/e2e/basic-example/basic-example.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/e2e/basic-example/basic-example.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mapdata/beijingtest.json" afterPath="$PROJECT_DIR$/mapdata/beijingtest.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/bootstrap-switch.css" afterPath="$PROJECT_DIR$/css/bootstrap-switch.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/directives/bootstrap-switch.js" afterPath="$PROJECT_DIR$/js/directives/bootstrap-switch.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/bootstrap-switch.min.css" afterPath="$PROJECT_DIR$/css/bootstrap-switch.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/bootstrap.css" afterPath="$PROJECT_DIR$/css/bootstrap.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/jquery/bootstrap.js" afterPath="$PROJECT_DIR$/vendor/jquery/bootstrap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bak/bower.json" afterPath="$PROJECT_DIR$/bak/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular/bower.json" afterPath="$PROJECT_DIR$/bower_components/angular/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/bower.json" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/chatsctrl.js" afterPath="$PROJECT_DIR$/js/app/mail/chatsctrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/chatsdetailctrl.js" afterPath="$PROJECT_DIR$/js/app/mail/chatsdetailctrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/config.js" afterPath="$PROJECT_DIR$/js/config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/config.lazyload.js" afterPath="$PROJECT_DIR$/js/config.lazyload.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/config.router.js" afterPath="$PROJECT_DIR$/js/config.router.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/department.json" afterPath="$PROJECT_DIR$/js/app/mail/department.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fileinput.js" afterPath="$PROJECT_DIR$/js/fileinput.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/font-awesome.min.css" afterPath="$PROJECT_DIR$/css/font-awesome.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fonts/fontawesome-webfont.svg" afterPath="$PROJECT_DIR$/fonts/fontawesome-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/friends.json" afterPath="$PROJECT_DIR$/js/app/mail/friends.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/jquery/fullcalendar/fullcalendar.css" afterPath="$PROJECT_DIR$/vendor/jquery/fullcalendar/fullcalendar.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/jquery/fullcalendar/fullcalendar.min.js" afterPath="$PROJECT_DIR$/vendor/jquery/fullcalendar/fullcalendar.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/fonts/glyphicons-halflings-regular.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/gridmap.js" afterPath="$PROJECT_DIR$/js/controllers/gridmap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/blocks/header.html" afterPath="$PROJECT_DIR$/tpl/blocks/header.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular/index.js" afterPath="$PROJECT_DIR$/bower_components/angular/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/index.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/jquery/charts/sparkline/jquery.sparkline.min.js" afterPath="$PROJECT_DIR$/vendor/jquery/charts/sparkline/jquery.sparkline.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/angular/angular-translate/loader-static-files.js" afterPath="$PROJECT_DIR$/vendor/angular/angular-translate/loader-static-files.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/mail.js" afterPath="$PROJECT_DIR$/js/app/mail/mail.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/mail.list.html" afterPath="$PROJECT_DIR$/tpl/mail.list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/mails.json" afterPath="$PROJECT_DIR$/js/app/mail/mails.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/libs/moment.min.js" afterPath="$PROJECT_DIR$/vendor/libs/moment.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/blocks/nav.html" afterPath="$PROJECT_DIR$/tpl/blocks/nav.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/modules/ng-grid/ng-grid.min.js" afterPath="$PROJECT_DIR$/vendor/modules/ng-grid/ng-grid.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/angular/ngstorage/ngStorage.js" afterPath="$PROJECT_DIR$/vendor/angular/ngstorage/ngStorage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/angular/oclazyload/ocLazyLoad.js" afterPath="$PROJECT_DIR$/vendor/angular/oclazyload/ocLazyLoad.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bak/package.json" afterPath="$PROJECT_DIR$/bak/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular/package.json" afterPath="$PROJECT_DIR$/bower_components/angular/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/e2e/basic-example/page.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/e2e/basic-example/page.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/e2e/table-example/page.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/e2e/table-example/page.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/protractor.conf.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/protractor.conf.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/libs/screenfull.min.js" afterPath="$PROJECT_DIR$/vendor/libs/screenfull.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/modules/angular-ui-select/select.min.css" afterPath="$PROJECT_DIR$/vendor/modules/angular-ui-select/select.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/modules/angular-ui-select/select.min.js" afterPath="$PROJECT_DIR$/vendor/modules/angular-ui-select/select.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/services/services.js" afterPath="$PROJECT_DIR$/js/services/services.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/angular/angular-translate/storage-cookie.js" afterPath="$PROJECT_DIR$/vendor/angular/angular-translate/storage-cookie.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/angular/angular-translate/storage-local.js" afterPath="$PROJECT_DIR$/vendor/angular/angular-translate/storage-local.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-ui-tree/e2e/table-example/table-example.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/e2e/table-example/table-example.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/modules/textAngular/textAngular.min.js" afterPath="$PROJECT_DIR$/vendor/modules/textAngular/textAngular.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/music/theme.css" afterPath="$PROJECT_DIR$/js/app/music/theme.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/jquery/fullcalendar/theme.css" afterPath="$PROJECT_DIR$/vendor/jquery/fullcalendar/theme.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/modules/angularjs-toaster/toaster.css" afterPath="$PROJECT_DIR$/vendor/modules/angularjs-toaster/toaster.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/modules/angularjs-toaster/toaster.js" afterPath="$PROJECT_DIR$/vendor/modules/angularjs-toaster/toaster.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/angular/angular-bootstrap/ui-bootstrap-tpls.js" afterPath="$PROJECT_DIR$/vendor/angular/angular-bootstrap/ui-bootstrap-tpls.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/directives/ui-mapobj.js" afterPath="$PROJECT_DIR$/js/directives/ui-mapobj.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/angular/angular-ui-utils/ui-utils.js" afterPath="$PROJECT_DIR$/vendor/angular/angular-ui-utils/ui-utils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/ui_gridmap.html" afterPath="$PROJECT_DIR$/tpl/ui_gridmap.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/music/videogular.css" afterPath="$PROJECT_DIR$/js/app/music/videogular.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mapdata/yazhougridpolygon_wgs84.json" afterPath="$PROJECT_DIR$/mapdata/yazhougridpolygon_wgs84.json" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -15,17 +116,21 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="yazhou" />
+  </component>
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="808">
-              <caret line="63" column="47" lean-forward="false" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="63" column="45" selection-start-line="63" selection-start-column="45" selection-end-line="63" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -34,47 +139,13 @@
       <file leaf-file-name="gridmap.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/controllers/gridmap.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="1418" column="17" lean-forward="false" selection-start-line="1418" selection-start-column="17" selection-end-line="1418" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.3866279">
+              <caret line="320" column="17" selection-start-line="320" selection-start-column="17" selection-end-line="320" selection-end-column="17" />
               <folding>
-                <marker date="1497258193050" expanded="true" signature="12456:13296" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="12500:13296" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="12547:12905" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="12648:12758" ph="..." />
-                <marker date="1497258193050" expanded="false" signature="12711:12718" ph="×" />
-                <marker date="1497258193050" expanded="true" signature="12807:12878" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="12950:13296" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="13005:13296" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="13036:13104" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="13067:13094" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="13132:13296" ph="..." />
-                <marker date="1497258193050" expanded="false" signature="13197:13206" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="13207:13296" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="13223:13296" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="13918:14682" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="13958:14025" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="14062:14682" ph="..." />
-                <marker date="1497258193050" expanded="false" signature="14144:14153" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="14154:14682" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="14171:14307" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="14324:14485" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="14374:14443" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="14502:14661" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="28443:28453" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="28847:28873" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="28951:28975" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="29002:29025" ph="data:" />
-                <marker date="1497258193050" expanded="true" signature="29069:29092" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="32020:32042" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="45492:45757" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="45526:45582" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="45613:45757" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="45655:45757" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="46413:46624" ph="..." />
-                <marker date="1497258193050" expanded="false" signature="46588:46595" ph="×" />
-                <marker date="1497258193050" expanded="true" signature="69621:69830" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="71140:71308" ph="..." />
-                <marker date="1497258193050" expanded="true" signature="71186:71265" ph="..." />
+                <marker date="1496984331074" expanded="true" signature="28354:28364" placeholder="..." />
+                <marker date="1496984331074" expanded="true" signature="28758:28784" placeholder="..." />
+                <marker date="1496984331074" expanded="true" signature="28862:28886" placeholder="..." />
+                <marker date="1496984331074" expanded="true" signature="31931:31953" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -83,8 +154,8 @@
       <file leaf-file-name="grid.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/controllers/grid.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -93,8 +164,8 @@
       <file leaf-file-name="form.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/controllers/form.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -110,7 +181,6 @@
     </option>
     <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -119,17 +189,29 @@
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1272" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1456" />
+    <option name="height" value="876" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="添加" />
+    <OptionsSetting value="true" id="移除" />
+    <OptionsSetting value="true" id="签出" />
+    <OptionsSetting value="true" id="更新" />
+    <OptionsSetting value="true" id="状态" />
+    <OptionsSetting value="true" id="编辑" />
+    <ConfirmationsSetting value="0" id="添加" />
+    <ConfirmationsSetting value="0" id="移除" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -142,113 +224,55 @@
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
-      <manualOrder />
-      <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="pcclient-git" />
+              <option name="myItemId" value="yazhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yazhou" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="pcclient-git" />
+              <option name="myItemId" value="yazhou" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="pcclient-git" />
+              <option name="myItemId" value="yazhou" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="pcclient-git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pcclient-git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pcclient-git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pcclient-git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pcclient-git" />
+              <option name="myItemId" value="yazhou" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pcclient-git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pcclient-git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
-    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
-      <config-file value="" />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
-      <config-file value="" />
-      <node-interpreter value="project" />
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
       <envs />
       <method />
     </configuration>
@@ -265,84 +289,84 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run" />
-      <scripts />
-      <node-interpreter value="project" />
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
       <envs />
       <method />
     </configuration>
     <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
-      <node-interpreter>project</node-interpreter>
       <node-options />
       <working-directory />
       <pass-parent-env>true</pass-parent-env>
       <envs />
       <ui />
       <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
       <test-directory />
       <recursive>false</recursive>
       <method />
     </configuration>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
-  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="e152cf9f-6cd1-4dff-afad-b906294644e3" name="默认的" comment="" />
       <created>1497251557863</created>
       <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
       <updated>1497251557863</updated>
-      <workItem from="1497251559349" duration="3496000" />
+      <workItem from="1497251559349" duration="3506000" />
     </task>
     <task id="LOCAL-00001" summary="and two&#10;&#10;dierci&#10;">
       <created>1497252395310</created>
       <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
       <updated>1497252395310</updated>
     </task>
     <task id="LOCAL-00002" summary="and two&#10;&#10;dierci&#10;">
       <created>1497258079641</created>
       <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
       <updated>1497258079641</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="and two&#10;&#10;dierci&#10;">
+      <created>1497258199692</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1497258199692</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3496000" />
+    <option name="totallyTimeSpent" value="3506000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1272" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="消息" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.06792873" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2496474" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="消息" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.06792873" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,6 +385,43 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/gridmap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1496984331074" expanded="true" signature="28354:28364" placeholder="..." />
+            <marker date="1496984331074" expanded="true" signature="28758:28784" placeholder="..." />
+            <marker date="1496984331074" expanded="true" signature="28862:28886" placeholder="..." />
+            <marker date="1496984331074" expanded="true" signature="31931:31953" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/grid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sanyagridmobileapp.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -368,71 +429,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="808">
-          <caret line="63" column="47" lean-forward="false" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="45" selection-start-line="63" selection-start-column="45" selection-end-line="63" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/controllers/grid.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/controllers/form.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/controllers/gridmap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="1418" column="17" lean-forward="false" selection-start-line="1418" selection-start-column="17" selection-end-line="1418" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.3866279">
+          <caret line="320" column="17" selection-start-line="320" selection-start-column="17" selection-end-line="320" selection-end-column="17" />
           <folding>
-            <marker date="1497258193050" expanded="true" signature="12456:13296" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="12500:13296" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="12547:12905" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="12648:12758" ph="..." />
-            <marker date="1497258193050" expanded="false" signature="12711:12718" ph="×" />
-            <marker date="1497258193050" expanded="true" signature="12807:12878" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="12950:13296" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="13005:13296" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="13036:13104" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="13067:13094" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="13132:13296" ph="..." />
-            <marker date="1497258193050" expanded="false" signature="13197:13206" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="13207:13296" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="13223:13296" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="13918:14682" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="13958:14025" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="14062:14682" ph="..." />
-            <marker date="1497258193050" expanded="false" signature="14144:14153" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="14154:14682" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="14171:14307" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="14324:14485" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="14374:14443" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="14502:14661" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="28443:28453" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="28847:28873" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="28951:28975" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="29002:29025" ph="data:" />
-            <marker date="1497258193050" expanded="true" signature="29069:29092" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="32020:32042" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="45492:45757" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="45526:45582" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="45613:45757" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="45655:45757" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="46413:46624" ph="..." />
-            <marker date="1497258193050" expanded="false" signature="46588:46595" ph="×" />
-            <marker date="1497258193050" expanded="true" signature="69621:69830" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="71140:71308" ph="..." />
-            <marker date="1497258193050" expanded="true" signature="71186:71265" ph="..." />
+            <marker date="1496984331074" expanded="true" signature="28354:28364" placeholder="..." />
+            <marker date="1496984331074" expanded="true" signature="28758:28784" placeholder="..." />
+            <marker date="1496984331074" expanded="true" signature="28862:28886" placeholder="..." />
+            <marker date="1496984331074" expanded="true" signature="31931:31953" placeholder="..." />
           </folding>
         </state>
       </provider>

@@ -52,27 +52,27 @@ app.factory('localToolService', function ($http, localStorageService, $rootScope
                 headers: {'Content-Type': 'application/json;charset=utf-8'},
                 dataType: 'JSON'
             })
-                .success(function (data, status, headers, config) {
-                    //alert("用户定位点修改成功！");
-                    // curUser=$scope.curUser;
-                    // $scope.resMsg=data;
-                    // //console.log(data+"<loadAllInvolvedChildrenByDid>"+status);
-                    if (status == 200) {
-                        //其实也可以得到部门，但是部门暂时没有用
+              .success(function (data, status, headers, config) {
+                  //alert("用户定位点修改成功！");
+                  // curUser=$scope.curUser;
+                  // $scope.resMsg=data;
+                  // //console.log(data+"<loadAllInvolvedChildrenByDid>"+status);
+                  if (status == 200) {
+                      //其实也可以得到部门，但是部门暂时没有用
 
-                        //如果人员关联的消息数量不为0
-                        if (data) {
-                            // 广播用户发来的消息查询成功
-                            $rootScope.$broadcast('readMessage', data);
-                        }
-                    } else {
-                        // 广播用户发来的消息列表刷新失败
-                        $rootScope.$broadcast('readMessageFail', data);
-                    }
-                    ;
-                }).error(function (data, status, headers, config) {
+                      //如果人员关联的消息数量不为0
+                      if (data) {
+                          // 广播用户发来的消息查询成功
+                          $rootScope.$broadcast('readMessage', data);
+                      }
+                  } else {
+                      // 广播用户发来的消息列表刷新失败
+                      $rootScope.$broadcast('readMessageFail', data);
+                  }
+                  ;
+              }).error(function (data, status, headers, config) {
 
-                });
+              });
         },//根据接收者和发送者的id，插入一条聊天记录
         insertANewMessageToMessageList: function (sender_id, receiver_id, newMessage) {
             if (!(newMessage && newMessage.create_date))return;
@@ -215,27 +215,27 @@ app.factory("userService", ['localStorageService', '$http', '$rootScope', functi
                 headers: {'Content-Type': 'application/json;charset=utf-8'},
                 dataType: 'JSON'
             })
-                .success(function (data, status, headers, config) {
-                    // alert("用户修改成功！"+status);
-                    //curUser=$scope.curUser;
-                    //$scope.resMsg=data;
-                    if (status == 200) {
-                        if (data.err) {
-                            //广播用户查询失败
-                            $rootScope.$broadcast('curUserRefreshFail', null);
-                            // alert("查询出错："+data.err);
-                        } else if (data.name) {
-                            localStorageService.update("curUser", data);
-                            // 广播用户查询成功
-                            $rootScope.$broadcast('curUserReady', data);
-                            // var isBase=validator.isBase64(data.images.coverSmall); //=> true
+              .success(function (data, status, headers, config) {
+                  // alert("用户修改成功！"+status);
+                  //curUser=$scope.curUser;
+                  //$scope.resMsg=data;
+                  if (status == 200) {
+                      if (data.err) {
+                          //广播用户查询失败
+                          $rootScope.$broadcast('curUserRefreshFail', null);
+                          // alert("查询出错："+data.err);
+                      } else if (data.name) {
+                          localStorageService.update("curUser", data);
+                          // 广播用户查询成功
+                          $rootScope.$broadcast('curUserReady', data);
+                          // var isBase=validator.isBase64(data.images.coverSmall); //=> true
 
-                        }
-                    } else {
-                        alert("网络异常，请稍后重试：" + status);
-                    }
-                }).error(function (data, status, headers, config) {
-                });
+                      }
+                  } else {
+                      alert("网络异常，请稍后重试：" + status);
+                  }
+              }).error(function (data, status, headers, config) {
+              });
         },
         getWorkmatesByUserId: function (userid, applicationServer) {
             console.log("getWorkmatesByUserId：" + userid + '<>applicationServer:' + applicationServer);
@@ -247,28 +247,28 @@ app.factory("userService", ['localStorageService', '$http', '$rootScope', functi
                 headers: {'Content-Type': 'application/json;charset=utf-8'},
                 dataType: 'JSON'
             })
-                .success(function (data, status, headers, config) {
+              .success(function (data, status, headers, config) {
                   console.log(data);
-                    if (status == 200) {
-                        if (!data) {
-                            //广播用户查询同事失败
-                            $rootScope.$broadcast('getWorkmatesByUserIdFail', null);
-                            //alert("查询出错："+data.err);
-                        } else {
-                            //alert("查询成功");
-                            data.forEach(function(val,key){
-                                val.name+=' (测试人员)';
-                            })
-                            localStorageService.update("workmates", data);
-                            // 广播用户查询同事成功
-                            $rootScope.$broadcast('getWorkmatesByUserIdOk', data);
-                            // var isBase=validator.isBase64(data.images.coverSmall); //=> true
-                        }
-                    } else {
-                        alert("网络异常，请稍后重试：" + status);
-                    }
-                }).error(function (data, status, headers, config) {
-                });
+                  if (status == 200) {
+                      if (!data) {
+                          //广播用户查询同事失败
+                          $rootScope.$broadcast('getWorkmatesByUserIdFail', null);
+                          //alert("查询出错："+data.err);
+                      } else {
+                          //alert("查询成功");
+                          data.forEach(function(val,key){
+                              val.name+=' (测试人员)';
+                          })
+                          localStorageService.update("workmates", data);
+                          // 广播用户查询同事成功
+                          $rootScope.$broadcast('getWorkmatesByUserIdOk', data);
+                          // var isBase=validator.isBase64(data.images.coverSmall); //=> true
+                      }
+                  } else {
+                      alert("网络异常，请稍后重试：" + status);
+                  }
+              }).error(function (data, status, headers, config) {
+              });
         },
         getLatestLocationByUserId: function (userid, applicationServer) {
             $http({
@@ -279,42 +279,42 @@ app.factory("userService", ['localStorageService', '$http', '$rootScope', functi
                 headers: {'Content-Type': 'application/json;charset=utf-8'},
                 dataType: 'JSON'
             })
-                .success(function (data, status, headers, config) {
-                    if (status == 200) {
-                        console.log("getLatestLocationByUserId：" + data);
-                        if (!data) {
-                            // 要保存一个获取定位点的时间值
-                            localStorageService.update("LatestLocation_" + userid, {
-                                Location: null,
-                                getDate: new Date()
-                            });
-                            //广播用户查询同事定位点失败
-                            $rootScope.$broadcast('getLatestLocationByUserIdFail', null);
-                            // alert("查询出错："+data.err);
-                        } else {
-                            //console.log(data);
-                            // console.log("getLatestLocationByUserId Location："+data.geolocation+'<>getDate:'+new Date());
-                            // 要保存一个获取定位点的时间值
-                            localStorageService.update("LatestLocation_" + userid, {
-                                Location: data.geolocation,
-                                getDate: new Date(),
-                                positioningdate:data.positioningdate
-                            });
-                            // 广播用户查询同事成功
-                            $rootScope.$broadcast('getLatestLocationByUserIdOk', {
-                                _id: userid,
-                                Location: data.geolocation,
-                                getDate: new Date(),
-                                positioningdate: data.positioningdate
-                            });
-                            // var isBase=validator.isBase64(data.images.coverSmall); //=> true
-                        }
-                    } else {
-                        alert("网络异常，请稍后重试：" + status);
-                    }
-                    ;
-                }).error(function (data, status, headers, config) {
-                });
+              .success(function (data, status, headers, config) {
+                  if (status == 200) {
+                      console.log("getLatestLocationByUserId：" + data);
+                      if (!data) {
+                          // 要保存一个获取定位点的时间值
+                          localStorageService.update("LatestLocation_" + userid, {
+                              Location: null,
+                              getDate: new Date()
+                          });
+                          //广播用户查询同事定位点失败
+                          $rootScope.$broadcast('getLatestLocationByUserIdFail', null);
+                          // alert("查询出错："+data.err);
+                      } else {
+                          //console.log(data);
+                          // console.log("getLatestLocationByUserId Location："+data.geolocation+'<>getDate:'+new Date());
+                          // 要保存一个获取定位点的时间值
+                          localStorageService.update("LatestLocation_" + userid, {
+                              Location: data.geolocation,
+                              getDate: new Date(),
+                              positioningdate:data.positioningdate
+                          });
+                          // 广播用户查询同事成功
+                          $rootScope.$broadcast('getLatestLocationByUserIdOk', {
+                              _id: userid,
+                              Location: data.geolocation,
+                              getDate: new Date(),
+                              positioningdate: data.positioningdate
+                          });
+                          // var isBase=validator.isBase64(data.images.coverSmall); //=> true
+                      }
+                  } else {
+                      alert("网络异常，请稍后重试：" + status);
+                  }
+                  ;
+              }).error(function (data, status, headers, config) {
+              });
         }
         ,
         getPersonPositionInTimespan: function (personid, startTime, endTime, applicationServer) {
@@ -327,24 +327,24 @@ app.factory("userService", ['localStorageService', '$http', '$rootScope', functi
                 headers: {'Content-Type': 'application/json;charset=utf-8'},
                 dataType: 'JSON'
             })
-                .success(function (data, status, headers, config) {
-                    if (status == 200) {
-                        if (!data) {
-                            //广播用户查询同事失败
-                            $rootScope.$broadcast('getWorkmatesByUserIdFail', null);
-                            // alert("查询出错："+data.err);
-                        } else {
-                            localStorageService.update("workmates", data);
-                            // 广播用户查询同事成功
-                            $rootScope.$broadcast('getWorkmatesByUserIdOk', data);
-                            // var isBase=validator.isBase64(data.images.coverSmall); //=> true
-                        }
-                    } else {
-                        alert("网络异常，请稍后重试：" + status);
-                    }
-                    ;
-                }).error(function (data, status, headers, config) {
-                });
+              .success(function (data, status, headers, config) {
+                  if (status == 200) {
+                      if (!data) {
+                          //广播用户查询同事失败
+                          $rootScope.$broadcast('getWorkmatesByUserIdFail', null);
+                          // alert("查询出错："+data.err);
+                      } else {
+                          localStorageService.update("workmates", data);
+                          // 广播用户查询同事成功
+                          $rootScope.$broadcast('getWorkmatesByUserIdOk', data);
+                          // var isBase=validator.isBase64(data.images.coverSmall); //=> true
+                      }
+                  } else {
+                      alert("网络异常，请稍后重试：" + status);
+                  }
+                  ;
+              }).error(function (data, status, headers, config) {
+              });
         }
         ,
         refreshCurUser: function (uuid, applicationServer) {
@@ -365,20 +365,20 @@ app.factory("gridmapService", ['$http', '$rootScope','localStorageService', func
         spotareagrid: function () {//加载多边形绘制区域图层
             var spotarea = localStorageService.get('spotarea', 60 * 24);
             $http(
-                {
-                    method: 'POST',
-                    url: $rootScope.applicationServerpath + 'spotarea/getMyNewestSpotareaFromWho'
-                }
+              {
+                  method: 'POST',
+                  url: $rootScope.applicationServerpath + 'spotarea/getMyNewestSpotareaFromWho'
+              }
             ).then(function (resp) {
-                    //console.log(resp);
-                    console.log('从服务器获取数据！');
-                    if (resp.data) {
-                        var newspot = $rootScope.parseGeojsonFromDb(resp.data);
-                        // 将所有网格区域存到缓存中
-                    }
-                    spotarea = localStorageService.update('spotarea', newspot);
-                    //console.log('服务器返回数据');
-                });
+                  //console.log(resp);
+                  console.log('从服务器获取数据！');
+                  if (resp.data) {
+                      var newspot = $rootScope.parseGeojsonFromDb(resp.data);
+                      // 将所有网格区域存到缓存中
+                  }
+                  spotarea = localStorageService.update('spotarea', newspot);
+                  //console.log('服务器返回数据');
+              });
             if (!spotarea) {
                 return;
             }
@@ -391,11 +391,11 @@ app.factory('dateService', [function () {
     return {
         handleMessageDate: function (messages) {
             var i = 0,
-                length = 0,
-                messageDate = {},
-                nowDate = {},
-                weekArray = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
-                diffWeekValue = 0;
+              length = 0,
+              messageDate = {},
+              nowDate = {},
+              weekArray = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
+              diffWeekValue = 0;
             //console.log(messages.length);
             if (messages) {
                 //nowDate = this.getNowDate();
@@ -517,37 +517,37 @@ app.factory('departmentAndPersonsService', ['localStorageService', 'dateService'
                         headers: {'Content-Type': 'application/json;charset=utf-8'},
                         dataType: 'JSON'
                     })
-                        .success(function (data, status, headers, config) {
-                            //alert("用户定位点修改成功！");
-                            // curUser=$scope.curUser;
-                            // $scope.resMsg=data;
-                            console.log(data + "<loadAllInvolvedChildrenByDid>" + status);
-                            if (status == 200) {
-                                //其实也可以得到部门，但是部门暂时没有用
+                      .success(function (data, status, headers, config) {
+                          //alert("用户定位点修改成功！");
+                          // curUser=$scope.curUser;
+                          // $scope.resMsg=data;
+                          console.log(data + "<loadAllInvolvedChildrenByDid>" + status);
+                          if (status == 200) {
+                              //其实也可以得到部门，但是部门暂时没有用
 
-                                //如果人员关联的单位下属人员不为空
-                                if (data.persons && data.persons.length > 0) {
-                                    // 继续列出来
-                                    didobj.persons = new Array();
-                                    for (var index = 0; index < data.persons.length; index++) {
-                                        console.log("下属人员：" + data.persons[index]);
-                                        didobj.persons.push(data.persons[index]);
-                                    }
-                                    //更新对应单位的人员，并且缓存起来
-                                    localStorageService.update("allPersonsUkSeeInDepartment" + didobj._id, didobj.persons);
+                              //如果人员关联的单位下属人员不为空
+                              if (data.persons && data.persons.length > 0) {
+                                  // 继续列出来
+                                  didobj.persons = new Array();
+                                  for (var index = 0; index < data.persons.length; index++) {
+                                      console.log("下属人员：" + data.persons[index]);
+                                      didobj.persons.push(data.persons[index]);
+                                  }
+                                  //更新对应单位的人员，并且缓存起来
+                                  localStorageService.update("allPersonsUkSeeInDepartment" + didobj._id, didobj.persons);
 
-                                    console.log("allPersonsUkSeeInADepartmentRefreshed：" + didobj);
-                                    //广播用户涉及部门刷新成功
-                                    $rootScope.$broadcast('allPersonsUkSeeInADepartmentRefreshed', didobj);
-                                }
-                            } else {
-                                //广播用户涉及部门刷新失败
-                                $rootScope.$broadcast('allPersonsUkSeeInADepartmentRefreshFail', didobj);
-                            }
-                            ;
-                        }).error(function (data, status, headers, config) {
+                                  console.log("allPersonsUkSeeInADepartmentRefreshed：" + didobj);
+                                  //广播用户涉及部门刷新成功
+                                  $rootScope.$broadcast('allPersonsUkSeeInADepartmentRefreshed', didobj);
+                              }
+                          } else {
+                              //广播用户涉及部门刷新失败
+                              $rootScope.$broadcast('allPersonsUkSeeInADepartmentRefreshFail', didobj);
+                          }
+                          ;
+                      }).error(function (data, status, headers, config) {
 
-                        });
+                      });
                 }
             },
             // 根据一个单位对象，获取这个单位内部的所有人员
@@ -579,41 +579,41 @@ app.factory('departmentAndPersonsService', ['localStorageService', 'dateService'
                         headers: {'Content-Type': 'application/json;charset=utf-8'},
                         dataType: 'JSON'
                     })
-                        .success(function (data, status, headers, config) {
-                            //alert("用户定位点修改成功！");
-                            // curUser=$scope.curUser;
-                            // $scope.resMsg=data;
-                            console.log(data + "<>" + data.length + "<>" + status);
-                            if (status == 200) {
-                                //说明服务器端获得当前用户所在部门成功
-                                //如果人员关联的单位不为空
-                                if (data.length > 0) {
-                                    var allInvolvedDepartments = new Array();
-                                    // 继续列出来
-                                    for (var index = 0; index < data.length; index++) {
-                                        console.log(data[index] + "部门id" + data[index].department);
-                                        allInvolvedDepartments.push(data[index].department);
-                                        // $scope.loadAllInvolvedChildrenByDid(data[index].department._id);
-                                    }
-                                    localStorageService.update("allInvolvedDepartments", allInvolvedDepartments);
-                                    console.log("广播allInvolvedDepartments：" + allInvolvedDepartments);
+                      .success(function (data, status, headers, config) {
+                          //alert("用户定位点修改成功！");
+                          // curUser=$scope.curUser;
+                          // $scope.resMsg=data;
+                          console.log(data + "<>" + data.length + "<>" + status);
+                          if (status == 200) {
+                              //说明服务器端获得当前用户所在部门成功
+                              //如果人员关联的单位不为空
+                              if (data.length > 0) {
+                                  var allInvolvedDepartments = new Array();
+                                  // 继续列出来
+                                  for (var index = 0; index < data.length; index++) {
+                                      console.log(data[index] + "部门id" + data[index].department);
+                                      allInvolvedDepartments.push(data[index].department);
+                                      // $scope.loadAllInvolvedChildrenByDid(data[index].department._id);
+                                  }
+                                  localStorageService.update("allInvolvedDepartments", allInvolvedDepartments);
+                                  console.log("广播allInvolvedDepartments：" + allInvolvedDepartments);
 
-                                    //广播用户涉及部门刷新成功
-                                    $rootScope.$broadcast('allInvolvedDepartmentsRefreshed', allInvolvedDepartments);
-                                    // 把刷好的单位返给外部函数，已废弃，有了广播不需要callback了
-                                    // if(callback)callback(allInvolvedDepartments);
-                                    //刷新相关部门的人员列表
-                                    // $scope.refreshPersonsUksee($scope.alldepartments);
-                                }
-                            } else {
-                                //广播用户涉及部门刷新失败
-                                $rootScope.$broadcast('allInvolvedDepartmentsRefreshFail', null);
-                            }
-                            ;
-                        }).error(function (data, status, headers, config) {
-                            // console.log(data+"<>"+data.length+"<>"+status);
+                                  //广播用户涉及部门刷新成功
+                                  $rootScope.$broadcast('allInvolvedDepartmentsRefreshed', allInvolvedDepartments);
+                                  // 把刷好的单位返给外部函数，已废弃，有了广播不需要callback了
+                                  // if(callback)callback(allInvolvedDepartments);
+                                  //刷新相关部门的人员列表
+                                  // $scope.refreshPersonsUksee($scope.alldepartments);
+                              }
+                          } else {
+                              //广播用户涉及部门刷新失败
+                              $rootScope.$broadcast('allInvolvedDepartmentsRefreshFail', null);
+                          }
+                          ;
+                      }).error(function (data, status, headers, config) {
+                          // console.log(data+"<>"+data.length+"<>"+status);
 
-                        });
+                      });
                 }
             }
 
@@ -691,27 +691,27 @@ app.factory('messageService', ['localStorageService', 'dateService', '$http', '$
                     headers: {'Content-Type': 'application/json;charset=utf-8'},
                     dataType: 'JSON'
                 })
-                    .success(function (data, status, headers, config) {
-                        //alert("用户定位点修改成功！");
-                        // curUser=$scope.curUser;
-                        // $scope.resMsg=data;
-                        // console.log(data+"<loadAllInvolvedChildrenByDid>"+status);
-                        if (status == 200) {
-                            //其实也可以得到部门，但是部门暂时没有用
+                  .success(function (data, status, headers, config) {
+                      //alert("用户定位点修改成功！");
+                      // curUser=$scope.curUser;
+                      // $scope.resMsg=data;
+                      // console.log(data+"<loadAllInvolvedChildrenByDid>"+status);
+                      if (status == 200) {
+                          //其实也可以得到部门，但是部门暂时没有用
 
-                            //如果人员关联的消息数量不为0
-                            if (data) {
-                                // 广播用户发来的消息查询成功
-                                $rootScope.$broadcast('readMessage', data);
-                            }
-                        } else {
-                            // 广播用户发来的消息列表刷新失败
-                            $rootScope.$broadcast('readMessageFail', data);
-                        }
-                        ;
-                    }).error(function (data, status, headers, config) {
+                          //如果人员关联的消息数量不为0
+                          if (data) {
+                              // 广播用户发来的消息查询成功
+                              $rootScope.$broadcast('readMessage', data);
+                          }
+                      } else {
+                          // 广播用户发来的消息列表刷新失败
+                          $rootScope.$broadcast('readMessageFail', data);
+                      }
+                      ;
+                  }).error(function (data, status, headers, config) {
 
-                    });
+                  });
             },
 
             sendMessage: function (messageJson, senderID, receiverID, applicationServer) {
@@ -728,23 +728,23 @@ app.factory('messageService', ['localStorageService', 'dateService', '$http', '$
                     headers: {'Content-Type': 'application/json;charset=utf-8'},
                     dataType: 'JSON'
                 })
-                    .success(function (data, status, headers, config) {
-                        if (status == 200) {
-                            //其实也可以得到部门，但是部门暂时没有用
+                  .success(function (data, status, headers, config) {
+                      if (status == 200) {
+                          //其实也可以得到部门，但是部门暂时没有用
 
-                            //返回值是新消息
-                            if (data) {
-                                // 广播用户发消息成功
-                                $rootScope.$broadcast('sendMessageOK', data);
-                            }
-                        } else {
-                            // 广播用户发消息失败
-                            $rootScope.$broadcast('sendMessageFail', data);
-                        }
-                        ;
-                    }).error(function (data, status, headers, config) {
+                          //返回值是新消息
+                          if (data) {
+                              // 广播用户发消息成功
+                              $rootScope.$broadcast('sendMessageOK', data);
+                          }
+                      } else {
+                          // 广播用户发消息失败
+                          $rootScope.$broadcast('sendMessageFail', data);
+                      }
+                      ;
+                  }).error(function (data, status, headers, config) {
 
-                    });
+                  });
             },
             //根据接收者和发送者的id，以及时间段，获取这段时间的聊天记录
             initMessageListInTimeSpanByPersonIds: function (sender_id, receiver_id, startTime, lastTime, applicationServer, callback) {
@@ -763,38 +763,38 @@ app.factory('messageService', ['localStorageService', 'dateService', '$http', '$
                     headers: {'Content-Type': 'application/json;charset=utf-8'},
                     dataType: 'JSON'
                 })
-                    .success(function (data, status, headers, config) {
-                        //alert("用户定位点修改成功！");
-                        // curUser=$scope.curUser;
-                        // $scope.resMsg=data;
-                        // console.log(data+"<loadAllInvolvedChildrenByDid>"+status);
-                        if (status == 200) {
-                            //如果人员关联的消息数量不为0
-                            if (data.length > 0) {
-                                for (var index = 0; index < data.length; index++) {
-                                    var item = data[index];
-                                    // 把时间格式化一下
-                                    item.create_date = new Date(item.create_date).formate('yyyy-MM-dd HH:mm:ss');
+                  .success(function (data, status, headers, config) {
+                      //alert("用户定位点修改成功！");
+                      // curUser=$scope.curUser;
+                      // $scope.resMsg=data;
+                      // console.log(data+"<loadAllInvolvedChildrenByDid>"+status);
+                      if (status == 200) {
+                          //如果人员关联的消息数量不为0
+                          if (data.length > 0) {
+                              for (var index = 0; index < data.length; index++) {
+                                  var item = data[index];
+                                  // 把时间格式化一下
+                                  item.create_date = new Date(item.create_date).formate('yyyy-MM-dd HH:mm:ss');
 
-                                }
-                                localStorageService.update("messagesListboth" + sender_id + '_' + receiver_id, data);
+                              }
+                              localStorageService.update("messagesListboth" + sender_id + '_' + receiver_id, data);
 
-                                var strdd = JSON.stringify(data);
-                                console.log('<initMessageListInTimeSpanByPersonIds>' + strdd);
-                                // 广播用户发来的消息查询成功
-                                $rootScope.$broadcast('bothMessageListRefreshed', {
-                                    sender_id: sender_id,
-                                    receiver_id: receiver_id
-                                });
-                            }
-                        } else {
-                            // 广播用户发来的消息列表刷新失败
-                            $rootScope.$broadcast('bothMessageListRefreshFail', data);
-                        }
-                        ;
-                    }).error(function (data, status, headers, config) {
+                              var strdd = JSON.stringify(data);
+                              console.log('<initMessageListInTimeSpanByPersonIds>' + strdd);
+                              // 广播用户发来的消息查询成功
+                              $rootScope.$broadcast('bothMessageListRefreshed', {
+                                  sender_id: sender_id,
+                                  receiver_id: receiver_id
+                              });
+                          }
+                      } else {
+                          // 广播用户发来的消息列表刷新失败
+                          $rootScope.$broadcast('bothMessageListRefreshFail', data);
+                      }
+                      ;
+                  }).error(function (data, status, headers, config) {
 
-                    });
+                  });
             }
             ,
             // 根据发送者和接收者的id，得到他们最近的未读消息摘要
@@ -813,35 +813,35 @@ app.factory('messageService', ['localStorageService', 'dateService', '$http', '$
                     headers: {'Content-Type': 'application/json;charset=utf-8'},
                     dataType: 'JSON'
                 })
-                    .success(function (data, status, headers, config) {
-                        //alert("用户定位点修改成功！");
-                        // curUser=$scope.curUser;
-                        // $scope.resMsg=data;
-                        // console.log(data+"<loadAllInvolvedChildrenByDid>"+status);
-                        if (status == 200) {
-                            //其实也可以得到部门，但是部门暂时没有用
+                  .success(function (data, status, headers, config) {
+                      //alert("用户定位点修改成功！");
+                      // curUser=$scope.curUser;
+                      // $scope.resMsg=data;
+                      // console.log(data+"<loadAllInvolvedChildrenByDid>"+status);
+                      if (status == 200) {
+                          //其实也可以得到部门，但是部门暂时没有用
 
-                            //如果人员关联的消息数量不为0
-                            if (data.sender && data.count > 0) {
-                                // 继续列出来
-                                // sender.messageabstract=data.abstract; 文字摘要
-                                // sender.messagecount=data.count; 未读消息总数
-                                // sender.messagelastTime=data.lastTime; 最近一条消息的时间
-                                localStorageService.update("messagesByUserID" + sender_id, data);
+                          //如果人员关联的消息数量不为0
+                          if (data.sender && data.count > 0) {
+                              // 继续列出来
+                              // sender.messageabstract=data.abstract; 文字摘要
+                              // sender.messagecount=data.count; 未读消息总数
+                              // sender.messagelastTime=data.lastTime; 最近一条消息的时间
+                              localStorageService.update("messagesByUserID" + sender_id, data);
 
-                                var strdd = JSON.stringify(data);
-                                console.log('<initMessageListByPersonIds>' + strdd);
-                                // 广播用户发来的消息查询成功
-                                $rootScope.$broadcast('messageListRefreshed', data);
-                            }
-                        } else {
-                            // 广播用户发来的消息列表刷新失败
-                            $rootScope.$broadcast('messageListRefreshFail', data);
-                        }
-                        ;
-                    }).error(function (data, status, headers, config) {
+                              var strdd = JSON.stringify(data);
+                              console.log('<initMessageListByPersonIds>' + strdd);
+                              // 广播用户发来的消息查询成功
+                              $rootScope.$broadcast('messageListRefreshed', data);
+                          }
+                      } else {
+                          // 广播用户发来的消息列表刷新失败
+                          $rootScope.$broadcast('messageListRefreshFail', data);
+                      }
+                      ;
+                  }).error(function (data, status, headers, config) {
 
-                    });
+                  });
             }
             ,
             // 原来的初始化不是用我们的json，根据发送者和接收者的整个对象，得到他们最近的未读消息摘要
@@ -863,39 +863,39 @@ app.factory('messageService', ['localStorageService', 'dateService', '$http', '$
                     headers: {'Content-Type': 'application/json;charset=utf-8'},
                     dataType: 'JSON'
                 })
-                    .success(function (data, status, headers, config) {
-                        //alert("用户定位点修改成功！");
-                        // curUser=$scope.curUser;
-                        // $scope.resMsg=data;
-                        // console.log(data+"<loadAllInvolvedChildrenByDid>"+status);
-                        if (status == 200) {
-                            //其实也可以得到部门，但是部门暂时没有用
+                  .success(function (data, status, headers, config) {
+                      //alert("用户定位点修改成功！");
+                      // curUser=$scope.curUser;
+                      // $scope.resMsg=data;
+                      // console.log(data+"<loadAllInvolvedChildrenByDid>"+status);
+                      if (status == 200) {
+                          //其实也可以得到部门，但是部门暂时没有用
 
-                            //如果人员关联的消息数量不为0
-                            if (data.sender && data.count > 0) {
-                                // 继续列出来
-                                sender.messageabstract = data.abstract;
-                                sender.messagecount = data.count;
-                                sender.messagelastTime = data.lastTime;
+                          //如果人员关联的消息数量不为0
+                          if (data.sender && data.count > 0) {
+                              // 继续列出来
+                              sender.messageabstract = data.abstract;
+                              sender.messagecount = data.count;
+                              sender.messagelastTime = data.lastTime;
 
-                                sender.messagestartTime = data.startTime;
-                                // sender.unreadmessages=data.unreadmessages;
-                                localStorageService.update("messagesByUserID" + sender._id, sender);
+                              sender.messagestartTime = data.startTime;
+                              // sender.unreadmessages=data.unreadmessages;
+                              localStorageService.update("messagesByUserID" + sender._id, sender);
 
-                                // 广播用户发来的消息查询成功
-                                $rootScope.$broadcast('messageListRefreshed', sender);
-                            }
-                        } else {
-                            sender.messageabstract = '没有消息。。。';
-                            sender.messagecount = 0;
-                            localStorageService.update("messagesByUserID" + sender._id, sender);
-                            // 广播用户发来的消息列表刷新失败
-                            $rootScope.$broadcast('messageListRefreshFail', sender);
-                        }
-                        ;
-                    }).error(function (data, status, headers, config) {
+                              // 广播用户发来的消息查询成功
+                              $rootScope.$broadcast('messageListRefreshed', sender);
+                          }
+                      } else {
+                          sender.messageabstract = '没有消息。。。';
+                          sender.messagecount = 0;
+                          localStorageService.update("messagesByUserID" + sender._id, sender);
+                          // 广播用户发来的消息列表刷新失败
+                          $rootScope.$broadcast('messageListRefreshFail', sender);
+                      }
+                      ;
+                  }).error(function (data, status, headers, config) {
 
-                    });
+                  });
 
             },
             getAllMessages: function () {

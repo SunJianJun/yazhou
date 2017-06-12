@@ -1,4 +1,4 @@
-﻿﻿'use strict';
+﻿'use strict';
 
 /* Controllers */
 
@@ -40,20 +40,6 @@ angular.module('app')
             }
         ];
         $rootScope.applicationServerpath='http://localhost:2000/';
-
-      //根据用户id获得用户照片
-      $rootScope.getUserPicById=function(personId,callback) {
-        //将查询来的用户信息赋给本地全局对象
-        var personPic=localStorageService.get('UserPIc_'+personId,60*24);//在缓存中得到长期保存的照片
-        // console.log('根据用户id获得用户照片curUser：', personId);	  //子级能得到值
-        if(!personPic){
-          //如果没有照片，就去服务器取
-          userService.refreshUserPicById(personId,$rootScope.applicationServer,callback);
-          return;
-        }
-        if(callback) {callback(personId,personPic);return;}
-        return personPic;
-      };
 
         // 桌面端的用户需要登录信息，用户名就是人名，密码第一次可以是身份证号，之后可以修改，pwd
         $rootScope.confirmUser = function(callback) {

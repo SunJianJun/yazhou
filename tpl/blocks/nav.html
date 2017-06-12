@@ -10,6 +10,58 @@
             <span class="font-bold" translate="aside.nav.GRIDMAP">GRIDMAP</span>
         </a>
     </li>
+    <li>
+        <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+            <i class="glyphicon glyphicon-th-large icon text-success"></i>
+            <span class="font-bold">业务配置</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li ui-sref-active="active">
+                <a ui-sref="apps.abstracttype">
+                    <span>类型</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.abstractstep">
+                    <span>步骤</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+
+    <li>
+        <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+            <i class="glyphicon glyphicon-list-alt icon text-success"></i>
+            <span class="font-bold">业务查询</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li ui-sref-active="active">
+                <a ui-sref="app.concreteevent">
+                    <span>事件类型</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.concretestep">
+                    <span>处理流程</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.concreteargu">
+                    <span>处理步骤</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
 
     <li ui-sref-active="active">
         <a ui-sref="app.mail.list">
@@ -24,8 +76,6 @@
             <span class="font-bold" translate="aside.nav.CALENDAR">Calendar</span>
         </a>
     </li>
-
-
     <li ui-sref-active="active">
         <a ui-sref="apps.departmentworkers">
             <i class="glyphicon glyphicon-calendar icon fa fa-sitemap"></i>
@@ -65,9 +115,9 @@
             </li>
         </ul>
     </li>
-
-    <li class="line dk"></li>
 <!--
+    <li class="line dk"></li>
+
     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
         <span translate="aside.nav.components.COMPONENTS">Components</span>
     </li>
@@ -352,9 +402,9 @@
             </li>
         </ul>
     </li>
-
-    <li class="line dk hidden-folded"></li>
 -->
+    <li class="line dk hidden-folded"></li>
+
     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
         <span translate="aside.nav.your_stuff.YOUR_STUFF">Your Stuff</span>
     </li>

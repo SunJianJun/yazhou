@@ -12,7 +12,7 @@ app.controller('gridmapctl',
         //    historylocations: []
         //}
       ];
-      if($scope.map){
+      if ($scope.map) {
         $scope.map.clearMap();
       }
       // $rootScope.hideAccountTab=false;
@@ -238,19 +238,16 @@ app.controller('gridmapctl',
       };
       $scope.peopleinfoistime = {
         istime: function (data, time) {
-          console.log(data)
-          console.log(time)
-          console.log(time.getHours());
           var timeStart, timeEnd;
           for (var i = 0; i < data.time.length; i++) {
             timeStart = data.time[i].timeStart;
             timeEnd = data.time[i].timeEnd;
             console.log(timeStart)
             console.log(timeEnd.slice(0, 1))
-            console.log(timeEnd.slice(0, 1) >= time.getDay() &&time.getDay()>= timeStart.slice(0, 1))
-            if (timeEnd.slice(0, 1) >= time.getDay() &&time.getDay()>= timeStart.slice(0, 1)) {
+            console.log(timeEnd.slice(0, 1) >= time.getDay() && time.getDay() >= timeStart.slice(0, 1))
+            if (timeEnd.slice(0, 1) >= time.getDay() && time.getDay() >= timeStart.slice(0, 1)) {
               console.log('进入第一关')
-              if (timeEnd.slice(2, 4) >= time.getHours() && time.getHours()>= timeStart.slice(0, 1)) {
+              if (timeEnd.slice(2, 4) >= time.getHours() && time.getHours() >= timeStart.slice(0, 1)) {
                 console.log('进入第二关')
                 return '<i class="glyphicon glyphicon-ok"></i>';
               }
@@ -586,7 +583,7 @@ app.controller('gridmapctl',
               //构造新的mark
               newMark = new AMap.Marker({
                 map: null,
-                content: '<div ><img src="./img/personiconsmall.png" style="height:40px;width:30px"><br></div>'
+                content: '<div ><img src="./img/personiconsmall.png" style="height:40px;width:15px"><br></div>'
               });
               // if(time){
               //   var timeText=new Date(time);
@@ -919,23 +916,14 @@ app.controller('gridmapctl',
           <div class="current_personnel">
               <h5 class="font-bold">当前员工</h5>
               <div class="clear" id="haveChosenPeople">`;
-          //for(var a=0;a<$scope.properdata.persons.length;a++){
-          //  //var initper='aa='+JSON.stringify($scope.properdata.persons[a]);
-          //  //console.log($scope.properdata.persons[a])
-          //  menu += ` <div class="btn btn-default">`;
-          //  menu += `<span ng-click="peopleinfo(aa,properdata.name)">${$scope.properdata.persons[a].name}</span>`;
-          //  menu += `<span ng-click="deleteAddpeople(`+a+`)" class="close">&times;</span>
-          //      </div>`;
-          //}
-              menu += `
+
+          menu += $scope.properdata.persons.length ? '' : '<div id="nopeople">当前区域没有人员</div>';
+          menu += `
                 <div class="btn btn-default" ng-repeat="aa in properdata.persons" ng-init="abc={index:$index,dom:this}">
                     <span ng-click="peopleinfo(aa,properdata.name)">{{aa.name}}</span>
                     <span ng-click="deleteAddpeople(abc.index,abc.dom)" class="close">&times;</span>
                 </div>`;
-                if(!$scope.properdata.persons.length){
-                  menu+='当前区域没有人员';
-                }
-            menu+=`
+          menu += `
             </div>
         </div>
 	    </div>
@@ -1081,8 +1069,10 @@ app.controller('gridmapctl',
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3 class="panel-title">
-				<a data-toggle="collapse" data-parent="#accordion" onclick="return false"
-				   href="#collapseOne">查看区域人员
+                    <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i></span>
+				<a data-toggle="collapse" data-parent="#accordion"
+				   href="#collapseOne" onclick="return false">查看区域人员
 				</a>
 			</h3>
 		</div>
@@ -1105,7 +1095,7 @@ app.controller('gridmapctl',
 		</h3>
 	</div>
 </div>`;
-//通过字符串的形式制作菜单
+
           $('#menu-1').html($compile(menu)($scope))
         }
       }
@@ -1164,7 +1154,7 @@ app.controller('gridmapctl',
         }
       }
 
-      $scope.deleteAddpeople = function (e,dom) {
+      $scope.deleteAddpeople = function (e, dom) {
         console.log(e)
         //console.log(dom)
         console.log($scope.properdata)
@@ -1206,6 +1196,7 @@ app.controller('gridmapctl',
           alert('时间没有添加！');
           return;
         }
+        $('#nopeople').html('');
         $scope.properdata.persons.push(people);
         console.log($scope.properdata);
         $http({
@@ -1222,8 +1213,8 @@ app.controller('gridmapctl',
       }
 
 
-      $scope.abc = function () {
-        alert($rootScope.movingObjs.length);
+      $scope.personnel_statistics = function () {
+        alert('当前人员有：' + $rootScope.movingObjs.length + ' 人');
       }
 //刷新地图区域
       $scope.refreshMap = function () {
@@ -1284,7 +1275,7 @@ app.controller('gridmapctl',
               $scope.filterpeoplepath.oldpath.a = lat,
               $scope.filterpeoplepath.oldpath.d = date;
             //console.log('旧值为空')
-            return [lng, lat,sspeed,date];
+            return [lng, lat, sspeed, date];
           } else {
             var sjc = (date - d) / 1000;//两点时间差 值为秒
             var distance = $scope.filterpeoplepath.rangingTool(a, n, lat, lng);//两点之间的距离
@@ -1293,16 +1284,20 @@ app.controller('gridmapctl',
             //console.log(sjc + '秒')
             //console.log(distance + '米')
             //console.log('旧值' + a, n + '\n新值' + lat, lng)
-            if (!distance || sjc < 1) {return false;}
+            if (!distance || sjc < 1) {
+              return false;
+            }
             var sspeed = distance / sjc;//秒速 /s
             //console.log(sspeed + '/s')
-            if (sspeed > 33) {return false;}//如果秒速大于50米 跳出
+            if (sspeed > 33) {
+              return false;
+            }//如果秒速大于50米 跳出
             //console.log('---------------------------------------------------------------')
-              $scope.filterpeoplepath.oldpath.n = lng,
+            $scope.filterpeoplepath.oldpath.n = lng,
               $scope.filterpeoplepath.oldpath.a = lat,
               $scope.filterpeoplepath.oldpath.d = date;
             //if(jsc)
-            return [lng, lat,sspeed,date];
+            return [lng, lat, sspeed, date];
           }
           //return false;
         },
@@ -1310,16 +1305,16 @@ app.controller('gridmapctl',
           //console.log(lat1,lng1)
           //console.log(lat2,lng2)
           //debugger;
-          var lnglat = new AMap.LngLat(lng1,lat1);
-          var jl=lnglat.distance([lng2,lat2]);
+          var lnglat = new AMap.LngLat(lng1, lat1);
+          var jl = lnglat.distance([lng2, lat2]);
           //console.log('两点间距离为：' + jl + '米');
           return jl;
         }
       }
 
-      $scope.positioninfo=function(currentcount,callback){
-        var MGeocoder=new AMap.Geocoder();
-        $rootScope.address='';
+      $scope.positioninfo = function (currentcount, callback) {
+        var MGeocoder = new AMap.Geocoder();
+        $rootScope.address = '';
         AMap.event.addListener(MGeocoder, "complete", function (data) {
           //console.log(MGeocoder)
           //var address;
@@ -1343,7 +1338,7 @@ app.controller('gridmapctl',
           var start = $('.search-dateStartTime').val();
           var end = $('.search-dateEndTime').val();
           $scope.filterpeoplepath.oldpath = {n: '', a: '', d: ''};
-          //console.log(new Date(start),new Date(end));
+          console.log(new Date(start),new Date(end));
           $http(
             {
               method: 'POST',
@@ -1362,7 +1357,7 @@ app.controller('gridmapctl',
               }
               console.log('返回数据')
               console.log(data)
-              var marker, lineArr = [],speed=[];
+              var marker, lineArr = [], speed = [];
               for (var i = 0, locationtable = ''; i < data.length; i++) {
                 var lngX = data[i].geolocation[0];
                 var lngY = data[i].geolocation[1];
@@ -1374,7 +1369,7 @@ app.controller('gridmapctl',
                 }
                 //console.log(filter);
                 lineArr.push(filter);
-                speed.push([filter[2]*300,filter[3]])
+                speed.push([filter[2] * 300, filter[3]])
                 locationtable += '<tr><td>' + lngX + '</br>' + lngY + '</td><td>' + date.formate("M月d日 hh:mm") + '</td><td>' + $scope.checkPersonLocationWithGridarea([lngX, lngY]) + '</td>';
               }
               console.log(speed);
@@ -1415,37 +1410,37 @@ app.controller('gridmapctl',
                 // strokeStyle: "solid"  //线样式
               });
 
-// add a comments
+
               marker.on('moving', function (e) {
                 passedPolyline.setPath(e.passedPath);
               })
 
-              var currentcount=0;
+              var currentcount = 0;
               AMap.event.addDomListener(document.getElementById('starthistory'), 'click', function () {
-                var count=0;
+                var count = 0;
                 marker.setPosition(lineArr[count])
                 count++;
                 //console.log(speed[count][0])
-                marker.moveTo(lineArr[count],speed[count][0])
-                  marker.on('moveend',function(){
-                    if(count<(lineArr.length-1)){
-                      count++;
-                      currentcount=count;
-                    }
-                    marker.moveTo(lineArr[count],speed[count][0])
-                  })
+                marker.moveTo(lineArr[count], speed[count][0])
+                marker.on('moveend', function () {
+                  if (count < (lineArr.length - 1)) {
+                    count++;
+                    currentcount = count;
+                  }
+                  marker.moveTo(lineArr[count], speed[count][0])
+                })
               }, false);
               AMap.event.addDomListener(document.getElementById('pausehistory'), 'click', function () {
                 marker.pauseMove();
 
-                console.log(lineArr[currentcount],speed[currentcount][1])
-                var shucu=$scope.positioninfo(lineArr[currentcount],function(e){
+                console.log(lineArr[currentcount], speed[currentcount][1])
+                var shucu = $scope.positioninfo(lineArr[currentcount], function (e) {
 
-                  $rootScope.address =e;
+                  $rootScope.address = e;
                   //在指定位置打开信息窗体
                   //构建信息窗体中显示的内容
                   var info = '';
-                  info+=`<div>
+                  info += `<div>
                    <div>地址：${$rootScope.address}</div>
                   <div>位置：${lineArr[currentcount]}</div>
                   <div>时间：${speed[currentcount][1].formate("M月d日 hh:mm")}</div>
@@ -1459,13 +1454,13 @@ app.controller('gridmapctl',
                     asDestination: false,
                     offset: new AMap.Pixel(0, -5)
                   })
-                  infowindow3.open($scope.map,lineArr[currentcount]);
+                  infowindow3.open($scope.map, lineArr[currentcount]);
 
                 })
                 //console.log(shucu)
                 //console.log(Element[0])
 //console.log(infowindow3)
-              },false);
+              }, false);
               AMap.event.addDomListener(document.getElementById('resumehistory'), 'click', function () {
                 marker.resumeMove();
               }, false);
@@ -1595,16 +1590,16 @@ app.controller('gridmapctl',
         var color = $("#regionColor").val();
         if (!first)return;
 
-        var transform=function(obj){//对象转为数组
+        var transform = function (obj) {//对象转为数组
           var arr = [];
-          for(var item in obj){
+          for (var item in obj) {
             arr.push(obj[item]);
           }
           return arr;
         }
         //console.log(transform($scope.editorRegion._polygonEditor))
 
-        $scope.editPolygonPath =transform($scope.editorRegion._polygonEditor)[4][0];
+        $scope.editPolygonPath = transform($scope.editorRegion._polygonEditor)[4][0];
         console.log($scope.editPolygonPath);
 
         console.log('名称：' + first, '类型：' + last);
@@ -1888,16 +1883,16 @@ app.directive('gdMap', function ($timeout, $window) {
 
         scope.lnglatXY = new AMap.LngLat(e.lnglat.getLng(), e.lnglat.getLat());
         //加载地理编码插件
-        var MGeocoder=new AMap.Geocoder()
+        var MGeocoder = new AMap.Geocoder();
         AMap.event.addListener(MGeocoder, "complete", function (data) {
-            var address;
-            //console.log(MGeocoder)
-            //返回地址描述
-            address = data.regeocode.formattedAddress;
-            //返回结果拼接输出
-            $('#position_information').html(address);
-          })
-          MGeocoder.getAddress(scope.lnglatXY)
+          var address;
+          //console.log(MGeocoder)
+          //返回地址描述
+          address = data.regeocode.formattedAddress;
+          //返回结果拼接输出
+          $('#position_information').html(address);
+        })
+        MGeocoder.getAddress(scope.lnglatXY)
 //        scope.map.plugin(["AMap.Geocoder"], function () {
 //          MGeocoder = new AMap.Geocoder({
 //            radius: 1000,
@@ -1926,16 +1921,16 @@ app.directive('gdMap', function ($timeout, $window) {
     }
   }
 })
-  .directive('draggable', ['$document', function($document) {
-    return function(scope, element, attr) {
+  .directive('draggable', ['$document', function ($document) {
+    return function (scope, element, attr) {
       var startX = 0, startY = 0, x = 0, y = 0;
-      element= angular.element(document.getElementsByClassName("modal-dialog"));
+      element = angular.element(document.getElementsByClassName("modal-dialog"));
       element.css({
         position: 'relative',
         cursor: 'move'
       });
 
-      element.on('mousedown', function(event) {
+      element.on('mousedown', function (event) {
         // Prevent default dragging of selected content
         event.preventDefault();
         startX = event.pageX - x;
@@ -1949,7 +1944,7 @@ app.directive('gdMap', function ($timeout, $window) {
         x = event.pageX - startX;
         element.css({
           top: y + 'px',
-          left:  x + 'px'
+          left: x + 'px'
         });
       }
 
