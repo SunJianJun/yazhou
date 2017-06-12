@@ -1415,7 +1415,7 @@ app.controller('gridmapctl',
                 // strokeStyle: "solid"  //线样式
               });
 
-
+// add a comments
               marker.on('moving', function (e) {
                 passedPolyline.setPath(e.passedPath);
               })
