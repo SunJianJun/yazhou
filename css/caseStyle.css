@@ -1,0 +1,65 @@
+.ibox-content h1, .ibox-content h2, .ibox-content h3, .ibox-content h4, .ibox-content h5, .ibox-title h1, .ibox-title h2, .ibox-title h3, .ibox-title h4, .ibox-title h5 {
+    margin-top: 5px
+}
+.ibox-content.text-box {
+    padding-bottom: 0;
+    padding-top: 15px
+}
+.ibox.collapsed .ibox-content {
+    display: none
+}
+.ibox-content {
+    background-color: #fff;
+    color: inherit;
+    padding: 15px 20px 20px;
+    border-color: #e7eaec;
+    -webkit-border-image: none;
+    -o-border-image: none;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 0
+}
+.ibox-content {
+    clear: both
+}
+.chat-view .ibox-content {
+    padding: 0
+}
+
+.sortable-list {
+    padding: 10px 0
+}
+
+.agile-list {
+    list-style: none;
+    margin: 0
+}
+
+.agile-list li {
+    background: #FAFAFB;
+    border: 1px solid #e7eaec;
+    margin: 0 0 10px;
+    padding: 10px;
+    border-radius: 2px
+}
+
+.agile-list li:hover {
+    cursor: pointer;
+    background: #fff
+}
+
+.agile-list li.warning-element {
+    border-left: 3px solid #f8ac59
+}
+
+.agile-list li.danger-element {
+    border-left: 3px solid #ed5565
+}
+
+.agile-list li.info-element {
+    border-left: 3px solid #1c84c6
+}
+
+.agile-list li.success-element {
+    border-left: 3px solid #1ab394
+}

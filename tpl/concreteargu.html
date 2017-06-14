@@ -1,0 +1,73 @@
+<!--<link rel="stylesheet" href="css/summernote.css"/>-->
+<div class="wrapper case" ng-controller="concretearguCtrl">
+    <!--<ol class="breadcrumb">-->
+    <!--<li><a>事件概况</a></li>-->
+    <!--<li><a>{{process.name}}</a></li>-->
+    <!--<li><a>添加参案人员</a></li>-->
+    <!--</ol>-->
+    <div class="panel-body caseTitle">
+        <h4>人员</h4>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div class="panel no-margin">
+                <div class="panel-heading">
+                    选择类型
+                </div>
+                <div class="panel-body">
+                    <div class="wrapper-xs">
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <td>名称：</td>
+                                <td><span>立案审批表</span></td>
+                            </tr>
+                            <tr>
+                                <td>参数：</td>
+                                <td>
+                                    <div class="wrapper-xs">
+                                        <span>1</span>
+                                        <span class="wrapper-xs">类型：时间</span>
+                                        <span class="wrapper-xs">值：<input type="text"/><button>选择</button></span>
+                                    </div>
+                                    <div class="wrapper-xs">
+                                        <span>2</span>
+                                        <span class="wrapper-xs">类型：地址</span>
+                                        <span class="wrapper-xs">值：<input type="text"/><button>选择</button></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item" style="margin-top:-30px;">
+            <div class="row">
+                <script src='js/plugins/ueditor/umeditor.min.js'></script>
+                <div class="col-sm-12" umeditor>
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content no-padding">
+
+                            <script type="text/plain" id="myEditor" style="width:100%;height:240px;">
+    <p>这里我可以写一些输入提示</p>
+
+                            </script>
+                            <div>
+                                <h3 id="focush2"></h3>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <button>提交</button>
+                        <button>推进</button>
+                        <button>驳回</button>
+                        <button>返回</button>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

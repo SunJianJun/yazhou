@@ -1,0 +1,210 @@
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs bg-light wrapper" ng-controller="abstracttypeCtrl">
+    <!-- column -->
+    <div class="panel-body caseTitle">
+        <h4>事件概况</h4>
+    </div>
+
+    <div class="panel-group">
+        <div class="panel">
+            <div class="panel-body">
+            <ul id="myTab" class="nav nav-tabs casedepertment_list">
+                <li class="active">
+                    <a href="#casedepertment1" onclick="return false" data-toggle="tab">
+                        崖州区城市管理局
+                    </a>
+                </li>
+                <li>
+                    <a href="#casedepertment2" onclick="return false" data-toggle="tab">
+                        崖州区农林局
+                    </a>
+                </li>
+                <li>
+                    <a href="#casedepertment3" onclick="return false" data-toggle="tab">
+                        崖州区海洋渔业水务局
+                    </a>
+                </li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="casedepertment1">
+
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>编号</th>
+                            <th>步骤</th>
+                            <th>时间</th>
+                            <th>操作</th>
+                        </tr>
+                        <tr ng-repeat="case in abstracttype">
+                            <td>{{case._id}}</td>
+                            <td>{{case.typeName}}</td>
+                            <td>{{case.createDate}}</td>
+                            <td>
+                                <button ng-click="abstracttypeGo(case._id)">编辑</button>
+                                <button ng-click="removecase(case._id)">删除</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div name="newabstracttype" id="newabstracttype">
+                        <button>新建</button>
+                            <span>事件名称：</span>
+                            <input type="text" ng-model="newtypeName"/>
+                            <button ng-click="newcase(newtypeName)">确定添加</button>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="casedepertment2">
+                    <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam assumenda atque consequuntur corporis culpa eius et nam, natus necessitatibus nihil obcaecati odit omnis qui rem saepe soluta sunt voluptatibus!</span><span>Aperiam, beatae, deserunt earum exercitationem itaque magnam magni nisi non omnis, placeat quae soluta tempore velit. Accusantium consequatur dolorem dolores ex excepturi labore mollitia nostrum perferendis, quos recusandae temporibus voluptatem?</span><span>Ab ad aperiam doloribus earum explicabo ipsam magnam, maiores quae quas quidem repellendus, reprehenderit tempora temporibus. Debitis dignissimos distinctio ducimus eligendi exercitationem incidunt ipsum labore nam, nesciunt provident quia, sed.</span></p>
+                </div>
+
+                <div class="tab-pane fade" id="casedepertment3">
+                    <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam assumenda atque consequuntur corporis culpa eius et nam, natus necessitatibus nihil obcaecati odit omnis qui rem saepe soluta sunt voluptatibus!</span><span>Aperiam, beatae, deserunt earum exercitationem itaque magnam magni nisi non omnis, placeat quae soluta tempore velit. Accusantium consequatur dolorem dolores ex excepturi labore mollitia nostrum perferendis, quos recusandae temporibus voluptatem?</span><span>Ab ad aperiam doloribus earum explicabo ipsam magnam, maiores quae quas quidem repellendus, reprehenderit tempora temporibus. Debitis dignissimos distinctio ducimus eligendi exercitationem incidunt ipsum labore nam, nesciunt provident quia, sed.</span></p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseOne" onclick="return false">
+                        崖州区城市管理局
+                    </a>
+                    <button class="pull-right" ng-click="newcase()">新建事件</button>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <th>编号</th>
+                                <th>案件</th>
+                                <th>建立时间</th>
+                                <th>是否正在进行</th>
+                                <th>当前正在进行的流程</th>
+                            </tr>
+                            <tr ng-repeat="case in casetypes" ng-click="abstractTypeGo(case._id)">
+                                <td>{{case._id}}</td>
+                                <td>{{case.name}}</td>
+                                <td>{{case.createDate}}</td>
+                                <td>{{case.status?'已完结':'正在进行'}}</td>
+                                <td>{{case.current.types}}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseTwo" onclick="return false">
+                        崖州区农林局
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                        vice lomo.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseThree" onclick="return false">
+                        崖州区海洋渔业水务局
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                        vice lomo.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+
+    <!--
+    <div>
+
+    </div>
+    <div class="col w-lg lt b-r">
+        <div class="vbox">
+            <div class="wrapper">
+                <a href class="pull-right btn btn-sm btn-info m-t-n-xs" ng-click="createNote()">New</a>
+                <div class="h4">Notes</div>
+            </div>
+            <div class="wrapper b-t m-t-xxs">
+                <div class="input-group">
+                    <span class="input-group-addon input-sm"><i class="fa fa-search"></i></span>
+                    <input type="text" class="form-control input-sm" placeholder="search" ng-model="query">
+                </div>
+            </div>
+            <div class="row-row">
+                <div class="cell scrollable hover">
+                    <div class="cell-inner">
+                        <div class="padder">
+                            <div class="list-group">
+                                <a ng-repeat="note in notes | filter:query | orderBy:'date':true" class="list-group-item b-l-{{note.color}} b-l-3x hover-anchor" ng-class="{'hover': note.selected }" ng-click="selectNote(note)">
+                                    <span ng-click='deleteNote(note)' class="pull-right text-muted hover-action"><i class="fa fa-times"></i></span>
+                                    <span class="block text-ellipsis">{{ note.content ? note.content : 'Empty note' }}</span>
+                                    <small class="text-muted">{{ note.date | fromNow }}</small>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col">
+        <div class="vbox">
+            <div class="wrapper bg-light lt b-b">
+                <span class="text-muted">Created on:</span> <span>{{ note.date  | date:'MMM-dd-yyyy H:mm' }}</span>
+                <div class="m-l inline dropdown" dropdown>
+                    <a class="v-middle pos-rlt inline bg-{{note.color}}" dropdown-toggle style="width:16px;height:16px;top:-2px"></a>
+                    <div class="dropdown-menu animated fadeInUp w wrapper">
+                        <a ng-repeat="color in colors" class="inline m-xs bg-{{color}}" style="width:18px;height:18px" ng-click=" note.color = color "></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row-row">
+                <div class="cell">
+                    <div class="cell-inner">
+            <textarea class="form-control no-radius no-border no-bg wrapper-lg text-md" style="height:100%;" ng-model="note.content">
+            </textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+    <!-- /column -->
+
+</div>
+<!-- /hbox layout -->
