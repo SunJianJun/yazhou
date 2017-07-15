@@ -8,143 +8,191 @@
     <div class="panel-group">
         <div class="panel">
             <div class="panel-body">
-            <ul id="myTab" class="nav nav-tabs casedepertment_list">
-                <li class="active">
-                    <a href="#casedepertment1" onclick="return false" data-toggle="tab">
-                        崖州区城市管理局
-                    </a>
-                </li>
-                <li>
-                    <a href="#casedepertment2" onclick="return false" data-toggle="tab">
-                        崖州区农林局
-                    </a>
-                </li>
-                <li>
-                    <a href="#casedepertment3" onclick="return false" data-toggle="tab">
-                        崖州区海洋渔业水务局
-                    </a>
-                </li>
-            </ul>
-            <div id="myTabContent" class="tab-content">
-                <div class="tab-pane fade in active" id="casedepertment1">
+                <ul id="myTab" class="nav nav-tabs casedepertment_list">
+                    <li class="active">
+                        <a href="#casedepertment1" onclick="return false" data-toggle="tab">
+                            崖州区城市管理局
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#casedepertment2" onclick="return false" data-toggle="tab">
+                            崖州区农林局
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#casedepertment3" onclick="return false" data-toggle="tab">
+                            崖州区海洋渔业水务局
+                        </a>
+                    </li>
 
-                    <table class="table">
-                        <tbody>
-                        <tr>
-                            <th>编号</th>
-                            <th>步骤</th>
-                            <th>时间</th>
-                            <th>操作</th>
-                        </tr>
-                        <tr ng-repeat="case in abstracttype">
-                            <td>{{case._id}}</td>
-                            <td>{{case.typeName}}</td>
-                            <td>{{case.createDate}}</td>
-                            <td>
-                                <button ng-click="abstracttypeGo(case._id)">编辑</button>
-                                <button ng-click="removecase(case._id)">删除</button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div name="newabstracttype" id="newabstracttype">
-                        <button>新建</button>
-                            <span>事件名称：</span>
-                            <input type="text" ng-model="newtypeName"/>
-                            <button ng-click="newcase(newtypeName)">确定添加</button>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="casedepertment2">
-                    <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam assumenda atque consequuntur corporis culpa eius et nam, natus necessitatibus nihil obcaecati odit omnis qui rem saepe soluta sunt voluptatibus!</span><span>Aperiam, beatae, deserunt earum exercitationem itaque magnam magni nisi non omnis, placeat quae soluta tempore velit. Accusantium consequatur dolorem dolores ex excepturi labore mollitia nostrum perferendis, quos recusandae temporibus voluptatem?</span><span>Ab ad aperiam doloribus earum explicabo ipsam magnam, maiores quae quas quidem repellendus, reprehenderit tempora temporibus. Debitis dignissimos distinctio ducimus eligendi exercitationem incidunt ipsum labore nam, nesciunt provident quia, sed.</span></p>
-                </div>
 
-                <div class="tab-pane fade" id="casedepertment3">
-                    <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam assumenda atque consequuntur corporis culpa eius et nam, natus necessitatibus nihil obcaecati odit omnis qui rem saepe soluta sunt voluptatibus!</span><span>Aperiam, beatae, deserunt earum exercitationem itaque magnam magni nisi non omnis, placeat quae soluta tempore velit. Accusantium consequatur dolorem dolores ex excepturi labore mollitia nostrum perferendis, quos recusandae temporibus voluptatem?</span><span>Ab ad aperiam doloribus earum explicabo ipsam magnam, maiores quae quas quidem repellendus, reprehenderit tempora temporibus. Debitis dignissimos distinctio ducimus eligendi exercitationem incidunt ipsum labore nam, nesciunt provident quia, sed.</span></p>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div>
+                    <li class="pull-right">
+                        <button class="btn" ng-click="newabstracttype()">新建</button>
+                    </li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="casedepertment1">
 
-<!--
-    <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion"
-                       href="#collapseOne" onclick="return false">
-                        崖州区城市管理局
-                    </a>
-                    <button class="pull-right" ng-click="newcase()">新建事件</button>
-                </h4>
-            </div>
-            <div id="collapseOne" class="panel-collapse collapse in">
-                <div class="panel panel-default">
-                    <div class="panel-body">
                         <table class="table">
                             <tbody>
                             <tr>
                                 <th>编号</th>
-                                <th>案件</th>
-                                <th>建立时间</th>
-                                <th>是否正在进行</th>
-                                <th>当前正在进行的流程</th>
+                                <th>事件</th>
+                                <th>步骤</th>
+                                <th>时间</th>
+                                <th>操作</th>
                             </tr>
-                            <tr ng-repeat="case in casetypes" ng-click="abstractTypeGo(case._id)">
+                            <tr ng-repeat="case in abstracttype">
                                 <td>{{case._id}}</td>
-                                <td>{{case.name}}</td>
-                                <td>{{case.createDate}}</td>
-                                <td>{{case.status?'已完结':'正在进行'}}</td>
-                                <td>{{case.current.types}}
-                                </td>
+                                <td class="abstracttypeName">{{case.typeName}}</td>
+                                <td class="abstracttypeStep">
+                                    <select name="" class="w-sm">
+                                        <option value="{{step._id}}" ng-repeat="step in case.step | orderBy:'no'">{{step}}</option>
+                                    </select>
+                            </td>
+                            <td>{{case.newer}}</td>
+                            <td>
+                                <button ng-click="abstracttypeEdit($event)">编辑</button>
+                                <button ng-click="removecase(case._id)">删除</button>
+                            </td>
                             </tr>
                             </tbody>
                         </table>
+                        <div class="clear">
+                        <div name="newabstracttype" style="display: none;" id="newabstracttype">
+                            <span>事件名称：</span>
+                            <input type="text" ng-model="newtypeName"/>
+                            <button ng-click="newcase(newtypeName)">确定添加</button>
+                        </div>
+                    </div>
+                        <script>
+                            function allsel(n1, n2) {
+                                while (n1.selectedIndex != -1) {
+                                    var indx = n1.selectedIndex;
+                                    var t = n1.options[indx].text;
+                                    var v = n1.options[indx].value;
+                                    n2.options.add(new Option(t,v));
+                                    n1.remove(indx);
+                                }
+                            }
+                            function selectMoveUp(oSelect) {
+                                for (var i = 1; i < oSelect.length; i++) {//最上面的一个不需要移动，所以直接从i=1开始
+                                    if (oSelect.options[i].selected) {
+                                        /*在 进行上下两项互换时，也可以使用以下代码，但是效率很低，因为每一次的Dom操作都将导致整个页面的重新布局，所以不如直接修改元素的属性值。  */
+                                        var oOption = oSelect.options[i];
+                                        var oPrevOption = oSelect.options[i-1];
+//                                        console.log(oOption,oPrevOption)
+                                        oSelect.insertBefore(oOption,oPrevOption);//向下移动同理
+//                                        if (!oSelect.options.item(i - 1).selected) {//上面的一项没选中，上下交换
+//                                            var selText = oSelect.options[i].text;
+//                                            var selValue = oSelect.options[i].value;
+//
+//                                            oSelect.options[i].text = oSelect.options[i - 1].text;
+//                                            oSelect.options[i].value = oSelect.options[i - 1].value;
+//                                            oSelect.options[i].selected = false;
+//
+//                                            oSelect.options[i - 1].text = selText;
+//                                            oSelect.options[i - 1].value = selValue;
+//                                            oSelect.options[i - 1].selected = true;
+//                                        }
+                                    }
+                                }
+                            }
+                        </script>
+                    </div>
+                    <div class="tab-pane fade" id="casedepertment2">
+                        <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam assumenda atque consequuntur corporis culpa eius et nam, natus necessitatibus nihil obcaecati odit omnis qui rem saepe soluta sunt voluptatibus!</span><span>Aperiam, beatae, deserunt earum exercitationem itaque magnam magni nisi non omnis, placeat quae soluta tempore velit. Accusantium consequatur dolorem dolores ex excepturi labore mollitia nostrum perferendis, quos recusandae temporibus voluptatem?</span><span>Ab ad aperiam doloribus earum explicabo ipsam magnam, maiores quae quas quidem repellendus, reprehenderit tempora temporibus. Debitis dignissimos distinctio ducimus eligendi exercitationem incidunt ipsum labore nam, nesciunt provident quia, sed.</span>
+                        </p>
                     </div>
 
+                    <div class="tab-pane fade" id="casedepertment3">
+                        <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam assumenda atque consequuntur corporis culpa eius et nam, natus necessitatibus nihil obcaecati odit omnis qui rem saepe soluta sunt voluptatibus!</span><span>Aperiam, beatae, deserunt earum exercitationem itaque magnam magni nisi non omnis, placeat quae soluta tempore velit. Accusantium consequatur dolorem dolores ex excepturi labore mollitia nostrum perferendis, quos recusandae temporibus voluptatem?</span><span>Ab ad aperiam doloribus earum explicabo ipsam magnam, maiores quae quas quidem repellendus, reprehenderit tempora temporibus. Debitis dignissimos distinctio ducimus eligendi exercitationem incidunt ipsum labore nam, nesciunt provident quia, sed.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!--
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne" onclick="return false">
+                            崖州区城市管理局
+                        </a>
+                        <button class="pull-right" ng-click="newcase()">新建事件</button>
+                    </h4>
                 </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion"
-                       href="#collapseTwo" onclick="return false">
-                        崖州区农林局
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseTwo" class="panel-collapse collapse">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-                        vice lomo.
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <th>编号</th>
+                                    <th>案件</th>
+                                    <th>建立时间</th>
+                                    <th>是否正在进行</th>
+                                    <th>当前正在进行的流程</th>
+                                </tr>
+                                <tr ng-repeat="case in casetypes" ng-click="abstractTypeGo(case._id)">
+                                    <td>{{case._id}}</td>
+                                    <td>{{case.name}}</td>
+                                    <td>{{case.createDate}}</td>
+                                    <td>{{case.status?'已完结':'正在进行'}}</td>
+                                    <td>{{case.current.types}}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion"
-                       href="#collapseThree" onclick="return false">
-                        崖州区海洋渔业水务局
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseThree" class="panel-collapse collapse">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-                        vice lomo.
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseTwo" onclick="return false">
+                            崖州区农林局
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                            cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                            vice lomo.
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseThree" onclick="return false">
+                            崖州区海洋渔业水务局
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                            cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                            vice lomo.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
 
 
     <!--

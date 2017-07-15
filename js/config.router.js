@@ -578,7 +578,7 @@ angular.module('app')
           }
         })
         .state('app.concreteargu',{
-          url:"/concreteargu",
+          url:"/concreteargu/{caseid}",
           templateUrl:'tpl/concreteargu.html',
           resolve:{
             deps:['uiLoad',function(uiLoad){
@@ -592,6 +592,18 @@ angular.module('app')
             }]
           }
         })
+
+        .state('app.abstractstep.abstractstepNew', {
+        url: '/abstractstepNew/{id}',
+        templateUrl: 'tpl/abstrapstepNew.html',
+        resolve: {
+          deps:['uiLoad',function(uiLoad){
+            return uiLoad.load([
+              'js/app/case/abstrapstepNew.js'
+            ])
+          }]
+        }
+      })
 
 
         .state('music', {

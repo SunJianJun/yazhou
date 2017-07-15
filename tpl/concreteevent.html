@@ -24,6 +24,9 @@
                         崖州区海洋渔业水务局
                     </a>
                 </li>
+                <li class="pull-right">
+                <button class="btn" ng-click="newabstracttype()">新建</button>
+            </li>
             </ul>
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade in active" id="casedepertment1">
@@ -32,17 +35,23 @@
                         <tbody>
                         <tr>
                             <th>编号</th>
-                            <th>步骤</th>
-                            <th>时间</th>
+                            <th>ID</th>
+                            <th>类型</th>
+                            <th>事件</th>
+                            <th>更新于</th>
+                            <th>当前</th>
                             <th>操作</th>
                         </tr>
-                        <tr ng-repeat="case in casetypes" ng-click="concreteeventGo(case._id)">
+                        <tr ng-repeat="case in casetypes">
+                            <td>{{$index+1}}</td>
                             <td>{{case._id}}</td>
+                            <td>{{case.type}}</td>
                             <td>{{case.name}}</td>
-                            <td>{{case.createDate}}</td>
+                            <td>{{case.newer}}</td>
+                            <td>1</td>
                             <td>
-                                <button>编辑</button>
-                                <button>删除</button>
+                                <button ng-click="concreteeventGo(case._id)">查看</button>
+                                <button ng-click="removeconcreteevent(case._id)">删除</button>
                             </td>
                         </tr>
                         </tbody>
@@ -56,6 +65,21 @@
                     <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam assumenda atque consequuntur corporis culpa eius et nam, natus necessitatibus nihil obcaecati odit omnis qui rem saepe soluta sunt voluptatibus!</span><span>Aperiam, beatae, deserunt earum exercitationem itaque magnam magni nisi non omnis, placeat quae soluta tempore velit. Accusantium consequatur dolorem dolores ex excepturi labore mollitia nostrum perferendis, quos recusandae temporibus voluptatem?</span><span>Ab ad aperiam doloribus earum explicabo ipsam magnam, maiores quae quas quidem repellendus, reprehenderit tempora temporibus. Debitis dignissimos distinctio ducimus eligendi exercitationem incidunt ipsum labore nam, nesciunt provident quia, sed.</span></p>
                 </div>
             </div>
+
+                <div class="clear">
+                    <div name="newabstracttype" style="display: none;" id="newabstracttype">
+                        <span>事件名称：</span>
+                        <input type="text" ng-model="newtypeName"/>
+                        <span>选择类型：</span>
+                        <select name="" id="newtypeType">
+                            <option value="{{typearr._id}}" ng-repeat="typearr in typeArr">{{typearr.typeName}}</option>
+                        </select>
+                        <span>所属部门：</span>
+                        <select name="" id="newtypeDepartment">
+                            <option value="{{deparr.department}}" ng-repeat="deparr in curUser.departments">城市管理局</option>
+                        </select>
+                        <button ng-click="newcase(newtypeName)">确定添加</button>
+                    </div>
             </div>
         </div>
     </div>

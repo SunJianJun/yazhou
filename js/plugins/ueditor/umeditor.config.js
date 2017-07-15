@@ -192,7 +192,7 @@ etpl.config({
 
         //,readonly : false //编辑器初始化结束后,编辑区域是否是只读的，默认是false
 
-        //,zIndex : 900     //编辑器层级的基数,默认是900
+        ,zIndex : 999     //编辑器层级的基数,默认是900
 
         //如果自定义，最好给p标签如下的行高，要不输入中文时，会有跳动感
         //注意这里添加的样式，最好放在.edui-editor-body .edui-body-container这两个的下边，防止跟页面上css冲突
@@ -243,6 +243,7 @@ etpl.config({
         //autoFloatEnabled
         //是否保持toolbar的位置不动,默认true
         //,autoFloatEnabled:true
+        ,autoFloatEnabled:false
 
         //浮动时工具栏距离浏览器顶部的高度，用于某些具有固定头部的页面
         //,topOffset:30

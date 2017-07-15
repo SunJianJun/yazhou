@@ -12,9 +12,9 @@
                     <ul class="sortable-list connectList agile-list">
 
                         <li class="danger-element" ng-repeat="list in taskList">
-                            {{list.types}}
+                            {{list.name}}
                             <div class="agile-detail">
-                                <a ng-click="addparameter()" class="pull-right btn btn-xs btn-white">标签</a>
+                                <a ng-click="addparameter(list._id)" class="pull-right btn btn-xs btn-white">查看</a>
                                 <i class="fa fa-clock-o"></i> 2015.09.01
                             </div>
                         </li>
@@ -29,9 +29,9 @@
                     <p class="small"><i class="fa fa-hand-o-up"></i> 在列表之间拖动任务面板</p>
                     <ul class="sortable-list connectList agile-list" style="height:100%;">
                         <li class="danger-element" ng-repeat="list in taskcurrent">
-                            {{list.types}}
+                            {{list.name}}
                             <div class="agile-detail">
-                                <a ui-sref="app.casesteps" class="pull-right btn btn-xs btn-white">标签</a>
+                                <a ng-click="addparameter(list._id)" class="pull-right btn btn-xs btn-white">查看</a>
                                 <i class="fa fa-clock-o"></i> 2015.09.01
                             </div>
                         </li>
@@ -48,7 +48,7 @@
                         <li class="danger-element" ng-repeat="list in taskdone">
                             {{list.types}}
                             <div class="agile-detail">
-                                <a ui-sref="app.casesteps" class="pull-right btn btn-xs btn-white">标签</a>
+                                <a ng-click="addparameter(list._id)" class="pull-right btn btn-xs btn-white">查看</a>
                                 <i class="fa fa-clock-o"></i> 2015.09.01
                             </div>
                         </li>

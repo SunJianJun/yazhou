@@ -1,108 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e152cf9f-6cd1-4dff-afad-b906294644e3" name="默认的" comment="tanjian1998&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/emotion/images/0.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/emotion/images/bface.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/emotion/images/cface.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/emotion/images/fface.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/emotion/images/jxface2.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/emotion/images/neweditor-tab-bg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/emotion/images/tface.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/emotion/images/wface.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/emotion/images/yface.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/formula/images/formula.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/image/images/close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/image/images/upload1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/image/images/upload2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/video/images/center_focus.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/video/images/left_focus.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/video/images/none_focus.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/video/images/right_focus.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/en/images/addimage.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/en/images/alldeletebtnhoverskin.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/en/images/alldeletebtnupskin.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/en/images/background.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/en/images/button.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/en/images/copy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/en/images/deletedisable.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/en/images/deleteenable.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/en/images/imglabel.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/en/images/listbackground.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/en/images/localimage.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/en/images/music.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/en/images/rotateleftdisable.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/en/images/rotateleftenable.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/en/images/rotaterightdisable.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/en/images/rotaterightenable.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/en/images/upload.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/zh-cn/images/copy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/zh-cn/images/imglabel.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/zh-cn/images/localimage.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/zh-cn/images/music.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/zh-cn/images/upload.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/themes/default/images/caret.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/themes/default/images/close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/themes/default/images/icons.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/themes/default/images/icons.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/themes/default/images/ok.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/themes/default/images/pop-bg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/themes/default/images/spacer.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/themes/default/images/videologo.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/Symbola.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/Symbola.otf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/Symbola.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/Symbola.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneral-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneral-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneral-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralbol-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralbol-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralbol-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralbolita-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralbolita-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralbolita-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralitalic-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralitalic-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralitalic-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/emotion/emotion.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/emotion/emotion.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/formula/formula.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/formula/formula.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/formula/formula.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/image/image.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/image/image.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/link/link.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/map/map.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/map/map.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/video/video.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/dialogs/video/video.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/en/en.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/lang/zh-cn/zh-cn.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/themes/default/css/umeditor.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/themes/default/css/umeditor.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/jquery.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/Symbola.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/stixgeneral-bundle/STIXFontLicense2010.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneral-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralbol-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralbolita-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralitalic-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/mathquill.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/mathquill.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/mathquill/mathquill.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/third-party/template.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/umeditor.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/umeditor.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/plugins/ueditor/umeditor.min.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+    <list default="true" id="de4da8ad-6774-4808-9282-d8130c6c1b9f" name="默认的" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/pcclient.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/pcclient2.iml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/bootstrap-switch.css" afterPath="$PROJECT_DIR$/css/bootstrap-switch.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/bootstrap-switch.min.css" afterPath="$PROJECT_DIR$/css/bootstrap-switch.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/bootstrap.css" afterPath="$PROJECT_DIR$/css/bootstrap.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/font-awesome.min.css" afterPath="$PROJECT_DIR$/css/font-awesome.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/case/abstractstep.js" afterPath="$PROJECT_DIR$/js/app/case/abstractstep.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/case/abstracttype.js" afterPath="$PROJECT_DIR$/js/app/case/abstracttype.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/case/concreteargu.js" afterPath="$PROJECT_DIR$/js/app/case/concreteargu.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/case/concreteevent.js" afterPath="$PROJECT_DIR$/js/app/case/concreteevent.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/case/concretestep.js" afterPath="$PROJECT_DIR$/js/app/case/concretestep.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/chatsctrl.js" afterPath="$PROJECT_DIR$/js/app/mail/chatsctrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/chatsdetailctrl.js" afterPath="$PROJECT_DIR$/js/app/mail/chatsdetailctrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/department.json" afterPath="$PROJECT_DIR$/js/app/mail/department.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/friends.json" afterPath="$PROJECT_DIR$/js/app/mail/friends.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/mail.js" afterPath="$PROJECT_DIR$/js/app/mail/mail.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/mails.json" afterPath="$PROJECT_DIR$/js/app/mail/mails.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/music/theme.css" afterPath="$PROJECT_DIR$/js/app/music/theme.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/music/videogular.css" afterPath="$PROJECT_DIR$/js/app/music/videogular.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/weather/angular-skycons.js" afterPath="$PROJECT_DIR$/js/app/weather/angular-skycons.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/config.js" afterPath="$PROJECT_DIR$/js/config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/config.lazyload.js" afterPath="$PROJECT_DIR$/js/config.lazyload.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/config.router.js" afterPath="$PROJECT_DIR$/js/config.router.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/signin.js" afterPath="$PROJECT_DIR$/js/controllers/signin.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/directives/bootstrap-switch.js" afterPath="$PROJECT_DIR$/js/directives/bootstrap-switch.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/directives/case-umeditor.js" afterPath="$PROJECT_DIR$/js/directives/case-umeditor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/directives/ui-mapobj.js" afterPath="$PROJECT_DIR$/js/directives/ui-mapobj.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fileinput.js" afterPath="$PROJECT_DIR$/js/fileinput.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/plugins/ueditor/umeditor.config.js" afterPath="$PROJECT_DIR$/js/plugins/ueditor/umeditor.config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/services/services.js" afterPath="$PROJECT_DIR$/js/services/services.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/abstractstep.html" afterPath="$PROJECT_DIR$/tpl/abstractstep.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/abstracttype.html" afterPath="$PROJECT_DIR$/tpl/abstracttype.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/blocks/nav.html" afterPath="$PROJECT_DIR$/tpl/blocks/nav.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/concreteargu.html" afterPath="$PROJECT_DIR$/tpl/concreteargu.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/concreteevent.html" afterPath="$PROJECT_DIR$/tpl/concreteevent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/concretestep.html" afterPath="$PROJECT_DIR$/tpl/concretestep.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/mail.html" afterPath="$PROJECT_DIR$/tpl/mail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/mail.list.html" afterPath="$PROJECT_DIR$/tpl/mail.list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/ui_gridmap.html" afterPath="$PROJECT_DIR$/tpl/ui_gridmap.html" />
     </list>
-    <ignored path="$PROJECT_DIR$/.tmp/" />
-    <ignored path="$PROJECT_DIR$/temp/" />
-    <ignored path="$PROJECT_DIR$/tmp/" />
+    <ignored path="yazhou.iws" />
+    <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -119,33 +64,87 @@
     <favorites_list name="yazhou" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+    <leaf>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4172662">
-              <caret line="47" column="17" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
+            <state vertical-scroll-proportion="-17.652174">
+              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="grid.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/controllers/grid.js">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-8.321428">
+              <caret line="156" column="50" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="abstractstep.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/app/case/abstractstep.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.0">
+              <caret line="4" column="31" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="31" />
+              <folding>
+                <element signature="e#999#2893#0" expanded="false" />
+                <element signature="e#3317#5099#0" expanded="false" />
+                <marker date="1500128055563" expanded="true" signature="1821:2857" placeholder="..." />
+                <marker date="1500128055563" expanded="true" signature="2064:2502" placeholder="..." />
+                <marker date="1500128055563" expanded="true" signature="6732:6742" placeholder="..." />
+                <marker date="1500128055563" expanded="true" signature="6826:6836" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="concreteargu.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/app/case/concreteargu.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.1511629">
+              <caret line="184" column="32" selection-start-line="184" selection-start-column="32" selection-end-line="184" selection-end-column="32" />
+              <folding>
+                <element signature="e#4427#5455#0" expanded="false" />
+                <marker date="1500142725468" expanded="true" signature="2788:2798" placeholder="..." />
+                <marker date="1500142725468" expanded="true" signature="3648:4383" placeholder="..." />
+                <marker date="1500142725468" expanded="true" signature="3726:4168" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="concreteevent.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tpl/concreteevent.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="form.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/controllers/form.js">
+      <file leaf-file-name="concreteevent.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/app/case/concreteevent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.20707965">
+              <caret line="60" column="38" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="concreteargu.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tpl/concreteargu.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-18.086956">
+              <caret line="59" column="43" selection-start-line="59" selection-start-column="43" selection-end-line="59" selection-end-column="53" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -153,21 +152,16 @@
     </leaf>
   </component>
   <component name="Git.Settings">
-    <option name="PREVIOUS_COMMIT_AUTHORS">
-      <list>
-        <option value="谭剑" />
-      </list>
-    </option>
-    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="PUSH_TAGS">
-      <GitPushTagMode />
-    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/js/controllers/gridmap.js" />
+        <option value="$PROJECT_DIR$/tpl/abstrapstepNew.html" />
+        <option value="$PROJECT_DIR$/js/main.js" />
+        <option value="$PROJECT_DIR$/js/app/case/abstractstep.js" />
+        <option value="$PROJECT_DIR$/tpl/concreteargu.html" />
+        <option value="$PROJECT_DIR$/js/app/case/concreteargu.js" />
       </list>
     </option>
   </component>
@@ -180,9 +174,15 @@
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="height" value="754" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
     <OptionsSetting value="true" id="添加" />
     <OptionsSetting value="true" id="移除" />
     <OptionsSetting value="true" id="签出" />
@@ -235,6 +235,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="tpl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yazhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yazhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -253,244 +267,143 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yazhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yazhou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="case" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="ChangesBrowser.SHOW_FLATTEN" value="true" />
-    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
-      <method />
-    </configuration>
-    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
-      <method />
-    </configuration>
-    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
-      <option name="cucumberJsArguments" value="" />
-      <option name="executablePath" />
-      <option name="filePath" />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <pass-parent-envs>true</pass-parent-envs>
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run-script" />
-      <scripts />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
-      <node-options />
-      <working-directory />
-      <pass-parent-env>true</pass-parent-env>
-      <envs />
-      <ui />
-      <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
-      <test-directory />
-      <recursive>false</recursive>
-      <method />
-    </configuration>
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="JavaScriptPreferStrict" value="false" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e152cf9f-6cd1-4dff-afad-b906294644e3" name="默认的" comment="" />
-      <created>1497251557863</created>
+      <changelist id="de4da8ad-6774-4808-9282-d8130c6c1b9f" name="默认的" comment="" />
+      <created>1500114780467</created>
       <option name="number" value="Default" />
-      <updated>1497251557863</updated>
-      <workItem from="1497251559349" duration="3506000" />
+      <updated>1500114780467</updated>
     </task>
-    <task id="LOCAL-00001" summary="and two&#10;&#10;dierci&#10;">
-      <created>1497252395310</created>
-      <option name="number" value="00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1497252395310</updated>
-    </task>
-    <task id="LOCAL-00002" summary="and two&#10;&#10;dierci&#10;">
-      <created>1497258079641</created>
-      <option name="number" value="00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1497258079641</updated>
-    </task>
-    <task id="LOCAL-00003" summary="and two&#10;&#10;dierci&#10;">
-      <created>1497258199692</created>
-      <option name="number" value="00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1497258199692</updated>
-    </task>
-    <task id="LOCAL-00004" summary="tanjian1998&#10;">
-      <created>1497440465812</created>
-      <option name="number" value="00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1497440465812</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3506000" />
-  </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24851191" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="消息" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.06711409" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22842261" sideWeight="0.5" order="-1" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
     </layout>
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="processedProjectFiles" value="true" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="and two&#10;&#10;dierci&#10;" />
-    <MESSAGE value="tanjian1998&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="tanjian1998&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-8.321428">
+          <caret line="156" column="50" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/grid.js">
+    <entry file="file://$PROJECT_DIR$/tpl/abstrapstepNew.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.042105265">
+          <caret line="86" column="41" selection-start-line="86" selection-start-column="41" selection-end-line="86" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/form.js">
+    <entry file="file://$PROJECT_DIR$/js/app/case/abstractstep.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/grid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-          <folding />
+        <state vertical-scroll-proportion="-2.0">
+          <caret line="4" column="31" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="31" />
+          <folding>
+            <element signature="e#999#2893#0" expanded="false" />
+            <element signature="e#3317#5099#0" expanded="false" />
+            <marker date="1500128055563" expanded="true" signature="1821:2857" placeholder="..." />
+            <marker date="1500128055563" expanded="true" signature="2064:2502" placeholder="..." />
+            <marker date="1500128055563" expanded="true" signature="6732:6742" placeholder="..." />
+            <marker date="1500128055563" expanded="true" signature="6826:6836" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
+        <state vertical-scroll-proportion="-17.652174">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/gridmap.js">
+    <entry file="file://$PROJECT_DIR$/tpl/concreteargu.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-18.086956">
+          <caret line="59" column="43" selection-start-line="59" selection-start-column="43" selection-end-line="59" selection-end-column="53" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/grid.js">
+    <entry file="file://$PROJECT_DIR$/js/app/case/concreteargu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="-2.1511629">
+          <caret line="184" column="32" selection-start-line="184" selection-start-column="32" selection-end-line="184" selection-end-column="32" />
+          <folding>
+            <element signature="e#4427#5455#0" expanded="false" />
+            <marker date="1500142725468" expanded="true" signature="2788:2798" placeholder="..." />
+            <marker date="1500142725468" expanded="true" signature="3648:4383" placeholder="..." />
+            <marker date="1500142725468" expanded="true" signature="3726:4168" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sanyagridmobileapp.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/grid.js">
+    <entry file="file://$PROJECT_DIR$/tpl/concreteevent.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -498,25 +411,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/form.js">
+    <entry file="file://$PROJECT_DIR$/js/app/case/concretestep.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+        <state vertical-scroll-proportion="-0.8584071">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/gridmap.js">
+    <entry file="file://$PROJECT_DIR$/js/app/case/concreteevent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5843023">
-          <caret line="328" column="9" selection-start-line="328" selection-start-column="9" selection-end-line="328" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4172662">
-          <caret line="47" column="17" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.20707965">
+          <caret line="60" column="38" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
           <folding />
         </state>
       </provider>

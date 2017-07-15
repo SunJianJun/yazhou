@@ -43,22 +43,22 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, localStorageService, $
   $scope.alldepartments = {};
   $scope.alldepartmentsAndPersonMessages = localStorageService.get('alldepartmentsAndPersonMessages', 30);
   //测试一下加载人员后的单位树
-  console.log('测试一下从缓存读出的人员消息后');
+  // console.log('测试一下从缓存读出的人员消息后');
   var str = JSON.stringify($scope.alldepartmentsAndPersonMessages);
-  console.dir(str);
+  // console.dir(str);
   $scope.message = function () {
-    console.time('继续请求');
+    // console.time('继续请求');
     $http.get('js/app/mail/mails.json').then(
       function (resp) {
         $rootScope.fakemessages = resp.data.fakemessages;
-        console.log($rootScope.fakemessages);
+        // console.log($rootScope.fakemessages);
         localStorageService.update('alldepartmentsAndPersonMessages', $rootScope.fakemessages);
-        console.timeEnd('继续请求成功');
+        // console.timeEnd('继续请求成功');
       }
     );
   };
   if ($scope.alldepartmentsAndPersonMessages) {
-    console.log('本地读取数据');
+    // console.log('本地读取数据');
     $rootScope.fakemessages = $scope.alldepartmentsAndPersonMessages;
 
     //请求部门
@@ -66,13 +66,13 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, localStorageService, $
       function (resp) {
         $rootScope.department = resp.data.department;
         //localStorageService.update('alldepartmentsAndPersonMessages', $rootScope.department);
-        console.timeEnd('请求部门');
+        // console.timeEnd('请求部门');
       }
     );
 
     $scope.message();
   } else {
-    console.log('服务器加载数据');
+    // console.log('服务器加载数据');
     $scope.message();
   }
 
@@ -233,7 +233,7 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, localStorageService, $
   }
 
   $scope.messages = messageService.getAllMessages();
-  console.log($scope.messages);
+  // console.log($scope.messages);
   // 左拖朋友条的时候跳转到什么位置
   $scope.onSwipeLeft = function () {
     $state.go("tab.friends");

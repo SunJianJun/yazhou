@@ -367,7 +367,7 @@ app.factory("gridmapService", ['$http', '$rootScope','localStorageService', func
             $http(
               {
                   method: 'POST',
-                  url: $rootScope.applicationServerpath + 'spotarea/getMyNewestSpotareaFromWho'
+                  url: $rootScope.applicationServerpath + 'spotarea/getNewestSpotarea'
               }
             ).then(function (resp) {
                   //console.log(resp);

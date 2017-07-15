@@ -20,21 +20,21 @@
                             <tbody>
                             <tr>
                                 <td>名称：</td>
-                                <td><span>立案审批表</span></td>
+                                <td><span>{{steps.name}}</span></td>
                             </tr>
                             <tr>
                                 <td>参数：</td>
                                 <td>
-                                    <div class="wrapper-xs">
-                                        <span>1</span>
-                                        <span class="wrapper-xs">类型：时间</span>
-                                        <span class="wrapper-xs">值：<input type="text"/><button>选择</button></span>
+                                    <form id="typeJSON" name="typeJSON">
+                                    <div class="wrapper-xs" ng-repeat="can in arguArr">
+                                        <span>{{$index+1}}</span>
+                                        <span name="{{can.type}}" class="wrapper-xs w-sm" style="display: inline-block">类型：{{can.type}}</span>
+                                        <span class="wrapper-xs" ng-init="types=(can.type=='date'||can.type=='时间'?'date':'')">值：
+                                            <input id="{{can._id}}" name="{{can._id}}" title="{{can.promptvalue}}" value="{{can.value[0]}}" placeholder="{{can.promptvalue}}"/>
+                                            <button>选择</button></span>
                                     </div>
-                                    <div class="wrapper-xs">
-                                        <span>2</span>
-                                        <span class="wrapper-xs">类型：地址</span>
-                                        <span class="wrapper-xs">值：<input type="text"/><button>选择</button></span>
-                                    </div>
+                                        <button class="btn btn-danger" ng-click="createWord()">生成Word</button>
+                                    </form>
                                 </td>
                             </tr>
                             </tbody>
@@ -49,22 +49,22 @@
                 <div class="col-sm-12" umeditor>
                     <div class="ibox float-e-margins">
                         <div class="ibox-content no-padding">
-
-                            <script type="text/plain" id="myEditor" style="width:100%;height:240px;">
-    <p>这里我可以写一些输入提示</p>
-
-                            </script>
+                            <div type="text/plain" id="myEditor" style="width:100%;height:240px;">
+                              <p>这里我可以写一些输入提示</p>
+                            </div>
                             <div>
                                 <h3 id="focush2"></h3>
                             </div>
-
                         </div>
                     </div>
-                    <div class="panel-body">
-                        <button>提交</button>
-                        <button>推进</button>
-                        <button>驳回</button>
-                        <button>返回</button>
+                    <div class="panel" id="leadreason" style="display: none;">
+                        <div class="page-header">审批理由</div>
+                        <div class="panel-body"><textarea class="form-control" rows="3"></textarea>
+                            <button ng-click="stepbackoff.send()">确定</button>
+                        </div>
+                    </div>
+                    <div class="panel-body" id="personcurrent">
+
                     </div>
                 </div>
             </div>

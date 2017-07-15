@@ -167,7 +167,7 @@ startTime=new Date();
     $scope.uploadimage = function (uri, uploadDir, mimetype) {
       // alert('请在真机环境中使用拍照上传。'+uploadDir)
       //默认是图片
-      
+
       if (!mimetype) {
         mimetype = "image/jpg";
       }
