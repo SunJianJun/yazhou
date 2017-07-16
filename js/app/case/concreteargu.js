@@ -46,13 +46,13 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
       console.log(current)
       for(var i=0;i<current.length;i++){
         if(current[i]=='new'){
-          currenthtml+='<button ng-click="argusave()">保存修改</button><button ng-click="argusubmit()">提交</button>'
+          currenthtml+='<button ng-click="argusave()" class="btn btn-default" data-toggle="modal" data-target="#myModal2">保存修改</button> <button ng-click="argusubmit()" class="btn btn-default">提交</button>'
         }
         if(current[i]=='go'){
-          currenthtml+='<button ng-click="stepgo()">推进</button>'
+          currenthtml+=' <button ng-click="stepgo()" class="btn btn-success">推进</button>'
         }
         if(current[i]=='backoff'){
-          currenthtml+='<button ng-click="stepbackoff.alert()">驳回</button>'
+          currenthtml+=' <button ng-click="stepbackoff.alert()" class="btn btn-warning">驳回</button>'
         }
 
       }
@@ -127,31 +127,31 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
       typeArr.push({arguid:typeJSON[i].name,value:typeJSON[i].value})
     }
     console.log(typeArr)
+    var html=``
     console.log($rootScope.currenteventID)
-     $http({
-       method:'POST',
-       url:$rootScope.applicationServerpath + 'mobilegrid/sendeventargument',//参数保存
-       data:{
-         'eventID':$rootScope.currenteventID,
-         'arguments':typeArr,
-         'setwho':$rootScope.curUser._id
-       }
-     }).then(function(arguresp){
-       if(arguresp.data.error){
 
-         console.log(arguresp.data.error)
-       }else{
-         console.log(arguresp.data.success)
-         alert('保存成功')
-       }
-       //console.log($scope.steps.wordTemplate);
-       //   if($scope.steps.wordTemplate){
-       //     //var um = UM.getEditor('myEditor');
-       //     //um.setContent($scope.steps.wordTemplate);
-       //   }
-     })
+     //$http({
+     //  method:'POST',
+     //  url:$rootScope.applicationServerpath + 'mobilegrid/sendeventargument',//参数保存
+     //  data:{
+     //    'eventID':$rootScope.currenteventID,
+     //    'arguments':typeArr,
+     //    'setwho':$rootScope.curUser._id
+     //  }
+     //}).then(function(arguresp){
+     //  if(arguresp.data.error){
+     //
+     //    console.log(arguresp.data.error)
+     //  }else{
+     //    console.log(arguresp.data.success)
+     //    alert('保存成功')
+     //  }
+     //})
   }
   $scope.argusubmit=function () {
+    $(function () { $('#myModal2').modal({
+      keyboard: true
+    })});
     console.log('参数提交')
     var typeJSON = $('#typeJSON').serializeArray();
     var thisTemplate=$scope.steps.wordTemplate;

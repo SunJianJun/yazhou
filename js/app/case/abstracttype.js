@@ -32,9 +32,9 @@ app.controller('abstracttypeCtrl', function ($scope, $compile, $window, $rootSco
                     // console.log(ydata[count].steps)
                     for(b=0;b<ydata[count].steps.length;b++){
                         // console.log(ydata[count].steps[b].step,setpname[a]._id)
-                        if(ydata[count].steps[b].step==setpname[a]._id){
+                        if(ydata[count].steps[b].step==setpname[a]._id){//判断流程顺序
                           setpname[a].no=ydata[count].steps[b].no;
-                          console.log(setpname[a].no)
+                          //console.log(setpname[a].no)
                         }
                     }
                     // setpname.no=ydata.step
@@ -50,7 +50,9 @@ app.controller('abstracttypeCtrl', function ($scope, $compile, $window, $rootSco
                     }
                 })
             }
-            jiazai();
+            if($scope.abstracttype.length) {
+                jiazai();
+            }
 
         })
     }
