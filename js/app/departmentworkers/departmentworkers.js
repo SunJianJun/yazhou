@@ -259,24 +259,37 @@ app.controller('departmentworkerCtrl', ['$scope',  '$rootScope','$http', '$filte
             console.log(reason);// 点击空白区域，总会输出backdrop
         });
     };
-
-    $http.get('js/app/departmentworkers/departmentworkers.json').then(function (resp) {
-        //  $http.get('js/app/contact/contacts.json').then(function (resp) {
-        // $scope.items = resp.data.items;
-        // $scope.item = $filter('orderBy')($scope.items, 'first')[0];
-        // $scope.item.selected = true;
-        // alert(resp.data);
-        //对于单根节点，这是必须要加new array的
-        treedata_avm= new Array($scope.translateToOrgintree(resp.data));
-        console.log(treedata_avm);
-        $scope.my_data=treedata_avm;
-        //读到全部树节点后，半秒后将其全部展开
-        return $timeout(function() {
-            $scope.my_tree.expand_all();
-           return $scope.my_tree.select_first_branch();
-        }, 500);
-    });
-
+    $http(
+        {
+            method:'POST',
+            url:$rootScope.applicationServerpath+'department/getAllDepartment',
+            data:{_id:'593e5b56c6178a040fa757ae',pwd:'666666'}
+        }
+    ).then(function(resp){
+        console.log('返回数据')
+      $scope.my_data=resp.data.success;
+      console.log($scope.my_data)
+      //读到全部树节点后，半秒后将其全部展开
+      return $timeout(function() {
+      }, 500);
+    })
+    // $http.get('js/app/departmentworkers/departmentworkers.json').then(function (resp) {
+    //     //  $http.get('js/app/contact/contacts.json').then(function (resp) {
+    //     // $scope.items = resp.data.items;
+    //     // $scope.item = $filter('orderBy')($scope.items, 'first')[0];
+    //     // $scope.item.selected = true;
+    //     // alert(resp.data);
+    //     //对于单根节点，这是必须要加new array的
+    //   console.log(resp.data);
+    //     treedata_avm= new Array($scope.translateToOrgintree(resp.data));
+    //     console.log(treedata_avm);
+    //     $scope.my_data=treedata_avm;
+    //     //读到全部树节点后，半秒后将其全部展开
+    //     return $timeout(function() {
+    //         // $scope.my_tree.expand_all();
+    //        // return $scope.my_tree.select_first_branch();
+    //     }, 500);
+    // });
     $scope.filter = '';
     $scope.groups = [
         {name: 'Coworkers'},
@@ -355,6 +368,18 @@ app.controller('departmentworkerCtrl', ['$scope',  '$rootScope','$http', '$filte
         item.editing = false;
     };
 
-
+    $scope.newSubItem=function(e){
+        console.log(e.person._id)
+      $http({
+        method:"POST",
+        url:$rootScope.applicationServerpath+'personadminroute/getUserInfoById',
+          data:{personID:e.person._id}
+      }).then(function (resp) {
+        console.log(resp.data.success)
+        var personinfo=resp.data.success;
+        $scope.item.name=personinfo.name;
+        $scope.item.data=personinfo;
+      })
+    }
 
 }]);

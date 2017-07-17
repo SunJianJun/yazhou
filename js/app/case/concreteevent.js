@@ -74,6 +74,9 @@ app.controller('concreteeventCtrl', function ($scope, $rootScope, localStorageSe
         }).then(function (resp) {
             console.log(resp.data)
             $scope.onload()
+          // $state.go('app.concreteargu', {
+          //   'caseid': caseid
+          // });
         })
         $('#newabstracttype').hide();
         //$http({

@@ -65,21 +65,31 @@
 
         <!-- Nested node template -->
         <script type="text/ng-template" id="nodes_renderer.html">
-          <div ui-tree-handle class="tree-node tree-node-content">
-            <a class="btn btn-success btn-xs" ng-if="node.children && node.children.length > 0" data-nodrag ng-click="toggle(this)"><span
+          <div ui-tree-handle class="tree-node tree-node-content wrapper-xs">
+            <a class="btn btn-success btn-xs" ng-if="node.persons && node.persons.length> 0" data-nodrag data-toggle="collapse"
+               data-target="#personglup{{$index}}"><span
                     class="glyphicon"
                     ng-class="{
           'glyphicon-chevron-right': collapsed,
           'glyphicon-chevron-down': !collapsed
         }"></span></a>
-            {{node.label}}
+            {{node.name}}
             <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span
                     class="glyphicon glyphicon-remove"></span></a>
             <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;"><span
                     class="glyphicon glyphicon-plus"></span></a>
           </div>
-          <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
-            <li ng-repeat="node in node.children" ui-tree-node ng-include="'nodes_renderer.html'">
+          <ol ui-tree-nodes="" id="personglup{{$index}}" class="collapse" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+            <!--<li ng-repeat="node in node.children" ui-tree-node ng-include="'nodes_renderer.html'">-->
+            <!--</li>-->
+            <!--<li><h1>person.person</h1></li>-->
+            <li ng-repeat="person in node.persons" class="wrapper-xs">
+              <div>{{person.name}}
+              <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span
+                      class="glyphicon glyphicon-remove"></span></a>
+              <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;"><span
+                      class="glyphicon glyphicon-plus"></span></a>
+              </div>
             </li>
           </ol>
         </script>
@@ -93,6 +103,10 @@
       </div>
     </div>
   </div>
+
+
+
+
 
   <!-- 人员的编辑，人员不是手工录入的，所以只需要设定单位，设置状态：在岗、请假、离职、退休 -->
   <div class="col bg-white-only"  ng-hide="item.data.info">

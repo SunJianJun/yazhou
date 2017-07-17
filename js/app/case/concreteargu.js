@@ -118,7 +118,8 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
                                         </div>`)
     }
   }
-  $scope.argusave=function () {
+  $scope.argusave={
+    function () {
     console.log('参数保存')
     var typeJSON = $('#typeJSON').serializeArray();
     var thisTemplate=$scope.steps.wordTemplate;
@@ -147,7 +148,7 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
      //    alert('保存成功')
      //  }
      //})
-  }
+  }}
   $scope.argusubmit=function () {
     $(function () { $('#myModal2').modal({
       keyboard: true

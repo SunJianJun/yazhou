@@ -41,19 +41,18 @@ angular.module('app')
         ];
         $rootScope.applicationServerpath='http://localhost:2000/';
 
-         $rootScope.applicationServerpath='http://120.76.228.172:2000/';
-        console.log('接口测试'+$rootScope.applicationServerpath);
-      var abcd=
-        $http(
-            {
-                method:'POST',
-                url:$rootScope.applicationServerpath+'personalinfo/ispersonpassword',
-                data:{_id:'593e5b56c6178a040fa757ae',pwd:'666666'}
-            }
-        ).then(function(resp){
-            console.log('返回数据')
-            console.log(resp.data)
-        })
+        //  $rootScope.applicationServerpath='http://120.76.228.172:2000/';
+        // console.log('接口测试'+$rootScope.applicationServerpath);
+        // $http(
+        //     {
+        //         method:'POST',
+        //         url:$rootScope.applicationServerpath+'personadminroute/getpersontitlelevel',
+        //         data:{title:'5952112dea76066818fd6dd2'}
+        //     }
+        // ).then(function(resp){
+        //     console.log('返回数据')
+        //     console.log(resp.data)
+        // })
 
         // 桌面端的用户需要登录信息，用户名就是人名，密码第一次可以是身份证号，之后可以修改，pwd
         $rootScope.confirmUser = function(callback) {
