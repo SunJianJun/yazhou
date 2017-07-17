@@ -78,32 +78,22 @@
                         <tr>
                             <td style="width:200px">新建/编辑</td>
                             <td>
-                                <div>
-                                    {{personPower}}
-                                </div>
                                 <!--<select name="new" ng-init="selectedNam = personPower[1]" ng-model="selectedNam" ng-options="x.name for x in personPower">-->
-                                <select name="new" ng-init="selectedName='大队长'" ng-model="selectedName">
+                                当前设置：{{abstractstepN.power.new}}
+                                <button ng-click="updatepower('selectedNew')">修改</button>
+                                <select name="new" ng-if="selectedNew" ng-model="selectedNew">
                                     <option ng-repeat="power in personPower" value="{{power._id}}">{{power.name}}</option>
-                                </select>
-                                {{abstractstepN.power.new}}
+                                </select>{{selectedNew}}
                             </td>
                         </tr>
                         <tr>
-                            <td>驳回（删除）</td>
+                            <td>审核</td>
                             <td>
-                                <select name="backoff" ng-init="selectedoff =abstractstepN.power.backoff" ng-model="selectedoff">
+                                当前设置：{{abstractstepN.power.audit}}
+                                <button ng-click="updatepower('selectedoff')">修改</button>
+                                <select name="audit" ng-if="selectedoff" ng-model="selectedoff">
                                     <option ng-repeat="power in personPower" value="{{power._id}}">{{power.name}}</option>
-                                </select>
-                                {{abstractstepN.power.backoff}}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>推进（审核完成）</td>
-                            <td>
-                                <select name="go" ng-init="selectedgo =abstractstepN.power.go" ng-model="selectedgo">
-                                    <option ng-repeat="power in personPower" value="{{power._id}}">{{power.name}}</option>
-                                </select>
-                                {{abstractstepN.power.go}}
+                                </select>{{selectedoff}}
                             </td>
                         </tr>
                         <tr>

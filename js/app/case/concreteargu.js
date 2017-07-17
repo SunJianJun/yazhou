@@ -48,13 +48,9 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
         if(current[i]=='new'){
           currenthtml+='<button ng-click="argusave()" class="btn btn-default" data-toggle="modal" data-target="#myModal2">保存修改</button> <button ng-click="argusubmit()" class="btn btn-default">提交</button>'
         }
-        if(current[i]=='go'){
-          currenthtml+=' <button ng-click="stepgo()" class="btn btn-success">推进</button>'
+        if(current[i]=='audit'){
+          currenthtml+=' <button ng-click="stepgo()" class="btn btn-success">推进</button> <button ng-click="stepbackoff.alert()" class="btn btn-warning">驳回</button>'
         }
-        if(current[i]=='backoff'){
-          currenthtml+=' <button ng-click="stepbackoff.alert()" class="btn btn-warning">驳回</button>'
-        }
-
       }
       $('#personcurrent').html($compile(currenthtml)($scope))
     })

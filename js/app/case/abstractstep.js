@@ -3,22 +3,32 @@
  */
 app.controller('abstractstepCtrl',
     function ($scope, $compile, $rootScope,$window, localStorageService, $http, $state, userService, dateService, messageService, $stateParams) {
+
         $http({ //获取人员 title 权限
             method:'POST',
-            url:$rootScope.applicationServerpath + 'abstractsteproute/getpersonTiele',
+            url:$rootScope.applicationServerpath + 'personadminroute/getpersontitleTodepartment',
+            data:{departmentID:'58c3a5e9a63cf24c16a50b8c'}
         }).then(function(resp){
-            var data=resp.data;
+            var data=resp.data.success;
             $scope.personPower=data;
-            // data.forEach(function(val,key){
-            //     if(val.title) {
-            //         val.title.forEach(function(aa){
-            //             $scope.personPower.push(aa)
-            //         })
-            //     }
-            // })
+             //data.forEach(function(val,key){
+             //    if(val.title) {
+             //        val.title.forEach(function(aa){
+             //            $scope.personPower.push(aa)
+             //        })
+             //    }
+             //})
+
             $scope.personPower.unshift({_id:'all',name:'所有人'});
             console.log($scope.personPower)
+
         });
+
+
+
+
+
+
         $scope.namestr='大队长';
         $scope.stepdata = {
             date: new Date().formate("yyyy年M月d日h时m分s秒")
@@ -74,7 +84,7 @@ app.controller('abstractstepCtrl',
             var tijiao = {};
             var powerJSON = $('#newFrom').serializeArray();
             var typeJSON = $('#typeJSON').serializeArray();
-            // console.log(powerJSON)
+             //console.log(powerJSON)
             var argument = [];
             for (var a = 0; a < typeJSON.length; a++) {
                 if (a < 2) {

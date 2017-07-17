@@ -47,7 +47,7 @@
                                 <td class="abstracttypeName">{{case.typeName}}</td>
                                 <td class="abstracttypeStep">
                                     <select name="" class="w-sm">
-                                        <option value="{{step._id}}" ng-repeat="step in case.step | orderBy:'no'">{{step}}</option>
+                                        <option value="{{step._id}}" ng-repeat="step in case.step | orderBy:'no'">{{step.no}}-{{step.type}}</option>
                                     </select>
                             </td>
                             <td>{{case.newer}}</td>

@@ -90,8 +90,8 @@ app.controller('abstracttypeCtrl', function ($scope, $compile, $window, $rootSco
                 }
             }
             for(var c=0,currentStep='';c<$scope.currentEdit.steps.length;c++){
-                currentStep+='<option value='+$scope.currentEdit.step[c]._id+'>'+$scope.currentEdit.step[c].type+'</option>';
                 console.log($scope.currentEdit.steps[c])
+                currentStep+='<option value='+$scope.currentEdit.step[c]._id+'>'+$scope.currentEdit.step[c].type+'</option>';
             }
             parent.find('.abstracttypeName').html(`<input type="text" value="${abstracttypeName}" title="${abstracttypeName}" id="abstracttypeName"/>`)
             abstracttypeStep.html(`<div class="pull-left">
