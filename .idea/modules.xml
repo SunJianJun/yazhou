@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/yazhou.iml" filepath="$PROJECT_DIR$/.idea/yazhou.iml" />
+      <module fileurl="file://F:\webstrooo\yazhou\.idea\yazhou.iml" filepath="F:\webstrooo\yazhou\.idea\yazhou.iml" />
     </modules>
   </component>
 </project>

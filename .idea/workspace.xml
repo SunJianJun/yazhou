@@ -2,49 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de4da8ad-6774-4808-9282-d8130c6c1b9f" name="默认的" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/pcclient.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/pcclient2.iml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/bootstrap-switch.css" afterPath="$PROJECT_DIR$/css/bootstrap-switch.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/bootstrap-switch.min.css" afterPath="$PROJECT_DIR$/css/bootstrap-switch.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/bootstrap.css" afterPath="$PROJECT_DIR$/css/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/font-awesome.min.css" afterPath="$PROJECT_DIR$/css/font-awesome.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/case/abstractstep.js" afterPath="$PROJECT_DIR$/js/app/case/abstractstep.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/case/abstracttype.js" afterPath="$PROJECT_DIR$/js/app/case/abstracttype.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/case/concreteargu.js" afterPath="$PROJECT_DIR$/js/app/case/concreteargu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/case/concreteevent.js" afterPath="$PROJECT_DIR$/js/app/case/concreteevent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/case/concretestep.js" afterPath="$PROJECT_DIR$/js/app/case/concretestep.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/chatsctrl.js" afterPath="$PROJECT_DIR$/js/app/mail/chatsctrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/chatsdetailctrl.js" afterPath="$PROJECT_DIR$/js/app/mail/chatsdetailctrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/department.json" afterPath="$PROJECT_DIR$/js/app/mail/department.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/friends.json" afterPath="$PROJECT_DIR$/js/app/mail/friends.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/mail.js" afterPath="$PROJECT_DIR$/js/app/mail/mail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/mails.json" afterPath="$PROJECT_DIR$/js/app/mail/mails.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/music/theme.css" afterPath="$PROJECT_DIR$/js/app/music/theme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/music/videogular.css" afterPath="$PROJECT_DIR$/js/app/music/videogular.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/weather/angular-skycons.js" afterPath="$PROJECT_DIR$/js/app/weather/angular-skycons.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/config.js" afterPath="$PROJECT_DIR$/js/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/config.lazyload.js" afterPath="$PROJECT_DIR$/js/config.lazyload.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/config.router.js" afterPath="$PROJECT_DIR$/js/config.router.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/signin.js" afterPath="$PROJECT_DIR$/js/controllers/signin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/directives/bootstrap-switch.js" afterPath="$PROJECT_DIR$/js/directives/bootstrap-switch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/directives/case-umeditor.js" afterPath="$PROJECT_DIR$/js/directives/case-umeditor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/directives/ui-mapobj.js" afterPath="$PROJECT_DIR$/js/directives/ui-mapobj.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fileinput.js" afterPath="$PROJECT_DIR$/js/fileinput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/plugins/ueditor/umeditor.config.js" afterPath="$PROJECT_DIR$/js/plugins/ueditor/umeditor.config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/services/services.js" afterPath="$PROJECT_DIR$/js/services/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/abstractstep.html" afterPath="$PROJECT_DIR$/tpl/abstractstep.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/abstracttype.html" afterPath="$PROJECT_DIR$/tpl/abstracttype.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/blocks/nav.html" afterPath="$PROJECT_DIR$/tpl/blocks/nav.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/concreteargu.html" afterPath="$PROJECT_DIR$/tpl/concreteargu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/concreteevent.html" afterPath="$PROJECT_DIR$/tpl/concreteevent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/concretestep.html" afterPath="$PROJECT_DIR$/tpl/concretestep.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/mail.html" afterPath="$PROJECT_DIR$/tpl/mail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/mail.list.html" afterPath="$PROJECT_DIR$/tpl/mail.list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/ui_gridmap.html" afterPath="$PROJECT_DIR$/tpl/ui_gridmap.html" />
     </list>
     <ignored path="yazhou.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,7 +14,6 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -64,75 +22,36 @@
     <favorites_list name="yazhou" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.652174">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="45">
+              <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/main.js">
+      <file leaf-file-name="config.router.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/config.router.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.321428">
-              <caret line="156" column="50" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="50" />
+            <state relative-caret-position="-110">
+              <caret line="475" column="40" lean-forward="true" selection-start-line="475" selection-start-column="40" selection-end-line="475" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="abstractstep.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/app/case/abstractstep.js">
+      <file leaf-file-name="apps_departmentworkers.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tpl/apps_departmentworkers.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.0">
-              <caret line="4" column="31" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="31" />
+            <state relative-caret-position="482">
+              <caret line="153" column="64" lean-forward="false" selection-start-line="153" selection-start-column="64" selection-end-line="153" selection-end-column="68" />
               <folding>
-                <element signature="e#999#2893#0" expanded="false" />
-                <element signature="e#3317#5099#0" expanded="false" />
-                <marker date="1500128055563" expanded="true" signature="1821:2857" placeholder="..." />
-                <marker date="1500128055563" expanded="true" signature="2064:2502" placeholder="..." />
-                <marker date="1500128055563" expanded="true" signature="6732:6742" placeholder="..." />
-                <marker date="1500128055563" expanded="true" signature="6826:6836" placeholder="..." />
+                <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
+                <marker date="1500285918511" expanded="true" signature="4387:4493" ph="{&quot;glyphicon-chevron-right&quot;: collapsed...}" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="concreteargu.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/app/case/concreteargu.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.1511629">
-              <caret line="184" column="32" selection-start-line="184" selection-start-column="32" selection-end-line="184" selection-end-column="32" />
-              <folding>
-                <element signature="e#4427#5455#0" expanded="false" />
-                <marker date="1500142725468" expanded="true" signature="2788:2798" placeholder="..." />
-                <marker date="1500142725468" expanded="true" signature="3648:4383" placeholder="..." />
-                <marker date="1500142725468" expanded="true" signature="3726:4168" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="concreteevent.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tpl/concreteevent.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="concreteevent.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/app/case/concreteevent.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.20707965">
-              <caret line="60" column="38" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -140,16 +59,92 @@
       <file leaf-file-name="concreteargu.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tpl/concreteargu.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.086956">
-              <caret line="59" column="43" selection-start-line="59" selection-start-column="43" selection-end-line="59" selection-end-column="53" />
+            <state relative-caret-position="270">
+              <caret line="75" column="27" lean-forward="true" selection-start-line="75" selection-start-column="27" selection-end-line="75" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="concreteargu.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/app/case/concreteargu.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="121" column="4" lean-forward="false" selection-start-line="121" selection-start-column="4" selection-end-line="121" selection-end-column="4" />
               <folding>
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#!!top" expanded="true" />
+                <marker date="1500291839857" expanded="true" signature="2931:2941" ph="..." />
+                <marker date="1500291839857" expanded="true" signature="3791:4526" ph="..." />
+                <marker date="1500291839857" expanded="true" signature="3869:4311" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="departmentworkers.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/app/departmentworkers/departmentworkers.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="384" column="4" lean-forward="true" selection-start-line="384" selection-start-column="4" selection-end-line="384" selection-end-column="4" />
+              <folding>
+                <element signature="e#2084#4071#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="concretestep.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/app/case/concretestep.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="519">
+              <caret line="61" column="4" lean-forward="false" selection-start-line="61" selection-start-column="4" selection-end-line="63" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="concretestep.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tpl/concretestep.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="33" column="52" lean-forward="true" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="concreteevent.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tpl/concreteevent.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="80" column="45" lean-forward="true" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="concreteevent.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/app/case/concreteevent.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="448">
+              <caret line="74" column="34" lean-forward="true" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>apps.departmentworkers</find>
+      <find>label</find>
+      <find>labe</find>
+      <find>my_data</find>
+      <find>indexx</find>
+      <find>personglup</find>
+      <find>item.data</find>
+      <find>item</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -158,39 +153,38 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/tpl/abstrapstepNew.html" />
-        <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/js/app/case/abstractstep.js" />
         <option value="$PROJECT_DIR$/tpl/concreteargu.html" />
+        <option value="$PROJECT_DIR$/js/main.js" />
+        <option value="$PROJECT_DIR$/tpl/apps_departmentworkers.html" />
+        <option value="$PROJECT_DIR$/js/app/departmentworkers/departmentworkers.js" />
+        <option value="$PROJECT_DIR$/js/app/case/concreteevent.js" />
         <option value="$PROJECT_DIR$/js/app/case/concreteargu.js" />
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" />
-  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsBowerSettings">
+    <node-interpreter value="project" />
+    <exe-path />
+    <config-path />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <annotation-enable>false</annotation-enable>
+    <other-services-enabled>true</other-services-enabled>
+  </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="754" />
-  </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
-    <OptionsSetting value="true" id="Add" />
-    <OptionsSetting value="true" id="Remove" />
-    <OptionsSetting value="true" id="Checkout" />
-    <OptionsSetting value="true" id="Update" />
-    <OptionsSetting value="true" id="Status" />
-    <OptionsSetting value="true" id="Edit" />
-    <OptionsSetting value="true" id="添加" />
-    <OptionsSetting value="true" id="移除" />
-    <OptionsSetting value="true" id="签出" />
-    <OptionsSetting value="true" id="更新" />
-    <OptionsSetting value="true" id="状态" />
-    <OptionsSetting value="true" id="编辑" />
-    <ConfirmationsSetting value="0" id="添加" />
-    <ConfirmationsSetting value="0" id="移除" />
+    <option name="width" value="1456" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -207,14 +201,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yazhou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="yazhou" />
@@ -296,134 +285,412 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
-    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript.Linters.JSHint" />
     <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="node.js.path.for.package.jscs" value="project" />
+    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+    <property name="node.js.detected.package.jscs" value="true" />
+    <property name="node.js.selected.package.jscs" value="C:\Users\Administrator\node_modules\jscs" />
   </component>
-  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="de4da8ad-6774-4808-9282-d8130c6c1b9f" name="默认的" comment="" />
       <created>1500114780467</created>
       <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
       <updated>1500114780467</updated>
+      <workItem from="1500256384523" duration="3023000" />
+      <workItem from="1500259530287" duration="3593000" />
+      <workItem from="1500271095483" duration="14654000" />
     </task>
+    <task id="LOCAL-00001" summary="事件bug修改">
+      <created>1500291897972</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1500291897972</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="21270000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22842261" sideWeight="0.5" order="-1" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21650212" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850242" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="事件bug修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="事件bug修改" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/main.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.321428">
-          <caret line="156" column="50" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="50" />
+        <state relative-caret-position="480">
+          <caret line="32" column="18" lean-forward="false" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/abstrapstepNew.html">
+    <entry file="file://$PROJECT_DIR$/js/config.router.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.042105265">
-          <caret line="86" column="41" selection-start-line="86" selection-start-column="41" selection-end-line="86" selection-end-column="41" />
+        <state relative-caret-position="7530">
+          <caret line="502" column="20" lean-forward="false" selection-start-line="502" selection-start-column="20" selection-end-line="502" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/app/case/abstractstep.js">
+    <entry file="file://$PROJECT_DIR$/tpl/apps_departmentworkers.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.0">
-          <caret line="4" column="31" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="31" />
+        <state relative-caret-position="1230">
+          <caret line="82" column="11" lean-forward="false" selection-start-line="82" selection-start-column="11" selection-end-line="82" selection-end-column="11" />
           <folding>
-            <element signature="e#999#2893#0" expanded="false" />
-            <element signature="e#3317#5099#0" expanded="false" />
-            <marker date="1500128055563" expanded="true" signature="1821:2857" placeholder="..." />
-            <marker date="1500128055563" expanded="true" signature="2064:2502" placeholder="..." />
-            <marker date="1500128055563" expanded="true" signature="6732:6742" placeholder="..." />
-            <marker date="1500128055563" expanded="true" signature="6826:6836" placeholder="..." />
+            <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
+            <marker date="1500285918511" expanded="true" signature="4387:4493" ph="{&quot;glyphicon-chevron-right&quot;: collapsed...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/case/abstracttype.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1500256360773" expanded="true" signature="4129:4420" ph="..." />
+            <marker date="1500256360773" expanded="true" signature="4288:4377" ph="..." />
+            <marker date="1500256360773" expanded="false" signature="4488:4506" ph="..." />
+            <marker date="1500256360773" expanded="true" signature="4507:5408" ph="..." />
+            <marker date="1500256360773" expanded="true" signature="4566:4864" ph="..." />
+            <marker date="1500256360773" expanded="true" signature="4652:4817" ph="..." />
+            <marker date="1500256360773" expanded="true" signature="4979:5365" ph="..." />
+            <marker date="1500256360773" expanded="true" signature="5069:5318" ph="..." />
+            <marker date="1500256360773" expanded="true" signature="5468:5723" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/modules/angular-bootstrap-nav-tree/abn_tree_directive.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3705">
+          <caret line="247" column="14" lean-forward="false" selection-start-line="247" selection-start-column="14" selection-end-line="247" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/departmentworkers/departmentworkers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2115">
+          <caret line="193" column="42" lean-forward="false" selection-start-line="193" selection-start-column="42" selection-end-line="193" selection-end-column="42" />
+          <folding>
+            <element signature="e#2084#4071#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.652174">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="480">
+          <caret line="32" column="18" lean-forward="false" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/concreteargu.html">
+    <entry file="file://$PROJECT_DIR$/js/config.router.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.086956">
-          <caret line="59" column="43" selection-start-line="59" selection-start-column="43" selection-end-line="59" selection-end-column="53" />
+        <state relative-caret-position="7530">
+          <caret line="502" column="20" lean-forward="true" selection-start-line="502" selection-start-column="20" selection-end-line="502" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/apps_departmentworkers.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1230">
+          <caret line="82" column="11" lean-forward="false" selection-start-line="82" selection-start-column="11" selection-end-line="82" selection-end-column="11" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
+            <marker date="1500285918511" expanded="true" signature="4387:4493" ph="{&quot;glyphicon-chevron-right&quot;: collapsed...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/app/case/concreteargu.js">
+    <entry file="file://$PROJECT_DIR$/vendor/modules/angular-bootstrap-nav-tree/abn_tree_directive.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.1511629">
-          <caret line="184" column="32" selection-start-line="184" selection-start-column="32" selection-end-line="184" selection-end-column="32" />
+        <state relative-caret-position="3705">
+          <caret line="247" column="14" lean-forward="false" selection-start-line="247" selection-start-column="14" selection-end-line="247" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/departmentworkers/departmentworkers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4170">
+          <caret line="278" column="0" lean-forward="true" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
           <folding>
-            <element signature="e#4427#5455#0" expanded="false" />
-            <marker date="1500142725468" expanded="true" signature="2788:2798" placeholder="..." />
-            <marker date="1500142725468" expanded="true" signature="3648:4383" placeholder="..." />
-            <marker date="1500142725468" expanded="true" signature="3726:4168" placeholder="..." />
+            <element signature="e#2084#4071#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/concreteevent.html">
+    <entry file="file://$PROJECT_DIR$/tpl/abstrapstepNew.html" />
+    <entry file="file://$PROJECT_DIR$/js/app/case/abstractstep.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/angular-ui-tree/dist/angular-ui-tree.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="594" column="15" lean-forward="false" selection-start-line="594" selection-start-column="15" selection-end-line="594" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="4444" column="1" lean-forward="false" selection-start-line="4444" selection-start-column="1" selection-end-line="4444" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/modules/angular-bootstrap-nav-tree/abn_tree_directive.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1714">
+          <caret line="247" column="14" lean-forward="false" selection-start-line="247" selection-start-column="14" selection-end-line="247" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/case/abstracttype.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="13" column="35" lean-forward="true" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
+          <folding>
+            <marker date="1500256360773" expanded="true" signature="4129:4420" ph="..." />
+            <marker date="1500256360773" expanded="true" signature="4288:4377" ph="..." />
+            <marker date="1500256360773" expanded="false" signature="4488:4506" ph="..." />
+            <marker date="1500256360773" expanded="true" signature="4507:5408" ph="..." />
+            <marker date="1500256360773" expanded="true" signature="4566:4864" ph="..." />
+            <marker date="1500256360773" expanded="true" signature="4652:4817" ph="..." />
+            <marker date="1500256360773" expanded="true" signature="4979:5365" ph="..." />
+            <marker date="1500256360773" expanded="true" signature="5069:5318" ph="..." />
+            <marker date="1500256360773" expanded="true" signature="5468:5723" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-570">
+          <caret line="47" column="21" lean-forward="false" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/config.router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-110">
+          <caret line="475" column="40" lean-forward="true" selection-start-line="475" selection-start-column="40" selection-end-line="475" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/departmentworkers/departmentworkers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="384" column="4" lean-forward="true" selection-start-line="384" selection-start-column="4" selection-end-line="384" selection-end-column="4" />
+          <folding>
+            <element signature="e#2084#4071#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/concretestep.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="33" column="52" lean-forward="true" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/app/case/concretestep.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.8584071">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="519">
+          <caret line="61" column="4" lean-forward="false" selection-start-line="61" selection-start-column="4" selection-end-line="63" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/concreteevent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="80" column="45" lean-forward="true" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/app/case/concreteevent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20707965">
-          <caret line="60" column="38" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
+        <state relative-caret-position="448">
+          <caret line="74" column="34" lean-forward="true" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/apps_departmentworkers.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="153" column="64" lean-forward="false" selection-start-line="153" selection-start-column="64" selection-end-line="153" selection-end-column="68" />
+          <folding>
+            <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
+            <marker date="1500285918511" expanded="true" signature="4387:4493" ph="{&quot;glyphicon-chevron-right&quot;: collapsed...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/concreteargu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="75" column="27" lean-forward="true" selection-start-line="75" selection-start-column="27" selection-end-line="75" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/case/concreteargu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="121" column="4" lean-forward="false" selection-start-line="121" selection-start-column="4" selection-end-line="121" selection-end-column="4" />
+          <folding>
+            <marker date="1500291839857" expanded="true" signature="2931:2941" ph="..." />
+            <marker date="1500291839857" expanded="true" signature="3791:4526" ph="..." />
+            <marker date="1500291839857" expanded="true" signature="3869:4311" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
