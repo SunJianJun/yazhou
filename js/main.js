@@ -1,4 +1,5 @@
-﻿'use strict';
+﻿// console.log=function(){};
+'use strict';
 
 /* Controllers */
 
@@ -15,6 +16,7 @@ angular.module('app')
         // 当前用户
         $rootScope.curUser;
         $scope.tempUser;
+
 
         //引擎管理需要一个定时器，如果没有引用就无法销毁
         $rootScope.mapEngineTimer;
@@ -41,18 +43,18 @@ angular.module('app')
         ];
         $rootScope.applicationServerpath='http://localhost:2000/';
 
-        //  $rootScope.applicationServerpath='http://120.76.228.172:2000/';
-        // console.log('接口测试'+$rootScope.applicationServerpath);
-        // $http(
-        //     {
-        //         method:'POST',
-        //         url:$rootScope.applicationServerpath+'personadminroute/getpersontitlelevel',
-        //         data:{title:'5952112dea76066818fd6dd2'}
-        //     }
-        // ).then(function(resp){
-        //     console.log('返回数据')
-        //     console.log(resp.data)
-        // })
+         $rootScope.applicationServerpath='http://120.76.228.172:2000/';
+        console.log('接口测试'+$rootScope.applicationServerpath);
+        $http(
+            {
+                method:'POST',
+                url:$rootScope.applicationServerpath+'message/getAbnormaldMessageFeedback',
+                data:{senderID:'593e5b56c6178a040fa757ae',abnormalID:'596ded2abd1a5fa00a008778'}
+            }
+        ).then(function(resp){
+            console.log('返回数据')
+            console.log(resp.data)
+        })
 
         // 桌面端的用户需要登录信息，用户名就是人名，密码第一次可以是身份证号，之后可以修改，pwd
         $rootScope.confirmUser = function(callback) {

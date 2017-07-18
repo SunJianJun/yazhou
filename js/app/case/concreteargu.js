@@ -46,7 +46,7 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
       console.log(current)
       for(var i=0;i<current.length;i++){
         if(current[i]=='new'){
-          currenthtml+='<button ng-click="argusave()" class="btn btn-default" data-toggle="modal" data-target="#myModal2">保存修改</button> <button ng-click="argusubmit()" class="btn btn-default">提交</button>'
+          currenthtml+='<button ng-click="argusave.alert()" class="btn btn-default" data-toggle="modal" data-target="#myModal2">保存修改</button> <button ng-click="argusubmit()" class="btn btn-default" data-toggle="modal" data-target="#myModal2">提交</button>'
         }
         if(current[i]=='audit'){
           currenthtml+=' <button ng-click="stepgo()" class="btn btn-success">推进</button> <button ng-click="stepbackoff.alert()" class="btn btn-warning">驳回</button>'
@@ -103,11 +103,11 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
     adddepartment:function(){
       $('#addargument').append(`<div class="wrapper-xs">
                                    类型: <select name="" id="" onchange="this">
-                                    <option value="date">时间</option>
-                                            <option value="localtion">地点</option>
-                                            <option value="laws">法规</option>
-                                            <option value="workers">部门人员</option>
-                                            <option value="peoples">社会人员</option>
+                                    <option value="时间">时间</option>
+                                            <option value="地点">地点</option>
+                                            <option value="法规">法规</option>
+                                            <option value="部门人员">部门人员</option>
+                                            <option value="社会人员">社会人员</option>
                                         </select>
                                             名称：<input type="date"/>
                                             <button onclick="$(this).parent().remove()">删除</button>
@@ -115,40 +115,51 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
     }
   }
   $scope.argusave={
-    function () {
+    alert:function () {
     console.log('参数保存')
-    var typeJSON = $('#typeJSON').serializeArray();
-    var thisTemplate=$scope.steps.wordTemplate;
-    // $scope.steps._id
-    for(var i=0,typeArr=[];i<typeJSON.length;i++){
-      typeArr.push({arguid:typeJSON[i].name,value:typeJSON[i].value})
-    }
-    console.log(typeArr)
-    var html=``
-    console.log($rootScope.currenteventID)
+  },
+  yanzheng:function(e){
+    // console.log(e);
+    $http({
+      method:"POST",
+      url:$rootScope.applicationServerpath + 'personalinfo/ispersonpassword',//验证用户密码
+      data:{_id:$rootScope.curUser._id,pwd:e}
+    }).then(function(resp){
+      console.log(resp.data)
+      if(resp.data.success){//密码验证成功，进行保存
+        var typeJSON = $('#typeJSON').serializeArray();
+        var thisTemplate=$scope.steps.wordTemplate;
+        // $scope.steps._id
+        for(var i=0,typeArr=[];i<typeJSON.length;i++){
+          typeArr.push({arguid:typeJSON[i].name,value:typeJSON[i].value})
+        }
+        console.log(typeArr)
+        console.log($rootScope.currenteventID)
+        $http({
+         method:'POST',
+         url:$rootScope.applicationServerpath + 'mobilegrid/sendeventargument',//参数保存
+         data:{
+           'eventID':$rootScope.currenteventID,
+           'arguments':typeArr,
+           'setwho':$rootScope.curUser._id
+         }
+        }).then(function(arguresp){
+         if(arguresp.data.error){
 
-     //$http({
-     //  method:'POST',
-     //  url:$rootScope.applicationServerpath + 'mobilegrid/sendeventargument',//参数保存
-     //  data:{
-     //    'eventID':$rootScope.currenteventID,
-     //    'arguments':typeArr,
-     //    'setwho':$rootScope.curUser._id
-     //  }
-     //}).then(function(arguresp){
-     //  if(arguresp.data.error){
-     //
-     //    console.log(arguresp.data.error)
-     //  }else{
-     //    console.log(arguresp.data.success)
-     //    alert('保存成功')
-     //  }
-     //})
-  }}
+           console.log(arguresp.data.error)
+         }else{
+           console.log(arguresp.data.success)
+           alert('保存成功')
+         }
+        })
+      }else if(resp.data.error){//密码验证错误
+        alert(resp.data.error);
+
+      }
+    })
+  }
+  }
   $scope.argusubmit=function () {
-    $(function () { $('#myModal2').modal({
-      keyboard: true
-    })});
     console.log('参数提交')
     var typeJSON = $('#typeJSON').serializeArray();
     var thisTemplate=$scope.steps.wordTemplate;
@@ -158,19 +169,19 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
     }
     console.log(typeArr)
     console.log($rootScope.currenteventID)
-    $http({
-      method:'POST',
-      url:$rootScope.applicationServerpath + 'mobilegrid/sendeventargumentpush',//参数填写完成向上级提交
-      data:{
-        'eventID':$rootScope.currenteventID,
-        stepID:$scope.currentcaseID,
-        'arguments':typeArr,
-        'setwho':$rootScope.curUser._id
-      }
-    }).then(function(arguresp){
-        console.log(arguresp.data)
-      alert('提交成功')
-    })
+    // $http({
+    //   method:'POST',
+    //   url:$rootScope.applicationServerpath + 'mobilegrid/sendeventargumentpush',//参数填写完成向上级提交
+    //   data:{
+    //     'eventID':$rootScope.currenteventID,
+    //     stepID:$scope.currentcaseID,
+    //     'arguments':typeArr,
+    //     'setwho':$rootScope.curUser._id
+    //   }
+    // }).then(function(arguresp){
+    //     console.log(arguresp.data)
+    //   alert('提交成功')
+    // })
   }
   $scope.stepbackoff={
     alert:

@@ -76,7 +76,7 @@
             {{node.name}}
             <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span
                     class="glyphicon glyphicon-remove"></span></a>
-            <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;"><span
+            <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem({depart:node})" style="margin-right: 8px;"><span
                     class="glyphicon glyphicon-plus"></span></a>
           </div>
           <ol ui-tree-nodes="" id="personglup{{$index}}" class="collapse" ng-model="node.nodes" ng-class="{hidden: collapsed}">
@@ -87,7 +87,7 @@
               <div>{{person.name}}
               <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span
                       class="glyphicon glyphicon-remove"></span></a>
-              <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;"><span
+              <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem({person:person})" style="margin-right: 8px;"><span
                       class="glyphicon glyphicon-plus"></span></a>
               </div>
             </li>
@@ -284,14 +284,14 @@
       <div class="list-group">
         <a href="" class="list-group-item">
           <i class="fa fa-envelope fa-fw m-r-xs"></i> 单位名称
-          <p class="form-control-static" ng-hide="item.editing">{{item.label}}</p>
+          <p class="form-control-static" ng-hide="item.editing">{{item.name}}</p>
           <input type="text" class="form-control" ng-show="item.editing" ng-model="item.label" >
         </a>
-        <!--<a href="" class="list-group-item">-->
-          <!--<i class="fa fa-envelope fa-fw m-r-xs"></i> 数据库id-->
-          <!--<p class="form-control-static" ng-hide="item.editing">{{item.data._id}}</p>-->
-          <!--<input type="text" class="form-control" ng-show="item.editing" ng-model="item.data._id" >-->
-        <!--</a>-->
+        <a href="" class="list-group-item">
+          <i class="fa fa-envelope fa-fw m-r-xs"></i> 数据库id
+          <p class="form-control-static" ng-hide="item.editing">{{item.data._id}}</p>
+          <input type="text" class="form-control" ng-show="item.editing" ng-model="item.data._id" >
+        </a>
         <!--<a href="" class="list-group-item">-->
           <!--&lt;!&ndash;<span class="badge bg-info"></span>&ndash;&gt;-->
           <!--<i class="fa fa-eye fa-fw m-r-xs"></i> 姓名-->

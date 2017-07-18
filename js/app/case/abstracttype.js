@@ -26,7 +26,7 @@ app.controller('abstracttypeCtrl', function ($scope, $compile, $window, $rootSco
                 }).then(function (steo) {
                   var setpname=steo.data;
                     // console.log(count)
-                  console.log(setpname)
+                  // console.log(setpname)
                   for(var a=0;a<setpname.length;a++){
                     // console.log(setpname[a])
                     // console.log(ydata[count].steps)
@@ -40,12 +40,12 @@ app.controller('abstracttypeCtrl', function ($scope, $compile, $window, $rootSco
                     // setpname.no=ydata.step
                   }
                   $scope.abstracttype[count].step=setpname;
-                  console.log(setpname)
+                  // console.log(setpname)
                     count++;
                     if(count<typelength){
                         jiazai();
                     }else{
-                      console.log($rootScope.abstracttype)
+                      // console.log($rootScope.abstracttype)
                         return;
                     }
                 })
@@ -89,8 +89,29 @@ app.controller('abstracttypeCtrl', function ($scope, $compile, $window, $rootSco
                     console.log($scope.currentEdit)
                 }
             }
+          var by = function(name){//排序函数
+            return function(o, p){
+              var a, b;
+              if (typeof o === "object" && typeof p === "object" && o && p) {
+                a = o[name];
+                b = p[name];
+                if (a === b) {
+                  return 0;
+                }
+                if (typeof a === typeof b) {
+                  return a < b ? -1 : 1;
+                }
+                return typeof a < typeof b ? -1 : 1;
+              }
+              else {
+                throw ("error");
+              }
+            }
+          }
+          $scope.currentEdit.step.sort(by('no'));//排序
             for(var c=0,currentStep='';c<$scope.currentEdit.steps.length;c++){
-                console.log($scope.currentEdit.steps[c])
+              // console.log($scope.currentEdit.steps[c])
+                            //有两个参数 step 和 steos step是添加后的数据对应的
                 currentStep+='<option value='+$scope.currentEdit.step[c]._id+'>'+$scope.currentEdit.step[c].type+'</option>';
             }
             parent.find('.abstracttypeName').html(`<input type="text" value="${abstracttypeName}" title="${abstracttypeName}" id="abstracttypeName"/>`)

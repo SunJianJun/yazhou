@@ -24,16 +24,11 @@ app.controller('abstractstepCtrl',
 
         });
 
-
-
-
-
-
         $scope.namestr='大队长';
         $scope.stepdata = {
             date: new Date().formate("yyyy年M月d日h时m分s秒")
         }
-        $scope.add = {
+        $scope.adda = {
             person: [],
             addcaseperson: function (person) {
                 console.log(person);
@@ -50,11 +45,13 @@ app.controller('abstractstepCtrl',
                 //console.log($('#addcaseperson').val())
             },
             adddepartment: function () {
+
                 var num = $('#addargument>div').length+1;
                 var quoteCon="quoteCon"+num;
-                $('#addargument').append($compile(`<div class="wrapper-xs" ng-init="index=$index">
+                $('#addargument').append($compile(`<div class="wrapper-xs clear">
+                                        <div class="w pull-left">
                                             <span>${num}</span>
-                                            类型: <select name="argument" id=${'myArgument'+num} ng-change=chooseargument(${'myArgument'+ num},${num}) ng-model=${'myArgument'+num}>
+                                            类型: <select class="w-sm" name="argument" id=${'myArgument'+num} ng-change=chooseargument(${'myArgument'+ num},${num}) ng-model=${'myArgument'+num}>
                                             <option>时间</option>
                                             <option>地点</option>
                                             <option>法规</option>
@@ -62,9 +59,14 @@ app.controller('abstractstepCtrl',
                                             <option>社会人员</option>
                                             <option>其它</option>
                                         </select>
-                                            名称：<input type="test" name="name" ng-model="${quoteCon}"/>
+                                        </div>
+                                        <div class="w pull-left">
+                                            名称：<input class="w-sm" type="test" name="${quoteCon}" ng-model="${quoteCon}"/>
+                                            </div>
+                                            <div class="pull-left">
                                                 <button ng-click="quotecontent(${quoteCon})">插入</button>
-                                            <button onclick="$(this).parent().remove()">删除</button>
+                                            <button onclick="$(this).parent().parent().remove()">删除</button>
+                                        </div>
                                         </div>`)($scope))
             }
         };
@@ -84,7 +86,7 @@ app.controller('abstractstepCtrl',
             var tijiao = {};
             var powerJSON = $('#newFrom').serializeArray();
             var typeJSON = $('#typeJSON').serializeArray();
-             //console.log(powerJSON)
+             console.log(powerJSON)
             var argument = [];
             for (var a = 0; a < typeJSON.length; a++) {
                 if (a < 2) {
@@ -94,32 +96,44 @@ app.controller('abstractstepCtrl',
                     }
                     tijiao[name] = typeJSON[a].value
                 } else {
-                    var getNum=function(text){
-                        var value = text.search(/[^0-9]/ig)+1;  //查到数字
-                        var b = text.search(/[\u4e00-\u9fa5]+/ig)+1;//查到汉字
-                        if(b){
-                            argument.push(typeJSON[a].value);
-                            return;
-                        }
-                        if(value){
-                            argument.push(typeJSON[a].name);
-                        }
+                    // var getNum=function(text){
+                    //     var value = text.search(/[^0-9]/ig)+1;  //查到数字
+                    //     var b = text.search(/[\u4e00-\u9fa5]+/ig)+1;//查到汉字
+                    //     if(b){
+                    //         argument.push(typeJSON[a].value);
+                    //         return;
+                    //     }
+                    //     if(value){
+                    //         argument.push(typeJSON[a].name);
+                    //     }
+                    // }
+                    console.log(typeJSON[a])
+                    if(typeJSON[a].value) {
+                      argument.push(typeJSON[a].value);
                     }
-                    getNum(typeJSON[a].value+typeJSON[a].name)
                   // console.log(argument)
                 }
             }
+            if(argument.length%2==0){
             for (var i = 0, arr1 = []; i < argument.length; i += 2) {
+              if(argument[i]&&argument[i + 1]) {
                 arr1.push({argutype: argument[i], name: argument[i + 1]})
+              }else{
+                console.log('参数不完整')
+              }
+            }
+            }else{
+              console.log('参数不完整')
             }
             tijiao.argument = arr1;
           $scope.um= UM.getEditor('myEditor')
             tijiao.wordTemplate =$scope.um.getContent();
-
-            for (var i = 0, arr2 = {}; i < powerJSON.length; i++) {
+            if(powerJSON&&powerJSON.length) {
+              for (var i = 0, arr2 = {}; i < powerJSON.length; i++) {
                 arr2[powerJSON[i].name] = powerJSON[i].value;
+              }
+              tijiao.power = arr2;
             }
-            tijiao.power = arr2;
             tijiao.status = 1;
             tijiao.author = $rootScope.curUser._id;
             return tijiao;
@@ -127,6 +141,7 @@ app.controller('abstractstepCtrl',
         $scope.newpersonpower = function () {  //提交新建步骤
           console.log('提交新建步骤')
             var pagscon=$scope.getpagsCon()
+          console.log(pagscon)
             if(!pagscon){return;}
             $http({
                 method: 'POST',
@@ -142,14 +157,14 @@ app.controller('abstractstepCtrl',
             var pagscon=$scope.getpagsCon();
             console.log(pagscon)
             console.log(id)
-            $http({
-                method: 'POST',
-                url: $rootScope.applicationServerpath + 'abstractsteproute/updatepersonpower',
-                data: {id: id,pagscon:pagscon}
-            }).then(function (resp) {
-                var data = resp.data;
-                $window.location.reload();
-            })
+            // $http({
+            //     method: 'POST',
+            //     url: $rootScope.applicationServerpath + 'abstractsteproute/updatepersonpower',
+            //     data: {id: id,pagscon:pagscon}
+            // }).then(function (resp) {
+            //     var data = resp.data;
+            //     $window.location.reload();
+            // })
         }
         $scope.removepersonpower=function(id){
             console.log(id)
@@ -178,14 +193,15 @@ app.controller('abstractstepCtrl',
 
         }
         $scope.chooseargument = function (e, id) {
+          // console.log(e,id)
             var type = e;
             //console.log(type +'+++'+id)
             if (type=='其它') {
                 console.log(e + id)
                 if (id) {
-                    $('#myArgument' + id).replaceWith('<input type="text" name="name"/>')
+                    $('#myArgument' + id).replaceWith('<input class="w-sm" type="text" name="name"/>')
                 } else {
-                    $('#myArgument').replaceWith('<input type="text" name="name"/>')
+                    $('#myArgument').replaceWith('<input class="w-sm" type="text" name="name"/>')
                 }
             }
         }

@@ -68,10 +68,9 @@
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="input-group">
-                                                        <input type="password" class="form-control">
+                                                        <input type="password" ng-model="savepassword" class="form-control">
 					<span class="input-group-btn">
-						<button class="btn btn-default" type="button">
-                            确定
+						<button class="btn btn-default" ng-click="argusave.yanzheng(savepassword)" type="button" data-toggle="modal" data-target="#myModal2">确定
                         </button>
 					</span>
                                                     </div><!-- /input-group -->

@@ -24,17 +24,25 @@
                     <tr>
                         <td>参数：</td>
                         <td>
-                            <!--<button>删除</button>-->
-                            <button ng-click="add.adddepartment()">新增</button>
+                            <button ng-click="adda.adddepartment()">新增</button>
                             <div id="addargument">
-                                <div class="wrapper-xs" ng-repeat="argu in activities">
-                                    <span>{{$index+1}}</span>
+                                <div class="wrapper-xs clear" ng-repeat="argu in activities">
+                                    <div class="w pull-left">
+                                        <span>{{$index+1}}</span>
                                     类型:
-                                    <input type="text" name="{{argu.argutype}}" ng-model="argu.argutype">
-                                </select>
+                                    <!--<input type="text" name="{{argu.argutype}}" ng-model="argu.argutype">-->
+                                    <select class="w-sm" name="{{argu.argutype}}" id="myArgument{{$index+1}}" ng-if="arguisdefined(argu.argutype)" ng-model="argu.argutype" ng-click="chooseargument(argu.argutype,$index+1)">
+                                        <option ng-repeat="argu in settingargu">{{argu}}</option>
+                                    </select>
+                                    <input class="w-sm" type="text" name="{{argu.argutype}}" value="{{argu.argutype}}" ng-model="argu.argutype" ng-if="!arguisdefined(argu.argutype)"/>
+                                    </div>
+                                    <div class="w pull-left">
                                     名称：<input type="test" name="{{argu.name}}" ng-model="argu.name"/>
-                                    <button ng-click="quotecontent(argu.name)">插入</button>
-                                    <button onclick="$(this).parent().remove()">删除</button>
+                                    </div>
+                                    <div class="pull-left">
+                                        <button ng-click="quotecontent(argu.name)">插入</button>
+                                        <button onclick="$(this).parent().parent().remove()">删除</button>
+                                    </div>
                                 </div>
 
                             </div>
@@ -79,21 +87,21 @@
                             <td style="width:200px">新建/编辑</td>
                             <td>
                                 <!--<select name="new" ng-init="selectedNam = personPower[1]" ng-model="selectedNam" ng-options="x.name for x in personPower">-->
-                                当前设置：{{abstractstepN.power.new}}
+                                当前设置：<span>{{abstractstepN.power.new}}</span>
                                 <button ng-click="updatepower('selectedNew')">修改</button>
                                 <select name="new" ng-if="selectedNew" ng-model="selectedNew">
                                     <option ng-repeat="power in personPower" value="{{power._id}}">{{power.name}}</option>
-                                </select>{{selectedNew}}
+                                </select>
                             </td>
                         </tr>
                         <tr>
                             <td>审核</td>
                             <td>
-                                当前设置：{{abstractstepN.power.audit}}
+                                当前设置：<span class="list-inline">{{abstractstepN.power.audit}}</span>
                                 <button ng-click="updatepower('selectedoff')">修改</button>
                                 <select name="audit" ng-if="selectedoff" ng-model="selectedoff">
                                     <option ng-repeat="power in personPower" value="{{power._id}}">{{power.name}}</option>
-                                </select>{{selectedoff}}
+                                </select>
                             </td>
                         </tr>
                         <tr>
