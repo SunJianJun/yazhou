@@ -21,8 +21,8 @@ app.controller('abstractstepCtrl',
 
             $scope.personPower.unshift({_id:'all',name:'所有人'});
             console.log($scope.personPower)
-
         });
+      $scope.selectedNew =true;
 
         $scope.namestr='大队长';
         $scope.stepdata = {
@@ -157,14 +157,14 @@ app.controller('abstractstepCtrl',
             var pagscon=$scope.getpagsCon();
             console.log(pagscon)
             console.log(id)
-            // $http({
-            //     method: 'POST',
-            //     url: $rootScope.applicationServerpath + 'abstractsteproute/updatepersonpower',
-            //     data: {id: id,pagscon:pagscon}
-            // }).then(function (resp) {
-            //     var data = resp.data;
-            //     $window.location.reload();
-            // })
+            $http({
+                method: 'POST',
+                url: $rootScope.applicationServerpath + 'abstractsteproute/updatepersonpower',
+                data: {id: id,pagscon:pagscon}
+            }).then(function (resp) {
+                var data = resp.data;
+                $window.location.reload();
+            })
         }
         $scope.removepersonpower=function(id){
             console.log(id)
@@ -207,6 +207,7 @@ app.controller('abstractstepCtrl',
         }
         $scope.newcaseroute = function () {
           console.log('tijia')
+          $scope.selectedNew =true;
             $state.go('app.abstractstep.abstractstepNew',{id:''});
         }
 
@@ -221,6 +222,7 @@ app.controller('abstractstepCtrl',
               $rootScope.abstractstepN=data;
               console.log($rootScope.abstractstepN)
               console.log('跳转')
+              $scope.selectedNew =false;
               $state.go('app.abstractstep.abstractstepNew',{id:data._id});
 
             })
@@ -228,4 +230,5 @@ app.controller('abstractstepCtrl',
         $scope.ceshi = function (e) {
             console.log(e)
         }
+        console.log($scope.selectedNew,$scope.selectedUpdate)
     })

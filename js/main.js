@@ -43,18 +43,18 @@ angular.module('app')
         ];
         $rootScope.applicationServerpath='http://localhost:2000/';
 
-         $rootScope.applicationServerpath='http://120.76.228.172:2000/';
+         // $rootScope.applicationServerpath='http://120.76.228.172:2000/';
         console.log('接口测试'+$rootScope.applicationServerpath);
-        $http(
-            {
-                method:'POST',
-                url:$rootScope.applicationServerpath+'message/getAbnormaldMessageFeedback',
-                data:{senderID:'593e5b56c6178a040fa757ae',abnormalID:'596ded2abd1a5fa00a008778'}
-            }
-        ).then(function(resp){
-            console.log('返回数据')
-            console.log(resp.data)
-        })
+        // $http(
+        //     {
+        //         method:'POST',
+        //         url:$rootScope.applicationServerpath+'personalinfo/getphoneBypclogin',
+        //         data:{name:'孙建军',pwd:'123456',UUID:'123'}
+        //     }
+        // ).then(function(resp){
+        //     console.log('返回数据')
+        //     console.log(resp.data)
+        // })
 
         // 桌面端的用户需要登录信息，用户名就是人名，密码第一次可以是身份证号，之后可以修改，pwd
         $rootScope.confirmUser = function(callback) {
@@ -152,8 +152,9 @@ angular.module('app')
         // 登录的豪华版，1，监控路由变化
         $rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams){
           console.log("捕获angular路由变化，要去的页面路由名称是："+toState.name);
-          //console.log(fromState.name); //上个路由地址
-          $rootScope.curUser=localStorageService.get('user',300,'请重新登录');
+          $rootScope.fromstate=fromState.name; //上个路由地址
+
+          $rootScope.curUser=localStorageService.get('user',500,'请重新登录');
           console.log($rootScope.curUser);
           $scope.userName=$rootScope.curUser.name;
             if(toState.name=='access.signin')return;// 如果是进入登录界面则允许

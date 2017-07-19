@@ -4,6 +4,8 @@
 app.controller('abstrapstepNew', function ($scope, $compile, $rootScope, $window, localStorageService, $http, $state, userService, dateService, messageService, $stateParams) {
   console.log('获取抽象表编辑')
   console.log($stateParams.id)
+
+
   $scope.settingargu = ['时间', '地点', '法规', '部门人员', '社会人员', '其它'];
   if (!$stateParams.id) {
     $rootScope.abstractstepN = ''
@@ -43,18 +45,8 @@ app.controller('abstrapstepNew', function ($scope, $compile, $rootScope, $window
       // $rootScope.abstractstepN.wordTemplate);
 //       $('#updateStepDate').html(`<input type="text" name="type" value="${$scope.activities.type}">`)
 
-      $scope.updatepower = function (e) {
-        console.log(e)
-        switch (e) {
-          case 'selectedNew':
-            $scope.selectedNew =true;
-            // console.log($scope.selectedNew)
-            break;
-          case 'selectedoff':
-            $scope.selectedoff =true;
-            // console.log($scope.selectedoff)
-            break;
-        }
+      $scope.updatepower = function () {
+        $scope.selectedUpdate=true;
       }
 
     }

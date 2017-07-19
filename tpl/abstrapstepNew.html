@@ -78,6 +78,7 @@
         <div class="panel">
             <div class="panel-heading">
                 人员权限
+                <button ng-hide="selectedNew" ng-click="updatepower()">修改</button>
             </div>
             <div class="panel-body">
                 <form id="newFrom">
@@ -87,9 +88,8 @@
                             <td style="width:200px">新建/编辑</td>
                             <td>
                                 <!--<select name="new" ng-init="selectedNam = personPower[1]" ng-model="selectedNam" ng-options="x.name for x in personPower">-->
-                                当前设置：<span>{{abstractstepN.power.new}}</span>
-                                <button ng-click="updatepower('selectedNew')">修改</button>
-                                <select name="new" ng-if="selectedNew" ng-model="selectedNew">
+                                <span class="thumb-xxl" ng-hide="selectedNew">当前设置：{{abstractstepN.power.new}}</span>
+                                <select name="new" ng-if="selectedNew||selectedUpdate">
                                     <option ng-repeat="power in personPower" value="{{power._id}}">{{power.name}}</option>
                                 </select>
                             </td>
@@ -97,9 +97,8 @@
                         <tr>
                             <td>审核</td>
                             <td>
-                                当前设置：<span class="list-inline">{{abstractstepN.power.audit}}</span>
-                                <button ng-click="updatepower('selectedoff')">修改</button>
-                                <select name="audit" ng-if="selectedoff" ng-model="selectedoff">
+                                <span class="thumb-xxl" ng-hide="selectedNew">当前设置： {{abstractstepN.power.audit}}</span>
+                                <select name="audit" ng-if="selectedNew||selectedUpdate">
                                     <option ng-repeat="power in personPower" value="{{power._id}}">{{power.name}}</option>
                                 </select>
                             </td>

@@ -114,6 +114,7 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
                                         </div>`)
     }
   }
+  //参数保存
   $scope.argusave={
     alert:function () {
     console.log('参数保存')
@@ -159,6 +160,7 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
     })
   }
   }
+  //参数向上级提交
   $scope.argusubmit=function () {
     console.log('参数提交')
     var typeJSON = $('#typeJSON').serializeArray();
@@ -183,6 +185,7 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
     //   alert('提交成功')
     // })
   }
+  //步骤驳回
   $scope.stepbackoff={
     alert:
     function () {
@@ -191,7 +194,6 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
 
       console.log($rootScope.currenteventID)
       $('#leadreason').toggle();
-
     },
     send:function(){
       $http({
@@ -209,6 +211,7 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
       })
     }
   }
+  //步骤审核通过
   $scope.stepgo=function(){
     console.log('参数审批通过,进入下一流程')
 

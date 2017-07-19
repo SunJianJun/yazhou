@@ -5078,6 +5078,10 @@ a.text-#000000:hover {
     height: 100%;
 }
 
+.thumb-xxl {
+    display: inline-block;
+    width: 160px;
+}
 .thumb-xl {
     display: inline-block;
     width: 128px;
