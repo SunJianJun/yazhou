@@ -330,7 +330,7 @@ angular.module('app')
           resolve: {
             deps: ['uiLoad',
               function( uiLoad ){
-                return uiLoad.load( ['js/controllers/signin.js'] );
+                return uiLoad.load( ['js/controllers/signin.js','js/plugins/qrcode.js'] );
               }]
           }
         })

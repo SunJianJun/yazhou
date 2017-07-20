@@ -13,7 +13,6 @@ app.controller('concreteeventCtrl', function ($scope, $rootScope, localStorageSe
             data:{departmentID:'111'}
         }).then(function (resp) {
             var data = resp.data.success;
-            console.log(data)
             data.forEach(function (val, key) {
                     val.newer = new Date(val.newer).formate("yyyy年M月d日h时m分s秒");
                 val.step.forEach(function (step, key) {

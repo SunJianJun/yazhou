@@ -45,13 +45,11 @@ angular.module('app')
 
          // $rootScope.applicationServerpath='http://120.76.228.172:2000/';
         console.log('接口测试'+$rootScope.applicationServerpath);
-        // $http(
-        //     {
+        // $http({
         //         method:'POST',
-        //         url:$rootScope.applicationServerpath+'personalinfo/getphoneBypclogin',
-        //         data:{name:'孙建军',pwd:'123456',UUID:'123'}
-        //     }
-        // ).then(function(resp){
+        //         url:$rootScope.applicationServerpath+'personalinfo/sendphoneBypclogin',
+        //         data:{uuid:"59705af0465bc1e817525462",personID:'58cb2031e68197ec0c7b935b'}
+        //     }).then(function(resp){
         //     console.log('返回数据')
         //     console.log(resp.data)
         // })

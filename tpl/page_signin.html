@@ -19,11 +19,17 @@
       <button type="submit" class="btn btn-lg btn-primary btn-block" ng-click="login()" ng-disabled='form.$invalid'>登录</button>
       <div class="text-center m-t m-b"><a ui-sref="access.forgotpwd">忘记密码?</a></div>
       <div class="line line-dashed"></div>
-      <p class="text-center"><small>如果您还没有账号,请扫描下面的二维码</small></p>
+      <p class="text-center">
+          <small ng-click="showdownload()">如果您还没有账号,请扫描下面的二维码</small>
+          <a ng-click="showscanningqrcode()">手机扫码登陆</a>
+      </p>
     </form>
   </div>
-  <div class="text-center">
-    <button ng-click="loginin()">登陆</button>
+  <div class="text-center" ng-hide="iscode">
     <img src="./sanyagridmobileapp.png">
+
   </div>
+    <div id="scanningqrcode" class="text-center" ng-show="iscode">
+
+    </div>
 </div>
