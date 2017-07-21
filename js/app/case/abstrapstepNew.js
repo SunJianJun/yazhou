@@ -6,7 +6,6 @@ app.controller('abstrapstepNew', function ($scope, $compile, $rootScope, $window
   console.log($stateParams.id)
 
 
-  $scope.settingargu = ['时间', '地点', '法规', '部门人员', '社会人员', '其它'];
   if (!$stateParams.id) {
     $rootScope.abstractstepN = ''
   } else {
@@ -31,6 +30,14 @@ app.controller('abstrapstepNew', function ($scope, $compile, $rootScope, $window
 //       $scope.activities.argument.push({'argutype': '其它', name: '其它'})
 
       $scope.arguisdefined = function (e) {
+        console.log('$scope.settingargu[i].name')
+        console.log(e)
+        for(var item in $scope.settingargu){
+          // console.log(aa[item].type)
+          if($scope.settingargu[item].type==e){
+            console.log($scope.settingargu[item]);
+          }
+        }
         var aa = $scope.settingargu.indexOf(e)
         if (aa + 1) {
           return true;

@@ -117,7 +117,7 @@ app.controller('abstracttypeCtrl', function ($scope, $compile, $window, $rootSco
             parent.find('.abstracttypeName').html(`<input type="text" value="${abstracttypeName}" title="${abstracttypeName}" id="abstracttypeName"/>`)
             abstracttypeStep.html(`<div class="pull-left">
                                         <h5>所有步骤</h5>
-                                        <select name="sel_place1" size="6" id="sel_place1" class="w-sm">
+                                        <select name="sel_place1" size="8" id="sel_place1" class="w-sm">
                                     ${stepAll}
                                 </select>
                                     </div>
@@ -137,7 +137,7 @@ app.controller('abstracttypeCtrl', function ($scope, $compile, $window, $rootSco
                                     </div>
                                     <div class="pull-left">
                                         <h5>当前步骤</h5>
-                                        <select name="sel_place2" id="sel_place2" size="6" onChange="selectMoveUp(this)" class="w-sm">${currentStep}</select>
+                                        <select name="sel_place2" id="sel_place2" size="8" onChange="selectMoveUp(this)" class="w-sm">${currentStep}</select>
                                     </div>`)
             $(thisDom).replaceWith($compile(`<button ng-click="abstracttypeDone('${abstracttypeName}')">完成</button>`)($scope));
         })

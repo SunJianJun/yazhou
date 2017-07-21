@@ -124,7 +124,7 @@ app.controller('gridmapctl',
                 if (!(latestLocation && latestLocation.getDate && ((new Date()).getTime() - (new Date(latestLocation.getDate)).getTime() < 1000 * 30)) && curperson._id != $rootScope.curUser._id) {
                   //console.log('>>>马上去服务器取同事的位置：');
                   // localStorageService.clear("LatestLocation_"+workmates[ttt]._id );
-                  //console.log('>>>去服务器取同事的位置：'+curperson.name+'<>'+latestLocation+'<>'+latestLocation);
+                  // console.log('>>>去服务器取同事的位置：'+curperson.name+'<>'+latestLocation+'<>'+latestLocation);
                   // 跟服务器通信时，返回
                   userService.getLatestLocationByUserId(curperson._id, $rootScope.applicationServerpath);
                   continue;

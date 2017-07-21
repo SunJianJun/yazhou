@@ -29,22 +29,21 @@
                                 <div class="wrapper-xs clear" ng-repeat="argu in activities">
                                     <div class="w pull-left">
                                         <span>{{$index+1}}</span>
-                                    类型:
-                                    <!--<input type="text" name="{{argu.argutype}}" ng-model="argu.argutype">-->
-                                    <select class="w-sm" name="{{argu.argutype}}" id="myArgument{{$index+1}}" ng-if="arguisdefined(argu.argutype)" ng-model="argu.argutype" ng-click="chooseargument(argu.argutype,$index+1)">
-                                        <option ng-repeat="argu in settingargu">{{argu}}</option>
-                                    </select>
-                                    <input class="w-sm" type="text" name="{{argu.argutype}}" value="{{argu.argutype}}" ng-model="argu.argutype" ng-if="!arguisdefined(argu.argutype)"/>
+                                        类型:
+                                        <select class="w-xs" name="{{argu.argutype}}" id="myArgument{{$index+1}}"
+                                                 ng-model="argu.argutype"
+                                                ng-click="chooseargument(argu.argutype,$index+1)">
+                                            <option ng-repeat="arguop in settingargu" value="{{arguop.type}}" ng-selected="arguop.type==argu.argutype">{{arguop.name}}</option>
+                                        </select>
                                     </div>
                                     <div class="w pull-left">
-                                    名称：<input class="w-sm" type="test" name="{{argu.name}}" ng-model="argu.name"/>
+                                        名称：<input class="w-sm" type="test" name="{{argu.name}}" ng-model="argu.name"/>
                                     </div>
                                     <div class="pull-left">
                                         <button ng-click="quotecontent(argu.name)">插入</button>
                                         <button onclick="$(this).parent().parent().remove()">删除</button>
                                     </div>
                                 </div>
-
                             </div>
                         </td>
                     </tr>
@@ -90,7 +89,8 @@
                                 <!--<select name="new" ng-init="selectedNam = personPower[1]" ng-model="selectedNam" ng-options="x.name for x in personPower">-->
                                 <span class="thumb-xxl" ng-hide="selectedNew">当前设置：{{abstractstepN.power.new}}</span>
                                 <select name="new" ng-if="selectedNew||selectedUpdate">
-                                    <option ng-repeat="power in personPower" value="{{power._id}}">{{power.name}}</option>
+                                    <option ng-repeat="power in personPower" value="{{power._id}}">{{power.name}}
+                                    </option>
                                 </select>
                             </td>
                         </tr>
@@ -99,14 +99,17 @@
                             <td>
                                 <span class="thumb-xxl" ng-hide="selectedNew">当前设置： {{abstractstepN.power.audit}}</span>
                                 <select name="audit" ng-if="selectedNew||selectedUpdate">
-                                    <option ng-repeat="power in personPower" value="{{power._id}}">{{power.name}}</option>
+                                    <option ng-repeat="power in personPower" value="{{power._id}}">{{power.name}}
+                                    </option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>
-                                <button ng-click="abstractstepN.type?updatepersonpower(abstractstepN._id):newpersonpower()">完成</button>
+                                <button ng-click="abstractstepN.type?updatepersonpower(abstractstepN._id):newpersonpower()">
+                                    完成
+                                </button>
                                 <button>返回</button>
                             </td>
                         </tr>
