@@ -45,10 +45,10 @@
                     <h4>已完成</h4>
                     <p class="small"><i class="fa fa-hand-o-up"></i> 在列表之间拖动任务面板</p>
                     <ul class="sortable-list connectList agile-list" style="height:100%;">
-                        <li class="danger-element" ng-repeat="list in taskdone">
-                            {{list.types}}
+                        <li class="danger-element" ng-repeat="done in taskdone">
+                            {{done.name}}
                             <div class="agile-detail">
-                                <a ng-click="addparameter(list._id)" class="pull-right btn btn-xs btn-white">查看</a>
+                                <a ng-click="addparameter(done._id)" class="pull-right btn btn-xs btn-white">查看</a>
                                 <i class="fa fa-clock-o"></i> 2015.09.01
                             </div>
                         </li>

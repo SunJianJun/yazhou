@@ -10,6 +10,7 @@ app.controller('abstrapstepNew', function ($scope, $compile, $rootScope, $window
     $rootScope.abstractstepN = ''
   } else {
     console.log($rootScope.abstractstepN)
+
     if ($rootScope.abstractstepN) {
       //console.log($rootScope.abstractstepN.power.go)
       $scope.activities = $rootScope.abstractstepN.argument;
@@ -23,8 +24,13 @@ app.controller('abstrapstepNew', function ($scope, $compile, $rootScope, $window
       if ($rootScope.abstractstepN.power && $rootScope.abstractstepN.power.new) {
         $rootScope.abstractstepN.power.new = getleaverindex($rootScope.abstractstepN.power.new)
       }
-      if ($rootScope.abstractstepN.power && $rootScope.abstractstepN.power.audit) {
-        $rootScope.abstractstepN.power.audit = getleaverindex($rootScope.abstractstepN.power.audit)
+      var audit=$rootScope.abstractstepN.power.audit;
+      if ($rootScope.abstractstepN.power && audit) {
+        for(var d=0,aduitarr=[];d<audit.length;d++) {
+          aduitarr.push({no:audit[d].no,title:getleaverindex(audit[d].title)})
+        }
+        //console.log(aduitarr)
+        $rootScope.abstractstepN.power.audit=aduitarr;
       }
       //$scope.selectedNew=getleaverindex($rootScope.abstractstepN.power.new)
 //       $scope.activities.argument.push({'argutype': '其它', name: '其它'})
@@ -57,5 +63,6 @@ app.controller('abstrapstepNew', function ($scope, $compile, $rootScope, $window
       }
 
     }
+
   }
 })

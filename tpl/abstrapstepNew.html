@@ -78,6 +78,7 @@
             <div class="panel-heading">
                 人员权限
                 <button ng-hide="selectedNew" ng-click="updatepower()">修改</button>
+                <button ng-click="adda.addpower()">添加</button>
             </div>
             <div class="panel-body">
                 <form id="newFrom">
@@ -95,13 +96,27 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>审核</td>
-                            <td>
-                                <span class="thumb-xxl" ng-hide="selectedNew">当前设置： {{abstractstepN.power.audit}}</span>
-                                <select name="audit" ng-if="selectedNew||selectedUpdate">
-                                    <option ng-repeat="power in personPower" value="{{power._id}}">{{power.name}}
-                                    </option>
-                                </select>
+                            <td colspan="2">
+                                <div id="addpower">
+                                    <div class="wrapper-xs clear" ng-repeat="audit in abstractstepN.power.audit">
+                                        <div class="w pull-left">
+                                            <span>审核签字:{{audit.no}}</span>
+                                        </div>
+                                        <div class="w-lg pull-left">
+                                            <span class="thumb-xxl" ng-hide="selectedNew">当前设置： {{audit.title}}</span>
+                                            <select class="w-xs" name="powerCon{{$index+1}}" id="addpower{{$index+1}}"
+                                                    ng-if="selectedNew||selectedUpdate">
+                                                <option ng-repeat="power in personPower" value="{{power._id}}">
+                                                    {{power.name}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="pull-left"
+                                             ng-if="selectedNew||selectedUpdate">
+                                            <button onclick="$(this).parent().parent().remove()">删除</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         <tr>

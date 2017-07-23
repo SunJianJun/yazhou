@@ -73,7 +73,7 @@
                                                 <div class="input-group">
                                                     <input type="password" ng-model="savepassword" class="form-control">
                                                     <span class="input-group-btn">
-						<button class="btn btn-default" ng-click="argusave.yanzheng(savepassword)" type="button"
+						<button class="btn btn-default" ng-click="argualert?argusubmit.yanzheng(savepassword):argusave.yanzheng(savepassword)" type="button"
                                 data-toggle="modal" data-target="#myModal2">确定
                         </button>
 					</span>
@@ -86,9 +86,9 @@
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
                     <div class="panel" id="leadreason" style="display: none;">
-                        <div class="page-header">驳回理由</div>
-                        <div class="panel-body"><textarea class="form-control" rows="3"></textarea>
-                            <button ng-click="stepbackoff.send()">确定</button>
+                        <div class="page-header">意见</div>
+                        <div class="panel-body"><textarea class="form-control" rows="3" ng-model="powertext"></textarea>
+                            <button class="btn btn-danger pull-right" ng-click="powerisshow?stepgo.send(powertext):stepbackoff.send(powertext)">确定</button>
                         </div>
                     </div>
                     <div class="panel-body text-center" id="personcurrent">
