@@ -26,14 +26,13 @@
                                 <td>参数：</td>
                                 <td>
                                     <form id="typeJSON" name="typeJSON">
-                                        <div class="wrapper-xs" ng-repeat="can in arguArr">
-                                        <span class="wrapper-xs"
-                                              ng-init="types=(can.type=='date'||can.type=='时间'?'date':'')">参数{{$index+1}}：
+                                        <div class="wrapper-xs clear" ng-repeat="can in arguArr"
+                                              ng-init="types=(can.type=='time'||can.type=='时间'?'date':'')">
+                                            <div class="pull-left w-sm">{{$index+1}} {{can.promptvalue}}：</div>
                                             <input class="w-sm" id="{{can._id}}" name="{{can._id}}"
                                                    type="{{types}}"
-                                                   title="{{can.promptvalue}}" value="{{can.value[0]}}"
-                                                   placeholder="{{can.promptvalue}}"/>
-                                            <button>选择</button></span>
+                                                   title="{{can.promptvalue}}" value="{{can.value[0]}}"/>
+                                            <button>选择</button>
                                         </div>
                                         <button class="btn btn-danger" ng-click="createWord()">生成Word</button>
                                     </form>
@@ -85,6 +84,37 @@
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
+
+                    <!--
+                    <div class="panel" ng-repeat="text in audittext">
+                        <div class="page-header">领导：{{text.person}}</div>
+                        <div class="panel-body">
+                            {{text.text}}
+                        </div>
+                        <div class="panel-footer text-right">
+                            {{text.powertime}}
+                        </div>
+                    </div>
+                    -->
+
+                    <div class="panel-body">
+                        <article class="media" ng-repeat="text in audittext">
+                            <div class="pull-left">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-bold fa-stack-1x text-white"></i>
+              </span>
+                            </div>
+                            <div class="media-body">
+                                <a href class="h4">领导：{{text.person}}</a>
+                                <small class="block m-t-xs">{{text.text}}</small>
+                                <em class="text-xs">审批时间：<span class="text-danger">{{text.powertime}}</span></em>
+                            </div>
+                            <div class="line pull-in"></div>
+                        </article>
+                    </div>
+
+
                     <div class="panel" id="leadreason" style="display: none;">
                         <div class="page-header">意见</div>
                         <div class="panel-body"><textarea class="form-control" rows="3" ng-model="powertext"></textarea>

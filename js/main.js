@@ -47,8 +47,8 @@ angular.module('app')
         console.log('接口测试'+$rootScope.applicationServerpath);
          $http({
                  method:'POST',
-                 url:$rootScope.applicationServerpath+'mobilegrid/getAllAbstracttype',
-                 data:{_id:"59562e202c2b5d1814fe7b67",newmobile:'1233211123'}
+                 url:$rootScope.applicationServerpath+'person/getPersonLatestPosition',
+                 data:{personID:"58e0c199e978587014e67a50"}
              }).then(function(resp){
              console.log('返回数据')
              console.log(resp.data)

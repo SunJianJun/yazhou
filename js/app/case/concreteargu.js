@@ -1,8 +1,8 @@
 /**
  * Created by Administrator on 2017/6/9.
  */
-app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localStorageService, $http, $state, userService, dateService, messageService, $stateParams
-                                         //, $ionicBackdrop,$ionicPopup,$ionicModal,departmentAndPersonsService
+app.controller('concretearguCtrl', function ($scope, $rootScope, $compile, localStorageService, $http, $state, userService, dateService, messageService, $stateParams
+                                             //, $ionicBackdrop,$ionicPopup,$ionicModal,departmentAndPersonsService
 ) {
   $scope.currentcaseID = $stateParams.caseid;//当前案件的ID
   console.log($scope.currentcaseID)
@@ -21,6 +21,18 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
     //     //var um = UM.getEditor('myEditor');
     //     //um.setContent($scope.steps.wordTemplate);
     //   }
+    $http({
+      method:'POST',
+      url:$rootScope.applicationServerpath+'mobilegrid/getstepaudittext',
+      data:{stepID:$scope.currentcaseID}
+    }).then(function(resp){
+      console.log(resp.data)
+      if(resp.data.success){
+        $scope.audittext=resp.data.success;
+      }else{
+
+      }
+    })
   })
   $http({
     method: 'POST',
@@ -50,7 +62,7 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
         }
         if (current[i] == 'power') {
           currenthtml += ' <button ng-click="stepgo.alert()" class="btn btn-success">推进</button> ' +
-              '<button ng-click="stepbackoff.alert()" class="btn btn-warning">驳回</button>'
+            '<button ng-click="stepbackoff.alert()" class="btn btn-warning">驳回</button>'
         }
       }
       $('#personcurrent').html($compile(currenthtml)($scope))
@@ -106,10 +118,10 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
                                         </div>`)
     }
   }
-  $scope.pwdvalidate = function (id, pwd, callback) {
+  $scope.pwdvalidate = function (id, pwd, callback) {//验证用户密码
     $http({
       method: "POST",
-      url: $rootScope.applicationServerpath + 'personalinfo/ispersonpassword',//验证用户密码
+      url: $rootScope.applicationServerpath + 'personalinfo/ispersonpassword',
       data: {_id: id, pwd: pwd}
     }).then(function (resp) {
       if (resp.data.success) {
@@ -158,6 +170,7 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
             } else {
               console.log(arguresp.data.success)
               alert('保存成功')
+              $state.go('app.concreteevent')
             }
           })
         }
@@ -184,6 +197,13 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
           var typeJSON = $('#typeJSON').serializeArray();
           var thisTemplate = $scope.steps.wordTemplate;
           // $scope.steps._id
+          for(var type=0;type<typeJSON.length;type++) {
+            if(typeJSON[type].value){
+              alert('参数不完整，请补充')
+              return;
+            }
+          }
+
           for (var i = 0, typeArr = []; i < typeJSON.length; i++) {
             typeArr.push({arguid: typeJSON[i].name, value: typeJSON[i].value})
           }
@@ -202,6 +222,7 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
             console.log(arguresp.data)
             alert('提交成功')
           })
+
         }
 
       })
@@ -210,45 +231,49 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
   //步骤驳回
   $scope.stepbackoff = {
     alert: function () {
-      $scope.powerisshow=false;
+      $scope.powerisshow = false;
       console.log('参数审批不通过，驳回')
 
       console.log($rootScope.currenteventID)
       $('#leadreason').toggle();
     },
-    send: function () {
+    send: function (text) {
       console.log('参数审批不通过，驳回')
-      /*
-      $http({
-        method: 'POST',
-        url: $rootScope.applicationServerpath + 'mobilegrid/sendeventargumentpu',//参数审批不通过，驳回
-        data: {
-          'eventID': $rootScope.currenteventID,
-          stepID: $scope.currentcaseID,
-          'arguments': typeArr,
-          'setwho': $rootScope.curUser._id
-        }
-      }).then(function (arguresp) {
-        console.log(arguresp.data)
-        alert('提交成功')
-      })
-      */
+      if(text) {
+        $http({
+          method: 'POST',
+          url: $rootScope.applicationServerpath + 'mobilegrid/sendeventargbackoff',//参数审批不通过，驳回
+          data: {
+            'eventID': $rootScope.currenteventID,
+            stepID: $scope.currentcaseID,
+            'text':text,
+            'person': $rootScope.curUser._id,
+            'personTitle':$rootScope.curUser.title
+          }
+        }).then(function (arguresp) {
+          console.log(arguresp.data)
+          alert('提交成功')
+          $state.go('app.concreteevent')
+        })
+      }else{
+        alert('请输入驳回理由！')
+      }
 
     }
   }
   //步骤审核通过
   $scope.stepgo = {
     alert: function () {
-      $scope.powerisshow=true;
+      $scope.powerisshow = true;
       console.log('参数审批通过！')
 
       console.log($rootScope.currenteventID)
       $('#leadreason').toggle();
     },
-   send:function (text) {
-        console.log('参数审批通过,进入下一流程')
-     console.log(text)
-/*
+    send: function (text) {
+      console.log('参数审批通过,进入下一流程')
+      console.log(text)
+      if (text) {
         $http({
           method: "POST",
           url: $rootScope.applicationServerpath + 'mobilegrid/sendstepgo',
@@ -256,15 +281,20 @@ app.controller('concretearguCtrl', function ($scope, $rootScope,$compile, localS
             stepID: $scope.currentcaseID,
             person: $rootScope.curUser._id,
             personTitle: $rootScope.curUser.title,
-            text: '可以通过'
+            text:text,
+            'eventID': $rootScope.currenteventID
           }
         }).then(function (resp) {
           console.log('审核通过')
           console.log(resp.data)
+          $state.go('app.concreteevent')
         })
-*/
+      }else{
+        alert('请输入审核意见！')
       }
-}
+
+    }
+  }
 
 
 })
