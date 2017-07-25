@@ -67,6 +67,29 @@ app.controller('abstractstepCtrl',
                                             <button onclick="$(this).parent().parent().remove()">删除</button>
                                         </div>
                                         </div>`)($scope))
+      },
+      addpower: function () {
+        $scope.selectedUpdate=true;
+        var num = $('#addpower>div').length + 1;
+        var powerCon = "powerCon" + num;
+        for(var i=0,ops='';i<$scope.personPower.length;i++){
+          ops+='<option value="'+$scope.personPower[i]._id+'">'+$scope.personPower[i].name+'</option>';
+        }
+
+        $('#addpower').append($compile(`<div class="wrapper-xs clear">
+            <div class="w pull-left">
+            <span>审核签字${num}</span>
+        </div>
+        <div class="w-lg pull-left">
+        <select class="w-xs" name="${powerCon}" id="${powerCon}"
+            ${ops}
+        </select>
+        </div>
+        <div class="pull-left"
+        ng-if="selectedNew||selectedUpdate">
+            <button onclick="$(this).parent().parent().remove()">删除</button>
+            </div>
+            </div>`)($scope))
       }
     };
     $http({
@@ -105,7 +128,7 @@ app.controller('abstractstepCtrl',
           //         argument.push(typeJSON[a].name);
           //     }
           // }
-          console.log(typeJSON[a])
+          //console.log(typeJSON[a])
           if (typeJSON[a].value) {
             argument.push(typeJSON[a].value);
           }
@@ -127,9 +150,14 @@ app.controller('abstractstepCtrl',
       $scope.um = UM.getEditor('myEditor')
       tijiao.wordTemplate = $scope.um.getContent();
       if (powerJSON && powerJSON.length) {
-        for (var i = 0, arr2 = {}; i < powerJSON.length; i++) {
-          arr2[powerJSON[i].name] = powerJSON[i].value;
+        for (var i = 0, arr2 = {},arr3=[]; i < powerJSON.length; i++) {
+          if(powerJSON[i].name.slice(0,8)=="powerCon"){
+            arr3.push({no:powerJSON[i].name.slice(8,9),title:powerJSON[i].value});
+          }else{
+            arr2[powerJSON[i].name] = powerJSON[i].value;
+          }
         }
+        arr2.audit=arr3;
         tijiao.power = arr2;
       }
       tijiao.status = 1;
@@ -164,6 +192,7 @@ app.controller('abstractstepCtrl',
         var data = resp.data;
         if(data){
           alert('保存成功！')
+          $scope.selectedUpdate=false;
         }
       })
     }
@@ -232,14 +261,13 @@ app.controller('abstractstepCtrl',
         url: $rootScope.applicationServerpath + 'abstractsteproute/getoneeventstep',
         data: {id: id}
       }).then(function (resp) {
-        var data = resp.data;
         if ($scope.currentstep != id) {
-          $rootScope.abstractstepN = data;
+          $rootScope.abstractstepN =resp.data;
           console.log($rootScope.abstractstepN)
           console.log('跳转')
           $scope.currentstep = $rootScope.abstractstepN._id;
           $scope.selectedNew = false;
-          $state.go('app.abstractstep.abstractstepNew', {id: data._id});
+          $state.go('app.abstractstep.abstractstepNew', {id:resp.data._id});
         } else {
           console.log('在本页面不跳转')
         }
