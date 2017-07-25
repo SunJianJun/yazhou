@@ -47,14 +47,12 @@
     <div class="wrapper-md">
         <form>
             <div class="emoji btn-group">
-                <span class="list-icon btn btn-group-sm btn-file">
+                <div class="list-icon btn btn-group-sm btn-file" ngf-select="uploadImageFile($file, $invalidFiles)" accept="image/*"  ngf-max-size="10MB">
                     <i class="icon-picture"></i>
-                    <input type="file" class="file"/>
-                </span>
-                <span class="list-icon btn btn-group-sm btn-file">
-                <i class="icon-camcorder"></i>
-                <input type="file" class="file"/>
-                </span>
+                </div>
+                <div class="list-icon btn btn-group-sm btn-file" ngf-select="uploadVideoFile($file, $invalidFiles)" accept="video/*"  ngf-max-size="50MB">
+                    <i class="icon-camcorder"></i>
+                </div>
             </div>
             <div class="send_massage" contenteditable>
                 <div class="send">

@@ -30,12 +30,9 @@ app.factory('localToolService', function ($http, localStorageService, $rootScope
             }
             if (!thisPerson.images)thisPerson.images = {};
             console.log('信息插入头像')
-            thisPerson.images.coverSmall = $rootScope.getUserPicById(newPerson._id);
-            if (!thisPerson.images.coverSmall) {
-                $rootScope.getUserPicById(newPerson._id, function (id, picData) {
-                    thisPerson.images.coverSmall = picData;
-                });
-            }
+            thisPerson.images.coverSmall = $rootScope.applicationServerpath+'person/personPic?pid='+newPerson._id;
+            // $rootScope.getUserPicById(newPerson._id);
+
             localStorageService.update("PersonInfo_" + newPerson._id, thisPerson);
             return thisPerson;
         },
@@ -109,8 +106,8 @@ app.factory('localToolService', function ($http, localStorageService, $rootScope
             });
 
             //插入的时候就发送到服务器说这条消息已读
-            if ($rootScope.curUser && $rootScope.curUser._id && receiver_id == $rootScope.curUser._id && newMessage.status == 0)//表示未读,而且是发给本人的，才标志已读
-                this.readMessageByID(newMessage._id, $rootScope.applicationServer);
+            // if ($rootScope.curUser && $rootScope.curUser._id && receiver_id == $rootScope.curUser._id && newMessage.status == 0)//表示未读,而且是发给本人的，才标志已读
+            //     this.readMessageByID(newMessage._id, $rootScope.applicationServer);
 
             localStorageService.update("messagesListboth" + sender_id + '_' + receiver_id, messageDetils);
         },
@@ -347,16 +344,16 @@ app.factory("userService", ['localStorageService', '$http', '$rootScope', functi
               });
         }
         ,
-        refreshCurUser: function (uuid, applicationServer) {
-            console.log(uuid, applicationServer)
-            var curUser = localStorageService.get('curUser');
-            if (curUser) {
-                console.log("当前用户curUser：" + curUser.name + '<>id:' + curUser._id);
-                return curUser;
-            } else {
-                console.log("手机uuid：" + uuid + '<>applicationServer:' + applicationServer);
-                this.setUserByUUid(uuid, applicationServer, this.refreshCurUser);
+        refreshCurUser: function () {
+            if($rootScope.curUser){
+                localStorageService.update('curUser',$rootScope.curUser,24*60);
+                return $rootScope.curUser;
             }
+            console.log("$rootScope.curUser"+"<>"+$rootScope.curUser);
+            $rootScope.curUser = localStorageService.get('curUser');
+            console.log("当前用户curUser：" + $rootScope.curUser.name + '<>id:' + $rootScope.curUser._id);
+            return $rootScope.curUser;
+
         }
     };
 }]);
@@ -498,8 +495,8 @@ app.factory('dateService', [function () {
 
 //部门和人员服务，包括获取当前用户所在的部门，获取这些部门内部的所有人员等等
 // 可以为定位、聊天提供数据支撑
-app.factory('departmentAndPersonsService', ['localStorageService', 'dateService', '$http', '$rootScope', 'userService',
-    function (localStorageService, dateService, $http, $rootScope, userService) {
+app.factory('departmentAndPersonsService', ['localStorageService', 'dateService', '$http', '$rootScope', 'userService','$q',
+    function (localStorageService, dateService, $http, $rootScope, userService, $q) {
         return {
 
             // 刷新部门下属人员
@@ -550,6 +547,45 @@ app.factory('departmentAndPersonsService', ['localStorageService', 'dateService'
                       });
                 }
             },
+            // 刷新部门下属人员
+            loadAllInvolvedChildrenByDidSyn: function (didobj, applicationServer) {
+                var deferred = $q.defer(); // 声明延后执行，表示要去监控后面的执行
+                console.log(didobj + "<loadAllInvolvedChildrenByDidSyn>" + applicationServer);
+                //传过来的是部门对象
+                if (didobj) {
+                    //保存提交到服务器
+                    $http({
+                        method: 'POST',
+                        url: applicationServer + 'department/getAllpersonsByDepartIdOneStep',
+                        //params:{personid:curUserId},
+                        data: {_id: didobj._id},
+                        headers: {'Content-Type': 'application/json;charset=utf-8'},
+                        dataType: 'JSON'
+                    })
+                        .success(function (data, status, headers, config) {
+                            //alert("用户定位点修改成功！");
+                            // curUser=$scope.curUser;
+                            // $scope.resMsg=data;
+                            console.log(data + "<loadAllInvolvedChildrenByDid>" + status);
+                            if (status == 200) {
+                                //其实也可以得到部门，但是部门暂时没有用
+
+                                //如果人员关联的单位下属人员不为空
+                                if (data.persons && data.persons.length > 0) {
+
+                                    deferred.resolve(data);  // 声明执行成功，即http请求数据成功，可以返回数据了
+
+                                }
+                            } else {
+                                deferred.reject(data);   // 声明执行失败，即服务器返回错误
+                            }
+                            ;
+                        }).error(function (data, status, headers, config) {
+                        deferred.reject(data);   // 声明执行失败，即服务器返回错误
+                    });
+                }
+                return deferred.promise;
+            },
             // 根据一个单位对象，获取这个单位内部的所有人员
             refreshPersonsUksee: function (group) {
                 if (group && group.length > 0) {
@@ -564,7 +600,52 @@ app.factory('departmentAndPersonsService', ['localStorageService', 'dateService'
                 }
             },
 
+            // 刷新用户当前可选单位，一个人可以在多个单位兼职，所以获取单位列表是后续操作的基础
+            refreshInvolvedDepartmentsListSyn: function (curUser, applicationServer) {
+                if (curUser && curUser._id) {
+                    var deferred = $q.defer(); // 声明延后执行，表示要去监控后面的执行
+                    console.log(curUser + "<>" + curUser._id + "<>");
+                    //保存提交到服务器
+                    $http({
+                        method: 'POST',
+                        url: applicationServer + 'department/getAllInvolvedDepartmentsByUserid',
+                        //params:{personid:curUserId},
+                        data: {_id: curUser._id},
+                        headers: {'Content-Type': 'application/json;charset=utf-8'},
+                        dataType: 'JSON'
+                    })
+                        .success(function (data, status, headers, config) {
+                            //alert("用户定位点修改成功！");
+                            // curUser=$scope.curUser;
+                            // $scope.resMsg=data;
+                            console.log(data + "<>" + data.length + "<>" + status);
+                            if (status == 200) {
+                                //说明服务器端获得当前用户所在部门成功
+                                //如果人员关联的单位不为空
+                                if (data.length > 0) {
+                                    var allInvolvedDepartments = new Array();
+                                    // 继续列出来
+                                    for (var index = 0; index < data.length; index++) {
+                                        console.log(data[index] + "部门id" + data[index].department);
+                                        allInvolvedDepartments.push(data[index].department);
+                                        // $scope.loadAllInvolvedChildrenByDid(data[index].department._id);
+                                    }
+                                    deferred.resolve(allInvolvedDepartments);  // 声明执行成功，即http请求数据成功，可以返回数据了
 
+                                }
+                            } else {
+
+                                deferred.reject(data);   // 声明执行失败，即服务器返回错误
+                            }
+                            ;
+                        }).error(function (data, status, headers, config) {
+                        // console.log(data+"<>"+data.length+"<>"+status);
+                        deferred.reject(data);   // 声明执行失败，即服务器返回错误
+
+                    });
+                }
+                return deferred.promise;
+            },
             // 刷新用户当前可选单位，一个人可以在多个单位兼职，所以获取单位列表是后续操作的基础
             refreshInvolvedDepartmentsList: function (curUser, applicationServer) {
                 if (curUser && curUser._id) {
@@ -941,3 +1022,607 @@ app.factory('messageService', ['localStorageService', 'dateService', '$http', '$
         };
     }
 ]);
+
+app.factory('ChatService', ['localStorageService','localToolService', 'dateService', '$http', '$rootScope','Upload', '$timeout','$q',  function (localStorageService,localToolService, dateService,$http,$rootScope,Upload, $timeout,$q) {
+    //跟聊天有关的服务全部注册出来
+    var service = {};
+
+    service.showModal = function () {};
+
+    /***************************************************/
+    //service的粒子性服务
+    //注意：mvc的解耦
+
+    //获得 聊天对象
+    // chatID聊天号码
+    service.getChat = function (chatID,callback) {
+
+    }
+
+    //获得一个 聊天所涉及人员
+    service.getPersonsByChatID = function ( chatID,callback) {
+
+    }
+
+    //获得当前 聊天 指定时间段聊天记录，一般有1周、3天和1天
+    service.getChatDocsInTimeSpan = function ( chatID,callback) {
+
+    }
+
+    //得到当前 聊天的最新记录，最新的10条记录
+    service.getLastChatDocs = function ( chatID,callback) {
+
+    }
+
+    //得到当前 聊天一段时间内的位置点
+    service.getPersonLocatedGrid = function ( chatID,timeSpan,callback) {
+
+    }
+
+    //得到当前 聊天收到的工作消息
+    service.getPersonLocatedGrid = function ( chatID,timeSpan,callback) {
+
+    }
+
+    //得到当前 聊天收到的工作消息
+    service.getPersonLocatedGrid = function ( chatID,timeSpan,callback) {
+
+    }
+
+    service.uploadVideoFile  = function(file, errFiles,callback) {
+        if (file) {
+            file.upload = Upload.upload({
+                url: $rootScope.applicationServerpath+"fileupload/video",
+                data: {"file": file,fileKey:"file"}
+            });
+            console.log('开始上传文件');
+
+            file.upload.then(function (response) {
+                $timeout(function () {
+                    file.result = response.data;
+                    if(response.data )
+                    {
+                        console.log('上传文件返回信息：'+JSON.stringify(response.data));
+                        if(callback)
+                        {callback(response.data);}
+                    }
+                    else
+                        console.log('上传文件失败：'+JSON.stringify(response.data));
+                });
+            }, function (response) {
+                if (response.status > 0)
+                    var errorMsg = response.status + ': ' + response.data;
+            }, function (evt) {
+                file.progress = Math.min(100, parseInt(100.0 *
+                    evt.loaded / evt.total));
+            });
+        }
+    }
+
+
+    service.uploadImagefile  = function(file, errFiles,callback) {
+        if (file) {
+            file.upload = Upload.upload({
+                url: $rootScope.applicationServerpath+"fileupload/photo",
+                data: {"file": file,fileKey:"file"}
+            });
+            console.log('开始上传文件');
+
+            file.upload.then(function (response) {
+                $timeout(function () {
+                    file.result = response.data;
+                    if(response.data )
+                    {
+                        console.log('上传文件返回信息：'+JSON.stringify(response.data));
+                        if(callback)
+                        {callback(response.data);}
+                    }
+                    else
+                        console.log('上传文件失败：'+JSON.stringify(response.data));
+                });
+            }, function (response) {
+                if (response.status > 0)
+                    var errorMsg = response.status + ': ' + response.data;
+            }, function (evt) {
+                file.progress = Math.min(100, parseInt(100.0 *
+                    evt.loaded / evt.total));
+            });
+        }
+    }
+
+    service.uploadPic =  function(uri, uploadDir, mimetype) {
+        var uploadDir=$rootScope.applicationServer+"/filedirectupload/photo";
+        // uploadDir=$rootScope.applicationServer+"/filedirectupload/photo";
+        // uploadDir=$rootScope.applicationServer+"/filedirectupload/IDCard";
+        // mimetype="video/mp4";
+        // mimetype="audio/m4a";
+        //默认是图片
+        // if(!mimetype){mimetype="image/jpg";}
+        // 注意此处设置的fileKey，Express服务端中也需要这个
+        var fileURL = uri;
+        var options = new FileUploadOptions();
+        options.fileKey = "file";
+        options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
+        options.mimeType = mimetype;//注意身份证识别只认jpg，而文件上传服务器是根据这里的mimttype确定文件扩展名的，所以从jpeg改为jpg
+        options.chunkedMode = true;
+
+
+        var ft = new FileTransfer();
+
+
+        //这里将图片上传到指定网址
+        ft.upload(fileURL,uploadDir , function(data) {
+            // 设置图片新地址
+            var resp = data.response;
+            console.log(resp);
+//								alert(resp);
+            alert("上传后返回值："+resp+"\n"+(resp.fileType=='IDCard'));
+            //必须得parse一下，否则就会变成字符串
+            var pit=JSON.parse(resp);
+            alert("上传后返回值："+pit+"\n"+(pit.fileType=='IDCard'));
+            if (pit.fileType&&pit.fileType=='IDCard') {
+                alert("上传后ok");
+                $scope.processIDcard(pit.filename);
+
+            }
+            $ionicLoading.hide();
+        }, function(error) {
+//								alert(error);
+            $ionicLoading.hide();
+        }, options);
+
+
+    }
+
+    // 消息服务
+    service.readMessageByID=function(messageID,applicationServer){
+        //保存提交到服务器
+        $http({
+            method:'POST',
+            url:applicationServer+'message/readtMessage',
+            //params:{personid:curUserId},
+            data:{messID:messageID
+            },
+            headers: {'Content-Type': 'application/json;charset=utf-8'},
+            dataType:'JSON'
+        })
+            .success(function(data,status,headers,config){
+                //alert("用户定位点修改成功！");
+                // curUser=$scope.curUser;
+                // $scope.resMsg=data;
+                // //console.log(data+"<loadAllInvolvedChildrenByDid>"+status);
+                if(status==200){
+                    //其实也可以得到部门，但是部门暂时没有用
+
+                    //如果人员关联的消息数量不为0
+                    if( data){
+                        // 广播用户发来的消息查询成功
+                        $rootScope.$broadcast('readMessage', data);
+                    }
+                }else{
+                    // 广播用户发来的消息列表刷新失败
+                    $rootScope.$broadcast('readMessageFail', data);
+                };
+            }).error(function(data,status,headers,config){
+
+        });
+    }
+
+    service.sendMessage=function(messageJson,senderID,receiverID,applicationServer){
+        //保存提交到服务器
+        $http({
+            method:'POST',
+            url:applicationServer+'message/sendAMessage',
+            //params:{personid:curUserId},
+            data:{
+                'messageObj':messageJson,
+                'senderID':senderID,
+                'receiverID':receiverID
+            },
+            headers: {'Content-Type': 'application/json;charset=utf-8'},
+            dataType:'JSON'
+        })
+            .success(function(data,status,headers,config){
+                if(status==200){
+                    //其实也可以得到部门，但是部门暂时没有用
+
+                    //返回值是新消息
+                    if( data){
+                        //console.log("发送消息到服务器成功："+JSON.stringify(data));
+                        // 广播用户发消息成功
+                        $rootScope.$broadcast('sendMessageOK', data);
+                    }
+                }else{
+                    // 广播用户发消息失败
+                    $rootScope.$broadcast('sendMessageFail', data);
+                };
+            }).error(function(data,status,headers,config){
+
+        });
+    }
+
+
+    // 原来的初始化不是用我们的json，根据发送者和接收者的整个对象，得到他们最近的未读消息摘要
+    service.initMessageListByPersonIDs= function (senderID, receiverID, applicationServer, callback) {
+        var deferred = $q.defer(); // 声明延后执行，表示要去监控后面的执行
+        console.log(receiver + "去服务器刷新 initMessageListByPerson " + sender);
+        // var strdd = JSON.stringify(sender);
+        //   console.log(sender.name+'<initMessageListByPerson>'+ strdd);//images.coverSmall
+        //保存提交到服务器
+        $http({
+            method: 'POST',
+            url: applicationServer + 'message/getMyNewestMessageFromWho',
+            //params:{personid:curUserId},
+            data: {
+                receiverID: receiver._id,
+                senderID: sender._id,
+                isAbstract: true
+            },
+            headers: {'Content-Type': 'application/json;charset=utf-8'},
+            dataType: 'JSON'
+        })
+            .success(function (data, status, headers, config) {
+                //alert("用户定位点修改成功！");
+                // curUser=$scope.curUser;
+                // $scope.resMsg=data;
+                // console.log(data+"<loadAllInvolvedChildrenByDid>"+status);
+                if (status == 200) {
+                    //其实也可以得到部门，但是部门暂时没有用
+
+                    //如果人员关联的消息数量不为0
+                    if (data.sender && data.count > 0) {
+
+                        deferred.resolve(data);  // 声明执行成功，即http请求数据成功，可以返回数据了
+                        // 继续列出来
+                        // sender.messageabstract = data.abstract;
+                        // sender.messagecount = data.count;
+                        // sender.messagelastTime = data.lastTime;
+                        //
+                        // sender.messagestartTime = data.startTime;
+
+                    }
+                }
+            }).error(function (data, status, headers, config) {
+            deferred.reject(data);   // 声明执行失败，即服务器返回错误
+        });
+
+        return deferred.promise;   // 返回承诺，这里并不是最终数据，而是访问最终数据的API
+    }
+
+
+    // 原来的初始化不是用我们的json，根据发送者和接收者的整个对象，得到他们最近的未读消息摘要
+    service.initMessageListByPerson= function (sender, receiver, applicationServer, callback) {
+        var deferred = $q.defer(); // 声明延后执行，表示要去监控后面的执行
+        console.log(receiver + "去服务器刷新 initMessageListByPerson " + sender);
+        // var strdd = JSON.stringify(sender);
+        //   console.log(sender.name+'<initMessageListByPerson>'+ strdd);//images.coverSmall
+        //保存提交到服务器
+        $http({
+            method: 'POST',
+            url: applicationServer + 'message/getMyNewestMessageFromWho',
+            //params:{personid:curUserId},
+            data: {
+                receiverID: receiver._id,
+                senderID: sender._id,
+                isAbstract: true
+            },
+            headers: {'Content-Type': 'application/json;charset=utf-8'},
+            dataType: 'JSON'
+        })
+            .success(function (data, status, headers, config) {
+                //alert("用户定位点修改成功！");
+                // curUser=$scope.curUser;
+                // $scope.resMsg=data;
+                // console.log(data+"<loadAllInvolvedChildrenByDid>"+status);
+                if (status == 200) {
+                    //其实也可以得到部门，但是部门暂时没有用
+
+                    //如果人员关联的消息数量不为0
+                    if (data.sender && data.count > 0) {
+
+                        deferred.resolve(data);  // 声明执行成功，即http请求数据成功，可以返回数据了
+                        // 继续列出来
+                        sender.messageabstract = data.abstract;
+                        sender.messagecount = data.count;
+                        sender.messagelastTime = data.lastTime;
+
+                        sender.messagestartTime = data.startTime;
+                        // sender.unreadmessages=data.unreadmessages;
+                        localStorageService.update("messagesByUserID" + sender._id, sender);
+
+                        // 广播用户发来的消息查询成功
+                        $rootScope.$broadcast('messageListRefreshed', sender);
+                    }
+                } else {
+                    sender.messageabstract = '没有消息。。。';
+                    sender.messagecount = 0;
+                    localStorageService.update("messagesByUserID" + sender._id, sender);
+                    // 广播用户发来的消息列表刷新失败
+                    $rootScope.$broadcast('messageListRefreshFail', sender);
+                }
+                ;
+            }).error(function (data, status, headers, config) {
+            deferred.reject(data);   // 声明执行失败，即服务器返回错误
+        });
+
+        return deferred.promise;   // 返回承诺，这里并不是最终数据，而是访问最终数据的API
+    }
+
+    //根据接收者和发送者的id，以及时间段，获取这段时间的聊天记录
+    service.initMessageListInTimeSpanByPersonIds=function(sender_id,receiver_id,startTime,lastTime,applicationServer,callback) {
+        //console.log(receiver_id+" initMessageListInTimeSpanByPersonIds "+sender_id+"<>startTime"+startTime+"<>lastTime"+lastTime);
+        //保存提交到服务器
+        $http({
+            method:'POST',
+            url:applicationServer+'message/getMessagesInATimeSpanFromWho',
+            //params:{personid:curUserId},
+            data:{receiverID:receiver_id,
+                senderID:sender_id,
+                startTime:startTime,
+                lastTime:lastTime
+            },
+            headers: {'Content-Type': 'application/json;charset=utf-8'},
+            dataType:'JSON'
+        })
+            .success(function(data,status,headers,config){
+                //alert("用户定位点修改成功！");
+                // curUser=$scope.curUser;
+                // $scope.resMsg=data;
+                // //console.log(data+"<loadAllInvolvedChildrenByDid>"+status);
+                if(status==200){
+                    //如果人员关联的消息数量不为0
+                    if( data.length>0){
+                        for (var index=0;index<data.length;index++){
+                            localToolService.insertANewMessageToMessageList(sender_id,receiver_id,data[index]);
+                        }
+                    }else{
+                        // localStorageService.update("messagesListboth" + sender_id+'_'+receiver_id,data);
+                    }
+                    // var strdd = JSON.stringify(data);
+                    // //console.log('<initMessageListInTimeSpanByPersonIds>'+ strdd);
+                    // 广播用户发来的消息查询成功
+                    $rootScope.$broadcast('bothMessageListRefreshed', {sender_id:sender_id,receiver_id:receiver_id});
+                }else{
+                    // 广播用户发来的消息列表刷新失败
+                    $rootScope.$broadcast('bothMessageListRefreshFail', data);
+                };
+            }).error(function(data,status,headers,config){
+
+        });
+    }
+
+    // 根据发送者和接收者的id，得到他们最近的未读消息摘要
+    service.refreshMessageListByPersonIdsSyn=function(sender_id,receiver_id,applicationServer) {
+        // console.log(receiver_id+"去服务器刷新 refreshMessageListByPersonIdsSyn "+sender_id);
+        var deferred = $q.defer(); // 声明延后执行，表示要去监控后面的执行
+        //保存提交到服务器
+        $http({
+            method:'POST',
+            url:applicationServer+'message/getMyNewestMessageFromWho',
+            //params:{personid:curUserId},
+            data:{receiverID:receiver_id,
+                senderID:sender_id,
+                isAbstract:true
+            },
+            headers: {'Content-Type': 'application/json;charset=utf-8'},
+            dataType:'JSON'
+        })
+            .success(function(data,status,headers,config){
+                //alert("用户定位点修改成功！");
+                // curUser=$scope.curUser;
+                // $scope.resMsg=data;
+                // //console.log(data+"<loadAllInvolvedChildrenByDid>"+status);
+                if(status==200){
+                    //其实也可以得到部门，但是部门暂时没有用
+
+                    //如果人员关联的消息数量不为0
+                    if(data.sender && data.count>0){
+                        // 继续列出来
+                        // sender.messageabstract=data.abstract; 文字摘要
+                        // sender.messagecount=data.count; 未读消息总数
+                        // sender.messagelastTime=data.lastTime; 最近一条消息的时间
+
+                        console.log(data+"<refreshMessageListByPersonIdsSyn未读消息>"+status);
+                        deferred.resolve(data);  // 声明执行成功，即http请求数据成功，可以返回数据了
+                    }
+                }else{
+                    deferred.reject(data);   // 声明执行失败，即服务器返回错误
+                };
+            }).error(function(data,status,headers,config){
+            deferred.reject(data);   // 声明执行失败，即服务器返回错误
+
+        });
+
+        return deferred.promise;   // 返回承诺，这里并不是最终数据，而是访问最终数据的API
+    }
+
+    service.getAllUnreadMessagesSyn=function(receiver_id,applicationServer) {
+        console.log(receiver_id+"去服务器刷新所有未读消息 getAllUnreadMessagesSyn "+receiver_id);
+        var deferred = $q.defer(); // 声明延后执行，表示要去监控后面的执行
+        //保存提交到服务器
+        $http({
+            method:'POST',
+            url:applicationServer+'message/getAllUnreadMessages',
+            //params:{personid:curUserId},
+            data:{receiverID:receiver_id
+            },
+            headers: {'Content-Type': 'application/json;charset=utf-8'},
+            dataType:'JSON'
+        })
+            .success(function(data,status,headers,config){
+                //alert("用户定位点修改成功！");
+                // curUser=$scope.curUser;
+                // $scope.resMsg=data;
+                // //console.log(data+"<loadAllInvolvedChildrenByDid>"+status);
+                if(status==200){
+                    //其实也可以得到部门，但是部门暂时没有用
+
+                    console.log("\n"+JSON.stringify(data)+"<消息>"+data.length);
+                    //如果人员关联的消息数量不为0
+                    if(data && data.length>0){
+                        // 继续列出来
+                        // sender.messageabstract=data.abstract; 文字摘要
+                        // sender.messagecount=data.count; 未读消息总数
+                        // sender.messagelastTime=data.lastTime; 最近一条消息的时间
+
+                        console.log("\n"+data+"<未读消息>"+data.length);
+                        //如果人员关联的消息数量不为0
+
+                        for (var index=0;index<data.length;index++){
+                            localToolService.insertANewMessageToMessageList(data[index].sender,receiver_id,data[index]);
+                        }
+                        deferred.resolve(data);  // 声明执行成功，即http请求数据成功，可以返回数据了
+                    }
+                }else{
+                    deferred.reject(data);   // 声明执行失败，即服务器返回错误
+                };
+            }).error(function(data,status,headers,config){
+            deferred.reject(data);   // 声明执行失败，即服务器返回错误
+
+        });
+
+        return deferred.promise;   // 返回承诺，这里并不是最终数据，而是访问最终数据的API
+    }
+
+    // 根据发送者和接收者的id，得到他们最近的未读消息摘要
+    service.refreshMessageListByPersonIds=function(sender_id,receiver_id,applicationServer,callback) {
+        console.log(receiver_id+"去服务器刷新 refreshMessageListByPersonIds "+sender_id);
+        //保存提交到服务器
+        $http({
+            method:'POST',
+            url:applicationServer+'message/getMyNewestMessageFromWho',
+            //params:{personid:curUserId},
+            data:{receiverID:receiver_id,
+                senderID:sender_id,
+                isAbstract:true
+            },
+            headers: {'Content-Type': 'application/json;charset=utf-8'},
+            dataType:'JSON'
+        })
+            .success(function(data,status,headers,config){
+                //alert("用户定位点修改成功！");
+                // curUser=$scope.curUser;
+                // $scope.resMsg=data;
+                // //console.log(data+"<loadAllInvolvedChildrenByDid>"+status);
+                if(status==200){
+                    //其实也可以得到部门，但是部门暂时没有用
+
+                    //如果人员关联的消息数量不为0
+                    if(data.sender && data.count>0){
+                        // 继续列出来
+                        // sender.messageabstract=data.abstract; 文字摘要
+                        // sender.messagecount=data.count; 未读消息总数
+                        // sender.messagelastTime=data.lastTime; 最近一条消息的时间
+                        localStorageService.update("messagesAbstractBySenderID"+sender_id, data);
+
+                        var strdd = JSON.stringify(data);
+                        //console.log('<服务器取回的某人的消息列表initMessageListByPersonIds>'+ strdd);
+                        // 广播用户发来的消息查询成功,附带参数是sender_id，说明是谁的消息列表
+                        $rootScope.$broadcast('messageListRefreshed', sender_id);
+                    }
+                }else{
+                    // 广播用户发来的消息列表刷新失败
+                    $rootScope.$broadcast('messageListRefreshFail', sender_id);
+                };
+            }).error(function(data,status,headers,config){
+
+        });
+    }
+    // 原来的初始化不是用我们的json，根据发送者和接收者的整个对象，得到他们最近的未读消息摘要
+    service.refreshMessageListByPerson=function(sender, receiver, applicationServer, callback) {
+
+        //console.log(receiver+"去服务器刷新 initMessageListByPerson "+sender);
+        // var strdd = JSON.stringify(sender);
+        //   //console.log(sender.name+'<initMessageListByPerson>'+ strdd);//images.coverSmall
+        //保存提交到服务器
+        $http({
+            method:'POST',
+            url:applicationServer+'message/getMyNewestMessageFromWho',
+            //params:{personid:curUserId},
+            data:{receiverID:receiver._id,
+                senderID:sender._id,
+                isAbstract:true
+            },
+            headers: {'Content-Type': 'application/json;charset=utf-8'},
+            dataType:'JSON'
+        })
+            .success(function(data,status,headers,config){
+                //alert("用户定位点修改成功！");
+                // curUser=$scope.curUser;
+                // $scope.resMsg=data;
+                // //console.log(data+"<loadAllInvolvedChildrenByDid>"+status);
+                if(status==200){
+                    //其实也可以得到部门，但是部门暂时没有用
+
+                    //如果人员关联的消息数量不为0
+                    if(data.sender && data.count>0){
+                        // 继续列出来
+                        sender.messageabstract=data.abstract;
+                        sender.messagecount=data.count;
+                        sender.messagelastTime=data.lastTime;
+
+                        sender.messagestartTime=data.startTime;
+                        // sender.unreadmessages=data.unreadmessages;
+                        localStorageService.update("messagesAbstractBySenderID"+sender._id, sender);
+
+                        // 广播用户发来的消息查询成功
+                        $rootScope.$broadcast('messageListRefreshed', sender);
+                    }
+                }else{
+                    sender.messageabstract='没有消息。。。';
+                    sender.messagecount=0;
+                    localStorageService.update("messagesAbstractBySenderID"+sender._id, sender);
+                    // 广播用户发来的消息列表刷新失败
+                    $rootScope.$broadcast('messageListRefreshFail', sender);
+                };
+            }).error(function(data,status,headers,config){
+
+        });
+
+    },
+        service.getAllMessages= function() {
+
+            var messages = new Array();
+            var i = 0;
+            var messageID = localStorageService.get("messageUserIDs");
+            var length = 0;
+            var message = null;
+            if (messageID) {
+                length = messageID.length;
+
+                for (; i < length; i++) {
+                    message = localStorageService.get("message_" + messageID[i]._id);
+                    if(message){
+                        messages.push(message);
+                    }
+                }
+                dateService.handleMessageDate(messages);
+                return messages;
+            }
+            return null;
+
+        }
+    service.getMessageByBothId=function(senderid,reciverId){
+        //两个人的聊天记录有唯一的缓存
+        return localStorageService.get("messagesListboth" + senderid+'_'+reciverId,60*24);
+    }
+    // 根据需要的数量，从缓存聊天记录中取出指定num条，进行数据返回，进一步进行显示
+    service.getAmountMessageByBothId=function(num, senderid,reciverId){
+        var messages = [];
+        var message = localStorageService.get("messagesListboth" + senderid+'_'+reciverId,24*60);
+        var length = 0;
+        if(num < 0 || !message) return;
+        length = message.length;
+        if(num < length){
+            messages = message.splice(length - num, length);
+            return messages;
+        }else{
+            return message;
+        }
+    }
+
+
+
+
+    return service
+}]);

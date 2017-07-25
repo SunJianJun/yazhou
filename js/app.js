@@ -15,5 +15,6 @@ angular.module('app', [
     'ui.validate',
     'oc.lazyLoad',
     'pascalprecht.translate',
-    'ui.tree'
+    'ui.tree',
+    'ngFileUpload'
 ]);
