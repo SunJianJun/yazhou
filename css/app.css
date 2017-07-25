@@ -5825,3 +5825,12 @@ div.info .info-middle a{
 .case .panel-body{
     padding:5px 10px;
 }
+.alertmap{
+    width:300px;
+    height:300px;
+    position: absolute;
+    top:0;
+    left:450px;
+    z-index:1000;
+    overflow: hidden;
+}

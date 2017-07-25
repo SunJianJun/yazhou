@@ -66,7 +66,7 @@
         <!-- Nested node template -->
         <script type="text/ng-template" id="nodes_renderer.html">
           <div ui-tree-handle class="tree-node tree-node-content wrapper-xs">
-            <a class="btn btn-success btn-xs" ng-if="node.persons && node.persons.length> 0" data-nodrag data-toggle="collapse"
+            <a class="btn btn-success btn-xs" data-nodrag data-toggle="collapse"
                data-target="#personglup{{$index}}"><span
                     class="glyphicon"
                     ng-class="{
@@ -79,19 +79,23 @@
             <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem({depart:node})" style="margin-right: 8px;"><span
                     class="glyphicon glyphicon-plus"></span></a>
           </div>
-          <ol ui-tree-nodes="" id="personglup{{$index}}" class="collapse" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+
+          <!--人员-->
+          <div ui-tree-nodes="" id="personglup{{$index}}" class="collapse" ng-model="node.nodes" ng-class="{hidden: collapsed}">
             <!--<li ng-repeat="node in node.children" ui-tree-node ng-include="'nodes_renderer.html'">-->
             <!--</li>-->
             <!--<li><h1>person.person</h1></li>-->
-            <li ng-repeat="person in node.persons" class="wrapper-xs">
+            <div ng-repeat="person in node.persons" class="wrapper-xs">
               <div>{{person.name}}
               <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span
                       class="glyphicon glyphicon-remove"></span></a>
               <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem({person:person})" style="margin-right: 8px;"><span
                       class="glyphicon glyphicon-plus"></span></a>
               </div>
-            </li>
-          </ol>
+            </div>
+
+          </div>
+
         </script>
 
         <div ui-tree>
@@ -137,7 +141,8 @@
                   <div class="list-group">
                     <a href="" class="list-group-item">
                       <i class="fa fa-envelope fa-fw m-r-xs"></i> 姓名
-                      <p class="form-control-static">{{item.label}}</p>
+                      <p ng-hide="item.editing" class="form-control-static">{{item.data.name}}</p>
+                      <input type="text" class="form-control" ng-show="item.editing" ng-model="item.data.name" >
                     </a>
                     <a href="" class="list-group-item">
                       <i class="fa fa-envelope fa-fw m-r-xs"></i> 数据库id
@@ -145,34 +150,40 @@
                     </a>
                     <a href="" class="list-group-item">
                       <!--<span class="badge bg-info"></span>-->
-                      <i class="fa fa-eye fa-fw m-r-xs"></i> 姓名
-                      <p class="form-control-static">{{item.data.name}}</p>
+                      <i class="fa fa-eye fa-fw m-r-xs"></i> 职务
+                      <p ng-hide="item.editing" class="form-control-static">{{item.data.name}}</p>
+                      <input type="text" class="form-control" ng-show="item.editing" ng-model="item.data.name" >
                     </a>
                     <a href="" class="list-group-item">
                       <i class="fa fa-chevron-right text-muted"></i>
                       <i class="fa fa-phone fa-fw m-r-xs"></i> 性别
-                      <p class="form-control-static">{{item.data.sex}}</p>
+                      <p ng-hide="item.editing" class="form-control-static">{{item.data.sex}}</p>
+                      <input type="text" class="form-control" ng-show="item.editing" ng-model="item.data.sex" >
                     </a>
                     <a href="" class="list-group-item">
                       <i class="fa fa-comments-o fa-fw m-r-xs"></i> 手机号
-                      <p class="form-control-static" ng-hide="item.editing">{{item.data.mobile}}</p>
+                      <p ng-hide="item.editing" class="form-control-static" ng-hide="item.editing">{{item.data.mobile}}</p>
                       <input type="text" class="form-control" ng-show="item.editing" ng-model="item.data.mobile" >
                     </a>
                     <a href="" class="list-group-item">
                       <i class="fa fa-bookmark fa-fw m-r-xs"></i> 国籍
-                      <p class="form-control-static">{{item.data.nation}}</p>
+                      <p ng-hide="item.editing" class="form-control-static">{{item.data.nation}}</p>
+                      <input type="text" class="form-control" ng-show="item.editing" ng-model="item.data.nation" >
                     </a>
                     <a href="" class="list-group-item">
                       <i class="fa fa-bell fa-fw m-r-xs"></i> 生日
-                      <p class="form-control-static">{{item.data.birthday}}</p>
+                      <p ng-hide="item.editing" ng-hide="item.editing" class="form-control-static">{{item.data.birthday}}</p>
+                      <input class="form-control" ng-show="item.editing" ng-model="item.data.birthday" >
                     </a>
                     <a href="" class="list-group-item">
                       <i class="fa fa-clock-o fa-fw m-r-xs"></i> 籍贯
-                      <p class="form-control-static">{{item.data.residence}}</p>
+                      <p ng-hide="item.editing" class="form-control-static">{{item.data.residence}}</p>
+                      <input type="text" class="form-control" ng-show="item.editing" ng-model="item.data.residence" >
                     </a>
                     <a href="" class="list-group-item">
                       <i class="fa fa-clock-o fa-fw m-r-xs"></i> 身份证号
-                      <p class="form-control-static">{{item.data.idNum}}</p>
+                      <p ng-hide="item.editing" ng-hide="item.editing" class="form-control-static">{{item.data.idNum}}</p>
+                      <input type="text" class="form-control" ng-show="item.editing" ng-model="item.data.idNum" >
                     </a>
                     <a href="" class="list-group-item">
                       <i class="fa fa-clock-o fa-fw m-r-xs"></i> 系统绑定手机UUID
@@ -180,12 +191,13 @@
                     </a>
                     <a href="" class="list-group-item">
                       <i class="fa fa-clock-o fa-fw m-r-xs"></i> 头衔
-                      <p class="form-control-static">{{item.data.title}}</p>
+                      <p ng-hide="item.editing" class="form-control-static">{{item.data.title}}</p>
                       <input type="text" class="form-control" ng-show="item.editing" ng-model="item.data.title" >
                     </a>
                     <a href="" class="list-group-item">
                       <i class="fa fa-clock-o fa-fw m-r-xs"></i> 年龄
-                      <p class="form-control-static">{{item.data.age}}</p>
+                      <p ng-hide="item.editing" class="form-control-static">{{item.data.age}}</p>
+                      <input type="text" class="form-control" ng-show="item.editing" ng-model="item.data.age" >
                     </a>
                     <a href="" class="list-group-item">
                       <i class="fa fa-clock-o fa-fw m-r-xs"></i> 录入时间
@@ -284,20 +296,17 @@
       <div class="list-group">
         <a href="" class="list-group-item">
           <i class="fa fa-envelope fa-fw m-r-xs"></i> 单位名称
-          <p class="form-control-static" ng-hide="item.editing">{{item.name}}</p>
-          <input type="text" class="form-control" ng-show="item.editing" ng-model="item.label" >
+          <p class="form-control-static" ng-hide="item.editing">{{item.data.name}}</p>
+          <input type="text" class="form-control" ng-show="item.editing" ng-model="item.data.name" >
         </a>
         <a href="" class="list-group-item">
           <i class="fa fa-envelope fa-fw m-r-xs"></i> 数据库id
-          <p class="form-control-static" ng-hide="item.editing">{{item.data._id}}</p>
-          <input type="text" class="form-control" ng-show="item.editing" ng-model="item.data._id" >
+          <p class="form-control-static">{{item.data._id}}</p>
         </a>
-        <!--<a href="" class="list-group-item">-->
-          <!--&lt;!&ndash;<span class="badge bg-info"></span>&ndash;&gt;-->
-          <!--<i class="fa fa-eye fa-fw m-r-xs"></i> 姓名-->
-          <!--<p class="form-control-static" ng-hide="item.editing">{{item.data.name}}</p>-->
-          <!--<input type="text" class="form-control" ng-show="item.editing" ng-model="item.data.name" >-->
-        <!--</a>-->
+        <a href="" class="list-group-item">
+          <i class="fa fa-eye fa-fw m-r-xs"></i> 部门人数
+          <p class="form-control-static">{{item.data.persons.length}}</p>
+        </a>
         <a href="" class="list-group-item">
           <i class="fa fa-chevron-right text-muted"></i>
           <i class="fa fa-phone fa-fw m-r-xs"></i> 描述信息
@@ -307,8 +316,7 @@
 
         <a href="" class="list-group-item">
           <i class="fa fa-clock-o fa-fw m-r-xs"></i> 录入时间
-          <p class="form-control-static" ng-hide="item.editing">{{item.data.create_date}}</p>
-          <input type="text" class="form-control" ng-show="item.editing" ng-model="item.data.create_date" >
+          <p class="form-control-static">{{item.data.create_date}}</p>
         </a>
         <div class="hbox text-center b-b b-light text-sm">
           <a href="" class="col padder-v text-muted b-r b-light">
@@ -336,6 +344,12 @@
           <a href="" class="col padder-v text-muted">
             <i class="icon-flag block m-b-xs fa-2x"></i>
             <span>调整单位状态</span>
+          </a>
+        </div>
+        <div class="hbox text-center text-sm">
+          <a ng-click="" class="col padder-v text-muted b-r b-light">
+            <i class="icon-calendar block m-b-xs fa-2x"></i>
+            <span>查看部门职务</span>
           </a>
         </div>
       </div>

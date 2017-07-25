@@ -22,6 +22,7 @@ app.controller('gridmapctl',
       $scope.mapCreated = function (map) {
         $scope.map = map;
         $rootScope.map = map;
+
         // 进行定位
         //地图插件加入geolocation
         $scope.geolocation = new AMap.Geolocation({
@@ -41,19 +42,19 @@ app.controller('gridmapctl',
 
       //随机生成一个位置点
       $scope.getRadomPt = function (orgPt) {
-        //var resultPt = {
-        //  longitude: '',
-        //  latitude: ''
-        //};
-        //if (orgPt && orgPt.longitude && orgPt.latitude) {
-        //  resultPt.longitude = orgPt.longitude + Math.random() / 25 * (Math.random() > 0.5 ? -1 : 1);
-        //  resultPt.latitude = orgPt.latitude + Math.random() / 25 * (Math.random() > 0.5 ? -1 : 1);
-        //} else {
-        //  resultPt.longitude = 116.40106141351825 + Math.random() / 25 * (Math.random() > 0.5 ? -1 : 1);
-        //  resultPt.latitude = 39.994762731321174 + Math.random() / 25 * (Math.random() > 0.5 ? -1 : 1);
-        //}
-        //// alert("resultPt:"+resultPt.longitude+"<>"+resultPt.latitude);
-        //return resultPt;
+        var resultPt = {
+         longitude: '',
+         latitude: ''
+        };
+        if (orgPt && orgPt.longitude && orgPt.latitude) {
+         resultPt.longitude = orgPt.longitude + Math.random() / 25 * (Math.random() > 0.5 ? -1 : 1);
+         resultPt.latitude = orgPt.latitude + Math.random() / 25 * (Math.random() > 0.5 ? -1 : 1);
+        } else {
+         resultPt.longitude = 116.40106141351825 + Math.random() / 25 * (Math.random() > 0.5 ? -1 : 1);
+         resultPt.latitude = 39.994762731321174 + Math.random() / 25 * (Math.random() > 0.5 ? -1 : 1);
+        }
+        // alert("resultPt:"+resultPt.longitude+"<>"+resultPt.latitude);
+        return resultPt;
       };
 
 
@@ -388,6 +389,10 @@ app.controller('gridmapctl',
       // 如果接到通知，某人的同事列表获取成功，接着刷
       $scope.$on('getWorkmatesByUserIdOk', function (event, sender) {
         $scope.assembleWorkmates();
+        console.log($scope.map)
+        console.log($scope.map);
+        $scope.loadpolylayers();
+        $scope.drawpolylayer($scope.spotarea)
       });
       // 如果接到通知，某同事的最新位置获取成功，接着刷
       $scope.$on('getLatestLocationByUserIdOk', function (event, data) {
@@ -786,7 +791,6 @@ app.controller('gridmapctl',
       //刷新地图,这是每一轮循环必做之事
       $scope.refeshMap = function () {
         $scope.refreshWorkmatesLocations();// 刷新地图上所有同事的位置
-        $scope.loadpolylayers();
 
         //开始刷新定位
         $scope.refreshMovingObjs();
@@ -1758,7 +1762,7 @@ app.controller('gridmapctl',
         }
         $scope.movingMarkers = new Array();
 
-        //$scope.loadpolylayers();
+        // $scope.loadpolylayers();
       };
 
 
@@ -1772,6 +1776,8 @@ app.controller('gridmapctl',
         // alert( $scope.engineRun);
         // alert( '中文试试2');
         $rootScope.mapEngine.engineInitialise();
+
+
         //在地图页面启动周期性函数
         $rootScope.mapEngineTimer = window.setInterval(
           function () {
@@ -1810,6 +1816,7 @@ app.controller('gridmapctl',
         $rootScope.mapEngine.engineInitialise();//初始化全部依靠当前用户的获取
         $rootScope.mapEngine.engineStop();
         $rootScope.mapEngine.engineRun();
+
       });
 
       $rootScope.mapEngine.engineStop();

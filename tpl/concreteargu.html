@@ -26,13 +26,17 @@
                                 <td>参数：</td>
                                 <td>
                                     <form id="typeJSON" name="typeJSON">
-                                        <div class="wrapper-xs clear" ng-repeat="can in arguArr"
-                                              ng-init="types=(can.type=='time'||can.type=='时间'?'date':'')">
-                                            <div class="pull-left w-sm">{{$index+1}} {{can.promptvalue}}：</div>
+                                        <div class="wrapper-xs dropdown-submenu" ng-repeat="can in arguArr"
+                                              ng-init="types=(can.type=='time'||can.type=='时间'?'date':'');locations=(can.type=='location'||can.type=='地点'?'这是地点':'')">
+                                            <div class="pull-left w">{{$index+1}} {{can.promptvalue}}：</div>
                                             <input class="w-sm" id="{{can._id}}" name="{{can._id}}"
                                                    type="{{types}}"
+                                                   ng-class="locations?'locationsmap':''"
                                                    title="{{can.promptvalue}}" value="{{can.value[0]}}"/>
-                                            <button>选择</button>
+                                            <button ng-click="choicelocation(can.type)">选择</button>
+                                            <div class="alertmap" style="display: none;" ng-if="locations">
+                                                <div id="alertmapa"></div>
+                                            </div>
                                         </div>
                                         <button class="btn btn-danger" ng-click="createWord()">生成Word</button>
                                     </form>
@@ -64,7 +68,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-body">
-                                    <h4>输入设置密码<span class="close" data-dismiss="modal">×</span></h4>
+                                    <h4>个人审核密码<span class="close" data-dismiss="modal">×</span></h4>
 
                                     <form class="bs-example bs-example-form" role="form">
                                         <div class="row">

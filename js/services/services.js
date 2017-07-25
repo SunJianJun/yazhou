@@ -248,7 +248,6 @@ app.factory("userService", ['localStorageService', '$http', '$rootScope', functi
                 dataType: 'JSON'
             })
               .success(function (data, status, headers, config) {
-                  console.log(data);
                   if (status == 200) {
                       if (!data) {
                           //广播用户查询同事失败
@@ -363,7 +362,8 @@ app.factory("userService", ['localStorageService', '$http', '$rootScope', functi
 app.factory("gridmapService", ['$http', '$rootScope','localStorageService', function ($http, $rootScope,localStorageService) {
     return {
         spotareagrid: function () {//加载多边形绘制区域图层
-            var spotarea = localStorageService.get('spotarea', 60 * 24);
+            var spotarea = localStorageService.get('spotarea', 60 * 1);
+          if (!spotarea) {
             $http(
               {
                   method: 'POST',
@@ -379,10 +379,9 @@ app.factory("gridmapService", ['$http', '$rootScope','localStorageService', func
                   spotarea = localStorageService.update('spotarea', newspot);
                   //console.log('服务器返回数据');
               });
-            if (!spotarea) {
-                return;
-            }
+            }else {
             return spotarea;
+          }
         }
     }
 }]);

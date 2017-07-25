@@ -10,7 +10,21 @@ app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filte
   $scope.item = {
     // data: '1'
   };
+  $scope.my_data={};
+  $http(
+    {
+      method: 'POST',
+      url: $rootScope.applicationServerpath + 'personadminroute/getAllDepartment'
+    }
+  ).then(function (resp) {
+    console.log('返回数据')
+    $scope.my_data = resp.data.success;
+    console.log($scope.my_data)
+    //读到全部树节点后，半秒后将其全部展开
+    return $timeout(function () {
 
+    }, 500);
+  })
   $scope.editInfoModalInstance;
   //树的节点点击操作函数
   $scope.my_tree_handler = function (branch) {
@@ -136,9 +150,9 @@ app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filte
 
   //添加单位
   $scope.try_adding_a_branch = function () {
-    // 第一步，先找到对应的单位节点
+    /*// 第一步，先找到对应的单位节点
     var b;
-    b = tree.get_selected_branch();
+    // b = tree.get_selected_branch();
     if (!b.data.info) {
       while (1) {
         tree.select_prev_branch();
@@ -146,7 +160,6 @@ app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filte
         if (b.data.info) {
           break;
         }
-        ;
       }
     }
     // 第二步，复制这个节点作为它的子节点
@@ -159,7 +172,53 @@ app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filte
     $scope.item = newB;
     $scope.item.editing = true;
     // tree.select_next_branch();
-    return;
+    return;*/
+    var mydata=$scope.my_data;
+    var modalInstance = $modal.open({
+        template: '        <div class="modal-header">  ' +
+        '<h3>新建部门</h3>  ' +
+        '<div class="modal-body">' +
+        '<div class="clear wrapper-xs">' +
+        '<div class="pull-left w-sm">部门名称：</div>' +
+        '<input type="text" ng-model="depart.name" class="pull-left w form-control">' +
+        '</div>'+
+        '<div class="clear wrapper-xs">' +
+        '<div class="pull-left w-sm">描述信息：</div>' +
+        '<input type="text" ng-model="depart.info" class="pull-left w form-control">' +
+        '</div>'+
+        '<div class="clear wrapper-xs">' +
+        '<div class="pull-left w-sm">部门网址：</div>' +
+        '<input type="text" ng-model="depart.infoLink" class="pull-left w form-control">' +
+        '</div>'+
+        '<div class="clear wrapper-xs">' +
+        '<div class="pull-left w-sm">上级部门：</div>' +
+        '<input type="text" ng-model="depart.parentID" class="pull-left w form-control">' +
+        '<select>' +
+        '<option ng-repeat="delast in mydata">{{delast.name}}</option>' +
+        '</select>' +
+        '</div>'+
+        // 'Selected: <b>{{ selected.item }}</b>'+
+        '</div>' +
+        '<div class="modal-footer">' +
+        '<button class="btn btn-primary" ng-click="newdepartment(depart)">新建</button>' +
+        '<button class="btn btn-warning" ng-click="cancel()">取消</button>' +
+        '</div>  ',
+        controller: function ($scope, $modalInstance) {
+          $scope.ok = function () {
+            $modalInstance.close(true);
+          };
+          $scope.cancel = function () {
+            $modalInstance.dismiss(false);
+          };
+          $scope.depart={};
+          $scope.newdepartment=function(e){
+            console.log('新建部门')
+            console.log(e)
+          };
+          $scope.mydata=mydata;
+        }
+      });
+    console.log(mydata)
   };
 
   // 用来初始化部门数据库的测试按钮
@@ -261,20 +320,26 @@ app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filte
       console.log(reason);// 点击空白区域，总会输出backdrop
     });
   };
-  $http(
-    {
-      method: 'POST',
-      url: $rootScope.applicationServerpath + 'department/getAllDepartment',
-      data: {_id: '593e5b56c6178a040fa757ae', pwd: '666666'}
-    }
-  ).then(function (resp) {
-    console.log('返回数据')
-    $scope.my_data = resp.data.success;
-    console.log($scope.my_data)
-    //读到全部树节点后，半秒后将其全部展开
-    return $timeout(function () {
-    }, 500);
-  })
+  $scope.getpersoninfo=function(e) {
+    console.log(e)
+    if(!e){console.log('没有数据');return;}
+    // for(var i=0,perarr=[];i<e.length;i++){
+    //   perarr.push(e[i].person)
+    // }
+    // console.log(perarr);
+    // return [1,2,3,4,5];
+
+    $http({
+      method: "POST",
+      url: $rootScope.applicationServerpath + 'personadminroute/getUserInfoById',
+      data:{personID:e}
+    }).then(function (resp) {
+      console.log(resp.data)
+      return resp.data.success;
+    })
+
+  }
+
   // $http.get('js/app/departmentworkers/departmentworkers.json').then(function (resp) {
   //     //  $http.get('js/app/contact/contacts.json').then(function (resp) {
   //     // $scope.items = resp.data.items;
@@ -363,34 +428,59 @@ app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filte
   $scope.editItem = function (item) {
     console.log(item)
     if (item.data) {
-      item.editing = true;
+      $scope.item.editing = true;
     }
   };
 
   $scope.doneEditing = function (item) {
-    item.editing = false;
+    console.log(item)
+    $scope.item.editing = false;
+    var data=item.data;
+    var updatainfo={};
+    updatainfo.name=data.name;
+    updatainfo.sex=data.sex;
+    updatainfo.mobile=data.mobile;
+    updatainfo.nation=data.nation;
+    updatainfo.residence=data.residence;
+    updatainfo._id=data._id;
+    updatainfo.birthday=data.birthday;
+    updatainfo.title=data.title;
+    $http({
+      method: "POST",
+      url: $rootScope.applicationServerpath + 'personadminroute/updatepersoninfo',
+      data: updatainfo
+    }).then(function (resp) {
+      console.log(resp.data.success)
+      var personinfo = resp.data.success;
+      $scope.item.name = personinfo.name;
+      $scope.item.data = personinfo;
+    })
   };
 
   $scope.newSubItem = function (e) {
     var target=e;
     console.log(target)
-    if(e.depart) {//部门信息
+    if(e.depart) {            //部门信息
       if(!target.depart.info){target.depart.info='默认'}
+
       $scope.item.data = target.depart;
-    }else if(e.person){//人员信息
-        $scope.item.data = target.person;
+
+
+    }else if(e.person) {       //人员信息
+      $scope.item.data = target.person;
+
+      $http({
+        method: "POST",
+        url: $rootScope.applicationServerpath + 'personadminroute/getUserInfoById',
+        data: {personID: e.person._id}
+      }).then(function (resp) {
+        console.log(resp.data.success)
+        var personinfo = resp.data.success;
+        $scope.item.name = personinfo.name;
+        $scope.item.data = personinfo;
+      })
     }
-    // console.log($scope.item.data)
-    // $http({
-    //   method:"POST",
-    //   url:$rootScope.applicationServerpath+'personadminroute/getUserInfoById',
-    //     data:{personID:e.person._id}
-    // }).then(function (resp) {
-    //   console.log(resp.data.success)
-    //   var personinfo=resp.data.success;
-    //   $scope.item.name=personinfo.name;
-    //   $scope.item.data=personinfo;
-    // })
+
   }
 
 }]);

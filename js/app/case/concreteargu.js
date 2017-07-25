@@ -29,10 +29,25 @@ app.controller('concretearguCtrl', function ($scope, $rootScope, $compile, local
       console.log(resp.data)
       if(resp.data.success){
         $scope.audittext=resp.data.success;
+        var map = new AMap.Map("alertmapa", {
+          resizeEnable: true,
+          center: [116.397428, 39.90923],//地图中心点
+          zoom: 13 //地图显示的缩放级别
+        });
+        var clickEventListener = map.on('click', function(e) {
+          $('.locationsmap').val(e.lnglat.getLng() + ',' + e.lnglat.getLat())
+          // console.log(e.lnglat.getLng() + ',' + e.lnglat.getLat())
+        });
       }else{
 
       }
     })
+    $scope.choicelocation=function (ce) {
+      console.log(ce)
+      if(ce=='location'){
+        $('.alertmap').show();
+      }
+    }
   })
   $http({
     method: 'POST',
@@ -197,8 +212,9 @@ app.controller('concretearguCtrl', function ($scope, $rootScope, $compile, local
           var typeJSON = $('#typeJSON').serializeArray();
           var thisTemplate = $scope.steps.wordTemplate;
           // $scope.steps._id
+          console.log(typeJSON)
           for(var type=0;type<typeJSON.length;type++) {
-            if(typeJSON[type].value){
+            if(!typeJSON[type].value){
               alert('参数不完整，请补充')
               return;
             }
@@ -221,6 +237,7 @@ app.controller('concretearguCtrl', function ($scope, $rootScope, $compile, local
           }).then(function (arguresp) {
             console.log(arguresp.data)
             alert('提交成功')
+            $state.go('app.concreteevent')
           })
 
         }
@@ -286,7 +303,8 @@ app.controller('concretearguCtrl', function ($scope, $rootScope, $compile, local
           }
         }).then(function (resp) {
           console.log('审核通过')
-          console.log(resp.data)
+          alert(resp.data.success||resp.data.error)
+
           $state.go('app.concreteevent')
         })
       }else{
