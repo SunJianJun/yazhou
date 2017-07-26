@@ -399,7 +399,7 @@ angular.module('app')
 
 
         .state('app.mail.list', {
-          url: '/inbox/{id}/{name}',
+          url: '/inbox/{receiverID}/{receiverName}',
           templateUrl: 'tpl/mail.list.html',
           resolve: {
             deps: ['$ocLazyLoad',

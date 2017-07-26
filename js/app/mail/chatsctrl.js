@@ -227,6 +227,7 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, localStorageService, $
         }
     };
 
+  $scope.ccba=[1,2,3,5,6,4];
     // 等到系统用户刷新成功后，开始运行引擎
     $scope.$on('rootUserReady', function(event,data) {
 
@@ -246,10 +247,11 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, localStorageService, $
         $rootScope.messageEngine.engineStop();
         $rootScope.messageEngine.engineRun();
     }
-
     $scope.testclick=function (pObj) {
         // alert("11");
+      console.log($scope.ccba);
         $scope.unreadPersons=localStorageService.get("recentChatPersons");
+        console.log($scope.unreadPersons)
         // $scope.unreadPersons.push({"_id":"58cb2031e68197ec0c7b935b","name":"周鹏宇","sex":"男","nation":"汉","birthday":"1997-03-26","residence":"山东省淄博市博山区山头街道兴源村282号","idNum":"370304199703261618","mobile":8615510590829,"mobileUUid":"6f24df8da22b4c35","__v":2149,"status":9,"create_date":"2017-03-16T23:30:57.203Z","images":{"coverSmall":"http://localhost:2000/person/personPic?pid=58cb2031e68197ec0c7b935b"}});
         // $scope.unreadPersons.push({"_id":"58cb2031e68197ec0c7b935b","name":"周鹏宇","sex":"男","nation":"汉","birthday":"1997-03-26","residence":"山东省淄博市博山区山头街道兴源村282号","idNum":"370304199703261618","mobile":8615510590829,"mobileUUid":"6f24df8da22b4c35","__v":2149,"status":9,"create_date":"2017-03-16T23:30:57.203Z","images":{"coverSmall":"http://localhost:2000/person/personPic?pid=58cb2031e68197ec0c7b935b"}});
         if(!$scope.$$phase) {
@@ -274,7 +276,11 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, localStorageService, $
                 // console.log("下属人员：" + data[index]);
                 // console.log("UnreadMessageS人员：" + JSON.stringify(localStorageService.get("PersonInfo_"+data[index].sender)));
                 var pObj=localStorageService.get("PersonInfo_"+data[index].sender);
-                temppp.push(pObj);
+              console.log(pObj)
+                if(pObj) {
+                  temppp.push(pObj);
+                  // temppp=[pObj];
+                }
             }
             localStorageService.update("recentChatPersons",temppp)
             $scope.testclick();
@@ -302,7 +308,7 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, localStorageService, $
                     localToolService.insertAPerson(data.persons[index].person);
                 }
 
-
+                console.log(curDid.persons)
             }, function(data) {  // 处理错误 .reject
 
             });

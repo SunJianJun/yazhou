@@ -5,9 +5,11 @@ app.controller('messageDetailCtrl', [
     console.log('----NO2--------messageDetailCtrl');
 
 
-    $scope.fold = $stateParams.id || '7';
+    $scope.fold = $stateParams.receiverID || '7';
     console.log('当前聊天对应id--'+$scope.fold);
   console.log($stateParams);
+
+
 
     //滚动条自动滚动到底部
     $scope.scrolldIV=function(){
@@ -70,12 +72,12 @@ startTime=new Date();
       curTime=curTime.formate("yyyy-MM-dd");
       //
       // 如果起止日期是同一天，就把起始日期挪到昨天，这样才能取到今天的消息
-      //startTime= new Date(startTime.getDate()-1);
+      startTime= new Date(startTime.getDate()-10);
 
       //stTime=stTime==curTime?startTime.formate("yyyy-MM-dd"):stTime;
 
       if(!$scope.messageDetils){
-        messageService.initMessageListInTimeSpanByPersonIds($stateParams.senderId,$rootScope.curUser._id,stTime,curTime,$rootScope.applicationServerpath);
+        messageService.initMessageListInTimeSpanByPersonIds($stateParams.receiverID,$rootScope.curUser._id,stTime,curTime,$rootScope.applicationServerpath);
         return;
       }
       for (var index = 0; index < $scope.messageDetils.length; index++) {

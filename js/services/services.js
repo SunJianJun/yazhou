@@ -29,10 +29,9 @@ app.factory('localToolService', function ($http, localStorageService, $rootScope
                 //console.log("已更新的人员insertAPerson："+names);
             }
             if (!thisPerson.images)thisPerson.images = {};
-            console.log('信息插入头像')
+            // console.log('信息插入头像')
             thisPerson.images.coverSmall = $rootScope.applicationServerpath+'person/personPic?pid='+newPerson._id;
             // $rootScope.getUserPicById(newPerson._id);
-
             localStorageService.update("PersonInfo_" + newPerson._id, thisPerson);
             return thisPerson;
         },
@@ -158,7 +157,7 @@ app.factory('localStorageService', [function () {
         get: function localStorageServiceGet(key, expireTime, defaultValue) {
             // 我们自行指定一个过期时间，下面这个是3分钟
             // var exp=1000*60*60;
-            console.log(key, '.. ' + expireTime, '分钟后过期');
+            // console.log(key, '.. ' + expireTime, '分钟后过期');
             var exp = 1000 * 60;
             if (expireTime)exp = exp * expireTime;
             var stored = localStorage.getItem(key);
@@ -847,6 +846,7 @@ app.factory('messageService', ['localStorageService', 'dateService', '$http', '$
                       //alert("用户定位点修改成功！");
                       // curUser=$scope.curUser;
                       // $scope.resMsg=data;
+                        console.log(data)
                       // console.log(data+"<loadAllInvolvedChildrenByDid>"+status);
                       if (status == 200) {
                           //如果人员关联的消息数量不为0
@@ -855,7 +855,6 @@ app.factory('messageService', ['localStorageService', 'dateService', '$http', '$
                                   var item = data[index];
                                   // 把时间格式化一下
                                   item.create_date = new Date(item.create_date).formate('yyyy-MM-dd HH:mm:ss');
-
                               }
                               localStorageService.update("messagesListboth" + sender_id + '_' + receiver_id, data);
 
