@@ -214,6 +214,15 @@ app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filte
           $scope.newdepartment=function(e){
             console.log('新建部门')
             console.log(e)
+            $http({
+              method:"POST",
+              url: $rootScope.applicationServerpath + 'personadminroute/sendnewdepartment',
+              data:e
+            }).then(function (resp) {
+              if(resp.data){
+                console.log(resp.data);
+              }
+            })
           };
           $scope.mydata=mydata;
         }

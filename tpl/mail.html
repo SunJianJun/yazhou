@@ -24,7 +24,7 @@
               <div class="tab-pane" ng-class="{'active': tabs[0]}">
                 <div class="wrapper-md">
 
-                <ul class="nav nav-bg nav-stacked nav-sm">
+                <ul class="nav nav-bg nav-stacked nav-sm" id="unreadPersons">
                 <li ng-repeat="fold in unreadPersons" ui-sref-active="active">
                     {{fold.name}}
                     <a class="media friend" ng-click="mailList(fold._id,fold.name)">
@@ -80,7 +80,7 @@
 
 
 
-  <div class="col">
-    <div ui-view ></div>
+  <div class="col cell">
+    <div ui-view></div>
   </div>
 </div>
