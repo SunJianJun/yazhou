@@ -186,6 +186,7 @@ app.factory('localStorageService', [function () {
             if (value) {
                 var curTime = new Date().getTime();
                 localStorage.setItem(key, JSON.stringify({data: value, time: curTime}));
+                // if(key.slice(0,10)=="PersonInfo"){debugger;}
                 // localStorage.setItem(key, angular.toJson(value));
             }
         },
@@ -837,7 +838,8 @@ app.factory('messageService', ['localStorageService', 'dateService', '$http', '$
                         receiverID: receiver_id,
                         senderID: sender_id,
                         startTime: startTime,
-                        lastTime: lastTime
+                        lastTime: lastTime,
+                      type:'message'
                     },
                     headers: {'Content-Type': 'application/json;charset=utf-8'},
                     dataType: 'JSON'
@@ -1420,7 +1422,7 @@ app.factory('ChatService', ['localStorageService','localToolService', 'dateServi
                         // sender.messagecount=data.count; 未读消息总数
                         // sender.messagelastTime=data.lastTime; 最近一条消息的时间
 
-                        console.log(data+"<refreshMessageListByPersonIdsSyn未读消息>"+status);
+                        // console.log(data+"<refreshMessageListByPersonIdsSyn未读消息>"+status);
                         deferred.resolve(data);  // 声明执行成功，即http请求数据成功，可以返回数据了
                     }
                 }else{

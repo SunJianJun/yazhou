@@ -35,7 +35,7 @@ app.controller('messageDetailCtrl', [
       messageobj.location=curlocation?{geolocation: [curlocation.lontitude,curlocation.latitude]}:null;
       // var senderId = "58cb2031e68197ec0c7b935b";
       // var receiverId = "58c043cc40cbb100091c640d";
-      messageService.sendMessage(messageobj,$rootScope.curUser._id,$stateParams.senderId,$rootScope.applicationServer);
+      messageService.sendMessage(messageobj,$rootScope.curUser._id,$stateParams.senderID,$rootScope.applicationServer);
       $scope.scrolldIV();
     }
 
@@ -47,55 +47,63 @@ app.controller('messageDetailCtrl', [
       console.log($scope.messageNum);
       $timeout(function () {
         $scope.messageDetils = messageService.getAmountMessageByBothId($scope.messageNum,
-          $stateParams.senderId, $rootScope.curUser._id);
+          $stateParams.senderID, $rootScope.curUser._id);
         $scope.$broadcast('scroll.refreshComplete');
         viewScroll.scrollBottom();
       }, 200);
     };
-
+    $scope.getcurrenttalk=function (sender,receiver) {
+      $scope.currenttalk=localStorageService.get("messagesListboth" + sender + '_' + receiver);
+      console.log($scope.currenttalk)
+    }
     //刷新消息
     $scope.refreshMessages = function () {
-
-      $scope.curSender= localStorageService.get("messagedetail"+$stateParams.senderId,30);
+      $scope.curSender= localStorageService.get("messagedetail"+$stateParams.senderID,30);
         console.log($rootScope.curUser);
       if (!$rootScope.curUser) {$rootScope.refreshCurUser();return;};
 
       //消息详细
-      $scope.messageDetils = messageService.getMessageByBothId($stateParams.senderId, $rootScope.curUser._id);
+      $scope.messageDetils = messageService.getMessageByBothId($stateParams.senderID, $rootScope.curUser._id);
       console.log($rootScope.curUser._id + " messageDetailCtrl $ionicView.beforeEnter " + $stateParams.startTime + '<>' + $scope.messages);
-      var curTime=new Date();
-startTime=new Date();
+      var curTime=new Date(),
+startTime=new Date(new Date().setDate(new Date().getDate()-2));
       //////////////////////////////////////////////////////////
       //var startTime=new Date(sender.messagestartTime);
 
-      stTime=startTime.formate("yyyy-MM-dd");
-      curTime=curTime.formate("yyyy-MM-dd");
+      // stTime=startTime.formate("yyyy-MM-dd");
+      // curTime=curTime.formate("yyyy-MM-dd");
       //
       // 如果起止日期是同一天，就把起始日期挪到昨天，这样才能取到今天的消息
-      startTime= new Date(startTime.getDate()-10);
+      // startTime= new Date(startTime.getDate()-10);
 
       //stTime=stTime==curTime?startTime.formate("yyyy-MM-dd"):stTime;
 
       if(!$scope.messageDetils){
-        messageService.initMessageListInTimeSpanByPersonIds($stateParams.receiverID,$rootScope.curUser._id,stTime,curTime,$rootScope.applicationServerpath);
+        messageService.initMessageListInTimeSpanByPersonIds($stateParams.receiverID,$rootScope.curUser._id,startTime,curTime,$rootScope.applicationServerpath);
         return;
       }
+      /*
       for (var index = 0; index < $scope.messageDetils.length; index++) {
         var item = $scope.messageDetils[index];
         // 设置这个消息状态为已读，发到服务器端
         messageService.readMessageByID(item._id, $rootScope.applicationServer);
       }
+      */
 
       //设置当前显示数量为4
       $scope.messageNum = $scope.messageFirstRun ?4:$scope.messageNum ;
       $scope.messageFirstRun=false;//不是第一次刷新了，可显示消息数量不再直接设为4条
       $scope.messageDetils = messageService.getAmountMessageByBothId($scope.messageNum,
-        $stateParams.senderId, $rootScope.curUser._id);
+        $stateParams.senderID, $rootScope.curUser._id);
       $timeout(function () {
         viewScroll.scrollBottom();
       }, 0);
     };
 
+    //测试消息
+    // $scope.refreshMess=function () {
+    //   $scope.currenttalk.push({bnormalEndTime:"2017-07-28T07:00:38.148Z",abnormalStartTime:"2017-07-28T07:00:38.148Z",create_date:"2017-07-28 HH:00:38",image:"",text:"123321",location:Array(0),receiver:"58c043cc40cbb100091c640d",sender:{"_id":"58c043cc40cbb100091c640d","name":"谭剑"},status:0,type:"message",_id:"597ae116339a3d9c11a7fac4"});
+    // }
     // 等到系统用户刷新成功后，刷新可见部门
     $scope.$on('rootUserReady', function (event, data) {
       $scope.engineStop();
@@ -107,9 +115,10 @@ startTime=new Date();
     // 如果接到通知，刷新了某人的消息列表
     $scope.$on('bothMessageListRefreshed', function (event, bothid) {
       console.log("on messagesListboth" + bothid + '<>' + bothid.receiver_id + '<>' + bothid.sender_id);
+      $scope.getcurrenttalk(bothid.sender_id,bothid.receiver_id)
       //如果是当前sender，就加载
-      if (bothid.sender_id == $stateParams.senderId && bothid.receiver_id == $rootScope.curUser._id){
-        //$scope.refreshMessages();
+      if (bothid.sender_id == $stateParams.senderID && bothid.receiver_id == $rootScope.curUser._id){
+        $scope.refreshMessages();
         $scope.engineStop();
         $scope.engineRun();
       }

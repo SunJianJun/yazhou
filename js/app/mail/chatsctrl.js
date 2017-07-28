@@ -102,6 +102,7 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
         }
       }
       , $rootScope.messageRefreshTime);
+
   }
 
   $rootScope.messageEngine.enginePause = function (params) {
@@ -221,7 +222,7 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
     }
   };
 
-  $scope.ccba = [1, 2, 3, 5, 6, 4];
+
   // 等到系统用户刷新成功后，开始运行引擎
   $scope.$on('rootUserReady', function (event, data) {
 
@@ -239,37 +240,39 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
     $rootScope.messageEngine.engineStop();
     $rootScope.messageEngine.engineRun();
   }
+  $scope.testclicktrue=true;
   $scope.testclick = function (pObj) {
-    // alert("11");
-    console.log($scope.ccba);
     $scope.unreadPersons = localStorageService.get("recentChatPersons");
     console.log($scope.unreadPersons)
 
-    messtr = '<li ng-repeat="fold in unreadPersons" ui-sref-active="active">' +
-      '{{fold.name}}' +
-      '<a class="media friend" ng-click="mailList(fold._id,fold.name)">' +
-      '<div class="media-left">' +
-      '<img ng-src=' +
-      '{{fold.images.coverSmall}}' +
-      ' />' +
-      '</div>' +
-      '<div class="media-body">' +
-      '<h4>' +
-      '{{fold.name}}' +
-      '</h4>' +
-      '<p >' +
-      '{{fold.content}}' +
-      '</p>' +
-      '</div>' +
-      '<div class="media-right">' +
-      '<p>' +
-      //$scope.messageDate($scope.unreadPersons[mes].lastMessage.originalTime)+
-      '</p>' +
-      '</div>' +
-      '</a>' +
-      '</li>'
+    if($scope.testclicktrue) {
+      messtr = '<li ng-repeat="fold in unreadPersons" ui-sref-active="active">' +
+        '{{fold.name}}' +
+        '<a class="media friend" ng-click="mailList(fold._id,fold.name)">' +
+        '<div class="media-left">' +
+        '<img ng-src=' +
+        '{{fold.images.coverSmall}}' +
+        ' />' +
+        '</div>' +
+        '<div class="media-body">' +
+        '<h4>' +
+        '{{fold.name}}' +
+        '</h4>' +
+        '<p >' +
+        '{{fold.content}}' +
+        '</p>' +
+        '</div>' +
+        '<div class="media-right">' +
+        '<p>' +
+        //$scope.messageDate($scope.unreadPersons[mes].lastMessage.originalTime)+
+        '</p>' +
+        '</div>' +
+        '</a>' +
+        '</li>'
     // }
     $('#unreadPersons').html($compile(messtr)($scope))
+      $scope.testclicktrue=false;
+  }
     // $scope.unreadPersons.push({"_id":"58cb2031e68197ec0c7b935b","name":"周鹏宇","sex":"男","nation":"汉","birthday":"1997-03-26","residence":"山东省淄博市博山区山头街道兴源村282号","idNum":"370304199703261618","mobile":8615510590829,"mobileUUid":"6f24df8da22b4c35","__v":2149,"status":9,"create_date":"2017-03-16T23:30:57.203Z","images":{"coverSmall":"http://localhost:2000/person/personPic?pid=58cb2031e68197ec0c7b935b"}});
     // $scope.unreadPersons.push({"_id":"58cb2031e68197ec0c7b935b","name":"周鹏宇","sex":"男","nation":"汉","birthday":"1997-03-26","residence":"山东省淄博市博山区山头街道兴源村282号","idNum":"370304199703261618","mobile":8615510590829,"mobileUUid":"6f24df8da22b4c35","__v":2149,"status":9,"create_date":"2017-03-16T23:30:57.203Z","images":{"coverSmall":"http://localhost:2000/person/personPic?pid=58cb2031e68197ec0c7b935b"}});
     if (!$scope.$$phase) {
@@ -288,21 +291,29 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
     var uid = curDid ? curDid : $rootScope.curUser._id;
     var promise = ChatService.getAllUnreadMessagesSyn(uid, $rootScope.applicationServerpath);
     promise.then(function (data) {  // 调用承诺API获取数据 .resolve
-      // console.log("UnreadMessageS人员：" + JSON.stringify(data));
+      $scope.alwaysnotifications=data;
+      console.log("UnreadMessageS人员：" + JSON.stringify(data));
       var temppp = localStorageService.get("recentChatPersons") ? localStorageService.get("recentChatPersons") : new Array();
       for (var index = 0; index < data.length; index++) {
         // console.log("下属人员：" + data[index]);
         // console.log("UnreadMessageS人员：" + JSON.stringify(localStorageService.get("PersonInfo_"+data[index].sender)));
-        var pObj = localStorageService.get("PersonInfo_" + data[index].sender);
+        var pObj = localStorageService.get("PersonInfo_" + data[index].sender,360);
         if (pObj) {
           var isyou = false;
           for (var i = 0; i < temppp.length; i++) {
             if(temppp[i]._id===pObj._id){
-              isyou=true;
+              console.log(temppp[i])
+              var cpnode=temppp[i].nodu;
+              cpnode++;
+              temppp.splice(i,1)
+              // isyou=true;
+              i--;
             }
           }
           if(!isyou) {
-            temppp.push(pObj);
+            cpnode?pObj.nodu=cpnode:pObj.nodu=1;
+            temppp.unshift(pObj);
+            // debugger;
           }
         }
       }
@@ -415,7 +426,7 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
 
 
   // localStorageService.clear("messagesListboth" + $stateParams.senderId+'_'+$rootScope.curUser._id);
-  $scope.refreshMessages = function () {
+  $scope.refreshMessagessss = function () {
     //这是为了得到头像之类的玩意
     $rootScope.getUserPicById($stateParams.senderId, function (id, picData) {
       $scope.curSender.pic = picData;

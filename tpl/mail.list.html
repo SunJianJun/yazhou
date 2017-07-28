@@ -10,22 +10,24 @@
     <!-- list -->
     <div class="mail-top">
         <div class="bg-light lter">
-            <div ng-repeat="mails in fakemessages | filter:{'id':fold}">
+            <div>
                 <ul id="scrolldIV"
                     class="list-group list-group-lg no-radius m-b-none m-t-n-xxs mail-list-hei mail-list-win">
-                    <li ng-repeat="mail in mails.message" ng-class="mail.isFromeMe&&'transfer'"
+                    <li ng-repeat="mail in currenttalk" ng-class="mail.sender._id==curUser._id&&'transfer'"
                         class="list-group-item clearfix b-l-3x">
-                        <a ui-sref="app.page.profile" class="avatar thumb pull-left m-r">
-                            <img ng-src="{{mails.pic}}">
+                        <a class="avatar thumb pull-left m-r">
+                            <img ng-src="{{'http://120.76.228.172:2000/person/personPic?pid='+mail.sender._id}}" ng-if="mail.sender._id==curUser._id">
+                            <img ng-src="{{'http://120.76.228.172:2000/person/personPic?pid='+mail.sender._id}}" ng-if="mail.sender._id!=curUser._id">
                         </a>
 
                         <div class="text-center time">
-                            <span>{{mail.time}}</span></div>
+                            <span>{{mail.create_date}}</span>
+                        </div>
                         <div class="clear mail-receiver">
                             <p>
                                 <a>
-                                    <span ng-if="mail.content">{{mail.content}}</span>
-                                    <img ng-src={{mail.con_img}} ng-if="mail.con_img">
+                                    <span ng-if="mail.text">{{mail.text}}</span>
+                                    <img ng-src={{'http://120.76.228.172:2000/'+mail.image}} ng-if="mail.image">
                                     <video ng-src={{mail.video}} ng-if="mail.video" controls></video>
                                 </a>
                                 <!--<span class="label bg-light m-l-sm" ng-hide="mail.transfer">{{mail.state=='unread'?'未读':'已读'}}</span>-->

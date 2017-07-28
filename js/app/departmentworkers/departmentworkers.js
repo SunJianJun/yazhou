@@ -221,6 +221,7 @@ app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filte
             }).then(function (resp) {
               if(resp.data){
                 console.log(resp.data);
+                $modalInstance.dismiss(false);
               }
             })
           };

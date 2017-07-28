@@ -41,14 +41,20 @@ angular.module('app')
                 params:''
             }
         ];
-        // $rootScope.applicationServerpath='http://localhost:2000/';
+        $rootScope.applicationServerpath='http://localhost:2000/';
 
          $rootScope.applicationServerpath='http://120.76.228.172:2000/';
         console.log('接口测试'+$rootScope.applicationServerpath);
           // $http({
           //         method:'POST',
-          //         url:$rootScope.applicationServerpath+'personadminroute/analysisXml',
-          //         data:{url:'nonglinguanhu.xml'}
+          //         url:$rootScope.applicationServerpath+'message/getMessagesInATimeSpanFromWho',
+          //         data:{
+          //           receiverID: "58c043cc40cbb100091c640d",
+          //           senderID: "58e0c199e978587014e67a50",
+          //           startTime:new Date(new Date().setDate(new Date().getDate()-3)),
+          //           lastTime:new Date(),
+          //           type:'message'
+          //         }
           //     }).then(function(resp){
           //     console.log('返回数据')
           //     console.log(resp.data)
@@ -204,7 +210,7 @@ angular.module('app')
 //$window.innerHeight - 100 -250 + 'px'
 //             console.log(winHei);
              var mail_contacts=winHei - 50 + 'px';
-             var mail_list_win=winHei - 220 + 'px';
+             var mail_list_win=winHei - 180 + 'px';
              var app_content=winHei + 'px';
              $('.amap-container').css('min-height',app_content);
              //console.log(app_content);
