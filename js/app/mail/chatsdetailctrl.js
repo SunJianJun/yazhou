@@ -1,6 +1,6 @@
 app.controller('messageDetailCtrl', [
   '$scope', '$http', '$state', 'localStorageService', 'messageService', '$rootScope', 'departmentAndPersonsService', '$timeout', '$stateParams',
-  function ($scope,   $http,   $state,   localStorageService,   messageService,   $rootScope,   departmentAndPersonsService,   $timeout,   $stateParams,sendMessage) {
+  function ($scope,   $http,   $state,   localStorageService,   messageService,   $rootScope,   departmentAndPersonsService,   $timeout,  $stateParams,sendMessage) {
 
     console.log('----NO2--------messageDetailCtrl');
 
@@ -9,36 +9,53 @@ app.controller('messageDetailCtrl', [
     console.log('当前聊天对应id--'+$scope.fold);
   console.log($stateParams);
 
-
-
+    $scope.unSendMessage={};
+    $scope.unSendMessage.text='';
+    window.setInterval(function(){
+      $scope.currenttalk=localStorageService.get("messagesListboth"+$scope.fold+'_'+$rootScope.curUser._id);
+      console.log($scope.currenttalk)
+    },$rootScope.messageRefreshTime)
     //滚动条自动滚动到底部
     $scope.scrolldIV=function(){
       var div = document.getElementById('scrolldIV');
       div.scrollTop = div.scrollHeight;
     };
-    $scope.unSendMessage={};
-    $scope.unSendMessage.text='';
     $scope.messageFirstRun =true;
 
-    //上传之后，得到返回值，给消息对应的字段赋值
-    $scope.send_Message=function (fileResponse) {
-      // 只要30分钟内获取过位置
-      var curlocation=localStorageService.get('curUserRealTimeLocation',30);
 
-      var messageobj = {
-        text:$scope.unSendMessage.text,
-        video:$scope.unSendMessage.video,
-        image:$scope.unSendMessage.image
+    //上传之后，得到返回值，给消息对应的字段赋值
+    $scope.sendMessage = function () {
+      // 正在刷新列表的时候，不能发送数据
+      console.log($scope.unSendMessage.text)
+      if ($scope.isRefreshLongListFromServer) {
+        return;
+      }
+      // 只要30分钟内获取过位置
+      var curlocation = localStorageService.get('LatestLocation_' + $rootScope.curUser._id, 30);
+
+      //console.log("取当前地理位置："+JSON.stringify(curlocation));
+      $scope.unSendMessage = {
+        text: $scope.unSendMessage.text,
+        video: $scope.unSendMessage.video,
+        voice: $scope.unSendMessage.voice,
+        image: $scope.unSendMessage.image
         // ,
         // location: {geolocation: [116.385029, 39.992495]}
       };
-      messageobj.location=curlocation?{geolocation: [curlocation.lontitude,curlocation.latitude]}:null;
+      $scope.unSendMessage.location = curlocation ? {geolocation: [curlocation.Location[0], curlocation.Location[1]]} : null;
       // var senderId = "58cb2031e68197ec0c7b935b";
       // var receiverId = "58c043cc40cbb100091c640d";
-      messageService.sendMessage(messageobj,$rootScope.curUser._id,$stateParams.senderID,$rootScope.applicationServer);
-      $scope.scrolldIV();
-    }
 
+      console.log("取当前消息unSendMessage：" + JSON.stringify($scope.unSendMessage));
+      // if(!$scope.isRefreshFromServer){
+      messageService.sendMessage($scope.unSendMessage, $rootScope.curUser._id, $scope.fold,$rootScope.applicationServerpath);
+      $scope.scrolldIV();
+      // $scope.isRefreshFromServer=true;
+      // }
+      $timeout(function () {
+        // $ionicLoading.hide();//60秒后，不管成不成功，都取消进度栏
+      }, 60000);
+    }
 
 
     //刷新处理函数
@@ -49,12 +66,12 @@ app.controller('messageDetailCtrl', [
         $scope.messageDetils = messageService.getAmountMessageByBothId($scope.messageNum,
           $stateParams.senderID, $rootScope.curUser._id);
         $scope.$broadcast('scroll.refreshComplete');
-        viewScroll.scrollBottom();
+        $scope.scrolldIV();
       }, 200);
     };
     $scope.getcurrenttalk=function (sender,receiver) {
-      $scope.currenttalk=localStorageService.get("messagesListboth" + sender + '_' + receiver);
-      console.log($scope.currenttalk)
+      // $scope.currenttalk=localStorageService.get("messagesListboth" + sender + '_' + receiver);
+      // console.log($scope.currenttalk)
     }
     //刷新消息
     $scope.refreshMessages = function () {
@@ -79,8 +96,8 @@ startTime=new Date(new Date().setDate(new Date().getDate()-2));
       //stTime=stTime==curTime?startTime.formate("yyyy-MM-dd"):stTime;
 
       if(!$scope.messageDetils){
-        messageService.initMessageListInTimeSpanByPersonIds($stateParams.receiverID,$rootScope.curUser._id,startTime,curTime,$rootScope.applicationServerpath);
-        return;
+        // messageService.initMessageListInTimeSpanByPersonIds($stateParams.receiverID,$rootScope.curUser._id,startTime,curTime,$rootScope.applicationServerpath);//获取到与联系人一定时间内的聊天记录
+        // return;
       }
       /*
       for (var index = 0; index < $scope.messageDetils.length; index++) {
@@ -96,7 +113,7 @@ startTime=new Date(new Date().setDate(new Date().getDate()-2));
       $scope.messageDetils = messageService.getAmountMessageByBothId($scope.messageNum,
         $stateParams.senderID, $rootScope.curUser._id);
       $timeout(function () {
-        viewScroll.scrollBottom();
+        $scope.scrolldIV();
       }, 0);
     };
 
@@ -125,7 +142,7 @@ startTime=new Date(new Date().setDate(new Date().getDate()-2));
     })
 
     window.addEventListener("native.keyboardshow", function (e) {
-        viewScroll.scrollBottom();
+        $scope.scrolldIV();
       });
 
     // 图片显示

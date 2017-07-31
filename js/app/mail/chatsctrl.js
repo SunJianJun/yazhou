@@ -246,8 +246,8 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
     console.log($scope.unreadPersons)
 
     if($scope.testclicktrue) {
+      console.log('再次插入')
       messtr = '<li ng-repeat="fold in unreadPersons" ui-sref-active="active">' +
-        '{{fold.name}}' +
         '<a class="media friend" ng-click="mailList(fold._id,fold.name)">' +
         '<div class="media-left">' +
         '<img ng-src=' +
@@ -264,6 +264,8 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
         '</div>' +
         '<div class="media-right">' +
         '<p>' +
+        ''+
+          '<span class="badge badge-sm bg-danger pull-right-xs">{{fold.nodu}}</span>'+
         //$scope.messageDate($scope.unreadPersons[mes].lastMessage.originalTime)+
         '</p>' +
         '</div>' +
@@ -292,31 +294,57 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
     var promise = ChatService.getAllUnreadMessagesSyn(uid, $rootScope.applicationServerpath);
     promise.then(function (data) {  // 调用承诺API获取数据 .resolve
       $scope.alwaysnotifications=data;
-      console.log("UnreadMessageS人员：" + JSON.stringify(data));
+      console.log(data)
+      var compare = function (obj1, obj2) {//排序函数
+        var val1 = obj1.sender;
+        var val2 = obj2.sender;
+        if (val1 < val2) {
+          return -1;
+        } else if (val1 > val2) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
+      var res ={};
+      data.sort(compare);
+      for (var i = 0; i < data.length;) {
+        var count = 0;
+        for (var j = i; j < data.length; j++) {
+          if (data[i].sender == data[j].sender) {
+            count++;
+          }
+        }
+        res[data[i].sender]=count;
+        i += count;
+      }
+      console.log(res)
       var temppp = localStorageService.get("recentChatPersons") ? localStorageService.get("recentChatPersons") : new Array();
       for (var index = 0; index < data.length; index++) {
         // console.log("下属人员：" + data[index]);
         // console.log("UnreadMessageS人员：" + JSON.stringify(localStorageService.get("PersonInfo_"+data[index].sender)));
         var pObj = localStorageService.get("PersonInfo_" + data[index].sender,360);
         if (pObj) {
-          var isyou = false;
-          for (var i = 0; i < temppp.length; i++) {
-            if(temppp[i]._id===pObj._id){
-              console.log(temppp[i])
-              var cpnode=temppp[i].nodu;
-              cpnode++;
-              temppp.splice(i,1)
-              // isyou=true;
-              i--;
+          // console.log(temppp);
+          for(var aa in res){
+            if(aa==pObj._id){
+              pObj.nodu=res[aa];
             }
           }
-          if(!isyou) {
-            cpnode?pObj.nodu=cpnode:pObj.nodu=1;
-            temppp.unshift(pObj);
-            // debugger;
+          var isyou = false;
+          for (var z = 0; z < temppp.length; z++) {
+            if(temppp[z]._id===pObj._id){
+              isyou=true;
+              temppp[z].nodu=pObj.nodu;
+            }
           }
+          if(!isyou){
+            temppp.push(pObj);
+          }
+
         }
       }
+      console.log(temppp)
       localStorageService.update("recentChatPersons", temppp)
       $scope.testclick();
       // $scope.$apply();//用$apply来强制刷新数据
@@ -404,8 +432,6 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
   $scope.messageDetils;//当前显示的消息记录
   $scope.allMessageDetils;//全部的消息记录
   $scope.isRecVoice = false;
-  $scope.unSendMessage = {};
-  $scope.unSendMessage.text = '';
   $scope.messageFirstRun = true;
   // 当前是否在向服务器查询大批数据中
   $scope.isRefreshLongListFromServer = false;
@@ -520,40 +546,6 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
   };
 
 
-  //上传之后，得到返回值，给消息对应的字段赋值
-  $scope.sendMessage = function () {
-    // 正在刷新列表的时候，不能发送数据
-    if ($scope.isRefreshLongListFromServer) {
-      return;
-    }
-    // 只要30分钟内获取过位置
-    var curlocation = localStorageService.get('LatestLocation_' + $rootScope.curUser._id, 30);
-
-    //console.log("取当前地理位置："+JSON.stringify(curlocation));
-    $scope.unSendMessage = {
-      text: $scope.unSendMessage.text,
-      video: $scope.unSendMessage.video,
-      voice: $scope.unSendMessage.voice,
-      image: $scope.unSendMessage.image
-      // ,
-      // location: {geolocation: [116.385029, 39.992495]}
-    };
-    $scope.unSendMessage.location = curlocation ? {geolocation: [curlocation.Location[0], curlocation.Location[1]]} : null;
-    // var senderId = "58cb2031e68197ec0c7b935b";
-    // var receiverId = "58c043cc40cbb100091c640d";
-
-    $ionicLoading.show({
-      template: '消息发送中...'
-    });
-    console.log("取当前消息unSendMessage：" + JSON.stringify($scope.unSendMessage));
-    // if(!$scope.isRefreshFromServer){
-    ChatService.sendMessage($scope.unSendMessage, $rootScope.curUser._id, $stateParams.senderId, $rootScope.applicationServer);
-    // $scope.isRefreshFromServer=true;
-    // }
-    $timeout(function () {
-      $ionicLoading.hide();//60秒后，不管成不成功，都取消进度栏
-    }, 60000);
-  }
 
   // 等到消息发送成功之后，刷新消息界面，并重置未发送消息
   $scope.renew = function (newMessage) {

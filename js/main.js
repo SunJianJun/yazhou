@@ -47,13 +47,9 @@ angular.module('app')
         console.log('接口测试'+$rootScope.applicationServerpath);
           // $http({
           //         method:'POST',
-          //         url:$rootScope.applicationServerpath+'message/getMessagesInATimeSpanFromWho',
+          //         url:$rootScope.applicationServerpath+'mobilegrid/getdepartmentlaw',
           //         data:{
-          //           receiverID: "58c043cc40cbb100091c640d",
-          //           senderID: "58e0c199e978587014e67a50",
-          //           startTime:new Date(new Date().setDate(new Date().getDate()-3)),
-          //           lastTime:new Date(),
-          //           type:'message'
+          //           department: "58c3a5e9a63cf24c16a50b8e"
           //         }
           //     }).then(function(resp){
           //     console.log('返回数据')
@@ -63,8 +59,7 @@ angular.module('app')
         // 桌面端的用户需要登录信息，用户名就是人名，密码第一次可以是身份证号，之后可以修改，pwd
         $rootScope.confirmUser = function(callback) {
             if(!$rootScope.curUser|| !$rootScope.curUser.role){
-                $rootScope.confirmUserModalInstance = $modal.open(
-                    {
+                $rootScope.confirmUserModalInstance = $modal.open({
                         template: '        <div class="modal-header">  '+
                         '<h3>请登录或先用手机注册!</h3>  '+
                         '</div>'+
@@ -203,14 +198,13 @@ angular.module('app')
         //自动最大化高度
          window.onresize=function(){
             var winowHeight = $window.innerHeight; //获取窗口高度
-            var headerHeight = 80;
-            var footerHeight = 20;
-            ;
-            var winHei = $window.innerHeight - footerHeight -headerHeight;
+            var headerHeight = 50;
+            var footerHeight = 50;
+            var winHei = winowHeight - footerHeight -headerHeight;
 //$window.innerHeight - 100 -250 + 'px'
 //             console.log(winHei);
              var mail_contacts=winHei - 50 + 'px';
-             var mail_list_win=winHei - 180 + 'px';
+             var mail_list_win=winHei - 170 + 'px';
              var app_content=winHei + 'px';
              $('.amap-container').css('min-height',app_content);
              //console.log(app_content);
@@ -416,4 +410,15 @@ angular.module('app')
             if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
           return fmt;
         }
+      // var compare = function (obj1, obj2) {//排序函数
+      //   var val1 = obj1.no;
+      //   var val2 = obj2.no;
+      //   if (val1 < val2) {
+      //     return -1;
+      //   } else if (val1 > val2) {
+      //     return 1;
+      //   } else {
+      //     return 0;
+      //   }
+      // }
   }]);

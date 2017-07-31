@@ -25,23 +25,6 @@
                 <div class="wrapper-md">
 
                 <ul class="nav nav-bg nav-stacked nav-sm" id="unreadPersons">
-                <li ng-repeat="fold in unreadPersons" ui-sref-active="active">
-                    {{fold.name}}
-                    <a class="media friend" ng-click="mailList(fold._id,fold.name)">
-                      <div class="media-left">
-                        <img ng-src={{fold.images.coverSmall}} />
-                      </div>
-                      <div class="media-body">
-                        <h4>{{fold.name}}</h4>
-                        <p >{{fold.lastMessage.content}}</p>
-                      </div>
-                      <div class="media-right">
-                        <p>
-                          {{messageDate(fold.lastMessage.originalTime)}}
-                        </p>
-                      </div>
-                    </a>
-                  </li>
                   </ul>
                 </div>
               </div>

@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="de4da8ad-6774-4808-9282-d8130c6c1b9f" name="默认的" comment="">
+    <list default="true" id="97a4ff79-e2dd-4e7a-8ae8-c4027c3fede1" name="默认的" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/chatsctrl.js" afterPath="$PROJECT_DIR$/js/app/mail/chatsctrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/mail/chatsdetailctrl.js" afterPath="$PROJECT_DIR$/js/app/mail/chatsdetailctrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/services/services.js" afterPath="$PROJECT_DIR$/js/services/services.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/mail.html" afterPath="$PROJECT_DIR$/tpl/mail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/mail.list.html" afterPath="$PROJECT_DIR$/tpl/mail.list.html" />
     </list>
-    <ignored path="yazhou.iws" />
-    <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,79 +23,112 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
-  <component name="FavoritesManager">
-    <favorites_list name="yazhou" />
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+            <state relative-caret-position="90">
+              <caret line="5" column="178" lean-forward="true" selection-start-line="5" selection-start-column="178" selection-end-line="5" selection-end-column="178" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.router.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/config.router.js">
+      <file leaf-file-name="chatsctrl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/app/mail/chatsctrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-110">
-              <caret line="475" column="40" lean-forward="true" selection-start-line="475" selection-start-column="40" selection-end-line="475" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="apps_departmentworkers.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tpl/apps_departmentworkers.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="482">
-              <caret line="153" column="64" lean-forward="false" selection-start-line="153" selection-start-column="64" selection-end-line="153" selection-end-column="68" />
+            <state relative-caret-position="1080">
+              <caret line="103" column="37" lean-forward="false" selection-start-line="103" selection-start-column="8" selection-end-line="103" selection-end-column="37" />
               <folding>
-                <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
-                <marker date="1500285918511" expanded="true" signature="4387:4493" ph="{&quot;glyphicon-chevron-right&quot;: collapsed...}" />
+                <element signature="e#5138#6211#0" expanded="false" />
+                <element signature="e#6314#9436#0" expanded="false" />
+                <element signature="e#9515#9965#0" expanded="false" />
+                <element signature="e#10046#10199#0" expanded="false" />
+                <element signature="e#15868#16798#0" expanded="false" />
+                <element signature="e#20013#22159#0" expanded="false" />
+                <element signature="e#24423#25216#0" expanded="false" />
+                <element signature="e#25368#25477#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="concreteargu.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tpl/concreteargu.html">
+      <file leaf-file-name="chatsdetailctrl.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/app/mail/chatsdetailctrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="75" column="27" lean-forward="true" selection-start-line="75" selection-start-column="27" selection-end-line="75" selection-end-column="27" />
+            <state relative-caret-position="240">
+              <caret line="15" column="37" lean-forward="false" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="concreteargu.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/services/services.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="453">
+              <caret line="865" column="77" lean-forward="false" selection-start-line="865" selection-start-column="53" selection-end-line="865" selection-end-column="77" />
+              <folding>
+                <element signature="e#31598#31756#0" expanded="false" />
+                <element signature="e#47560#48640#0" expanded="false" />
+                <element signature="e#48708#49788#0" expanded="false" />
+                <element signature="e#49850#51311#0" expanded="false" />
+                <element signature="e#51390#52478#0" expanded="false" />
+                <element signature="e#53770#55572#0" expanded="false" />
+                <element signature="e#55722#58118#0" expanded="false" />
+                <element signature="e#58284#60145#0" expanded="false" />
+                <element signature="e#64190#66015#0" expanded="false" />
+                <element signature="e#66164#68246#0" expanded="false" />
+                <element signature="e#66175#66240#0" expanded="false" />
+                <element signature="e#68291#68949#0" expanded="false" />
+                <element signature="e#69009#69132#0" expanded="false" />
+                <element signature="e#69250#69648#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tpl/mail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="77" lean-forward="false" selection-start-line="26" selection-start-column="77" selection-end-line="26" selection-end-column="77" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mail.list.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tpl/mail.list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="555">
+              <caret line="63" column="296" lean-forward="false" selection-start-line="63" selection-start-column="296" selection-end-line="63" selection-end-column="296" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="abstrapstepNew.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/app/case/abstrapstepNew.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="concreteargu.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/app/case/concreteargu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="121" column="4" lean-forward="false" selection-start-line="121" selection-start-column="4" selection-end-line="121" selection-end-column="4" />
+            <state relative-caret-position="315">
+              <caret line="20" column="47" lean-forward="true" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
               <folding>
-                <marker date="1500291839857" expanded="true" signature="2931:2941" ph="..." />
-                <marker date="1500291839857" expanded="true" signature="3791:4526" ph="..." />
-                <marker date="1500291839857" expanded="true" signature="3869:4311" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="departmentworkers.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/app/departmentworkers/departmentworkers.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="384" column="4" lean-forward="true" selection-start-line="384" selection-start-column="4" selection-end-line="384" selection-end-column="4" />
-              <folding>
-                <element signature="e#2084#4071#0" expanded="false" />
+                <marker date="1500951839374" expanded="true" signature="3785:3795" ph="..." />
+                <marker date="1500951839374" expanded="true" signature="4552:5270" ph="..." />
+                <marker date="1500951839374" expanded="true" signature="4630:5055" ph="..." />
               </folding>
             </state>
           </provider>
@@ -95,38 +137,8 @@
       <file leaf-file-name="concretestep.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/app/case/concretestep.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="61" column="4" lean-forward="false" selection-start-line="61" selection-start-column="4" selection-end-line="63" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="concretestep.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tpl/concretestep.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="33" column="52" lean-forward="true" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="concreteevent.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tpl/concreteevent.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="80" column="45" lean-forward="true" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="concreteevent.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/app/case/concreteevent.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="74" column="34" lean-forward="true" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
+            <state relative-caret-position="450">
+              <caret line="50" column="56" lean-forward="true" selection-start-line="50" selection-start-column="56" selection-end-line="50" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -136,30 +148,59 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>apps.departmentworkers</find>
-      <find>label</find>
-      <find>labe</find>
-      <find>my_data</find>
-      <find>indexx</find>
-      <find>personglup</find>
-      <find>item.data</find>
-      <find>item</find>
+      <find>startTime</find>
+      <find>sender_id,</find>
+      <find>PersonInfo</find>
+      <find>getcurrenttalk</find>
+      <find>person</find>
+      <find>$scope.refreshMessages</find>
+      <find>alwaysnotifications</find>
+      <find>PersonInfo_</find>
+      <find>alldepartmentsAndPersonMessages</find>
+      <find>mail</find>
+      <find>messageEngineTimer</find>
+      <find>mail-list-win</find>
+      <find>aa</find>
+      <find>messageDetils</find>
+      <find>initMessageListInTimeSpanByPersonIds</find>
+      <find>$scope.getcurrenttalk</find>
+      <find>messagesListbot</find>
+      <find>recentChatPersons</find>
+      <find>messagesListboth</find>
+      <find>$scope.sendMessage</find>
+      <find>unSendMessage</find>
+      <find>ionicLoading</find>
+      <find>$scope.unSendMessage.voice</find>
+      <find>$scope.unSendMessage</find>
+      <find>bothMessageListRefreshed</find>
+      <find>$scope.refreshUnreadMessagePersons</find>
+      <find>currenttalk</find>
+      <find>viewScroll.scrollBottom</find>
+      <find>window.setInterval</find>
+      <find>$scope.scrolldIV</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tpl/abstrapstepNew.html" />
-        <option value="$PROJECT_DIR$/js/app/case/abstractstep.js" />
-        <option value="$PROJECT_DIR$/tpl/concreteargu.html" />
-        <option value="$PROJECT_DIR$/js/main.js" />
-        <option value="$PROJECT_DIR$/tpl/apps_departmentworkers.html" />
+        <option value="F:/yazhouServer/server/haishuiju.xml" />
         <option value="$PROJECT_DIR$/js/app/departmentworkers/departmentworkers.js" />
-        <option value="$PROJECT_DIR$/js/app/case/concreteevent.js" />
-        <option value="$PROJECT_DIR$/js/app/case/concreteargu.js" />
+        <option value="$PROJECT_DIR$/css/app.css" />
+        <option value="$PROJECT_DIR$/tpl/blocks/header.html" />
+        <option value="F:/QQPCmgr/Desktop/lx.html" />
+        <option value="$PROJECT_DIR$/tpl/mail.html" />
+        <option value="$PROJECT_DIR$/js/services/services.js" />
+        <option value="F:/QQPCmgr/Desktop/dd.json" />
+        <option value="$PROJECT_DIR$/js/main.js" />
+        <option value="$PROJECT_DIR$/js/app/mail/chatsctrl.js" />
+        <option value="$PROJECT_DIR$/tpl/mail.list.html" />
+        <option value="$PROJECT_DIR$/js/app/mail/chatsdetailctrl.js" />
       </list>
     </option>
   </component>
@@ -186,6 +227,22 @@
     <option name="width" value="1456" />
     <option name="height" value="876" />
   </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Spelling</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -201,7 +258,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -211,20 +268,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="yazhou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yazhou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yazhou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tpl" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -284,20 +327,26 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="settings.editor.selected.configurable" value="Settings.JavaScript.Linters.JSHint" />
+    <property name="node.js.path.for.package.jscs" value="project" />
+    <property name="node.js.detected.package.jscs" value="true" />
+    <property name="node.js.selected.package.jscs" value="" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
-    <property name="node.js.path.for.package.jscs" value="project" />
-    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
-    <property name="node.js.detected.package.jscs" value="true" />
-    <property name="node.js.selected.package.jscs" value="C:\Users\Administrator\node_modules\jscs" />
+    <property name="last_opened_file_path" value="F:/yazhouServer/server" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -384,43 +433,52 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="de4da8ad-6774-4808-9282-d8130c6c1b9f" name="默认的" comment="" />
-      <created>1500114780467</created>
+      <changelist id="97a4ff79-e2dd-4e7a-8ae8-c4027c3fede1" name="默认的" comment="" />
+      <created>1501152658112</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1500114780467</updated>
-      <workItem from="1500256384523" duration="3023000" />
-      <workItem from="1500259530287" duration="3593000" />
-      <workItem from="1500271095483" duration="14654000" />
+      <updated>1501152658112</updated>
+      <workItem from="1501152666142" duration="938000" />
+      <workItem from="1501154091885" duration="1895000" />
+      <workItem from="1501206842955" duration="23966000" />
+      <workItem from="1501241891482" duration="568000" />
+      <workItem from="1501465359446" duration="11914000" />
+      <workItem from="1501485526103" duration="9755000" />
     </task>
-    <task id="LOCAL-00001" summary="事件bug修改">
-      <created>1500291897972</created>
+    <task id="LOCAL-00001" summary="..">
+      <created>1501155907453</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1500291897972</updated>
+      <updated>1501155907453</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="..">
+      <created>1501242312583</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1501242312583</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21270000" />
+    <option name="totallyTimeSpent" value="49036000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21650212" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19887166" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850242" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -432,265 +490,515 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="事件bug修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="事件bug修改" />
+    <MESSAGE value=".." />
+    <option name="LAST_COMMIT_MESSAGE" value=".." />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/js/services/services.js</url>
+          <line>1210</line>
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="yazhou" />
+        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="yazhou" />
+        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+      </PATH_ELEMENT>
+    </PATH>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/tpl/mail.list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="18" lean-forward="false" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+        <state relative-caret-position="345">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/config.router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7530">
-          <caret line="502" column="20" lean-forward="false" selection-start-line="502" selection-start-column="20" selection-end-line="502" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/apps_departmentworkers.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="82" column="11" lean-forward="false" selection-start-line="82" selection-start-column="11" selection-end-line="82" selection-end-column="11" />
-          <folding>
-            <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
-            <marker date="1500285918511" expanded="true" signature="4387:4493" ph="{&quot;glyphicon-chevron-right&quot;: collapsed...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/app/case/abstracttype.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1500256360773" expanded="true" signature="4129:4420" ph="..." />
-            <marker date="1500256360773" expanded="true" signature="4288:4377" ph="..." />
-            <marker date="1500256360773" expanded="false" signature="4488:4506" ph="..." />
-            <marker date="1500256360773" expanded="true" signature="4507:5408" ph="..." />
-            <marker date="1500256360773" expanded="true" signature="4566:4864" ph="..." />
-            <marker date="1500256360773" expanded="true" signature="4652:4817" ph="..." />
-            <marker date="1500256360773" expanded="true" signature="4979:5365" ph="..." />
-            <marker date="1500256360773" expanded="true" signature="5069:5318" ph="..." />
-            <marker date="1500256360773" expanded="true" signature="5468:5723" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/modules/angular-bootstrap-nav-tree/abn_tree_directive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3705">
-          <caret line="247" column="14" lean-forward="false" selection-start-line="247" selection-start-column="14" selection-end-line="247" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/app/departmentworkers/departmentworkers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2115">
-          <caret line="193" column="42" lean-forward="false" selection-start-line="193" selection-start-column="42" selection-end-line="193" selection-end-column="42" />
-          <folding>
-            <element signature="e#2084#4071#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="18" lean-forward="false" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/config.router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7530">
-          <caret line="502" column="20" lean-forward="true" selection-start-line="502" selection-start-column="20" selection-end-line="502" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/apps_departmentworkers.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="82" column="11" lean-forward="false" selection-start-line="82" selection-start-column="11" selection-end-line="82" selection-end-column="11" />
-          <folding>
-            <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
-            <marker date="1500285918511" expanded="true" signature="4387:4493" ph="{&quot;glyphicon-chevron-right&quot;: collapsed...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/modules/angular-bootstrap-nav-tree/abn_tree_directive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3705">
-          <caret line="247" column="14" lean-forward="false" selection-start-line="247" selection-start-column="14" selection-end-line="247" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/app/departmentworkers/departmentworkers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4170">
-          <caret line="278" column="0" lean-forward="true" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
-          <folding>
-            <element signature="e#2084#4071#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/abstrapstepNew.html" />
-    <entry file="file://$PROJECT_DIR$/js/app/case/abstractstep.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower_components/angular-ui-tree/dist/angular-ui-tree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="594" column="15" lean-forward="false" selection-start-line="594" selection-start-column="15" selection-end-line="594" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="4444" column="1" lean-forward="false" selection-start-line="4444" selection-start-column="1" selection-end-line="4444" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/modules/angular-bootstrap-nav-tree/abn_tree_directive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1714">
-          <caret line="247" column="14" lean-forward="false" selection-start-line="247" selection-start-column="14" selection-end-line="247" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/app/case/abstracttype.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="13" column="35" lean-forward="true" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
-          <folding>
-            <marker date="1500256360773" expanded="true" signature="4129:4420" ph="..." />
-            <marker date="1500256360773" expanded="true" signature="4288:4377" ph="..." />
-            <marker date="1500256360773" expanded="false" signature="4488:4506" ph="..." />
-            <marker date="1500256360773" expanded="true" signature="4507:5408" ph="..." />
-            <marker date="1500256360773" expanded="true" signature="4566:4864" ph="..." />
-            <marker date="1500256360773" expanded="true" signature="4652:4817" ph="..." />
-            <marker date="1500256360773" expanded="true" signature="4979:5365" ph="..." />
-            <marker date="1500256360773" expanded="true" signature="5069:5318" ph="..." />
-            <marker date="1500256360773" expanded="true" signature="5468:5723" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-570">
-          <caret line="47" column="21" lean-forward="false" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/config.router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-110">
-          <caret line="475" column="40" lean-forward="true" selection-start-line="475" selection-start-column="40" selection-end-line="475" selection-end-column="40" />
+        <state relative-caret-position="6270">
+          <caret line="418" column="6" lean-forward="false" selection-start-line="418" selection-start-column="6" selection-end-line="428" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/mail/chatsctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4650">
+          <caret line="310" column="13" lean-forward="true" selection-start-line="310" selection-start-column="13" selection-end-line="310" selection-end-column="13" />
+          <folding>
+            <element signature="e#5138#6211#0" expanded="false" />
+            <element signature="e#6314#9436#0" expanded="false" />
+            <element signature="e#9515#9965#0" expanded="false" />
+            <element signature="e#10046#10199#0" expanded="false" />
+            <element signature="e#15868#16798#0" expanded="false" />
+            <element signature="e#20013#22159#0" expanded="false" />
+            <element signature="e#24423#25216#0" expanded="false" />
+            <element signature="e#25368#25477#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2400">
+          <caret line="160" column="32" lean-forward="false" selection-start-line="160" selection-start-column="32" selection-end-line="160" selection-end-column="32" />
+          <folding>
+            <element signature="e#31598#31756#0" expanded="false" />
+            <element signature="e#47560#48640#0" expanded="false" />
+            <element signature="e#48708#49788#0" expanded="false" />
+            <element signature="e#49850#51311#0" expanded="false" />
+            <element signature="e#51390#52478#0" expanded="false" />
+            <element signature="e#53770#55572#0" expanded="false" />
+            <element signature="e#55722#58118#0" expanded="false" />
+            <element signature="e#58284#60145#0" expanded="false" />
+            <element signature="e#64190#66015#0" expanded="false" />
+            <element signature="e#66164#68246#0" expanded="false" />
+            <element signature="e#66175#66240#0" expanded="false" />
+            <element signature="e#68291#68949#0" expanded="false" />
+            <element signature="e#69009#69132#0" expanded="false" />
+            <element signature="e#69250#69648#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/mail/chatsdetailctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2040">
+          <caret line="136" column="11" lean-forward="false" selection-start-line="136" selection-start-column="11" selection-end-line="136" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/config.router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5730">
+          <caret line="382" column="21" lean-forward="false" selection-start-line="382" selection-start-column="17" selection-end-line="382" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/mail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="50" column="58" lean-forward="false" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/mail.list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="75" lean-forward="false" selection-start-line="18" selection-start-column="75" selection-end-line="18" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4320">
+          <caret line="288" column="21" lean-forward="false" selection-start-line="288" selection-start-column="21" selection-end-line="288" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="82" lean-forward="false" selection-start-line="39" selection-start-column="82" selection-end-line="39" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2400">
+          <caret line="160" column="32" lean-forward="true" selection-start-line="160" selection-start-column="32" selection-end-line="160" selection-end-column="32" />
+          <folding>
+            <element signature="e#31598#31756#0" expanded="false" />
+            <element signature="e#47560#48640#0" expanded="false" />
+            <element signature="e#48708#49788#0" expanded="false" />
+            <element signature="e#49850#51311#0" expanded="false" />
+            <element signature="e#51390#52478#0" expanded="false" />
+            <element signature="e#53770#55572#0" expanded="false" />
+            <element signature="e#55722#58118#0" expanded="false" />
+            <element signature="e#58284#60145#0" expanded="false" />
+            <element signature="e#64190#66015#0" expanded="false" />
+            <element signature="e#66164#68246#0" expanded="false" />
+            <element signature="e#66175#66240#0" expanded="false" />
+            <element signature="e#68291#68949#0" expanded="false" />
+            <element signature="e#69009#69132#0" expanded="false" />
+            <element signature="e#69250#69648#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/mail/chatsdetailctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2040">
+          <caret line="136" column="11" lean-forward="true" selection-start-line="136" selection-start-column="11" selection-end-line="136" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/config.router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5730">
+          <caret line="382" column="21" lean-forward="false" selection-start-line="382" selection-start-column="17" selection-end-line="382" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/mail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="50" column="58" lean-forward="false" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/mail.list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="75" lean-forward="true" selection-start-line="18" selection-start-column="75" selection-end-line="18" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4320">
+          <caret line="288" column="21" lean-forward="false" selection-start-line="288" selection-start-column="21" selection-end-line="288" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/mail/chatsctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4605">
+          <caret line="307" column="28" lean-forward="true" selection-start-line="307" selection-start-column="28" selection-end-line="307" selection-end-column="28" />
+          <folding>
+            <element signature="e#5138#6211#0" expanded="false" />
+            <element signature="e#6314#9436#0" expanded="false" />
+            <element signature="e#9515#9965#0" expanded="false" />
+            <element signature="e#10046#10199#0" expanded="false" />
+            <element signature="e#15868#16798#0" expanded="false" />
+            <element signature="e#20013#22159#0" expanded="false" />
+            <element signature="e#24423#25216#0" expanded="false" />
+            <element signature="e#25368#25477#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="63" lean-forward="false" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/mail/chatsctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4545">
+          <caret line="303" column="22" lean-forward="true" selection-start-line="303" selection-start-column="22" selection-end-line="303" selection-end-column="22" />
+          <folding>
+            <element signature="e#5138#6211#0" expanded="false" />
+            <element signature="e#6314#9436#0" expanded="false" />
+            <element signature="e#9515#9965#0" expanded="false" />
+            <element signature="e#10046#10199#0" expanded="false" />
+            <element signature="e#15868#16798#0" expanded="false" />
+            <element signature="e#20013#22159#0" expanded="false" />
+            <element signature="e#24423#25216#0" expanded="false" />
+            <element signature="e#25368#25477#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/mail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1230">
+          <caret line="82" column="16" lean-forward="false" selection-start-line="82" selection-start-column="16" selection-end-line="82" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/mail.list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="19" lean-forward="true" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="50" lean-forward="false" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87420">
+          <caret line="5828" column="16" lean-forward="true" selection-start-line="5828" selection-start-column="16" selection-end-line="5828" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="50" lean-forward="true" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/less/app.item.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="3" lean-forward="false" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/common.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="124" column="14" lean-forward="false" selection-start-line="124" selection-start-column="14" selection-end-line="124" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/yazhouServer/server/haishuiju.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="12" column="47" lean-forward="true" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/app/departmentworkers/departmentworkers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="384" column="4" lean-forward="true" selection-start-line="384" selection-start-column="4" selection-end-line="384" selection-end-column="4" />
-          <folding>
-            <element signature="e#2084#4071#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="513">
+          <caret line="215" column="26" lean-forward="true" selection-start-line="215" selection-start-column="26" selection-end-line="215" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/concretestep.html">
+    <entry file="file://$PROJECT_DIR$/js/app/mail/mails.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="33" column="52" lean-forward="true" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
+        <state relative-caret-position="45">
+          <caret line="3" column="4" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/mail/friends.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/mail/mail-service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/blocks/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="22" column="106" lean-forward="false" selection-start-line="22" selection-start-column="106" selection-end-line="22" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/config.router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5730">
+          <caret line="382" column="21" lean-forward="false" selection-start-line="382" selection-start-column="17" selection-end-line="382" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/app/case/concretestep.js">
+    <entry file="file://F:/QQPCmgr/Desktop/dd.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="61" column="4" lean-forward="false" selection-start-line="61" selection-start-column="4" selection-end-line="63" selection-end-column="7" />
+        <state relative-caret-position="1365">
+          <caret line="91" column="1" lean-forward="false" selection-start-line="91" selection-start-column="1" selection-end-line="91" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/concreteevent.html">
+    <entry file="file://$PROJECT_DIR$/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="80" column="45" lean-forward="true" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
+        <state relative-caret-position="238">
+          <caret line="2297" column="1" lean-forward="false" selection-start-line="2297" selection-start-column="1" selection-end-line="2297" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/app/case/concreteevent.js">
+    <entry file="file://F:/QQPCmgr/Desktop/lx.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="74" column="34" lean-forward="true" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
+        <state relative-caret-position="495">
+          <caret line="69" column="16" lean-forward="false" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/apps_departmentworkers.html">
+    <entry file="file://$PROJECT_DIR$/js/app/mail/mail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="153" column="64" lean-forward="false" selection-start-line="153" selection-start-column="64" selection-end-line="153" selection-end-column="68" />
-          <folding>
-            <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
-            <marker date="1500285918511" expanded="true" signature="4387:4493" ph="{&quot;glyphicon-chevron-right&quot;: collapsed...}" />
-          </folding>
+        <state relative-caret-position="90">
+          <caret line="5" column="2" lean-forward="false" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/concreteargu.html">
+    <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="75" column="27" lean-forward="true" selection-start-line="75" selection-start-column="27" selection-end-line="75" selection-end-column="27" />
+        <state relative-caret-position="374">
+          <caret line="43" column="8" lean-forward="true" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/media.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="27" column="16" lean-forward="false" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="178" lean-forward="true" selection-start-line="5" selection-start-column="178" selection-end-line="5" selection-end-column="178" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/app/case/concreteargu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="121" column="4" lean-forward="false" selection-start-line="121" selection-start-column="4" selection-end-line="121" selection-end-column="4" />
+        <state relative-caret-position="315">
+          <caret line="20" column="47" lean-forward="true" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
           <folding>
-            <marker date="1500291839857" expanded="true" signature="2931:2941" ph="..." />
-            <marker date="1500291839857" expanded="true" signature="3791:4526" ph="..." />
-            <marker date="1500291839857" expanded="true" signature="3869:4311" ph="..." />
+            <marker date="1500951839374" expanded="true" signature="3785:3795" ph="..." />
+            <marker date="1500951839374" expanded="true" signature="4552:5270" ph="..." />
+            <marker date="1500951839374" expanded="true" signature="4630:5055" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/case/abstrapstepNew.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/mail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="77" lean-forward="false" selection-start-line="26" selection-start-column="77" selection-end-line="26" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/case/concretestep.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="50" column="56" lean-forward="true" selection-start-line="50" selection-start-column="56" selection-end-line="50" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="865" column="77" lean-forward="false" selection-start-line="865" selection-start-column="53" selection-end-line="865" selection-end-column="77" />
+          <folding>
+            <element signature="e#31598#31756#0" expanded="false" />
+            <element signature="e#47560#48640#0" expanded="false" />
+            <element signature="e#48708#49788#0" expanded="false" />
+            <element signature="e#49850#51311#0" expanded="false" />
+            <element signature="e#51390#52478#0" expanded="false" />
+            <element signature="e#53770#55572#0" expanded="false" />
+            <element signature="e#55722#58118#0" expanded="false" />
+            <element signature="e#58284#60145#0" expanded="false" />
+            <element signature="e#64190#66015#0" expanded="false" />
+            <element signature="e#66164#68246#0" expanded="false" />
+            <element signature="e#66175#66240#0" expanded="false" />
+            <element signature="e#68291#68949#0" expanded="false" />
+            <element signature="e#69009#69132#0" expanded="false" />
+            <element signature="e#69250#69648#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="1212" column="0" lean-forward="false" selection-start-line="1212" selection-start-column="0" selection-end-line="1212" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/mail/chatsctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="103" column="37" lean-forward="false" selection-start-line="103" selection-start-column="8" selection-end-line="103" selection-end-column="37" />
+          <folding>
+            <element signature="e#5138#6211#0" expanded="false" />
+            <element signature="e#6314#9436#0" expanded="false" />
+            <element signature="e#9515#9965#0" expanded="false" />
+            <element signature="e#10046#10199#0" expanded="false" />
+            <element signature="e#15868#16798#0" expanded="false" />
+            <element signature="e#20013#22159#0" expanded="false" />
+            <element signature="e#24423#25216#0" expanded="false" />
+            <element signature="e#25368#25477#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/mail.list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="63" column="296" lean-forward="false" selection-start-line="63" selection-start-column="296" selection-end-line="63" selection-end-column="296" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/mail/chatsdetailctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="15" column="37" lean-forward="false" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>

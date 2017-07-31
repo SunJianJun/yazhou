@@ -617,7 +617,7 @@ app.factory('departmentAndPersonsService', ['localStorageService', 'dateService'
                             //alert("用户定位点修改成功！");
                             // curUser=$scope.curUser;
                             // $scope.resMsg=data;
-                            console.log(data + "<>" + data.length + "<>" + status);
+                            console.log(data);
                             if (status == 200) {
                                 //说明服务器端获得当前用户所在部门成功
                                 //如果人员关联的单位不为空
@@ -1457,7 +1457,7 @@ app.factory('ChatService', ['localStorageService','localToolService', 'dateServi
                 if(status==200){
                     //其实也可以得到部门，但是部门暂时没有用
 
-                    console.log("\n"+JSON.stringify(data)+"<消息>"+data.length);
+                    // console.log("\n"+JSON.stringify(data)+"<消息>"+data.length);
                     //如果人员关联的消息数量不为0
                     if(data && data.length>0){
                         // 继续列出来
