@@ -1,5 +1,4 @@
-﻿// console.log=function(){};
-'use strict';
+﻿'use strict';
 
 /* Controllers */
 

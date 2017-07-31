@@ -36,8 +36,8 @@
                                             <option ng-repeat="arguop in settingargu" value="{{arguop.type}}" ng-selected="arguop.type==argu.argutype">{{arguop.name}}</option>
                                         </select>
                                     </div>
-                                    <div class="w pull-left">
-                                        名称：<input class="w-sm" type="test" name="{{argu.name}}" ng-model="argu.name"/>
+                                    <div class="w pull-left" id="myArgumentv{{$index+1}}">
+                                        名称：<input class="w-sm"  type="test" name="{{argu.name}}" ng-model="argu.name"/>
                                     </div>
                                     <div class="pull-left">
                                         <button ng-click="quotecontent(argu.name)">插入</button>

@@ -53,7 +53,7 @@ app.controller('abstrapstepNew', function ($scope, $compile, $rootScope, $window
       }
       //console.log($scope.selectedNew)
       //console.log(JSON.stringify($scope.personPower))
-      $('#myEditor').html($rootScope.abstractstepN.wordTemplate)
+      $('#myEditor').html($rootScope.abstractstepN.wordTemplate);
       // $scope.um.setContent('添加文字测试');
       // $rootScope.abstractstepN.wordTemplate);
 //       $('#updateStepDate').html(`<input type="text" name="type" value="${$scope.activities.type}">`)

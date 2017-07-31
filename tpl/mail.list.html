@@ -29,7 +29,8 @@
                                 <a>
                                     <span ng-if="mail.text">{{mail.text}}</span>
                                     <img ng-src={{'http://120.76.228.172:2000/'+mail.image}} ng-if="mail.image"/>
-                                    <video ng-if="mail.voice" ng-src="{{'http://120.76.228.172:2000/'+mail.voice}}"></video>
+                                    <video ng-if="mail.voice" id="infomedia" width='100%' height="auto" controls ng-src="{{'http://120.76.228.172:2000/'+mail.voice}}">
+                                    </video>
                                 </a>
                                 <!--<span class="label bg-light m-l-sm" ng-hide="mail.transfer">{{mail.state=='unread'?'未读':'已读'}}</span>-->
                             </p>
