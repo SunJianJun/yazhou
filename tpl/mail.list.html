@@ -29,7 +29,8 @@
                                 <a>
                                     <span ng-if="mail.text">{{mail.text}}</span>
                                     <img ng-src={{'http://120.76.228.172:2000/'+mail.image}} ng-if="mail.image"/>
-                                    <video ng-if="mail.voice" id="infomedia" width='100%' height="auto" controls ng-src="{{'http://120.76.228.172:2000/'+mail.voice}}">
+                                    <video ng-if="mail.voice" id="infomedia" width='100%' height="auto" controls>
+                                        <!--ng-src="{{'http://120.76.228.172:2000/'+mail.voice}}"-->
                                     </video>
                                 </a>
                                 <!--<span class="label bg-light m-l-sm" ng-hide="mail.transfer">{{mail.state=='unread'?'未读':'已读'}}</span>-->
@@ -59,7 +60,7 @@
                 </div>
             </div>
             <div class="send_massage" contenteditable>
-                <textarea class="form-control" ng-model="unSendMessage.text" rows="5">
+                <textarea class="form-control" ng-model="unSendMessage.text" rows="6">
                 </textarea>
             </div>
             <input type="button" class="action-con btn btn-danger" ng-show="(unSendMessage.text && unSendMessage.text != '')||(unSendMessage.video && unSendMessage.video != '')||(unSendMessage.image && unSendMessage.image != '')||(unSendMessage.voice && unSendMessage.voice != '')" ng-click="sendMessage()" value="发送"/>

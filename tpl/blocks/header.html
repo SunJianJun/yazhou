@@ -251,18 +251,18 @@
       <a href class="dropdown-toggle" dropdown-toggle>
         <i class="icon-bell fa-fw"></i>
         <span class="visible-xs-inline">Notifications</span>
-        <span class="badge badge-sm up bg-danger pull-right-xs">{{alwaysnotifications.length}}</span>
+        <span class="badge badge-sm up bg-danger pull-right-xs">{{promptboth.length}}</span>
       </a>
       <!-- dropdown -->
       <div class="dropdown-menu w-xl animated fadeInUp">
         <div class="panel bg-white">
           <div class="panel-heading b-light bg-light">
-            <strong>You have <span>{{alwaysnotifications.length}}</span> notifications</strong>
+            <strong>你有 <span>{{promptboth.length}}</span> 条通知</strong>
           </div>
-          <div class="list-group">
-            <a href class="media list-group-item" ng-repeat="notifications in unreadPersons">
+          <div class="list-group scroll-y mail-list-win">
+            <a href class="media list-group-item" ng-repeat="notifications in promptboth">
                     <span class="media-body block m-b-none">
-                      来自{{notifications.name}}的消息<br>
+                      收到一条{{notifications.type=='stepgo'?'审核通过消息':(notifications.type=='broadcast'?'系统消息':(notifications.type=='event'?'事件消息':(notifications.type=='backoff'?'事件被驳回':'')))}}来自{{notifications.name}}的消息<br>
                       <!--<small class="text-muted">{{notifications.create_date}}</small>-->
                     </span>
             </a>

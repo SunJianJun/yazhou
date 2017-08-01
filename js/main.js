@@ -46,7 +46,7 @@ angular.module('app')
         console.log('接口测试'+$rootScope.applicationServerpath);
           // $http({
           //         method:'POST',
-          //         url:$rootScope.applicationServerpath+'mobilegrid/getdepartmentlaw',
+          //         url:$rootScope.applicationServerpath+'mobilegrid/getcurrentexamineevent',
           //         data:{
           //           department: "58c3a5e9a63cf24c16a50b8e"
           //         }
@@ -165,6 +165,16 @@ angular.module('app')
                 $state.go("access.signin",{from:fromState.name,w:'notLogin'});//跳转到登录界面
             }
         });
+        window.setInterval(function(){
+            var promptboth=localStorageService.get('messagespromptboth'+$rootScope.curUser._id,24)
+          for(var i=0;i<promptboth.length;i++){
+            var info=localStorageService.get('PersonInfo_'+promptboth[i].sender,24);
+            promptboth[i].name=info.name;
+          }
+          $rootScope.promptboth=promptboth;
+          // console.log($rootScope.promptboth);
+
+        },$rootScope.locationRefreshTime)
         // 2对用户超时事件进行捕捉，还未使用
         /**
          * .factory('UserInterceptor', ["$q","$rootScope",function ($q,$rootScope) {
@@ -194,21 +204,25 @@ angular.module('app')
 })
          */
 
-        //自动最大化高度
-         window.onresize=function(){
-            var winowHeight = $window.innerHeight; //获取窗口高度
-            var headerHeight = 50;
-            var footerHeight = 50;
-            var winHei = winowHeight - footerHeight -headerHeight;
+        $scope.autosize=function(){
+          var winowHeight = $window.innerHeight; //获取窗口高度
+          var headerHeight = 50;
+          var footerHeight = 50;
+          var winHei = winowHeight - footerHeight -headerHeight;
 //$window.innerHeight - 100 -250 + 'px'
 //             console.log(winHei);
-             var mail_contacts=winHei - 50 + 'px';
-             var mail_list_win=winHei - 170 + 'px';
-             var app_content=winHei + 'px';
-             $('.amap-container').css('min-height',app_content);
-             //console.log(app_content);
-            $('#myStyle').html('.mail-contacts{height:'+mail_list_win+';}.mail-list-win{height:'+mail_list_win+';}.app-content{height:'+app_content+';}');
-             //console.log(winHei);
+          var asidescroll=winowHeight-headerHeight+'px';//右侧导航栏
+          var mail_contacts=winHei - 50 + 'px';
+          var mail_list_win=winHei - 230 + 'px';
+          var app_content=winHei + 'px';
+          $('.amap-container').css('min-height',app_content);
+          //console.log(app_content);
+          $('#myStyle').html('.mail-contacts{height:'+mail_list_win+';}.mail-list-win{height:'+mail_list_win+';}.app-content{height:'+app_content+';}.asidescroll{height:'+asidescroll+';overflow-y:scroll;}');
+        }
+      $scope.autosize();
+        //自动最大化高度
+         window.onresize=function(){
+           $scope.autosize();
         }
 
         $rootScope.$on('userIntercepted',function(errorType){

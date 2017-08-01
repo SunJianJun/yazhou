@@ -43,9 +43,6 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
   $scope.alldepartments = {};
   $scope.alldepartmentsAndPersonMessages = localStorageService.get('alldepartmentsAndPersonMessages', 30);
   //测试一下加载人员后的单位树
-  console.log('测试一下从缓存读出的人员消息后');
-  var str = JSON.stringify($scope.alldepartmentsAndPersonMessages);
-  console.log(str);
 
   //最近消息的发送人
   $scope.unreadPersons = {};
@@ -124,6 +121,7 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
   $scope.refreshAllMessageList = function () {
 
     if (!($scope.alldepartmentsAndPersonMessages && $scope.alldepartmentsAndPersonMessages.length > 0))return;
+    console.log(str);
     //组装单位
     for (var indd = 0; indd < $scope.alldepartmentsAndPersonMessages.length; indd++) {
       if ($scope.alldepartmentsAndPersonMessages[indd].isDeleted)continue;//如果已经被标识为被删除，即最近一次刷新部门时，不在服务器部门列表里
@@ -308,14 +306,19 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
       }
       var res ={};
       data.sort(compare);
-      for (var i = 0; i < data.length;) {
-        var count = 0;
-        for (var j = i; j < data.length; j++) {
-          if (data[i].sender == data[j].sender) {
-            count++;
-          }
+      for(var c=0,aryaa=[];c<data.length;c++){
+        if(!data[c].type||data[c].type=='message'){
+          aryaa.push(data[c])
         }
-        res[data[i].sender]=count;
+      }
+      for (var i = 0; i <aryaa.length;) {
+        var count = 0;
+        for (var j = i; j <aryaa.length; j++) {
+            if (aryaa[i].sender ==aryaa[j].sender) {
+              count++;
+            }
+        }
+        res[aryaa[i].sender]=count;
         i += count;
       }
       console.log(res)
@@ -547,34 +550,6 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
 
 
 
-  // 等到消息发送成功之后，刷新消息界面，并重置未发送消息
-  $scope.renew = function (newMessage) {
-    // $scope.messageDetils=$scope.messageDetils?$scope.messageDetils:new Array();
-    if (!newMessage.sender._id && newMessage.sender == $rootScope.curUser._id) {
-      newMessage.sender = {
-        _id: newMessage.sender,
-        name: $rootScope.curUser.name
-      };
-    }
-    localToolService.insertANewMessageToMessageList(newMessage.receiver, newMessage.sender._id, newMessage);
-    // 把时间格式化一下
-    newMessage.create_date = new Date(newMessage.create_date).formate('yyyy-MM-dd HH:mm:ss');
-    // $scope.allMessageDetils=localStorageService.get("messagesListboth" + newMessage.receiver+'_'+newMessage.sender._id,60*24);
-    $scope.messageNum += 1;
-    $scope.messageDetils = ChatService.getAmountMessageByBothId($scope.messageNum,
-      $stateParams.senderId, $rootScope.curUser._id);
-    $timeout(function () {
-      viewScroll.scrollBottom();
-    }, 0);
-    $scope.unSendMessage = {};
-    // //console.log("取当前消息列表："+JSON.stringify($scope.messageDetils));
-    // $ionicLoading.hide();
-  };
-
-  $scope.$on('sendMessageOK', function (event, newMessage) {
-    // $scope.isRefreshFromServer=false;
-    $scope.renew(newMessage);
-  });
 
   //上传之后，得到返回值，给消息对应的字段赋值
   $scope.afterUpload = function (fileResponse) {

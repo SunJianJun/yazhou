@@ -1,6 +1,6 @@
 app.controller('messageDetailCtrl', [
-  '$scope', '$http', '$state', 'localStorageService', 'messageService', '$rootScope', 'departmentAndPersonsService', '$timeout', '$stateParams',
-  function ($scope,   $http,   $state,   localStorageService,   messageService,   $rootScope,   departmentAndPersonsService,   $timeout,  $stateParams,sendMessage) {
+  '$scope', '$http', '$state', 'localStorageService','localToolService', 'ChatService','messageService', '$rootScope', 'departmentAndPersonsService', '$timeout', '$stateParams',
+  function ($scope,   $http,   $state,   localStorageService,localToolService,ChatService,   messageService,   $rootScope,   departmentAndPersonsService,   $timeout,  $stateParams,sendMessage) {
 
     console.log('----NO2--------messageDetailCtrl');
 
@@ -11,10 +11,11 @@ app.controller('messageDetailCtrl', [
 
     $scope.unSendMessage={};
     $scope.unSendMessage.text='';
-    window.setInterval(function(){
-      $scope.currenttalk=localStorageService.get("messagesListboth"+$scope.fold+'_'+$rootScope.curUser._id);
-      console.log($scope.currenttalk)
+
+    window.setInterval(function(){//刷新当前消息
+      $scope.getcurrenttalk($scope.fold,$rootScope.curUser._id)
     },$rootScope.messageRefreshTime)
+
     //滚动条自动滚动到底部
     $scope.scrolldIV=function(){
       var div = document.getElementById('scrolldIV');
@@ -23,6 +24,38 @@ app.controller('messageDetailCtrl', [
     $scope.messageFirstRun =true;
 
 
+    // 等到消息发送成功之后，刷新消息界面，并重置未发送消息
+    $scope.renew = function (newMessage) {
+      // $scope.messageDetils=$scope.messageDetils?$scope.messageDetils:new Array();
+      if (!newMessage.sender._id && newMessage.sender == $rootScope.curUser._id) {
+        newMessage.sender = {
+          _id: newMessage.sender,
+          name: $rootScope.curUser.name
+        };
+      }
+      localToolService.insertANewMessageToMessageList(newMessage.receiver, newMessage.sender._id, newMessage);
+      // 把时间格式化一下
+      newMessage.create_date = new Date(newMessage.create_date).formate('yyyy-MM-dd hh:mm:ss');
+      // $scope.allMessageDetils=localStorageService.get("messagesListboth" + newMessage.receiver+'_'+newMessage.sender._id,60*24);
+      $scope.messageNum += 1;
+      $scope.messageDetils = ChatService.getAmountMessageByBothId($scope.messageNum,
+        $stateParams.senderId, $rootScope.curUser._id);
+      $timeout(function () {
+        var div = document.getElementById('scrolldIV');
+        div.scrollTop = div.scrollHeight;
+        $scope.unSendMessage = {};
+        $scope.unSendMessage.text='';
+        $scope.unSendMessage.video='';
+        $scope.unSendMessage.image='';
+      }, 0);
+      // //console.log("取当前消息列表："+JSON.stringify($scope.messageDetils));
+      // $ionicLoading.hide();
+    };
+
+    $scope.$on('sendMessageOK', function (event, newMessage) {
+      // $scope.isRefreshFromServer=false;
+      $scope.renew(newMessage);
+    });
     //上传之后，得到返回值，给消息对应的字段赋值
     $scope.sendMessage = function () {
       // 正在刷新列表的时候，不能发送数据
@@ -70,8 +103,8 @@ app.controller('messageDetailCtrl', [
       }, 200);
     };
     $scope.getcurrenttalk=function (sender,receiver) {
-      // $scope.currenttalk=localStorageService.get("messagesListboth" + sender + '_' + receiver);
-      // console.log($scope.currenttalk)
+      $scope.currenttalk=localStorageService.get("messagesListboth" + sender + '_' + receiver);
+      console.log($scope.currenttalk)
     }
     //刷新消息
     $scope.refreshMessages = function () {

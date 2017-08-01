@@ -997,7 +997,7 @@ body {
 .hbox .col {
     display: table-cell;
     float: none;
-    height: 500px;
+    /*height: 500px;*/
     vertical-align: top;
 }
 
