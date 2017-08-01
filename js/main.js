@@ -42,7 +42,7 @@ angular.module('app')
         ];
         $rootScope.applicationServerpath='http://localhost:2000/';
 
-         $rootScope.applicationServerpath='http://120.76.228.172:2000/';
+         // $rootScope.applicationServerpath='http://120.76.228.172:2000/';
         console.log('接口测试'+$rootScope.applicationServerpath);
           // $http({
           //         method:'POST',
@@ -167,11 +167,13 @@ angular.module('app')
         });
         window.setInterval(function(){
             var promptboth=localStorageService.get('messagespromptboth'+$rootScope.curUser._id,24)
-          for(var i=0;i<promptboth.length;i++){
-            var info=localStorageService.get('PersonInfo_'+promptboth[i].sender,24);
-            promptboth[i].name=info.name;
+          if(promptboth) {
+            for (var i = 0; i < promptboth.length; i++) {
+              var info = localStorageService.get('PersonInfo_' + promptboth[i].sender, 24);
+              promptboth[i].name = info.name;
+            }
+            $rootScope.promptboth = promptboth;
           }
-          $rootScope.promptboth=promptboth;
           // console.log($rootScope.promptboth);
 
         },$rootScope.locationRefreshTime)

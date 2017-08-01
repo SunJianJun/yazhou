@@ -68,41 +68,17 @@ app.controller('SigninFormController', ['$rootScope', '$scope', '$interval', '$h
     }
 
     $scope.iscode = false;
-    $('#scanningqrcode').qrcode({
-      render: "canvas",
-      width: 280,
-      height: 280,
-      correctLevel: 0,
-      text: "http://120.76.228.172:2000/?uuid=" + $scope.uuid(),
-      background: "#ffffff",
-      foreground: "#FF9001"
-    })
-    $scope.loadlogin = function () {
 
-      $http(//打开页面，现在数据库中添加记录，手机扫描
-        {
-          method: 'POST',
-          url: $rootScope.applicationServerpath + 'personalinfo/sendphoneBypcloginuuid',
-          data: {UUID: $scope.uuid()}
-        }
-      ).then(function (resp) {
-        console.log(resp.data)
-        if (resp.data) {
-          $scope.login_id = resp.data;
-        }
-      })
 
+    $scope.loadlogin = function (uuid) {
 
       $scope.logintimer = $interval(function () {
-        if ($scope.login_id) {
-          if ($scope.login_id.success) {//有登陆信息的
-            $http(
-              {
+        if (uuid) {
+            $http({
                 method: 'POST',
                 url: $rootScope.applicationServerpath + 'personalinfo/getphoneBypclogin',
-                data: {_id: $scope.login_id.success._id}
-              }
-            ).then(function (resp) {
+                data: {_id:uuid}
+              }).then(function (resp) {
               console.log('返回数据')
               console.log(resp.data)
               var success = resp.data.success, error = resp.data.error;
@@ -110,6 +86,7 @@ app.controller('SigninFormController', ['$rootScope', '$scope', '$interval', '$h
                 if (success.person) {
                   $rootScope.curUser = success.person;
                   $state.go('app.gridmap');
+                  return;
                 } else {
 
                 }
@@ -117,17 +94,14 @@ app.controller('SigninFormController', ['$rootScope', '$scope', '$interval', '$h
               if (error) {
                 $interval.cancel($scope.logintimer);
                 console.log(resp.data)
+                return;
               }
-            })
             if ($rootScope.curUser) {
               $interval.cancel($scope.logintimer);
               $state.go('app.gridmap');
             }
-          } else if ($scope.login_id.error) {//登陆错误
+        })
 
-          } else {//没有返回值
-
-          }
         }
 
       }, 2000);
@@ -137,7 +111,30 @@ app.controller('SigninFormController', ['$rootScope', '$scope', '$interval', '$h
 
   $scope.showscanningqrcode = function () {
     $scope.iscode = true;
-    $scope.loadlogin();
+    var uuid=$scope.uuid();
+    var loadloginID=localStorageService.get('loadloginID',2)
+    if(!loadloginID){
+      $http(//打开页面，现在数据库中添加记录，手机扫描
+        {
+          method: 'POST',
+          url: $rootScope.applicationServerpath + 'personalinfo/sendphoneBypcloginuuid',
+          data: {UUID: uuid}
+        }
+      ).then(function (resp) {
+        if (resp.data) {
+          if(resp.data.success){
+            $scope.login_id = resp.data.success._id;
+            console.log($scope.login_id)
+            localStorageService.update('loadloginID',$scope.login_id)
+            $scope.loadlogin(loadloginID?loadloginID:$scope.login_id);
+          }else{
+
+          }
+        }
+      })
+    }else{
+      // $scope.loadlogin(loadloginID?loadloginID:$scope.login_id);
+    }
   }
   $scope.showdownload = function () {
     $scope.iscode = false;
