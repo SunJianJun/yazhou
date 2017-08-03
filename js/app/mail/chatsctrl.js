@@ -1,39 +1,3 @@
-/*
- app.controller('MailListCtrl', ['$scope', '$http', '$stateParams', '$rootScope', 'ChatService', function ($scope, $http, $stateParams, $rootScope, ChatService) {
-
- $scope.fold = $stateParams.fold || '7';
- console.log('当前聊天对应id--' + $stateParams.fold);
-
- $scope.sendMessage = function (fileResponse) {
- console.log('点击了发送');
- var messageobj = {
- text: '20170325看看事故现场jkhkjh123',
- video: 'message_321.mp4',
- location: {geolocation: [116.385029, 39.992495]}
- };
- var senderId = "58cb2031e68197ec0c7b935b";
- var receiverId = "58c043cc40cbb100091c640d";
- ChatService.sendMessages(messageobj, senderId, receiverId, $rootScope.applicationServerpath);
- ChatService.sendMessages(messageobj, senderId, receiverId, $rootScope.applicationServerpath);
- }
- $scope.afterUpload = function (fileResponse) {
- // fileResponse.fileType
- switch (fileResponse.fileType) {
- case 'video':
- $scope.unSendMessage.video = fileResponse.filename;
- break;
- case 'commentImg':
- $scope.unSendMessage.image = fileResponse.filename;
- break;
- default:
- break;
- }
- }
-
-
- }
- ]);
- */
 app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorageService, $http, $state, userService, dateService, $stateParams, Upload, $timeout, ChatService, departmentAndPersonsService, localToolService
                                       //, $ionicBackdrop,$ionicPopup,$ionicModal,departmentAndPersonsService
 ) {
@@ -293,6 +257,7 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
     promise.then(function (data) {  // 调用承诺API获取数据 .resolve
       $scope.alwaysnotifications=data;
       console.log(data)
+      //debugger;
       var compare = function (obj1, obj2) {//排序函数
         var val1 = obj1.sender;
         var val2 = obj2.sender;

@@ -12,6 +12,12 @@ app.controller('messageDetailCtrl', [
     $scope.unSendMessage={};
     $scope.unSendMessage.text='';
 
+    $scope.getcurrenttalk=function (sender,receiver) {//从缓存中获取俩人对话
+      $scope.currenttalk=localStorageService.get("messagesListboth" + sender + '_' + receiver);
+      //console.log($scope.currenttalk)
+    }
+    $scope.getcurrenttalk($scope.fold,$rootScope.curUser._id);
+
     window.setInterval(function(){//刷新当前消息
       $scope.getcurrenttalk($scope.fold,$rootScope.curUser._id)
     },$rootScope.messageRefreshTime)
@@ -102,10 +108,6 @@ app.controller('messageDetailCtrl', [
         $scope.scrolldIV();
       }, 200);
     };
-    $scope.getcurrenttalk=function (sender,receiver) {
-      $scope.currenttalk=localStorageService.get("messagesListboth" + sender + '_' + receiver);
-      console.log($scope.currenttalk)
-    }
     //刷新消息
     $scope.refreshMessages = function () {
       $scope.curSender= localStorageService.get("messagedetail"+$stateParams.senderID,30);
