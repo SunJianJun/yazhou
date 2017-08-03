@@ -322,8 +322,8 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
         i += count;
       }
       console.log(res)
-      var temppp = localStorageService.get("recentChatPersons") ? localStorageService.get("recentChatPersons") : new Array();
-      for (var index = 0; index < data.length; index++) {
+      var temppp = localStorageService.get("recentChatPersons")?localStorageService.get("recentChatPersons") : new Array();
+      for (var index = 0; index < data.length; index++){
         // console.log("下属人员：" + data[index]);
         // console.log("UnreadMessageS人员：" + JSON.stringify(localStorageService.get("PersonInfo_"+data[index].sender)));
         var pObj = localStorageService.get("PersonInfo_" + data[index].sender,360);
@@ -344,7 +344,6 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
           if(!isyou){
             temppp.push(pObj);
           }
-
         }
       }
       console.log(temppp)
@@ -358,7 +357,6 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
 
   // 得到并刷新部门的人员
   $scope.refreshDepartmentPersons = function (curDid) {
-
     localStorageService.clear("allPersonsUkSeeInDepartment" + curDid._id);
     var cachePersons = localStorageService.get("allPersonsUkSeeInDepartment" + curDid._id);
     if (!cachePersons) {// 同步调用，获得承诺接口
@@ -464,7 +462,6 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
       $rootScope.refreshCurUser();
       return;
     }
-    ;
     // 这是得到缓存中的消息记录数据
     $scope.allMessageDetils = ChatService.getMessageByBothId($stateParams.senderId, $rootScope.curUser._id);
     // 缓存中的消息记录按生产时间排序
@@ -504,7 +501,6 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
       }
       return;
     }
-
   };
 
   // 等到系统用户刷新成功后，刷新可见部门
@@ -514,10 +510,9 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
   });
 
 
-  window.addEventListener("native.keyboardshow", function (e) {
+  window.addEventListener("native.keyboardshow", function (e){
       viewScroll.scrollBottom();
-    }
-  );
+    });
 
   // 图片显示
   $scope.showImage = function (imageUrl) {

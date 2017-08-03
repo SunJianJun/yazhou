@@ -390,7 +390,6 @@ app.controller('gridmapctl',
       $scope.$on('getWorkmatesByUserIdOk', function (event, sender) {
         $scope.assembleWorkmates();
         console.log($scope.map)
-        console.log($scope.map);
         $scope.loadpolylayers();
         $scope.drawpolylayer($scope.spotarea)
       });
@@ -874,7 +873,7 @@ app.controller('gridmapctl',
           return;
         }//如果画过就不画了,如果地图没准备好
         $scope.polygonArrs = new Array();//多边形覆盖物节点坐标数组
-
+        if(!polylayer){return;}
         for (var index = 0; index < polylayer.length; index++) {
           var temp = polylayer[index];
           //console.log(temp);
@@ -1205,7 +1204,7 @@ app.controller('gridmapctl',
         console.log($scope.properdata);
         $http({
           method: 'POST',
-          url: $rootScope.applicationServerpath + 'spotarea/readtSpotarea',
+          url: $rootScope.applicationServerpath + 'spotarea/addperson',
           data: $scope.properdata
         }).then(function (data) {
           console.log(data);

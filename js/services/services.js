@@ -164,12 +164,10 @@ app.factory('localToolService', function ($http, localStorageService, $rootScope
             isExisted = true;
           }
         }
-
       }
       if (!isExisted) {
         alldepartments.push(newDepartment);
       }
-      ;
       // 将缓存中的消息记录按生产时间排序
       alldepartments.sort(function (a, b) {
         return a.path.length - b.path.length;//根据树路径字符串长度排序，就是层级顺序了
@@ -1512,8 +1510,10 @@ app.factory('ChatService', ['localStorageService', 'localToolService', 'dateServ
 
             for (var index = 0; index < data.length; index++) {
               if (data[index].type == 'message') {
+                console.log('消息导入')
                 localToolService.insertANewMessageToMessageList(data[index].sender, receiver_id, data[index]);
               } else {
+                console.log('提示导入')
                 localToolService.insertANewMessageToMessageprompt(data[index].sender, receiver_id, data[index]);
               }
             }

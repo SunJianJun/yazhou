@@ -46,9 +46,9 @@ angular.module('app')
         console.log('接口测试'+$rootScope.applicationServerpath);
           // $http({
           //         method:'POST',
-          //         url:$rootScope.applicationServerpath+'mobilegrid/getcurrentexamineevent',
+          //         url:$rootScope.applicationServerpath+'personadminroute/sendcheckperson',
           //         data:{
-          //           department: "58c3a5e9a63cf24c16a50b8e"
+          //           idNum: "370103198304295544",name:'马燕',mobileUUid:"47ab9cc0fa8a8a07"
           //         }
           //     }).then(function(resp){
           //     console.log('返回数据')
@@ -170,13 +170,16 @@ angular.module('app')
           if(promptboth) {
             for (var i = 0; i < promptboth.length; i++) {
               var info = localStorageService.get('PersonInfo_' + promptboth[i].sender, 24);
-              promptboth[i].name = info.name;
+              if(info)promptboth[i].name = info.name;
             }
             $rootScope.promptboth = promptboth;
           }
-          // console.log($rootScope.promptboth);
+          console.log($rootScope.promptboth);
 
         },$rootScope.locationRefreshTime)
+      $scope.message=function () {
+        
+      }
         // 2对用户超时事件进行捕捉，还未使用
         /**
          * .factory('UserInterceptor', ["$q","$rootScope",function ($q,$rootScope) {
