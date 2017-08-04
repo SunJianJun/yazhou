@@ -1,8 +1,6 @@
 app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorageService, $http, $state, userService, dateService, $stateParams, Upload, $timeout, ChatService, departmentAndPersonsService, localToolService
                                       //, $ionicBackdrop,$ionicPopup,$ionicModal,departmentAndPersonsService
 ) {
-
-  console.log('----NO1---');
   //所有的单位
   $scope.alldepartments = {};
   $scope.alldepartmentsAndPersonMessages = localStorageService.get('alldepartmentsAndPersonMessages', 30);
@@ -479,87 +477,7 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
       viewScroll.scrollBottom();
     });
 
-  // 图片显示
-  $scope.showImage = function (imageUrl) {
-    console.log("展示的图片路径：" + imageUrl);
-    $scope.curImage = imageUrl;
-    $scope.showModal('templates/imagehover.html');
-  };
 
-  // 视频播放
-  $scope.playVideo = function (videoUrl) {
-    $scope.curVideo = videoUrl;
-    $scope.showModal('templates/videohover.html');
-  };
-
-  $scope.showModal = function (templateUrl) {
-    $ionicModal.fromTemplateUrl(templateUrl, {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function (modal) {
-      $scope.modal = modal;
-      $scope.modal.show();
-    });
-  }
-
-  // Close the modal
-  $scope.closeModal = function () {
-    $scope.modal.hide();
-    $scope.modal.remove()
-  };
-
-
-
-
-  //上传之后，得到返回值，给消息对应的字段赋值
-  $scope.afterUpload = function (fileResponse) {
-    // fileResponse.fileType
-    // fileResponse.filename
-    console.log("上传完成后文件名：" + fileResponse.filename);
-    //
-    // $ionicLoading.hide();
-    switch (fileResponse.fileType) {
-      case 'video':
-        $scope.unSendMessage.video = fileResponse.filename;
-        break;
-      case 'commentImg':
-        $scope.unSendMessage.image = fileResponse.filename;
-        break;
-      case 'voice':
-        $scope.unSendMessage.voice = fileResponse.filename;
-        break;
-      default:
-        break;
-    }
-    var unsendM = $scope.unSendMessage;
-    //自动上传
-    if ((unsendM.text && unsendM.text != '') || (unsendM.video && unsendM.video != '') || (unsendM.image && unsendM.image != '') || (unsendM.voice && unsendM.voice != '')) {
-      // 自动上传，类似微信
-      $scope.sendMessage()
-    }
-  }
-
-  /**
-   * uploadImageFile 发送图片
-   * @param file
-   * @param errFiles
-   * @param callback
-   */
-  $scope.uploadImageFile = function (file, errFiles) {
-    console.log('开始上传文件:' + file);
-    ChatService.uploadImagefile(file, errFiles, $scope.afterUpload);
-  }
-
-  /**
-   * uploadVideoFile 发送视频
-   * @param file
-   * @param errFiles
-   * @param callback
-   */
-  $scope.uploadVideoFile = function (file, errFiles) {
-    console.log('开始上传文件:' + file);
-    ChatService.uploadVideoFile(file, errFiles, $scope.afterUpload);
-  }
 
   $scope.mailList = function (id, name) {
     console.log("接收者：" + id + "," + name);

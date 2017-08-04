@@ -5,10 +5,10 @@ app.controller('messageDetailCtrl', [
     console.log('----NO2--------messageDetailCtrl');
 
 
-    $scope.fold = $stateParams.receiverID || '7';
+    $scope.fold = $stateParams.receiverID;
     console.log('当前聊天对应id--'+$scope.fold);
   console.log($stateParams);
-
+if(!$scope.fold){return;}
     $scope.unSendMessage={};
     $scope.unSendMessage.text='';
 
@@ -94,6 +94,87 @@ app.controller('messageDetailCtrl', [
       $timeout(function () {
         // $ionicLoading.hide();//60秒后，不管成不成功，都取消进度栏
       }, 60000);
+    }
+
+
+    // 图片显示
+    $scope.showImage = function (imageUrl) {
+      console.log("展示的图片路径：" + imageUrl);
+      $scope.curImage = imageUrl;
+      $scope.showModal('templates/imagehover.html');
+    };
+
+    // 视频播放
+    $scope.playVideo = function (videoUrl) {
+      $scope.curVideo = videoUrl;
+      $scope.showModal('templates/videohover.html');
+    };
+
+    $scope.showModal = function (templateUrl) {
+      $ionicModal.fromTemplateUrl(templateUrl, {
+        scope: $scope,
+        animation: 'slide-in-up'
+      }).then(function (modal) {
+        $scope.modal = modal;
+        $scope.modal.show();
+      });
+    }
+
+    // Close the modal
+    $scope.closeModal = function () {
+      $scope.modal.hide();
+      $scope.modal.remove();
+    };
+
+    //上传之后，得到返回值，给消息对应的字段赋值
+    $scope.afterUpload = function (fileResponse) {
+      // fileResponse.fileType
+      // fileResponse.filename
+      console.log(fileResponse);
+      console.log("上传完成后文件名：" + fileResponse.filename);
+      //
+      // $ionicLoading.hide();
+      switch (fileResponse.fileType) {
+        case 'video':
+          $scope.unSendMessage.video = fileResponse.filename;
+          break;
+        case 'commentImg':
+          $scope.unSendMessage.image = fileResponse.filename;//上传完成，然后添加到数据库记录
+          console.log('上传完成，然后添加到数据库记录')
+          debugger;
+          break;
+        case 'voice':
+          $scope.unSendMessage.voice = fileResponse.filename;
+          break;
+        default:
+          break;
+      }
+      var unsendM = $scope.unSendMessage;
+      //自动上传
+      if ((unsendM.text && unsendM.text != '') || (unsendM.video && unsendM.video != '') || (unsendM.image && unsendM.image != '') || (unsendM.voice && unsendM.voice != '')) {
+        // 自动上传，类似微信
+        $scope.sendMessage()
+      }
+    }
+    /**
+     * uploadImageFile 发送图片
+     * @param file
+     * @param errFiles
+     * @param callback
+     */
+    $scope.uploadImageFile = function (file, errFiles) {
+      console.log('开始上传文件:'+file)
+      ChatService.uploadImagefile(file, errFiles,$scope.afterUpload,file.type.slice(6));
+    }
+    /**
+     * uploadVideoFile 发送视频
+     * @param file
+     * @param errFiles
+     * @param callback
+     */
+    $scope.uploadVideoFile = function (file, errFiles) {
+      console.log('开始上传文件:' + file);
+      ChatService.uploadVideoFile(file, errFiles, $scope.afterUpload);
     }
 
 
@@ -208,23 +289,6 @@ startTime=new Date(new Date().setDate(new Date().getDate()-2));
       $scope.modal.remove()
     };
 
-    /*********************************/
-    //上传之后，得到返回值，给消息对应的字段赋值
-    $scope.afterUpload=function (fileResponse) {
-      // fileResponse.fileType
-      // fileResponse.filename
-      switch(fileResponse.fileType)
-      {
-        case 'video':
-          $scope.unSendMessage.video=fileResponse.filename;
-          break;
-        case 'commentImg':
-          $scope.unSendMessage.image=fileResponse.filename;
-          break;
-        default:
-          break;
-      }
-    }
 
     // 上传服务器,后面是上传的类型，普通图片commonImge和身份证IDCard
     $scope.uploadimage = function (uri, uploadDir, mimetype) {

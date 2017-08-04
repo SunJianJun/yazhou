@@ -824,6 +824,37 @@ app.factory('messageService', ['localStorageService', 'dateService', '$http', '$
 
         });
       },
+      //读一个系统消息，同时修改本地缓存 messagespromptboth
+      readMessagepromptByID: function (messageID, applicationServer) {
+        //保存提交到服务器
+        $http({
+          method: 'POST',
+          url: applicationServer + 'message/readtMessage',
+          //params:{personid:curUserId},
+          data: {
+            messID: messageID
+          },
+          headers: {'Content-Type': 'application/json;charset=utf-8'},
+          dataType: 'JSON'
+        })
+          .success(function (data, status, headers, config) {
+              if (data) {
+                var mes=localStorageService.get('messagespromptboth'+$rootScope.curUser._id,30)
+                if(mes){
+                  for(var i=0;i<mes.length;i++){
+                    if(mes[i]._id==messageID){
+                      mes.splice(i,1)
+                    }
+                  }
+                  localStorageService.update('messagespromptboth'+$rootScope.curUser._id,mes)
+                }
+              }else{
+                console.log(mes);
+              }
+          }).error(function (data, status, headers, config) {
+
+        });
+      },
 
       sendMessage: function (messageJson, senderID, receiverID, applicationServer) {
         //保存提交到服务器
@@ -1132,17 +1163,18 @@ app.factory('ChatService', ['localStorageService', 'localToolService', 'dateServ
   }
 
 
-  service.uploadImagefile = function (file, errFiles, callback) {
+  service.uploadImagefile = function (file, errFiles, callback,format) {
     if (file) {
       file.upload = Upload.upload({
         url: $rootScope.applicationServerpath + "fileupload/photo",
-        data: {"file": file, fileKey: "file"}
+        data: {"file": file,fileKey: "file"}
       });
       console.log('开始上传文件');
 
       file.upload.then(function (response) {
         $timeout(function () {
           file.result = response.data;
+          response.data.filename=response.data.filename.replace(response.data.filename.slice(-3),format)
           if (response.data) {
             console.log('上传文件返回信息：' + JSON.stringify(response.data));
             if (callback) {
@@ -1510,10 +1542,8 @@ app.factory('ChatService', ['localStorageService', 'localToolService', 'dateServ
 
             for (var index = 0; index < data.length; index++) {
               if (data[index].type == 'message') {
-                console.log('消息导入')
                 localToolService.insertANewMessageToMessageList(data[index].sender, receiver_id, data[index]);
               } else {
-                console.log('提示导入')
                 localToolService.insertANewMessageToMessageprompt(data[index].sender, receiver_id, data[index]);
               }
             }
@@ -1522,7 +1552,6 @@ app.factory('ChatService', ['localStorageService', 'localToolService', 'dateServ
         } else {
           deferred.reject(data);   // 声明执行失败，即服务器返回错误
         }
-        ;
       }).error(function (data, status, headers, config) {
       deferred.reject(data);   // 声明执行失败，即服务器返回错误
 
