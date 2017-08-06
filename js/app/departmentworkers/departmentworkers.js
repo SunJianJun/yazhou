@@ -472,8 +472,16 @@ app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filte
     console.log(target)
     if(e.depart) {            //部门信息
       if(!target.depart.info){target.depart.info='默认'}
-
-      $scope.item.data = target.depart;
+      $http({
+        method: "POST",
+        url: $rootScope.applicationServerpath + 'personadminroute/getpersontitleTodepartment',
+        data: {departmentID:target.depart._id}
+      }).then(function (resp) {
+        console.log(resp.data.success)
+        var depinfo = resp.data.success;
+        target.depart.depinfo=depinfo;
+        $scope.item.data = target.depart;
+      })
 
 
     }else if(e.person) {       //人员信息
@@ -484,10 +492,17 @@ app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filte
         url: $rootScope.applicationServerpath + 'personadminroute/getUserInfoById',
         data: {personID: e.person._id}
       }).then(function (resp) {
-        console.log(resp.data.success)
-        var personinfo = resp.data.success;
+        var personinfo=resp.data.success;
         $scope.item.name = personinfo.name;
-        $scope.item.data = personinfo;
+        $http({
+          method: "POST",
+          url: $rootScope.applicationServerpath + 'personadminroute/getpersontitle',
+          data: {title:personinfo.title}
+        }).then(function (titresp) {
+          console.log(titresp.data.success)
+          personinfo.title=titresp.data.success.name;
+          $scope.item.data = personinfo;
+        })
       })
     }
 

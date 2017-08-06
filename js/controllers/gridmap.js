@@ -1186,7 +1186,6 @@ app.controller('gridmapctl',
           'name': personName,
           'time': $scope.peopletime,
           'personID': id
-          //'frequency': parseInt($('#add_person_con_frequency').val())//巡逻时间
         }
         for (var i = 0; i < persons.length; i++) {
           if (persons[i].name == people.name) {
@@ -1194,18 +1193,19 @@ app.controller('gridmapctl',
             return;
           }
         }
-        //if(parsons.timeEnd-persons.timeStart){}
         if (!people.time.length) {
           alert('时间没有添加！');
           return;
         }
+        people.areaID=$scope.properdata.areaId;
         $('#nopeople').html('');
         $scope.properdata.persons.push(people);
-        console.log($scope.properdata);
+        console.log(JSON.stringify(people))
+        //console.log($scope.properdata);
         $http({
           method: 'POST',
-          url: $rootScope.applicationServerpath + 'spotarea/addperson',
-          data: $scope.properdata
+          url: $rootScope.applicationServerpath + 'maproute/addperson',
+          data:people
         }).then(function (data) {
           console.log(data);
         })

@@ -11,14 +11,14 @@
     <div class="mail-top">
         <div class="bg-light lter">
             <div>
-                <div class="text-center"><a href="#" class="text-muted">加载更多</a></div>
+                <div class="text-center"><a class="text-muted" ng-click="loadmordmessage()">加载更多</a></div>
 
                 <ul id="scrolldIV"
                     class="list-group list-group-lg no-radius m-b-none m-t-n-xxs mail-list-hei mail-list-win">
                     <li ng-repeat="mail in currenttalk" ng-class="mail.sender._id==curUser._id&&'transfer'"
                         class="list-group-item clearfix b-l-3x">
                         <a class="avatar thumb pull-left m-r">
-                            <img ng-src='http://120.76.228.172:2000/person/personPic?pid={{(mail.sender==curUser._id)?mail.receiver._id:mail.sender}}'/>
+                            <img ng-src='http://120.76.228.172:2000/person/personPic?pid={{(mail.sender==curUser._id)?mail.receiver._id:(mail.sender._id||mail.sender)}}'/>
                         </a>
 
                         <div class="text-center time">
@@ -28,10 +28,15 @@
                             <p>
                                 <a>
                                     <span ng-if="mail.text">{{mail.text}}</span>
-                                    <img ng-src={{'http://120.76.228.172:2000/'+mail.image}} ng-if="mail.image"/>
-                                    <video ng-if="mail.voice" id="infomedia" width='100%' height="auto" controls>
-                                        <!--ng-src="{{'http://120.76.228.172:2000/'+mail.voice}}"-->
+                                    <img ng-if="mail.image" ng-src="{{'http://120.76.228.172:2000/'+mail.image}}"/>
+                                    <!--<img ng-if="mail.video" src="img/a33bcffdaa6befde23b429e73dc309f2.jpg" ng-click="">-->
+                                    <video ng-if="mail.video" id="infomedia"
+                                           ng-src="{{videoUrl(mail.video)}}" controls="controls">
                                     </video>
+                                    <!--http://120.76.228.172:2000/-->
+                                    <!--<div ng-if="mail.voice">{{'http://120.76.228.172:2000/'+mail.voice}}</div>-->
+                                    <audio ng-if="mail.voice" ng-src="{{videoUrl(mail.voice)}}" width="320" height="240"
+                                           controls="controls"></audio>
                                 </a>
                                 <!--<span class="label bg-light m-l-sm" ng-hide="mail.transfer">{{mail.state=='unread'?'未读':'已读'}}</span>-->
                             </p>
@@ -52,10 +57,12 @@
     <div class="wrapper-md">
         <form>
             <div class="emoji btn-group">
-                <div class="list-icon btn btn-group-sm btn-file" ngf-select="uploadImageFile($file, $invalidFiles)" accept="image/*"  ngf-max-size="10MB">
+                <div class="list-icon btn btn-group-sm btn-file" ngf-select="uploadImageFile($file, $invalidFiles)"
+                     accept="image/*" ngf-max-size="10MB">
                     <i class="icon-picture"></i>
                 </div>
-                <div class="list-icon btn btn-group-sm btn-file" ngf-select="uploadVideoFile($file, $invalidFiles)" accept="video/*"  ngf-max-size="50MB">
+                <div class="list-icon btn btn-group-sm btn-file" ngf-select="uploadVideoFile($file, $invalidFiles)"
+                     accept="video/*" ngf-max-size="50MB">
                     <i class="icon-camcorder"></i>
                 </div>
             </div>
@@ -63,7 +70,9 @@
                 <textarea class="form-control" ng-model="unSendMessage.text" rows="6">
                 </textarea>
             </div>
-            <input type="button" class="action-con btn btn-danger" ng-show="(unSendMessage.text && unSendMessage.text != '')||(unSendMessage.video && unSendMessage.video != '')||(unSendMessage.image && unSendMessage.image != '')||(unSendMessage.voice && unSendMessage.voice != '')" ng-click="sendMessage()" value="发送"/>
+            <input type="button" class="action-con btn btn-danger"
+                   ng-show="(unSendMessage.text && unSendMessage.text != '')||(unSendMessage.video && unSendMessage.video != '')||(unSendMessage.image && unSendMessage.image != '')||(unSendMessage.voice && unSendMessage.voice != '')"
+                   ng-click="sendMessage()" value="发送"/>
         </form>
     </div>
 </div>

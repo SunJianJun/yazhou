@@ -1268,7 +1268,6 @@ app.factory('ChatService', ['localStorageService', 'localToolService', 'dateServ
           // 广播用户发来的消息列表刷新失败
           $rootScope.$broadcast('readMessageFail', data);
         }
-        ;
       }).error(function (data, status, headers, config) {
 
     });
@@ -1302,7 +1301,6 @@ app.factory('ChatService', ['localStorageService', 'localToolService', 'dateServ
           // 广播用户发消息失败
           $rootScope.$broadcast('sendMessageFail', data);
         }
-        ;
       }).error(function (data, status, headers, config) {
 
     });
@@ -1407,7 +1405,6 @@ app.factory('ChatService', ['localStorageService', 'localToolService', 'dateServ
           // 广播用户发来的消息列表刷新失败
           $rootScope.$broadcast('messageListRefreshFail', sender);
         }
-        ;
       }).error(function (data, status, headers, config) {
       deferred.reject(data);   // 声明执行失败，即服务器返回错误
     });
@@ -1454,7 +1451,6 @@ app.factory('ChatService', ['localStorageService', 'localToolService', 'dateServ
           // 广播用户发来的消息列表刷新失败
           $rootScope.$broadcast('bothMessageListRefreshFail', data);
         }
-        ;
       }).error(function (data, status, headers, config) {
 
     });
@@ -1601,7 +1597,6 @@ app.factory('ChatService', ['localStorageService', 'localToolService', 'dateServ
           // 广播用户发来的消息列表刷新失败
           $rootScope.$broadcast('messageListRefreshFail', sender_id);
         }
-        ;
       }).error(function (data, status, headers, config) {
 
     });

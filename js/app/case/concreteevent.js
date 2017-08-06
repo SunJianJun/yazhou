@@ -10,7 +10,7 @@ app.controller('concreteeventCtrl', function ($scope, $rootScope, localStorageSe
         $http({
             method: 'POST',
             url: $rootScope.applicationServerpath + 'mobilegrid/getAllconcreteevent',//获取到所有具体事件
-            data:{departmentID:'111'}
+            data:{departmentID:'58c3a5e9a63cf24c16a50b8d'}
         }).then(function (resp) {
             var data = resp.data.success;
             data.forEach(function (val, key) {
@@ -50,7 +50,7 @@ app.controller('concreteeventCtrl', function ($scope, $rootScope, localStorageSe
         $http({  //获取抽象表中的类型
             method: 'POST',
             url: $rootScope.applicationServerpath + 'mobilegrid/getAllAbstracttype'//获取抽象表中的类型
-        }).then(function (resp) {
+        }).then(function (resp){
             var data = resp.data.success;
             console.log(data)
             $scope.typeArr = data;

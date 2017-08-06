@@ -318,6 +318,12 @@
           <i class="fa fa-clock-o fa-fw m-r-xs"></i> 录入时间
           <p class="form-control-static">{{item.data.create_date}}</p>
         </a>
+        <a href="" class="list-group-item">
+          <i class="fa fa-clock-o fa-fw m-r-xs"></i> 部门职务管理
+          <ul class="sortable-list connectList" style="height:100%;">
+            <li class="form-control-static" ng-repeat="depinfo in item.data.depinfo|orderBy:'grade':true">{{depinfo.name}},{{depinfo.grade}}</li>
+          </ul>
+        </a>
         <div class="hbox text-center b-b b-light text-sm">
           <a href="" class="col padder-v text-muted b-r b-light">
             <i class="fa fa-institution block m-b-xs fa-2x"></i>
@@ -356,6 +362,10 @@
       <!--}-->
     </div>
   </div>
+  <script>
+    $(document).ready(function(){$(".sortable-list").sortable({connectWith:".connectList"}).disableSelection()});
+  </script>
+
   <!-- /column -->
 </div>
 <!-- /hbox layout -->
