@@ -317,6 +317,7 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
 
     });
   }
+  $scope.refreshUnreadMessagePersons()
 
   // 得到并刷新部门的人员
   $scope.refreshDepartmentPersons = function (curDid) {
