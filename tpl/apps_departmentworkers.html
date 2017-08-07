@@ -89,7 +89,7 @@
               <div>{{person.name}}
               <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span
                       class="glyphicon glyphicon-remove"></span></a>
-              <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem({person:person})" style="margin-right: 8px;"><span
+              <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem({person:person,node:node})" style="margin-right: 8px;"><span
                       class="glyphicon glyphicon-plus"></span></a>
               </div>
             </div>
@@ -191,8 +191,26 @@
                     </a>
                     <a href="" class="list-group-item">
                       <i class="fa fa-clock-o fa-fw m-r-xs"></i> 头衔
-                      <p ng-hide="item.editing" class="form-control-static">{{item.data.title}}</p>
-                      <input type="text" class="form-control" ng-show="item.editing" ng-model="item.data.title" >
+                      <p ng-hide="item.editing" class="form-control-static" title="{{item.data.title._id}}">{{item.data.title.name}}</p>
+                        <div class="clear">
+                            <div class="col show w-md">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" ng-show="item.editing" title="{{item.data.title._id}}" ng-model="item.data.title.name" >
+                                </div>
+                            </div>
+                            <ul class="sortable-list connectList col show" ng-show="item.editing">
+                                <li>点击选择修改职务</li>
+                                <li class="form-control-static" ng-repeat="pertitle in depinfo" title="{{pertitle._id}}" ng-click="item.data.title=pertitle">
+                                    {{pertitle.name}}
+                                </li>
+                            </ul>
+                        </div>
+
+
+
+
+
+
                     </a>
                     <a href="" class="list-group-item">
                       <i class="fa fa-clock-o fa-fw m-r-xs"></i> 年龄
@@ -286,12 +304,6 @@
         <span class="text-lt">单位或机构信息</span>
         <a class="btn btn-xs btn-default" ng-hide="item.editing" ng-click="editItem(item)">编辑</a>
         <a class="btn btn-xs btn-default" ng-show="item.editing" ng-click="doneEditing(item)">确认保存</a>
-        <!--"_id":"1",-->
-        <!--"name":"北京公安局",-->
-        <!--"info":"抓坏人",-->
-        <!--"leader":"231",-->
-        <!--"deputyleader" : ["12312","123213"],-->
-        <!--"create_date":"20170228",-->
       </div>
       <div class="list-group">
         <a href="" class="list-group-item">
@@ -320,9 +332,27 @@
         </a>
         <a href="" class="list-group-item">
           <i class="fa fa-clock-o fa-fw m-r-xs"></i> 部门职务管理
-          <ul class="sortable-list connectList" style="height:100%;">
-            <li class="form-control-static" ng-repeat="depinfo in item.data.depinfo|orderBy:'grade':true">{{depinfo.name}},{{depinfo.grade}}</li>
-          </ul>
+            <div class="clear">
+              <ul class="sortable-list connectList w-md col show" id="departmenttitlesort">
+                <li class="form-control-static" ng-repeat="depinfo in item.data.depinfo|orderBy:'grade'" title="{{depinfo._id}}">
+                    {{depinfo.name}}
+                    <span class="close" ng-click="deletetitle(depinfo)" ng-show="item.editing">×</span>
+                </li>
+              </ul>
+                <div class="col show" ng-show="item.editing">
+                    <button class="btn btn-danger m-xs">职务级别调整</button>
+                    <button class="btn btn-danger m-xs">添加职务</button>
+                    <div class="input-group m-xs">
+                        <input type="text" class="form-control" ng-model="newdeptitleval">
+                        <span class="input-group-btn">
+						<button class="btn btn-default" type="button" ng-click="newdeparmenttitle(newdeptitleval,item.data._id)">
+							添加
+						</button>
+					</span>
+                    </div>
+                    <button class="btn btn-success m-lg" ng-click="savedepartmenttitle()">保存修改</button>
+                </div>
+            </div>
         </a>
         <div class="hbox text-center b-b b-light text-sm">
           <a href="" class="col padder-v text-muted b-r b-light">

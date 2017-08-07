@@ -2,7 +2,7 @@
  * Created by tj on 2017/2/27.
 
  */
-app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filter', '$timeout', '$modal', function ($scope, $rootScope, $http, $filter, $timeout, $modal) {
+app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filter', '$timeout', '$modal','localStorageService','departmentAndPersonsService', function ($scope, $rootScope, $http, $filter, $timeout, $modal,localStorageService,departmentAndPersonsService) {
 
 
   var apple_selected, tree, treedata_avm, treedata_geography;
@@ -11,20 +11,29 @@ app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filte
     // data: '1'
   };
   $scope.my_data={};
-  $http(
-    {
-      method: 'POST',
-      url: $rootScope.applicationServerpath + 'personadminroute/getAllDepartment'
-    }
-  ).then(function (resp) {
-    console.log('返回数据')
-    $scope.my_data = resp.data.success;
+  $timeout(function () {
+    $scope.my_data=localStorageService.get('AllDepartment',30);
     console.log($scope.my_data)
-    //读到全部树节点后，半秒后将其全部展开
-    return $timeout(function () {
+  if(!$scope.my_data) {
+    $http(
+      {
+        method: 'POST',
+        url: $rootScope.applicationServerpath + 'personadminroute/getAllDepartment'
+      }
+    ).then(function (resp) {
+      console.log('返回数据')
+      $scope.my_data = resp.data.success;
+      console.log($scope.my_data)
+      localStorageService.update('AllDepartment', resp.data.success)
+      $scope.my_data=localStorageService.get('AllDepartment',30);
+      //读到全部树节点后，半秒后将其全部展开
+      return $timeout(function () {
 
-    }, 500);
-  })
+      }, 500);
+    })
+  }
+  },500);
+
   $scope.editInfoModalInstance;
   //树的节点点击操作函数
   $scope.my_tree_handler = function (branch) {
@@ -230,7 +239,43 @@ app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filte
       });
     console.log(mydata)
   };
-
+  //整个部门所有职务的等级和上级关联的部门全部修改
+  $scope.savedepartmenttitle=function () {
+    var deptitle=$('#departmenttitlesort li');
+    for(var i=0,titarr=[];i<deptitle.length;i++){
+      titarr.push({grade:i+1,_id:deptitle[i].title,name:deptitle[i].innerText,parentTitle:deptitle[i-1]?deptitle[i-1].title:null})
+    }
+    console.log(titarr)
+    $http(
+      {
+        method: 'POST',
+        url: $rootScope.applicationServerpath + 'personadminroute/settitlesort',
+        data:titarr
+      }
+    ).then(function (resp) {
+      console.log(resp);
+    })
+  }
+  //部门新建一个职务
+  $scope.newdeparmenttitle=function (newtitle,depart) {
+    console.log(newtitle,depart)
+    $scope.newdeptitleval='';
+    $http(
+      {
+        method: 'POST',
+        url: $rootScope.applicationServerpath + 'personadminroute/sendtitle',
+        data: {
+          name:newtitle,
+          departmentID:depart
+        }
+      }
+    ).then(function (resp) {
+      console.log(resp.data.success)
+      if(resp.data.success){
+      $scope.item.data.depinfo.push(resp.data.success)
+      }
+    })
+  }
   // 用来初始化部门数据库的测试按钮
   $scope.initialDatabase = function () {
     $http(
@@ -454,7 +499,8 @@ app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filte
     updatainfo.residence=data.residence;
     updatainfo._id=data._id;
     updatainfo.birthday=data.birthday;
-    updatainfo.title=data.title;
+    updatainfo.title=data.title._id;
+    // console.log(updatainfo)
     $http({
       method: "POST",
       url: $rootScope.applicationServerpath + 'personadminroute/updatepersoninfo',
@@ -470,42 +516,84 @@ app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filte
   $scope.newSubItem = function (e) {
     var target=e;
     console.log(target)
+    //获取到部门内所有的职务
+    departmentAndPersonsService.getpersontitleTodepartment(target.depart?target.depart._id:target.node._id,$rootScope.applicationServerpath,function (resp) {
+      console.log(resp)
+      $scope.depinfo = resp;
+
+
     if(e.depart) {            //部门信息
       if(!target.depart.info){target.depart.info='默认'}
-      $http({
-        method: "POST",
-        url: $rootScope.applicationServerpath + 'personadminroute/getpersontitleTodepartment',
-        data: {departmentID:target.depart._id}
-      }).then(function (resp) {
-        console.log(resp.data.success)
-        var depinfo = resp.data.success;
-        target.depart.depinfo=depinfo;
+        target.depart.depinfo=$scope.depinfo;
         $scope.item.data = target.depart;
-      })
+
 
 
     }else if(e.person) {       //人员信息
       $scope.item.data = target.person;
-
-      $http({
-        method: "POST",
-        url: $rootScope.applicationServerpath + 'personadminroute/getUserInfoById',
-        data: {personID: e.person._id}
-      }).then(function (resp) {
-        var personinfo=resp.data.success;
-        $scope.item.name = personinfo.name;
+      var storge=localStorageService.get('PersonInfo_'+e.person._id,300)
+      if(storge) {
+        departmentAndPersonsService.getpersontitle(storge.title,$rootScope.applicationServerpath,function(title){
+          storge.title=title;
+          $scope.item.data = storge;
+        })
+      }else {
         $http({
           method: "POST",
-          url: $rootScope.applicationServerpath + 'personadminroute/getpersontitle',
-          data: {title:personinfo.title}
-        }).then(function (titresp) {
-          console.log(titresp.data.success)
-          personinfo.title=titresp.data.success.name;
-          $scope.item.data = personinfo;
+          url: $rootScope.applicationServerpath + 'personadminroute/getUserInfoById',
+          data: {personID: e.person._id}
+        }).then(function (resp) {
+          var personinfo = resp.data.success;
+          localStorageService.update('PersonInfo_'+personinfo._id,personinfo)
+          $scope.item.name = personinfo.name;
+          departmentAndPersonsService.getpersontitle(personinfo.title,$rootScope.applicationServerpath,function(title){
+            personinfo.title = title.name;
+            $scope.item.data = personinfo;
+          })
         })
-      })
+      }
     }
 
+    })
+
+  }
+  //删除一个职务
+  $scope.deletetitle=function (title) {
+    console.log(title)
+    var modalInstance = $modal.open(
+      {
+        template: '<div class="modal-header">  ' +
+        '<h3>请注意!</h3>  ' +
+        '</div>' +
+        '<div class="modal-body">' +
+        '<ul>' +
+        "单位职务删除后无法恢复，请确定要删除？" +
+        // '<li ng-repeat="item in items"><a        ng-click="selected.item = item">{{ item }}</a></li>'+
+        '</ul>' +
+        // 'Selected: <b>{{ selected.item }}</b>'+
+        '</div>' +
+        '<div class="modal-footer">' +
+        '<button class="btn btn-primary" ng-click="titleok()">删除</button>' +
+        '<button class="btn btn-warning" ng-click="titlecancel()">取消</button>' +
+        '</div> ',
+        controller: function ($scope, $modalInstance) {
+          $scope.titleok = function () {
+            departmentAndPersonsService.deletedepartmenttitle(title._id,$rootScope.applicationServerpath,function(e){
+              console.log(e)
+              // departmentAndPersonsService.getpersontitleTodepartment(title.departmentID,$rootScope.applicationServerpath,function (title) {
+              //   var obj={};
+              //   console.log(e+JSON.stringify(title))
+              // })
+            })
+            $modalInstance.close(true);
+          };
+          $scope.titlecancel = function () {
+            $modalInstance.dismiss(false);
+          };
+        }
+
+      }
+    );
   }
 
 }]);

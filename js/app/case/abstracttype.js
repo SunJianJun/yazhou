@@ -8,10 +8,15 @@ app.controller('abstracttypeCtrl', function ($scope, $compile, $window, $rootSco
     $scope.loadCase=function() {   //加载 事件
         $http({
             method: 'POST',
-            url: $rootScope.applicationServerpath + 'abstracttyperoute/getAllAbstracttype'
+            url: $rootScope.applicationServerpath + 'mobilegrid/getAllAbstracttypetodep',
+          data:{departmentID:'123'}
         }).then(function (yresp) {
             console.log(yresp.data)
-            var ydata = yresp.data;
+          if(yresp.data.error){
+              console.log(yresp.data.error);
+              return;
+          }
+            var ydata = yresp.data.success;
 
             $scope.abstracttype = ydata;
             $rootScope.abstracttype = ydata;
@@ -173,20 +178,20 @@ app.controller('abstracttypeCtrl', function ($scope, $compile, $window, $rootSco
                 step:steps,
                 newer:new Date()
         })
-        $http({
-            method:'POST',
-            url:$rootScope.applicationServerpath + 'abstracttyperoute/updateAbstracttype',
-            data:{
-                beforeName:beforeName,
-                typeName:val,
-                step:steps,
-                newer:new Date()
-            }
-        }).then(function(resp){
-            console.log(resp.data);
-            $scope.loadCase();
-            //$window.location.reload();
-        })
+        // $http({
+        //     method:'POST',
+        //     url:$rootScope.applicationServerpath + 'abstracttyperoute/updateAbstracttype',
+        //     data:{
+        //         beforeName:beforeName,
+        //         typeName:val,
+        //         step:steps,
+        //         newer:new Date()
+        //     }
+        // }).then(function(resp){
+        //     console.log(resp.data);
+        //     $scope.loadCase();
+        //     //$window.location.reload();
+        // })
     }
     $scope.newabstracttype=function(){
         $('#newabstracttype').show();

@@ -726,8 +726,50 @@ app.factory('departmentAndPersonsService', ['localStorageService', 'dateService'
 
           });
         }
-      }
+      },
+      //获取到部门内所有的职务
+      getpersontitleTodepartment:function(department,applicationServer,callback){
 
+        $http({
+          method: "POST",
+          url: $rootScope.applicationServerpath + 'personadminroute/getpersontitleTodepartment',//获取到部门内所有的职务
+          data: {departmentID:department}
+        }).then(function (resp) {
+          if(resp.data.success){
+            callback(resp.data.success)
+          }else{
+            console.log(resp.data.error)
+          }
+        })
+      },
+      //获得人员的职务名称
+      getpersontitle:function (title,applicationServer,callback) {
+        $http({
+          method: "POST",
+          url: $rootScope.applicationServerpath + 'personadminroute/getpersontitle',
+          data: {title:title}
+        }).then(function (titresp) {
+          if(titresp.data.success) {
+            callback(titresp.data.success);
+          }else{
+            console.log(titresp.data.error)
+          }
+        })
+      },
+      //删除一个部门职务
+      deletedepartmenttitle:function (title,applicationServer,callback) {
+        $http({
+          method: "POST",
+          url: $rootScope.applicationServerpath + 'personadminroute/deletetitle',
+          data: {titleID:title}
+        }).then(function (resp) {
+            if(resp.data.success){
+              callback(resp.data.success)
+            }else{
+              console.log(resp.data.error)
+            }
+        })
+      }
 
     }
   }]);
