@@ -45,18 +45,20 @@ angular.module('app')
 
       $rootScope.applicationServerpath = 'http://120.76.228.172:2000/';
       console.log('接口测试' + $rootScope.applicationServerpath);
-      // $http({
-      //   method: 'POST',
-      //   url: $rootScope.applicationServerpath + 'person/getPersonLatestPositionInTimespan',
-      //   data: {
-      //     personID: "58e0c199e978587014e67a50",
-      //     startTime: new Date(new Date().setDate(new Date(new Date().getDate()-10))),
-      //     endTime: new Date()
-      //   }
-      // }).then(function (resp) {
-      //   console.log('返回数据')
-      //   console.log(resp.data)
-      // })
+       $http({
+         method: 'POST',
+         url: $rootScope.applicationServerpath + 'mobilegrid/getpersonEvent',
+         data: {
+           personID:"58c043cc40cbb100091c640d"
+           //type:'无照经营'
+           //personID: "58e0c199e978587014e67a50",
+           //startTime: new Date(new Date().setDate(new Date(new Date().getDate()-10))),
+           //endTime: new Date()
+         }
+       }).then(function (resp) {
+         console.log('返回数据')
+         console.log(resp.data)
+       })
 
       // 桌面端的用户需要登录信息，用户名就是人名，密码第一次可以是身份证号，之后可以修改，pwd
       $rootScope.confirmUser = function (callback) {

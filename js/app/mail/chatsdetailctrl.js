@@ -25,7 +25,11 @@ app.controller('messageDetailCtrl', [
 
         //加载更多消息
         $scope.loadmordmessage=function(){
-            var lasttime=$scope.currenttalk[0].create_date;//获取最后的聊天时间
+            if($scope.currenttalk&&$scope.currenttalk[0]) {
+                var lasttime = $scope.currenttalk[0].create_date;//获取最后的聊天时间
+            }else{
+                var lasttime=new Date();
+            }
             //console.log(lasttime)
             messageService.initMessageListInTimeSpanByPersonIds(
                 $scope.fold,
@@ -36,22 +40,33 @@ app.controller('messageDetailCtrl', [
         }
         $scope.getcurrenttalk = function (sender, receiver) {//从缓存中获取俩人对话
           var newmes = localStorageService.get("messagesListboth" + sender + '_' + receiver);
-          $scope.currenttalk?$scope.currenttalk:$scope.currenttalk=newmes;
-          var ispush=false;
+            console.log(newmes)
+          if(!$scope.currenttalk&&!$scope.currenttalk.length){
+              $scope.currenttalk=newmes
+          }
+          var ispush=false,isnewupdate=[];//筛选出更新的信息
           if(newmes&&newmes.length) {
             for (var a = 0; a < newmes.length; a++) {
-              for (var b = 0; b < $scope.currenttalk.length; b++) {
-                if (newmes[a]._id == $scope.currenttalk[b]._id) {
-                  console.log('更新啦')
-                  ispush = true;
-                }
+                !function(){
+                  for (var b = 0; b < $scope.currenttalk.length; b++) {
+                    if ($scope.currenttalk[b]._id==newmes[a]._id) {
+                      console.log('更新啦')
+                      ispush = true;
+                        return;
+                    }
+                  }
+                }()
+              if (!ispush) {
+                  isnewupdate.push(newmes[a]);
               }
-              if (ispush) {
-                $scope.currenttalk.push(newmes[a]);
                 ispush = false;
-              }
+                console.log($scope.currenttalk.length)
             }
           }
+            console.log(isnewupdate)
+            if(isnewupdate.length){//更新的信息和旧信息合并
+                $scope.currenttalk=$scope.currenttalk.concat(isnewupdate)
+            }
             console.log($scope.currenttalk)
         };
         $scope.getcurrenttalk($scope.fold, $rootScope.curUser._id);
