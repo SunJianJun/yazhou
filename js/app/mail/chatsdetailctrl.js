@@ -6,12 +6,14 @@ app.controller('messageDetailCtrl', [
 
 
         $scope.fold = $stateParams.receiverID;
+        $scope.foname=$stateParams.receiverName;
         console.log('当前聊天对应id--' + $scope.fold);
         console.log($stateParams);
         if (!$scope.fold) {
             return;
         }
         $scope.unSendMessage = {};
+        $scope.currenttalk=[];
         $scope.unSendMessage.text = '';
 
         /**
@@ -33,7 +35,23 @@ app.controller('messageDetailCtrl', [
                 $rootScope.applicationServerpath)
         }
         $scope.getcurrenttalk = function (sender, receiver) {//从缓存中获取俩人对话
-            $scope.currenttalk = localStorageService.get("messagesListboth" + sender + '_' + receiver);
+          var newmes = localStorageService.get("messagesListboth" + sender + '_' + receiver);
+          $scope.currenttalk?$scope.currenttalk:$scope.currenttalk=newmes;
+          var ispush=false;
+          if(newmes&&newmes.length) {
+            for (var a = 0; a < newmes.length; a++) {
+              for (var b = 0; b < $scope.currenttalk.length; b++) {
+                if (newmes[a]._id == $scope.currenttalk[b]._id) {
+                  console.log('更新啦')
+                  ispush = true;
+                }
+              }
+              if (ispush) {
+                $scope.currenttalk.push(newmes[a]);
+                ispush = false;
+              }
+            }
+          }
             console.log($scope.currenttalk)
         };
         $scope.getcurrenttalk($scope.fold, $rootScope.curUser._id);

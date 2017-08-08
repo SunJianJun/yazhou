@@ -12,16 +12,12 @@
         <li class="list-group-item">
             <div class="panel no-margin">
                 <div class="panel-heading">
-                    选择类型
+                    <span>{{steps.name}}</span>
                 </div>
                 <div class="panel-body">
                     <div class="wrapper-xs">
                         <table class="table">
                             <tbody>
-                            <tr>
-                                <td>名称：</td>
-                                <td><span>{{steps.name}}</span></td>
-                            </tr>
                             <tr>
                                 <td>参数：</td>
                                 <td>
@@ -33,6 +29,7 @@
                                                    type="{{types}}"
                                                    ng-class="locations?'locationsmap':''"
                                                    title="{{can.promptvalue}}" value="{{can.value[0]}}"/>
+
                                             <button ng-click="choicelocation(can.type)">选择</button>
                                             <div class="alertmap" style="display: none;" ng-if="locations">
                                                 <div id="alertmapa"></div>

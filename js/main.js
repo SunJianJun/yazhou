@@ -4,8 +4,8 @@
 /* Controllers */
 
 angular.module('app')
-  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', '$rootScope', '$http', '$modal', '$state', '$timeout', 'localStorageService','messageService',
-    function ($scope, $translate, $localStorage, $window, $rootScope, $http, $modal, $state, $timeout, localStorageService,messageService) {
+  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', '$rootScope', '$http', '$modal', '$state', '$timeout', 'localStorageService', 'messageService',
+    function ($scope, $translate, $localStorage, $window, $rootScope, $http, $modal, $state, $timeout, localStorageService, messageService) {
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');
@@ -43,23 +43,20 @@ angular.module('app')
       ];
       $rootScope.applicationServerpath = 'http://localhost:2000/';
 
-      $rootScope.applicationServerpath='http://120.76.228.172:2000/';
+      $rootScope.applicationServerpath = 'http://120.76.228.172:2000/';
       console.log('接口测试' + $rootScope.applicationServerpath);
-       //$http({
-       //        method:'POST',
-       //        url:$rootScope.applicationServerpath+'mobilegrid/getpersonworkregion',
-       //        data: {
-       //          personID:'98849443ddc50c56'
-       //          //receiverID:"58c043cc40cbb100091c640d",
-       //          //senderID:"58e0c199e978587014e67a50",
-       //          //startTime:new Date(new Date().setDate(new Date().getDate() - 4)),
-       //          //lastTime:new Date(),
-       //          //type: 'message'
-       //        }
-       //    }).then(function(resp){
-       //    console.log('返回数据')
-       //    console.log(resp.data)
-       //})
+      // $http({
+      //   method: 'POST',
+      //   url: $rootScope.applicationServerpath + 'person/getPersonLatestPositionInTimespan',
+      //   data: {
+      //     personID: "58e0c199e978587014e67a50",
+      //     startTime: new Date(new Date().setDate(new Date(new Date().getDate()-10))),
+      //     endTime: new Date()
+      //   }
+      // }).then(function (resp) {
+      //   console.log('返回数据')
+      //   console.log(resp.data)
+      // })
 
       // 桌面端的用户需要登录信息，用户名就是人名，密码第一次可以是身份证号，之后可以修改，pwd
       $rootScope.confirmUser = function (callback) {
@@ -132,6 +129,7 @@ angular.module('app')
           );
 
         }
+        // localStorageService.update('NG_TRANSLATE_LANG_KEY','cn')
         $rootScope.confirmUserModalInstance.result.then(function (result) {
           console.log(($state.current.name != 'access.signin'));
           console.log(result);
@@ -188,36 +186,36 @@ angular.module('app')
 
       }, $rootScope.locationRefreshTime)
       $scope.messageperomt = function (mes) {
-        $scope.currentpromptmes=mes;
+        $scope.currentpromptmes = mes;
         console.log($scope.currentpromptmes)
-        messageService.readMessagepromptByID($scope.currentpromptmes._id,$rootScope.applicationServerpath)
-          var mescount = mes.text ? mes.text : (mes.image ? '<img ng-src="http://120.76.228.172:2000/' + mes.image + '"/>' : (mes.video ? '<video ng-src="http://120.76.228.172:2000/' + mes.video + '"/>' : (mes.voice ? '<video ng-src="http://120.76.228.172:2000/' + mes.voice + '"/>' : '无消息内容')))
-          console.log(mescount)
-          var modalInstance = $modal.open({
-            template: '<div class="modal-header">  ' +
-            '<h3>{{currentpromptmes.name}}</h3>  ' +
-            '<div class="modal-body">' +
-            '<div class="clear wrapper-xs">' +
-            mescount +
-            '</div>' +
-            '<div class="modal-footer">' +
-            '<button class="btn btn-primary" ng-click="replypromptmes(currentpromptmes.sender)">回复</button>' +
-            '<button class="btn btn-warning" ng-click="cancel()">确定</button>' +
-            '</div>  ',
-            controller: function ($scope, $modalInstance) {
-              $scope.ok = function () {
-                $modalInstance.close(true);
-              };
-              $scope.cancel = function () {
-                $modalInstance.dismiss(false);
-              };
-              $scope.replypromptmes = function (e) {
-                console.log('回复消息')
-                console.log(e)
-              };
-            }
-          });
-          console.log(mes)
+        messageService.readMessagepromptByID($scope.currentpromptmes._id, $rootScope.applicationServerpath)
+        var mescount = mes.text ? mes.text : (mes.image ? '<img ng-src="http://120.76.228.172:2000/' + mes.image + '"/>' : (mes.video ? '<video ng-src="http://120.76.228.172:2000/' + mes.video + '"/>' : (mes.voice ? '<video ng-src="http://120.76.228.172:2000/' + mes.voice + '"/>' : '无消息内容')))
+        console.log(mescount)
+        var modalInstance = $modal.open({
+          template: '<div class="modal-header">  ' +
+          '<h3>{{currentpromptmes.name}}</h3>  ' +
+          '<div class="modal-body">' +
+          '<div class="clear wrapper-xs">' +
+          mescount +
+          '</div>' +
+          '<div class="modal-footer">' +
+          '<button class="btn btn-primary" ng-click="replypromptmes(currentpromptmes.sender)">回复</button>' +
+          '<button class="btn btn-warning" ng-click="cancel()">确定</button>' +
+          '</div>  ',
+          controller: function ($scope, $modalInstance) {
+            $scope.ok = function () {
+              $modalInstance.close(true);
+            };
+            $scope.cancel = function () {
+              $modalInstance.dismiss(false);
+            };
+            $scope.replypromptmes = function (e) {
+              console.log('回复消息')
+              console.log(e)
+            };
+          }
+        });
+        console.log(mes)
       }
       // 2对用户超时事件进行捕捉，还未使用
       /**

@@ -25,7 +25,8 @@ app.controller('concretestepCtrl', function ($scope, $rootScope, localStorageSer
    })
    })*/
   $rootScope.currenteventID=$stateParams.id;
-  console.log($stateParams.id)
+  $rootScope.currenteventName=$stateParams.name;
+  console.log($stateParams)
   $http({//获取事件中的步骤
     method: 'POST',
     url: $rootScope.applicationServerpath + 'mobilegrid/getcasestep',//获取到事件所有步骤

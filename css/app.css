@@ -5709,11 +5709,11 @@ div.info .info-middle a{
      background: #fff;
  }
 
-.add_person_con {
-    height: 150px;
-    margin-bottom: 3px;
-    overflow-y: auto;
-}
+/*.add_person_con {*/
+    /*height: 150px;*/
+    /*margin-bottom: 3px;*/
+    /*overflow-y: auto;*/
+/*}*/
 
 .add_person button {
     margin-left: 5px;

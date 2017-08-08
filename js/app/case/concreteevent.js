@@ -28,9 +28,10 @@ app.controller('concreteeventCtrl', function ($scope, $rootScope, localStorageSe
         })
     }
     $scope.onload();
-    $scope.concreteeventGo = function (id) {
+    $scope.concreteeventGo = function (id,name) {
         $state.go('app.concretestep', {
-            'id': id
+            'id': id,
+          name:name
         });
     }
     $scope.removeconcreteevent = function (id) {

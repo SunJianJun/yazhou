@@ -508,8 +508,7 @@ app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filte
     }).then(function (resp) {
       console.log(resp.data.success)
       var personinfo = resp.data.success;
-      $scope.item.name = personinfo.name;
-      $scope.item.data = personinfo;
+      localStorageService.clear('PersonInfo_'+data._id)
     })
   };
 

@@ -1,7 +1,7 @@
 ﻿//网格地图页面的controller
 app.controller('gridmapctl',
-  ['$scope', '$rootScope', '$http', '$compile', 'localStorageService', 'userService', 'gridmapService',
-    function ($scope, $rootScope, $http, $compile, localStorageService, userService, gridmapService) {
+  ['$scope', '$rootScope', '$http', '$compile', 'localStorageService', 'userService','gridmapService',
+    function ($scope, $rootScope, $http, $compile, localStorageService, userService,gridmapService) {
       $rootScope.mapEngine = {};
       //一个地图上的所有可移动目标
       $rootScope.movingObjs = [
@@ -15,6 +15,7 @@ app.controller('gridmapctl',
       if ($scope.map) {
         $scope.map.clearMap();
       }
+      $scope.allareamap=[];
       // $rootScope.hideAccountTab=false;
       // alert('隐藏tabs：'+$rootScope.hideAccountTab);
       $scope.isAllreadyDrawGridArea = false;
@@ -43,15 +44,15 @@ app.controller('gridmapctl',
       //随机生成一个位置点
       $scope.getRadomPt = function (orgPt) {
         var resultPt = {
-         longitude: '',
-         latitude: ''
+          longitude: '',
+          latitude: ''
         };
         if (orgPt && orgPt.longitude && orgPt.latitude) {
-         resultPt.longitude = orgPt.longitude + Math.random() / 25 * (Math.random() > 0.5 ? -1 : 1);
-         resultPt.latitude = orgPt.latitude + Math.random() / 25 * (Math.random() > 0.5 ? -1 : 1);
+          resultPt.longitude = orgPt.longitude + Math.random() / 25 * (Math.random() > 0.5 ? -1 : 1);
+          resultPt.latitude = orgPt.latitude + Math.random() / 25 * (Math.random() > 0.5 ? -1 : 1);
         } else {
-         resultPt.longitude = 116.40106141351825 + Math.random() / 25 * (Math.random() > 0.5 ? -1 : 1);
-         resultPt.latitude = 39.994762731321174 + Math.random() / 25 * (Math.random() > 0.5 ? -1 : 1);
+          resultPt.longitude = 116.40106141351825 + Math.random() / 25 * (Math.random() > 0.5 ? -1 : 1);
+          resultPt.latitude = 39.994762731321174 + Math.random() / 25 * (Math.random() > 0.5 ? -1 : 1);
         }
         // alert("resultPt:"+resultPt.longitude+"<>"+resultPt.latitude);
         return resultPt;
@@ -247,9 +248,7 @@ app.controller('gridmapctl',
             console.log(timeEnd.slice(0, 1))
             console.log(timeEnd.slice(0, 1) >= time.getDay() && time.getDay() >= timeStart.slice(0, 1))
             if (timeEnd.slice(0, 1) >= time.getDay() && time.getDay() >= timeStart.slice(0, 1)) {
-              console.log('进入第一关')
               if (timeEnd.slice(2, 4) >= time.getHours() && time.getHours() >= timeStart.slice(0, 1)) {
-                console.log('进入第二关')
                 return '<i class="glyphicon glyphicon-ok"></i>';
               }
             }
@@ -389,16 +388,13 @@ app.controller('gridmapctl',
       // 如果接到通知，某人的同事列表获取成功，接着刷
       $scope.$on('getWorkmatesByUserIdOk', function (event, sender) {
         $scope.assembleWorkmates();
-        console.log($scope.map)
+        console.log($scope.map);
         $scope.loadpolylayers();
-        $scope.drawpolylayer($scope.spotarea)
       });
       // 如果接到通知，某同事的最新位置获取成功，接着刷
       $scope.$on('getLatestLocationByUserIdOk', function (event, data) {
-        //console.log(event,data)
-        var wId = data._id;
-        var latestLocation = data//.latestLocation;
-        $scope.assembleWorkmateLocation(wId, latestLocation);
+        var latestLocation = data;
+        $scope.assembleWorkmateLocation(data._id, latestLocation);
       });
 
       /**
@@ -406,7 +402,7 @@ app.controller('gridmapctl',
        * @type {boolean}
        */
 
-        // 显示活动目标列表
+      // 显示活动目标列表
       $scope.showList = function () {
         // $scope.curVideo = videoUrl;
         $state.go("tab.account");
@@ -458,8 +454,8 @@ app.controller('gridmapctl',
           });
           return;
         }
-        if ($scope.map || $rootScope.map)$scope.map.setCenter(personObj.latestLocation.Location);
-        if (personObj.infoWin)personObj.infoWin.open($scope.map, personObj.latestLocation.Location);
+        if ($scope.map || $rootScope.map) $scope.map.setCenter(personObj.latestLocation.Location);
+        if (personObj.infoWin) personObj.infoWin.open($scope.map, personObj.latestLocation.Location);
         if (personObj.mark) {
           personObj.mark.setMap($scope.map);
           personObj.mark.setPosition(personObj.latestLocation.Location);
@@ -524,9 +520,9 @@ app.controller('gridmapctl',
           '><div class="info-top"><div>' + personObj.name + '<span style="font-size:11px;color:#F00;">' + onlineStatus + '</span>' + '</div></div><div class="info-middle" style="background-color: white;">' +
           '<img src="data:image/jpeg;base64,' + personObj.images.coverSmall + '" style="width:75px;height:90px;">' +
           '指挥中心下发数据时间:' + gettimeText + '<br>最后定位时间:' + positioningtimeText + '<br>' + personObj.gridInfo + '<br>' +
-            // 直接加个链接，不好点，太小，改成直接点框就跳转
+          // 直接加个链接，不好点，太小，改成直接点框就跳转
           btntext +
-            // +
+          // +
           '</div></div>';
 
         var template = angular.element(html);
@@ -611,7 +607,7 @@ app.controller('gridmapctl',
               $rootScope.movingObjs[indd].infoWin = newinfoWin;
               AMap.event.addListener($rootScope.movingObjs[indd].mark, 'click', function () {
                 var opened = $rootScope.movingObjs[indd].infoWin.getIsOpen();
-                if (!opened)$rootScope.movingObjs[indd].infoWin.open($scope.map, position); else $rootScope.movingObjs[indd].infoWin.close();
+                if (!opened) $rootScope.movingObjs[indd].infoWin.open($scope.map, position); else $rootScope.movingObjs[indd].infoWin.close();
                 $scope.map.setCenter(position);
               });
 
@@ -781,7 +777,7 @@ app.controller('gridmapctl',
         }
 
         //上传定位点到服务器
-        if ($scope.uploadLocation)($scope.uploadLocation(locationObj));
+        if ($scope.uploadLocation) ($scope.uploadLocation(locationObj));
 
         //console.log("解析当前用户位置 processCurUserLocation,这是每一轮循环必做之事：ended");
       };
@@ -873,7 +869,9 @@ app.controller('gridmapctl',
           return;
         }//如果画过就不画了,如果地图没准备好
         $scope.polygonArrs = new Array();//多边形覆盖物节点坐标数组
-        if(!polylayer){return;}
+        if (!polylayer) {
+          return;
+        }
         for (var index = 0; index < polylayer.length; index++) {
           var temp = polylayer[index];
           //console.log(temp);
@@ -947,11 +945,11 @@ app.controller('gridmapctl',
 
                     <div class="add_persons">
                         <div class="add_person">
-                            <div class="add_person_con panel-body">
+                            <div class="panel-body">
                             <p>
                                 巡逻员
                             </p>
-                                <select name="" id="add_person_con_name" size="5" class="add_person_con_name">
+                                <select name="" id="add_person_con_name" size="5" class="form-control">
                                     <option value="{{obj.name}}" ng-repeat="obj in movingObjs">{{obj.name}}</option>
                                 </select>
                             </div>
@@ -1114,6 +1112,15 @@ app.controller('gridmapctl',
           data: data
         }).then(function (resp) {
           console.log('删除成功')
+          $scope.allareamap=localStorageService.get('spotarea',300);//
+          for(var i=0,newarea=[];i<$scope.allareamap.length;i++){
+            if($scope.allareamap[i].areaID!=data.areaId){
+              newarea.push($scope.allareamap[i])
+            }
+          }
+          $scope.allareamap=newarea;
+          localStorageService.update('spotarea',newarea);//绘制区域更新
+          $scope.refreshMap()
         })
       }
       $scope.showalreadytime = {
@@ -1170,6 +1177,15 @@ app.controller('gridmapctl',
         }).then(function (data) {
           console.log('删除人员成功！')
           $('#haveChosenPeople>div').eq(e).remove();
+          for(var i=0;i<$scope.allareamap.length;i++){
+            if($scope.allareamap[i].areaID==$scope.properdata.areaId){
+              console.log($scope.allareamap[i])
+              $scope.allareamap[i].persons.splice(e,1)
+            }
+          }
+          console.log($scope.allareamap);
+          localStorageService.update('spotarea',$scope.allareamap);
+          // $scope.allareamap
         })
       }
 
@@ -1197,7 +1213,7 @@ app.controller('gridmapctl',
           alert('时间没有添加！');
           return;
         }
-        people.areaID=$scope.properdata.areaId;
+        people.areaID = $scope.properdata.areaId;
         $('#nopeople').html('');
         $scope.properdata.persons.push(people);
         console.log(JSON.stringify(people))
@@ -1205,7 +1221,7 @@ app.controller('gridmapctl',
         $http({
           method: 'POST',
           url: $rootScope.applicationServerpath + 'maproute/addperson',
-          data:people
+          data: people
         }).then(function (data) {
           console.log(data);
         })
@@ -1222,14 +1238,30 @@ app.controller('gridmapctl',
 //刷新地图区域
       $scope.refreshMap = function () {
         if ($scope.map) {
-          //console.log('清除地图');
-
-          $scope.spotarea = gridmapService.spotareagrid()
-          $scope.isAllreadyDrawGridArea = false;
-          $scope.map.clearMap();
-          console.log($scope.spotarea);
-          console.log('重绘区域');
-          $scope.drawpolylayer($scope.spotarea)
+            $scope.map.clearMap();
+          $scope.allareamap= localStorageService.get('spotarea', 60);
+          if ($scope.allareamap&&$scope.allareamap.length) {
+            $scope.isAllreadyDrawGridArea = false;
+            $rootScope.$broadcast('gridareaReady',$scope.allareamap);
+          }else {
+            console.log('缓存没有，获取')
+            $http({
+                method: 'POST',
+                url: $rootScope.applicationServerpath + 'spotarea/getNewestSpotarea'
+              }
+            ).then(function (resp) {
+              //console.log(resp);
+              console.log('从服务器获取数据！');
+              if (resp.data) {
+                var newspot = $rootScope.parseGeojsonFromDb(resp.data);
+                // 将所有网格区域存到缓存中
+              }
+              localStorageService.update('spotarea', newspot);
+              //console.log('服务器返回数据');
+              $scope.isAllreadyDrawGridArea = false;
+              $rootScope.$broadcast('gridareaReady',newspot);
+            });
+          }
 
         }
       }
@@ -1341,7 +1373,7 @@ app.controller('gridmapctl',
           var start = $('.search-dateStartTime').val();
           var end = $('.search-dateEndTime').val();
           $scope.filterpeoplepath.oldpath = {n: '', a: '', d: ''};
-          console.log(new Date(start),new Date(end));
+          console.log(new Date(start), new Date(end));
           $http(
             {
               method: 'POST',
@@ -1353,142 +1385,142 @@ app.controller('gridmapctl',
               }
             }
           ).then(function (resp) {
-              console.log('fasongchenggong ~~~~~~~');
-              var data = resp.data;
-              if (!data) {
-                return;
+            console.log('fasongchenggong ~~~~~~~');
+            var data = resp.data;
+            if (!data) {
+              return;
+            }
+            console.log('返回数据')
+            console.log(data)
+            var marker, lineArr = [], speed = [];
+            for (var i = 0, locationtable = ''; i < data.length; i++) {
+              var lngX = data[i].geolocation[0];
+              var lngY = data[i].geolocation[1];
+              var date = new Date(data[i].positioningdate);
+              var filter = $scope.filterpeoplepath.filter(lngX, lngY, date)
+              if (!filter) {
+                //console.log('跳出');
+                continue;
               }
-              console.log('返回数据')
-              console.log(data)
-              var marker, lineArr = [], speed = [];
-              for (var i = 0, locationtable = ''; i < data.length; i++) {
-                var lngX = data[i].geolocation[0];
-                var lngY = data[i].geolocation[1];
-                var date = new Date(data[i].positioningdate);
-                var filter = $scope.filterpeoplepath.filter(lngX, lngY, date)
-                if (!filter) {
-                  //console.log('跳出');
-                  continue;
+              //console.log(filter);
+              lineArr.push(filter);
+              speed.push([filter[2] * 300, filter[3]])
+              locationtable += '<tr><td>' + lngX + '</br>' + lngY + '</td><td>' + date.formate("M月d日 hh:mm") + '</td><td>' + $scope.checkPersonLocationWithGridarea([lngX, lngY]) + '</td>';
+            }
+            console.log(speed);
+            //console.log(lineArr)
+            //console.log('筛选后剩余' + lineArr.length)
+            if ($scope.historypath.isline) {
+              return;
+            }
+            $('.historical_routebtn').show()
+
+            var X = data[0].geolocation[0], Y = data[0].geolocation[1];
+            marker = new AMap.Marker({
+              map: $scope.map,
+              position: [X, Y],
+              icon: "img/jiantou.png",
+              offset: new AMap.Pixel(-15, -13),
+              autoRotation: true
+            });
+            marker.on('click', function (e) {
+              console.log(e.target);
+            })
+            //lineArr.push([lngX, lngY]);
+            // 绘制轨迹
+            var polyline = new AMap.Polyline({
+              map: $scope.map,
+              path: lineArr,
+              strokeColor: "#00A",  //线颜色
+              // strokeOpacity: 1,     //线透明度
+              strokeWeight: 3      //线宽
+              // strokeStyle: "solid"  //线样式
+            });
+            var passedPolyline = new AMap.Polyline({
+              map: $scope.map,
+              // path: lineArr,
+              strokeColor: "#F00",  //线颜色
+              // strokeOpacity: 1,     //线透明度
+              strokeWeight: 3,      //线宽
+              // strokeStyle: "solid"  //线样式
+            });
+
+
+            marker.on('moving', function (e) {
+              passedPolyline.setPath(e.passedPath);
+            })
+
+            var currentcount = 0;
+            AMap.event.addDomListener(document.getElementById('starthistory'), 'click', function () {
+              var count = 0;
+              marker.setPosition(lineArr[count])
+              count++;
+              //console.log(speed[count][0])
+              marker.moveTo(lineArr[count], speed[count][0])
+              marker.on('moveend', function () {
+                if (count < (lineArr.length - 1)) {
+                  count++;
+                  currentcount = count;
                 }
-                //console.log(filter);
-                lineArr.push(filter);
-                speed.push([filter[2] * 300, filter[3]])
-                locationtable += '<tr><td>' + lngX + '</br>' + lngY + '</td><td>' + date.formate("M月d日 hh:mm") + '</td><td>' + $scope.checkPersonLocationWithGridarea([lngX, lngY]) + '</td>';
-              }
-              console.log(speed);
-              //console.log(lineArr)
-              //console.log('筛选后剩余' + lineArr.length)
-              if ($scope.historypath.isline) {
-                return;
-              }
-              $('.historical_routebtn').show()
-
-              var X = data[0].geolocation[0], Y = data[0].geolocation[1];
-              marker = new AMap.Marker({
-                map: $scope.map,
-                position: [X, Y],
-                icon: "img/jiantou.png",
-                offset: new AMap.Pixel(-15, -13),
-                autoRotation: true
-              });
-              marker.on('click', function (e) {
-                console.log(e.target);
-              })
-              //lineArr.push([lngX, lngY]);
-              // 绘制轨迹
-              var polyline = new AMap.Polyline({
-                map: $scope.map,
-                path: lineArr,
-                strokeColor: "#00A",  //线颜色
-                // strokeOpacity: 1,     //线透明度
-                strokeWeight: 3      //线宽
-                // strokeStyle: "solid"  //线样式
-              });
-              var passedPolyline = new AMap.Polyline({
-                map: $scope.map,
-                // path: lineArr,
-                strokeColor: "#F00",  //线颜色
-                // strokeOpacity: 1,     //线透明度
-                strokeWeight: 3,      //线宽
-                // strokeStyle: "solid"  //线样式
-              });
-
-
-              marker.on('moving', function (e) {
-                passedPolyline.setPath(e.passedPath);
-              })
-
-              var currentcount = 0;
-              AMap.event.addDomListener(document.getElementById('starthistory'), 'click', function () {
-                var count = 0;
-                marker.setPosition(lineArr[count])
-                count++;
-                //console.log(speed[count][0])
                 marker.moveTo(lineArr[count], speed[count][0])
-                marker.on('moveend', function () {
-                  if (count < (lineArr.length - 1)) {
-                    count++;
-                    currentcount = count;
-                  }
-                  marker.moveTo(lineArr[count], speed[count][0])
-                })
-              }, false);
-              AMap.event.addDomListener(document.getElementById('pausehistory'), 'click', function () {
-                marker.pauseMove();
+              })
+            }, false);
+            AMap.event.addDomListener(document.getElementById('pausehistory'), 'click', function () {
+              marker.pauseMove();
 
-                console.log(lineArr[currentcount], speed[currentcount][1])
-                var shucu = $scope.positioninfo(lineArr[currentcount], function (e) {
+              console.log(lineArr[currentcount], speed[currentcount][1])
+              var shucu = $scope.positioninfo(lineArr[currentcount], function (e) {
 
-                  $rootScope.address = e;
-                  //在指定位置打开信息窗体
-                  //构建信息窗体中显示的内容
-                  var info = '';
-                  info += `<div>
+                $rootScope.address = e;
+                //在指定位置打开信息窗体
+                //构建信息窗体中显示的内容
+                var info = '';
+                info += `<div>
                    <div>地址：${$rootScope.address}</div>
                   <div>位置：${lineArr[currentcount]}</div>
                   <div>时间：${speed[currentcount][1].formate("M月d日 hh:mm")}</div>
           </div>`;
-                  var Element = $compile(info)($scope)
+                var Element = $compile(info)($scope)
 
-                  var infowindow3 = new AMap.InfoWindow({
-                    // content: content,
-                    content: Element[0],
-                    placeSearch: false,
-                    asDestination: false,
-                    offset: new AMap.Pixel(0, -5)
-                  })
-                  infowindow3.open($scope.map, lineArr[currentcount]);
-
+                var infowindow3 = new AMap.InfoWindow({
+                  // content: content,
+                  content: Element[0],
+                  placeSearch: false,
+                  asDestination: false,
+                  offset: new AMap.Pixel(0, -5)
                 })
-                //console.log(shucu)
-                //console.log(Element[0])
-//console.log(infowindow3)
-              }, false);
-              AMap.event.addDomListener(document.getElementById('resumehistory'), 'click', function () {
-                marker.resumeMove();
-              }, false);
-              AMap.event.addDomListener(document.getElementById('stophistory'), 'click', function () {
-                //lineArr=[];
-                //marker.stopMove();
-                //marker.close(true);
-                $scope.map.remove(passedPolyline);
-                $scope.map.remove(polyline);
-                $scope.map.remove(marker);
-                $scope.historypath.isline = false;
-              }, false);
+                infowindow3.open($scope.map, lineArr[currentcount]);
 
-              $scope.historypath.isline = true;
-              var peopletable = '';
-              peopletable += `<div class="panel panel-default">
+              })
+              //console.log(shucu)
+              //console.log(Element[0])
+//console.log(infowindow3)
+            }, false);
+            AMap.event.addDomListener(document.getElementById('resumehistory'), 'click', function () {
+              marker.resumeMove();
+            }, false);
+            AMap.event.addDomListener(document.getElementById('stophistory'), 'click', function () {
+              //lineArr=[];
+              //marker.stopMove();
+              //marker.close(true);
+              $scope.map.remove(passedPolyline);
+              $scope.map.remove(polyline);
+              $scope.map.remove(marker);
+              $scope.historypath.isline = false;
+            }, false);
+
+            $scope.historypath.isline = true;
+            var peopletable = '';
+            peopletable += `<div class="panel panel-default">
                   <div class="panel-heading">
                     <h3 class="panel-title">位置列表</h3>
                   </div>
                   <div class="panel-body">`;
-              peopletable += `<table class="table table-hover table-condensed"><th>位置</th><th>时间</th><th>所在区域</th>`;
-              peopletable += locationtable;
-              peopletable += '</table></div></div>';
-              $('#Location_list').html(peopletable);
-            })
+            peopletable += `<table class="table table-hover table-condensed"><th>位置</th><th>时间</th><th>所在区域</th>`;
+            peopletable += locationtable;
+            peopletable += '</table></div></div>';
+            $('#Location_list').html(peopletable);
+          })
         }
       }
 
@@ -1499,39 +1531,31 @@ app.controller('gridmapctl',
        加载多边形网格化区域图层
        */
       $scope.loadpolylayers = function () {
-        //console.log('加载多边形网格化区域图层');
-        //$scope.getCoordinate();//获取坐标
-        //$scope.polylayers = localStorageService.get('gridarea', 60 * 24);
-        //if (!$scope.polylayers) {
-        //  $http(
-        //    {
-        //      method: 'POST',
-        //      url: $rootScope.applicationServerpath + 'gridarea/getAllValidGridarea'
-        //    }
-        //  ).then(function (resp) {
-        //      console.log('本地没有数据，从服务器获取！');
-        //      console.log(resp);
-        //      if (resp.data) {
-        //        $scope.polylayers = $rootScope.parseGeojsonFromDb(resp.data);
-        //      }
-        //      // 将所有网格区域存到缓存中
-        //      localStorageService.update('gridarea', $scope.polylayers);
-        //      // 广播网格化区域已经加载
-        //      $rootScope.$broadcast('gridareaReady', $scope.polylayers);
-        //    });
+        console.log('加载多边形网格化区域图层');
+          $scope.allareamap = localStorageService.get('spotarea', 60);
+          if ($scope.allareamap&&$scope.allareamap.length) {
+            $rootScope.$broadcast('gridareaReady',$scope.allareamap);
+          }else {
+            console.log('缓存没有，获取')
+            $http(
+              {
+                method: 'POST',
+                url: $rootScope.applicationServerpath + 'spotarea/getNewestSpotarea'
+              }
+            ).then(function (resp) {
+              //console.log(resp);
+              console.log('从服务器获取数据！');
+              if (resp.data) {
+                var newspot = $rootScope.parseGeojsonFromDb(resp.data);
+                // 将所有网格区域存到缓存中
+              }
+              localStorageService.update('spotarea', newspot);
+              //console.log('服务器返回数据');
+              $rootScope.$broadcast('gridareaReady',newspot);
+            });
+          }
+        }
 
-        //console.log($scope.spotarea)
-
-        //if ($scope.spotarea) {
-        //  for (var i = 0; i < $scope.spotarea.length; i++) {
-        //    $scope.polylayers.push($scope.spotarea[i]);
-        //  }
-        //}
-
-        $scope.spotarea = gridmapService.spotareagrid();
-        $rootScope.$broadcast('gridareaReady', $scope.spotarea);
-        return;
-      }
       //$scope.map.setFitView();
 
       /*
@@ -1636,35 +1660,27 @@ app.controller('gridmapctl',
             dataType: 'JSON'
           }
         ).success(function (data, status, headers, config) {
-            console.log('提交成功----')
-            console.log(data);
-            if (data) {
-              //$scope.isAllreadyDrawGridArea=true;
-              var polylayers = $scope.parseGeojsonFromDb([data]);
-              //$scope.refreshMap(data);
-              console.log(polylayers)
-              $scope.map.remove($scope.editorRegion._polygonEditor);
-              //$scope.isAllreadyDrawGridArea = false;
-              $scope.drawpolylayer(polylayers);
-            }
-            // 将所有网格区域存到缓存中
-            //localStorageService.update('spotarea', $scope.polylayers);//存为绘制区域
-            // 广播网格化区域已经加载
-          })
+          console.log('提交成功----')
+          console.log(data);
+          if (data) {
+            $scope.map.remove($scope.editorRegion._polygonEditor);
+            var polylayers = $scope.parseGeojsonFromDb([data]);
+            //$scope.refreshMap(data);
+            console.log(polylayers)
+            var newarea=localStorageService.get('spotarea',300);//
+            newarea.push(polylayers[0])
+            localStorageService.update('spotarea',newarea);//绘制区域更新
+            $scope.isAllreadyDrawGridArea = false;
+            $scope.drawpolylayer(polylayers);
+
+          }
+          // 将所有网格区域存到缓存中
+          //localStorageService.update('spotarea', $scope.polylayers);//存为绘制区域
+          // 广播网格化区域已经加载
+        })
           .error(function (data, status, headers, config) {
             console.log('提交出错' + data)
           });
-
-        //if (aa) {
-        //    $rootScope.$broadcast('gridareaReady',$scope.polylayers);
-        //} else {
-        //    $scope.polylayers = [];
-        //    $scope.polylayers[0] = $scope.polygonArr;
-        //    console.log($scope.polylayers);
-        //    $scope.drawpolylayer($scope.polylayers);
-        //}
-        //$scope.polygonArrs.push($scope.editorRegion._polygonEditor.Me);
-        //$scope.isAllreadyDrawGridArea = true;
       }
       //加载自定义的多边形图层
       $scope.drawgeographicarea = {
@@ -1698,18 +1714,17 @@ app.controller('gridmapctl',
             $scope.editorRegion._polygonEditor.open();
             console.log('当前中心点坐标：' + center.lng, center.lat);
             $scope.editorRegion.iscurrent = false;
-            return;
           } else {
             alert('请结束编辑,再绘制');
           }
         },
         closeEditPolygon: function () {
           $scope.editorRegion.iscurrent = true;
+          $scope.editorRegion._polygonEditor.close();
           //$('#peopleinfo').show();
           $('#addregionalinformation').show();//显示模态框
           //$('#menu-1').removeClass('st-effect-1');//右侧弹出框
 
-          $scope.editorRegion._polygonEditor.close();
         }
       };
       //$scope.loadpolylayers();

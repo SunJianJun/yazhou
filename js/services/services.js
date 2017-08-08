@@ -385,13 +385,21 @@ app.factory("userService", ['localStorageService', '$http', '$rootScope', functi
       return $rootScope.curUser;
 
     }
-  };
+  }
 }]);
-app.factory("gridmapService", ['$http', '$rootScope', 'localStorageService', function ($http, $rootScope, localStorageService) {
+//地图服务
+app.factory('gridmapService', ['$http', '$rootScope', 'localStorageService',
+  function ($http, $rootScope, localStorageService){
   return {
-    spotareagrid: function () {//加载多边形绘制区域图层
+    ceshi:function () {
+      console.log('这是测试数据');
+    },
+    spotareagrid: function (callback) {//加载多边形绘制区域图层
       var spotarea = localStorageService.get('spotarea', 60 * 1);
+      console.log('从服务获取')
+
       if (!spotarea) {
+        console.log('缓存没有，获取')
         $http(
           {
             method: 'POST',
@@ -404,11 +412,12 @@ app.factory("gridmapService", ['$http', '$rootScope', 'localStorageService', fun
             var newspot = $rootScope.parseGeojsonFromDb(resp.data);
             // 将所有网格区域存到缓存中
           }
-          spotarea = localStorageService.update('spotarea', newspot);
+          localStorageService.update('spotarea', newspot);
           //console.log('服务器返回数据');
         });
-      } else {
-        return spotarea;
+      }else {
+        console.log(spotarea)
+        callback(spotarea)
       }
     }
   }

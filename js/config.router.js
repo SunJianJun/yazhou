@@ -567,7 +567,7 @@ angular.module('app')
           }
         })
         .state('app.concretestep',{
-          url:"/concretestep/{id}",
+          url:"/concretestep/{id}/{name}",
           templateUrl:'tpl/concretestep.html',
           resolve:{
             deps:['uiLoad',function(uiLoad){
