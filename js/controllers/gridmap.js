@@ -1233,6 +1233,9 @@ app.controller('gridmapctl',
 
 
       $scope.personnel_statistics = function () {
+        console.log($rootScope.mapEngine.engineConfig.showWorkMates)
+        $rootScope.mapEngine.engineConfig.showWorkMates=false;
+        // $scope.map.remove($scope.polygonArrs);
         alert('当前人员有：' + $rootScope.movingObjs.length + ' 人');
       }
 //刷新地图区域
@@ -1770,6 +1773,7 @@ app.controller('gridmapctl',
        */
       $rootScope.mapEngine.engineInitialise = function (params) {
         var config = $rootScope.mapEngine.engineConfig;
+        console.log('引擎初始化,读取和应用一些设置')
         if (config.showWorkMates) {
           $scope.refreshWorkmatesOfCurUser();
           //console.log("引擎初始化,读取和应用一些设置: $scope.refreshWorkmatesOfCurUser");

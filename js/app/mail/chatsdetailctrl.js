@@ -50,7 +50,7 @@ app.controller('messageDetailCtrl', [
                 !function(){
                   for (var b = 0; b < $scope.currenttalk.length; b++) {
                     if ($scope.currenttalk[b]._id==newmes[a]._id) {
-                      console.log('更新啦')
+                      // console.log('更新啦')
                       ispush = true;
                         return;
                     }
@@ -60,7 +60,7 @@ app.controller('messageDetailCtrl', [
                   isnewupdate.push(newmes[a]);
               }
                 ispush = false;
-                console.log($scope.currenttalk.length)
+                // console.log($scope.currenttalk.length)
             }
           }
             console.log(isnewupdate)

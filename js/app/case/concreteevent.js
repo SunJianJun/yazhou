@@ -50,7 +50,7 @@ app.controller('concreteeventCtrl', function ($scope, $rootScope, localStorageSe
     $scope.newabstracttype = function () {
         $http({  //获取抽象表中的类型
             method: 'POST',
-            url: $rootScope.applicationServerpath + 'mobilegrid/getAllAbstracttype'//获取抽象表中的类型
+            url: $rootScope.applicationServerpath + 'mobilegrid/getAllAbstracttypetodep'//获取抽象表中的类型
         }).then(function (resp){
             var data = resp.data.success;
             console.log(data)
