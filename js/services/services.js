@@ -283,9 +283,9 @@ app.factory("userService", ['localStorageService', '$http', '$rootScope', functi
               //alert("查询出错："+data.err);
             } else {
               //alert("查询成功");
-              data.forEach(function (val, key) {
-                val.name += ' (测试人员)';
-              })
+              // data.forEach(function (val, key) {
+              //   val.name += ' (测试人员)';
+              // })
               localStorageService.update("workmates", data);
               // 广播用户查询同事成功
               $rootScope.$broadcast('getWorkmatesByUserIdOk', data);

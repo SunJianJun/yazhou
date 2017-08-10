@@ -178,20 +178,20 @@ app.controller('abstracttypeCtrl', function ($scope, $compile, $window, $rootSco
                 step:steps,
                 newer:new Date()
         })
-        // $http({
-        //     method:'POST',
-        //     url:$rootScope.applicationServerpath + 'abstracttyperoute/updateAbstracttype',
-        //     data:{
-        //         beforeName:beforeName,
-        //         typeName:val,
-        //         step:steps,
-        //         newer:new Date()
-        //     }
-        // }).then(function(resp){
-        //     console.log(resp.data);
-        //     $scope.loadCase();
-        //     //$window.location.reload();
-        // })
+        $http({
+            method:'POST',
+            url:$rootScope.applicationServerpath + 'abstracttyperoute/updateAbstracttype',
+            data:{
+                beforeName:beforeName,
+                typeName:val,
+                step:steps,
+                newer:new Date()
+            }
+        }).then(function(resp){
+            console.log(resp.data);
+            $scope.loadCase();
+            //$window.location.reload();
+        })
     }
     $scope.newabstracttype=function(){
         $('#newabstracttype').show();
@@ -199,12 +199,14 @@ app.controller('abstracttypeCtrl', function ($scope, $compile, $window, $rootSco
     $scope.newcase = function (type) {
         console.log(type)
         if(!type){return;}
+      var typeDepartment = $('#newtypeDepartment').val();
         $http({
             method: 'POST',
             url: $rootScope.applicationServerpath + 'abstracttyperoute/sendAAbstracttype',
             data: {
                 typeName: type,
-                createparent:$rootScope.curUser._id
+                createparent:$rootScope.curUser._id,
+              department:typeDepartment
             }
         }).then(function (resp) {
             if (resp.data) {

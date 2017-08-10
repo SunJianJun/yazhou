@@ -1,7 +1,7 @@
 ﻿//网格地图页面的controller
 app.controller('gridmapctl',
-  ['$scope', '$rootScope', '$http', '$compile', 'localStorageService', 'userService','gridmapService',
-    function ($scope, $rootScope, $http, $compile, localStorageService, userService,gridmapService) {
+  ['$scope', '$rootScope', '$http', '$compile','$state','localStorageService', 'userService','gridmapService',
+    function ($scope, $rootScope, $http, $compile,$state, localStorageService, userService,gridmapService) {
       $rootScope.mapEngine = {};
       //一个地图上的所有可移动目标
       $rootScope.movingObjs = [
@@ -40,7 +40,7 @@ app.controller('gridmapctl',
           zoomToAccuracy: true      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
         });
       };
-
+      $rootScope.currentperson=0;//当前在线的人数
       //随机生成一个位置点
       $scope.getRadomPt = function (orgPt) {
         var resultPt = {
@@ -65,18 +65,52 @@ app.controller('gridmapctl',
 
       //$rootScope.mapEngine.mapEngine={}
       $rootScope.mapEngine.engineConfig = {
-        showWorkMates: true,
+        showWorkMates: true, //显示同事
         showSubDepartments: true,
         timeFrequency: 10,//秒
         showOnlineWarning: true,
         showOffdutyWarning: true,
-        showLastMessage: true
-
+        showLastMessage: true,
+        showdarpmentevent:true,//显示部门事件
+        showspotarea:true,  //显示区域
+        showcameraposition:true //显示摄像头
       };
+      $rootScope.showWork_Mates=function (e) {
+        if(e){
+          $rootScope.mapEngine.engineConfig.showWorkMates=true;
+        }else{
+          $rootScope.mapEngine.engineConfig.showWorkMates=false;
+          // $scope.map.remove($scope.marker);
+          if ($rootScope.movingObjs && $rootScope.movingObjs.length > 0) {
+            for (var indd = 0; indd < $rootScope.movingObjs.length; indd++) {
+                if ($rootScope.movingObjs[indd].mark) {
+                  // 重置marker
+                  $scope.map.remove($rootScope.movingObjs[indd].mark);
+                }
+            }
+          }
+
+        }
+        console.log($rootScope.mapEngine.engineConfig.showWorkMates);
+      }
+      $rootScope.showspot_area=function (e) {
+        if(e){
+          $rootScope.mapEngine.engineConfig.showspotarea=true;
+          $scope.refreshMap();
+        }else{
+          $rootScope.mapEngine.engineConfig.showspotarea=false;
+          $scope.map.remove($scope.polygonArrs);
+        }
+        console.log($rootScope.mapEngine.engineConfig.showspotarea);
+      }
       /*
        * 刷新地图上所有活动点
        */
       $scope.refreshMovingObjs = function () {
+
+        if(!$rootScope.mapEngine.engineConfig.showWorkMates){console.log('人员控制器关闭');return;}
+
+        $rootScope.currentperson=0;
         //console.log("刷新地图上所有活动点 refreshMovingObjs,这是每一轮循环必做之事：started");
         if (!($rootScope.movingObjs && $rootScope.movingObjs.length))return;//如果没有移动目标，就返回了
 
@@ -342,6 +376,7 @@ app.controller('gridmapctl',
       //使用同一个显示刷新函数
       $scope.refreshOnePersonLocation = function (personObj) {
 
+
         if (personObj.isDeleted)return;//没有删除标志或者删除标志为false，表示正常有效的人员，其最新位置在latestLocation里
         if (!personObj.latestLocation)return;
         personObj.gridInfo = $scope.checkPersonLocationWithGridarea(personObj.latestLocation) ? "人员所在网格区域：" + $scope.checkPersonLocationWithGridarea(personObj.latestLocation) : '人员不在任何网格区域';
@@ -389,6 +424,7 @@ app.controller('gridmapctl',
       $scope.$on('getWorkmatesByUserIdOk', function (event, sender) {
         $scope.assembleWorkmates();
         console.log($scope.map);
+        console.log(sender)
         $scope.loadpolylayers();
       });
       // 如果接到通知，某同事的最新位置获取成功，接着刷
@@ -473,13 +509,14 @@ app.controller('gridmapctl',
       // 显示用户的详细信息，应该是点击图标的时候发生
       $scope.assemblePersonMapInfo = function (personObj) {
 
+
         // //console.log("显示用户的详细信息 assemblePersonMapInfo,这是每一轮循环必做之事：started");
 
         var gettimeText = new Date(personObj.latestLocation.getDate);
-        gettimeText = gettimeText.formate('yyyy-MM-dd HH:mm:ss');
+        gettimeText = gettimeText.formate('yyyy-MM-dd hh:mm:ss');
 
         var positioningtime = new Date(personObj.latestLocation.positioningdate);
-        var positioningtimeText = positioningtime.formate('yyyy-MM-dd HH:mm:ss');
+        var positioningtimeText = positioningtime.formate('yyyy-MM-dd hh:mm:ss');
         var ctt = new Date();
         var onlineStatus = (ctt.getTime() - positioningtime.getTime()) / 1000 / 60 > $rootScope.onlineTime ? "离线" : "在线";
         personObj.onlineStatus = onlineStatus;
@@ -511,7 +548,7 @@ app.controller('gridmapctl',
         }
         //把id、姓名和图片存到缓存中,为了给聊天提供数据
         localStorageService.update("messagedetail" + receiver._id, receiver);
-        var btntext = (receiver._id == $rootScope.curUser._id) ? "当前用户" : (' <a href="#" style="color:#00f" >点击可发送消息</a>');
+        var btntext = (receiver._id == $rootScope.curUser._id) ? "当前用户" : (`<a ng-click="gotoChat('${receiver._id}')" style="color:#00f" >点击可发送消息</a>`);
         var newBtnText = (receiver._id == $rootScope.curUser._id) ? "" : ('ng-click="gotoChat(\'' + personObj._id + '\')"');
         /******************************************************************************/
         //构建信息窗体中显示的内容class="list "
@@ -550,15 +587,14 @@ app.controller('gridmapctl',
         //console.log("准备去聊天 messageDetailCtrl tab.messageDetail");
         //把id、姓名和图片存到缓存中,为了给聊天提供数据
         var receiverdata = localStorageService.get("messagedetail" + receiverid, 30);
+        console.log(receiverdata)
         //清空覆盖物防止出错
         $scope.map.clearInfoWindow();
         //手动选择工作消息tab，再跳转
         // $ionicTabsDelegate.select(2);
-        $state.go("tab.chat-messageDetail", {
-          "senderId": receiverid,
-          "senderName": receiverdata.name,
-          "startTime": receiverdata.messagestartTime,
-          'back': 'tab.chats'
+        $state.go("app.mail.list", {
+          "receiverID": receiverid,
+          "receiverName": receiverdata.name
         });
       };
       // 根据用户id、位置、名称、获取时间和信息窗体来建立一个图标，并且缓存到movingMarkers中
@@ -571,6 +607,8 @@ app.controller('gridmapctl',
             {
               if ($rootScope.movingObjs[indd].mark) {
                 // 重置marker
+                $rootScope.currentperson++;
+                // console.log($rootScope.movingObjs[indd])
                 $rootScope.movingObjs[indd].mark.setMap(null);
                 $rootScope.movingObjs[indd].mark = null;
               }
@@ -587,7 +625,7 @@ app.controller('gridmapctl',
               });
               // if(time){
               //   var timeText=new Date(time);
-              //   timeText=timeText.formate('yyyy-MM-dd HH:mm:ss')
+              //   timeText=timeText.formate('yyyy-MM-dd hh:mm:ss')
               //   text=text+'\n'+timeText;
               // }
               // 设置鼠标划过点标记显示的文字提示
@@ -736,11 +774,11 @@ app.controller('gridmapctl',
           //alert(" location！\n"+Object.keys(successData.position));
           curlocation.lontitude = successData.position.lng;
           curlocation.latitude = successData.position.lat;
-        } else if ((successData.coords)) {
+        } else if (successData.coords) {
           curlocation.lontitude = successData.coords.longitude;
           curlocation.latitude = successData.coords.latitude;
         }
-        else if ((successData.lontitude)) {
+        else if (successData.lontitude) {
           //否则可能是百度或者HTML5的格式
           //curlocation=new AMap.LngLat($scope.centerLong,$scope.centerLat);
           curlocation.lontitude = successData.lontitude;
@@ -785,8 +823,10 @@ app.controller('gridmapctl',
 
       //刷新地图,这是每一轮循环必做之事
       $scope.refeshMap = function () {
-        $scope.refreshWorkmatesLocations();// 刷新地图上所有同事的位置
-
+        console.log($rootScope.mapEngine.engineConfig.showWorkMates)
+        if($rootScope.mapEngine.engineConfig.showWorkMates) {
+          $scope.refreshWorkmatesLocations();// 刷新地图上所有同事的位置
+        }
         //开始刷新定位
         $scope.refreshMovingObjs();
 
@@ -1217,7 +1257,7 @@ app.controller('gridmapctl',
         $('#nopeople').html('');
         $scope.properdata.persons.push(people);
         console.log(JSON.stringify(people))
-        //console.log($scope.properdata);
+        console.log($scope.properdata);
         $http({
           method: 'POST',
           url: $rootScope.applicationServerpath + 'maproute/addperson',
@@ -1234,9 +1274,8 @@ app.controller('gridmapctl',
 
       $scope.personnel_statistics = function () {
         console.log($rootScope.mapEngine.engineConfig.showWorkMates)
-        $rootScope.mapEngine.engineConfig.showWorkMates=false;
         // $scope.map.remove($scope.polygonArrs);
-        alert('当前人员有：' + $rootScope.movingObjs.length + ' 人');
+        alert('当前人员有：' + $rootScope.movingObjs.length + ' 人,在线人数'+$rootScope.currentperson);
       }
 //刷新地图区域
       $scope.refreshMap = function () {
@@ -1913,7 +1952,11 @@ app.directive('gdMap', function ($timeout, $window) {
           var address;
           //console.log(MGeocoder)
           //返回地址描述
-          address = data.regeocode.formattedAddress;
+          if(data.regeocode) {
+            address = data.regeocode.formattedAddress;
+          }else{
+            address='超出界限，无法获取位置'
+          }
           //返回结果拼接输出
           $('#position_information').html(address);
         })

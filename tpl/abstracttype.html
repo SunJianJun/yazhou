@@ -62,6 +62,10 @@
                         <div name="newabstracttype" style="display: none;" id="newabstracttype">
                             <span>事件名称：</span>
                             <input type="text" ng-model="newtypeName"/>
+                            <span>所属部门：</span>
+                            <select name="" id="newtypeDepartment">
+                                <option value="{{deparr.department}}" ng-repeat="deparr in curUser.departments">{{deparr.department}}</option>
+                            </select>
                             <button ng-click="newcase(newtypeName)">确定添加</button>
                         </div>
                     </div>

@@ -18,6 +18,7 @@ angular.module('app')
       $scope.tempUser;
 
 
+      $rootScope.currentperson=0;//当前在线的人数
       //引擎管理需要一个定时器，如果没有引用就无法销毁
       $rootScope.mapEngineTimer;
 
@@ -44,22 +45,22 @@ angular.module('app')
       ];
       $rootScope.applicationServerpath = 'http://localhost:2000/';
 
-      $rootScope.applicationServerpath = 'http://120.76.228.172:2000/';
+      // $rootScope.applicationServerpath = 'http://120.76.228.172:2000/';
       console.log('接口测试' + $rootScope.applicationServerpath);
        // $http({
        //   method: 'POST',
-       //   url: $rootScope.applicationServerpath + 'person/getWorkmatesByUserId',
+       //   url: $rootScope.applicationServerpath + 'mobilegrid/getpersonworkregion',
        //   data: {
-       //     areaID:"58c97096f6ea9f30353ddb5"
-       //     type:'无照经营'
-       //     personID: "58e0c199e978587014e67a50"
-       //     startTime: new Date(new Date().setDate(new Date(new Date().getDate()-10))),
-       //     endTime: new Date()
+       //     // areaID:"58c97096f6ea9f30353dd4b4"
+       //     // type:'无照经营'
+       //     personID: "594cc13fc6178a040fa76063"
+       //     // startTime: new Date(new Date().setDate(new Date(new Date().getDate()-10))),
+       //     // endTime: new Date()
        //   }
        // }).then(function (resp) {
        //   console.log('返回数据')
        //   console.log(resp.data)
-       //   console.log(JSON.stringify(resp.data.success))
+       //   // console.log(JSON.stringify(resp.data.success))
        // })
 
       // 桌面端的用户需要登录信息，用户名就是人名，密码第一次可以是身份证号，之后可以修改，pwd

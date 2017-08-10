@@ -49,9 +49,9 @@
                                         <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>部门同事</a>
                                         <div class="m-b-sm">
                                             <div class="btn-group">
-                                                <label class="btn btn-sm btn-info" ng-class="mapEngine.engineConfig.showWorkMates?'active':''" ng-click="mapEngine.engineConfig.showWorkMates=true"><i class="fa fa-check text-active"></i>
+                                                <label class="btn btn-sm btn-info" ng-class="mapEngine.engineConfig.showWorkMates?'active':''" ng-click="showWork_Mates(true)" ng-model="mapEngine.engineConfig.showWorkMates"><i class="fa fa-check text-active"></i>
                                                     显示</label>
-                                                <label class="btn btn-sm btn-danger" ng-class="mapEngine.engineConfig.showWorkMates?'':'active'" ng-click="mapEngine.engineConfig.showWorkMates=false"><i class="fa fa-check text-active"></i>
+                                                <label class="btn btn-sm btn-danger" ng-class="mapEngine.engineConfig.showWorkMates?'':'active'" ng-click="showWork_Mates(false)" ng-model="mapEngine.engineConfig.showWorkMates"><i class="fa fa-check text-active"></i>
                                                     隐藏</label>
                                                 <!--<label class="btn btn-sm btn-primary" ng-model="radioModel" btn-radio="'N/A'"><i class="fa fa-check text-active"></i> N/A</label>-->
                                             </div>
@@ -65,12 +65,10 @@
                                     <li>
                                         <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>待办案件</a>
                                         <div class="m-b-sm">
-                                            <div class="btn-group" ng-init="radioModel = ' 显示'">
-                                                <label class="btn btn-sm btn-info" ng-model="radioModel"
-                                                       btn-radio="' 显示'"><i class="fa fa-check text-active"></i>
+                                            <div class="btn-group">
+                                                <label class="btn btn-sm btn-info" ng-class="mapEngine.engineConfig.showdarpmentevent?'active':''" ng-click="mapEngine.engineConfig.showdarpmentevent=true"><i class="fa fa-check text-active"></i>
                                                     显示</label>
-                                                <label class="btn btn-sm btn-danger" ng-model="radioModel"
-                                                       btn-radio="'隐藏'"><i class="fa fa-check text-active"></i>
+                                                <label class="btn btn-sm btn-danger" ng-class="mapEngine.engineConfig.showdarpmentevent?'':'active'" ng-click="mapEngine.engineConfig.showdarpmentevent=false"><i class="fa fa-check text-active"></i>
                                                     隐藏</label>
                                                 <!--<label class="btn btn-sm btn-primary" ng-model="radioModel" btn-radio="'N/A'"><i class="fa fa-check text-active"></i> N/A</label>-->
                                             </div>
@@ -83,14 +81,12 @@
                                     <li>
                                         <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>网格区域</a>
                                         <div class="m-b-sm">
-                                            <div class="btn-group" ng-init="radioModel = ' 显示'">
-                                                <label class="btn btn-sm btn-info" ng-model="radioModel"
-                                                       btn-radio="' 显示'"><i class="fa fa-check text-active"></i>
+                                            <div class="btn-group">
+                                                <label class="btn btn-sm btn-info" ng-class="mapEngine.engineConfig.showspotarea?'active':''" ng-click="showspot_area(true)"><i class="fa fa-check text-active"></i>
                                                     显示</label>
-                                                <label class="btn btn-sm btn-danger" ng-model="radioModel"
-                                                       btn-radio="'隐藏'"><i class="fa fa-check text-active"></i>
+                                                <label class="btn btn-sm btn-danger" ng-class="mapEngine.engineConfig.showspotarea?'':'active'" ng-click="showspot_area(false)"><i class="fa fa-check text-active"></i>
                                                     隐藏</label>
-                                                <!--<label class="btn btn-sm btn-primary" ng-model="radioModel" btn-radio="'N/A'"><i class="fa fa-check text-active"></i> N/A</label>-->
+                                                <div>{{mapEngine.engineConfig.showspotarea}}</div>
                                             </div>
                                         </div>
                                     </li>
@@ -101,12 +97,10 @@
                                     <li>
                                         <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>摄像头</a>
                                         <div class="m-b-sm">
-                                            <div class="btn-group" ng-init="radioModel = ' 显示'">
-                                                <label class="btn btn-sm btn-info" ng-model="radioModel"
-                                                       btn-radio="' 显示'"><i class="fa fa-check text-active"></i>
+                                            <div class="btn-group">
+                                                <label class="btn btn-sm btn-info" ng-class="mapEngine.engineConfig.showcameraposition?'active':''" ng-click="mapEngine.engineConfig.showcameraposition=true" ng-model="mapEngine.engineConfig.showcameraposition"><i class="fa fa-check text-active"></i>
                                                     显示</label>
-                                                <label class="btn btn-sm btn-danger" ng-model="radioModel"
-                                                       btn-radio="'隐藏'"><i class="fa fa-check text-active"></i>
+                                                <label class="btn btn-sm btn-danger" ng-class="mapEngine.engineConfig.showcameraposition?'':'active'" ng-click="mapEngine.engineConfig.showcameraposition=false" ng-model="mapEngine.engineConfig.showcameraposition"><i class="fa fa-check text-active"></i>
                                                     隐藏</label>
                                                 <!--<label class="btn btn-sm btn-primary" ng-model="radioModel" btn-radio="'N/A'"><i class="fa fa-check text-active"></i> N/A</label>-->
                                             </div>
@@ -197,8 +191,9 @@
                                 </div>
                                 <div class="line pull-in"></div>
                                 <div class="text-xs">
-                                    <i class="fa fa-circle text-info"></i> 当前在线人数：8
-                                    <i class="fa fa-circle text-muted m-l"></i> 未上线人数：345
+                                    <span><i class="fa fa-circle text-info"></i> 当前在线人数：{{currentperson}}</span>
+                                    <span ng-show="currentperson"><i class="fa fa-circle text-muted m-l"></i> 未上线人数：{{movingObjs.length-currentperson}}</span>
+                                    <span ng-hide="currentperson"><i class="fa fa-circle text-muted m-l"></i> 部门总人数：{{movingObjs.length}}</span>
                                 </div>
                             </div>
                         </div>
