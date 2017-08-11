@@ -562,14 +562,12 @@ app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filte
     var modalInstance = $modal.open(
       {
         template: '<div class="modal-header">  ' +
-        '<h3>请注意!</h3>  ' +
+        '<h4 class="no-margin">请注意!</h4>  ' +
         '</div>' +
         '<div class="modal-body">' +
-        '<ul>' +
+        '<span>' +
         "单位职务删除后无法恢复，请确定要删除？" +
-        // '<li ng-repeat="item in items"><a        ng-click="selected.item = item">{{ item }}</a></li>'+
-        '</ul>' +
-        // 'Selected: <b>{{ selected.item }}</b>'+
+        '</span>' +
         '</div>' +
         '<div class="modal-footer">' +
         '<button class="btn btn-primary" ng-click="titleok()">删除</button>' +

@@ -71,9 +71,9 @@ app.controller('gridmapctl',
         showOnlineWarning: true,
         showOffdutyWarning: true,
         showLastMessage: true,
-        showdarpmentevent:true,//显示部门事件
+        showdarpmentevent:false,//显示部门事件
         showspotarea:true,  //显示区域
-        showcameraposition:true //显示摄像头
+        showcameraposition:false //显示摄像头
       };
       $rootScope.showWork_Mates=function (e) {
         if(e){
@@ -306,68 +306,57 @@ app.controller('gridmapctl',
         var lastTime = new Date(people.positioningdate);
         var ifworkarea;
 
-        returnText = `<div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" onclick="$('.modal.fade.in').hide()">&times;</span>
-                        </button>
-                        <h4 class="modal-title">
-                            ${data.name}
-                        </h4>
-                    </div>
-                    <div class="modal-body">
-
-                    <div class="panel panel-default">
-   <div class="panel-heading">
-      <h3 class="panel-title">
-          安排时间
-      </h3>
-   </div>
-   <div class="panel-body">
-       <table class="table table-condensed table-hover" style='margin:0;'>
-           <tr>
-              <th>巡逻时间</th>
-              <th>巡逻次数</th>
-           </tr>`;
+        returnText ='<div class="modal-dialog" role="document">'+
+                '<div class="modal-content">'+
+                    '<div class="modal-header">'+
+                        '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" onclick="'+"$('.modal.fade.in').hide()"+'">&times;</span>'+
+                        '</button>'+
+                        '<h4 class="modal-title">'+
+                            data.name
+                        '</h4>'+
+                    '</div>'+
+                    '<div class="modal-body">'+
+                    '<div class="panel panel-default">'+
+   '<div class="panel-heading">'+
+      '<h3 class="panel-title">安排时间</h3>'+
+   '</div>'+
+   '<div class="panel-body">'+
+       '<table class="table table-condensed table-hover" style="margin:0;">'+
+           '<tr><th>巡逻时间</th><th>巡逻次数</th></tr>';
         //returnText += '<p></p>';
         for (var i = 0; i < data.time.length; i++) {
           returnText += '<tr><td>' + $scope.peopleinfoistime.formatTime(data.time[i].timeStart, data.time[i].timeEnd) + '</td>';
           returnText += '<td> 巡逻次数：' + data.time[i].frequency + '次</td></tr>';
         }
         if (currentposition == gridname) {
-          ifworkarea = `<i class="glyphicon glyphicon-ok"></i>`;
+          ifworkarea = '<i class="glyphicon glyphicon-ok"></i>';
         } else {
-          ifworkarea = `<i class="glyphicon glyphicon-remove"></i>`;
+          ifworkarea = '<i class="glyphicon glyphicon-remove"></i>';
         }
-        returnText += `</table>
-          </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">人员状态</h3>
-            </div>
-            <div class="panel-body">
-            <table class="table table-condensed table-hover text-center" style='margin:0;'>
-            <tr>
-              <td>最后一次定位时间</td>
-              <td>${lastTime.formate("yyyy年M月d日h时m分s秒")}</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>是否在工作时间</td>
-              <td>
-              ${$scope.peopleinfoistime.istime(data, lastTime)}</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>是否在当前区域</td>
-              <td>${ifworkarea}</td>
-              <td>${currentposition ? currentposition : '不在任何网格区域'}</td>
-            </tr>
-            </table>`;
+        returnText += '</table></div></div>'+
+          '<div class="panel panel-default">'+
+            '<div class="panel-heading">'+
+              '<h3 class="panel-title">人员状态</h3>'+
+            '</div>'+
+            '<div class="panel-body">'+
+            '<table class="table table-condensed table-hover text-center" style="margin:0;">'+
+            '<tr>'+
+              '<td>最后一次定位时间</td>'+
+              '<td>'+lastTime.formate("yyyy年M月d日h时m分s秒")+'</td>'+
+              '<td></td>'+
+            '</tr>'+
+            '<tr>'+
+              '<td>是否在工作时间</td>'+
+              '<td>'+
+              $scope.peopleinfoistime.istime(data, lastTime)
+            '</td><td></td></tr><tr>'+
+              '<td>是否在当前区域</td><td>'+ifworkarea+
+            '</td><td>'+
+          currentposition ? currentposition : '不在任何网格区域'+
+              '</td></tr></table>';
         //returnText +='<p>人员现在在规定区域内</p>';
         //returnText += `<div>最后一次定位时间 ${lastTime.formate("yyyy年M月d日h时m分s秒")}</div>`;
-        returnText += `</div></div></div></div></div>`;
+        returnText +='</div></div></div></div></div>';
         $('#peopleinfo').html(returnText).show();
       }
 
@@ -542,20 +531,16 @@ app.controller('gridmapctl',
           //  receiver.pic = personObj.images.coverSmall = $rootScope.getUserPicById(personObj._id);
           //}
         }
-        if (!personObj.images.coverSmall) {
-          //临时图片
-          personObj.images.coverSmall = "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";
-        }
         //把id、姓名和图片存到缓存中,为了给聊天提供数据
         localStorageService.update("messagedetail" + receiver._id, receiver);
-        var btntext = (receiver._id == $rootScope.curUser._id) ? "当前用户" : (`<a ng-click="gotoChat('${receiver._id}')" style="color:#00f" >点击可发送消息</a>`);
+        var btntext = (receiver._id == $rootScope.curUser._id) ? "当前用户" : ('<a ng-click=\''+'gotoChat("receiver._id")\''+' style="color:#00f" >点击可发送消息</a>');
         var newBtnText = (receiver._id == $rootScope.curUser._id) ? "" : ('ng-click="gotoChat(\'' + personObj._id + '\')"');
         /******************************************************************************/
         //构建信息窗体中显示的内容class="list "
         var html = '<div ' +
           newBtnText +
           '><div class="info-top"><div>' + personObj.name + '<span style="font-size:11px;color:#F00;">' + onlineStatus + '</span>' + '</div></div><div class="info-middle" style="background-color: white;">' +
-          '<img src="data:image/jpeg;base64,' + personObj.images.coverSmall + '" style="width:75px;height:90px;">' +
+          '<img src='+$rootScope.applicationServerpath+'person/personPic?pid='+ receiver._id + ' style="width:75px;height:90px;">' +
           '指挥中心下发数据时间:' + gettimeText + '<br>最后定位时间:' + positioningtimeText + '<br>' + personObj.gridInfo + '<br>' +
           // 直接加个链接，不好点，太小，改成直接点框就跳转
           btntext +
@@ -823,12 +808,16 @@ app.controller('gridmapctl',
 
       //刷新地图,这是每一轮循环必做之事
       $scope.refeshMap = function () {
-        console.log($rootScope.mapEngine.engineConfig.showWorkMates)
+        // console.log($rootScope.mapEngine.engineConfig.showWorkMates)
         if($rootScope.mapEngine.engineConfig.showWorkMates) {
           $scope.refreshWorkmatesLocations();// 刷新地图上所有同事的位置
         }
         //开始刷新定位
         $scope.refreshMovingObjs();
+        if($rootScope.currentperson) {
+          // console.log('发送获取到人员')
+          $rootScope.$broadcast('updatecallPlugin',$rootScope.currentperson)
+        }
 
 //随机人物坐标
 //        for (var index = 0; index < $rootScope.movingObjs.length; index++) {
@@ -948,194 +937,151 @@ app.controller('gridmapctl',
           $('#menu-1').removeClass('st-effect-1');//右侧弹出框
           //$scope.refreshMap();
           var menu = '';
-          menu += `
-   <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4>${$scope.properdata.name}</h4>
-      </div>
-      <div class="panel-body">
-          <div class="current_personnel">
-              <h5 class="font-bold">当前员工</h5>
-              <div class="clear" id="haveChosenPeople">`;
+          console.log(menu);
+          menu +='<div class="panel panel-default">'+
+            console.log(menu);
+      '<div class="panel-heading"><h4>'+$scope.properdata.name +
+            '</h4></div>'+
+      '<div class="panel-body">'+
+          '<div class="current_personnel">'+
+              '<h5 class="font-bold">当前员工</h5>'+
+              '<div class="clear" id="haveChosenPeople">'+
 
           menu += $scope.properdata.persons.length ? '' : '<div id="nopeople">当前区域没有人员</div>';
-          menu += `
-                <div class="btn btn-default" ng-repeat="aa in properdata.persons" ng-init="abc={index:$index,dom:this}">
-                    <span ng-click="peopleinfo(aa,properdata.name)">{{aa.name}}</span>
-                    <span ng-click="deleteAddpeople(abc.index,abc.dom)" class="close">&times;</span>
-                </div>`;
-          menu += `
-            </div>
-        </div>
-	    </div>
-  </div>`;
+          menu +='<div class="btn btn-default" ng-repeat="aa in properdata.persons" ng-init="abc={index:$index,dom:this}">'+
+                    '<span ng-click="peopleinfo(aa,properdata.name)">{{aa.name}}</span>'+
+                    '<span ng-click="deleteAddpeople(abc.index,abc.dom)" class="close">&times;</span>'+
+                '</div>';
+          menu +='</div></div></div></div>';
 
-          menu += `<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">
-                    <a onclick="onlad.pull_person(this)">
-                    <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i></span>
-                        <span>添加巡逻员</span>
-                    </a>
-       </h3>
-	</div>
-	<div class="">
-                <li>
+          menu += '<div class="panel panel-default">'+
+	'<div class="panel-heading">'+
+		'<h3 class="panel-title">'+
+                    '<a onclick="onlad.pull_person(this)">'+
+                   '<span class="pull-right text-muted">'+
+                    '<i class="fa fa-fw fa-angle-right text"></i></span>'+
+                        '<span>添加巡逻员</span></a></h3></div>'+
+	'<div class="">'+
+                '<li>'+
+                    '<div class="add_persons">'+
+                        '<div class="add_person">'+
+                            '<div class="panel-body">'+
+                            '<p>巡逻员</p>'+
+                                '<select name="" id="add_person_con_name" size="5" class="form-control">'+
+                                    '<option value="{{obj.name}}" ng-repeat="obj in movingObjs">{{obj.name}}</option>'+
+                                '</select>'+
+                            '</div>'+
+                            '<div class="clear">'+
+                                '<button class="pull-right" onclick="onlad.next_step(this)">下一步</button>'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="add_person">'+
+                            '<div class="add_person_con panel-body">'+
+                              '<p>时间段次数</p>'+
+                                '<div class="demo add_person_con_timeStart">'+
+                                    '<div class="alreadyAddtime"></div>'+
+                                    '<div class="clear">'+
+                                        '<div class="pull-left" id="add_person_con_timeStart">'+
+                                            '<select name="" class="week">'+
+                                                '<option value="1">周一</option>'+
+                                                '<option value="2">周二</option>'+
+                                                '<option value="3">周三</option>'+
+                                                '<option value="4">周四</option>'+
+                                                '<option value="5">周五</option>'+
+                                                '<option value="6">周六</option>'+
+                                                '<option value="7">周日</option>'+
+                                            '</select>'+
+                                            '<select name="" class="time">'+
+                                                '<option value="00:00:00">00:00:00</option>'+
+                                                '<option value="01:00:00">01:00:00</option>'+
+                                                '<option value="02:00:00">02:00:00</option>'+
+                                                '<option value="03:00:00">03:00:00</option>'+
+                                                '<option value="04:00:00">04:00:00</option>'+
+                                                '<option value="05:00:00">05:00:00</option>'+
+                                                '<option value="06:00:00">06:00:00</option>'+
+                                                '<option value="07:00:00">07:00:00</option>'+
+                                                '<option value="08:00:00" selected>08:00:00</option>'+
+                                                '<option value="09:00:00">09:00:00</option>'+
+                                                '<option value="10:00:00">10:00:00</option>'+
+                                                '<option value="11:00:00">11:00:00</option>'+
+                                                '<option value="12:00:00">12:00:00</option>'+
+                                                '<option value="13:00:00">13:00:00</option>'+
+                                                '<option value="14:00:00">14:00:00</option>'+
+                                                '<option value="15:00:00">15:00:00</option>'+
+                                                '<option value="16:00:00">16:00:00</option>'+
+                                                '<option value="17:00:00">17:00:00</option>'+
+                                                '<option value="18:00:00">18:00:00</option>'+
+                                                '<option value="19:00:00">19:00:00</option>'+
+                                                '<option value="20:00:00">20:00:00</option>'+
+                                                '<option value="21:00:00">21:00:00</option>'+
+                                                '<option value="22:00:00">22:00:00</option>'+
+                                                '<option value="23:00:00">23:00:00</option>'+
+                                            '</select> ~ </div>'+
 
-                    <div class="add_persons">
-                        <div class="add_person">
-                            <div class="panel-body">
-                            <p>
-                                巡逻员
-                            </p>
-                                <select name="" id="add_person_con_name" size="5" class="form-control">
-                                    <option value="{{obj.name}}" ng-repeat="obj in movingObjs">{{obj.name}}</option>
-                                </select>
-                            </div>
-                            <div class="clear">
-                                <button class="pull-right" onclick="onlad.next_step(this)">下一步</button>
-                            </div>
-                        </div>
-                        <div class="add_person">
-                            <div class="add_person_con panel-body">
-                              <p>
-                                时间段次数
-                              </p>
-
-                                <div class="demo add_person_con_timeStart">
-                                    <div class="alreadyAddtime">
-                                    </div>
-                                    <div class="clear">
-                                        <div class="pull-left" id="add_person_con_timeStart">
-                                            <select name="" class="week">
-                                                <option value="1">周一</option>
-                                                <option value="2">周二</option>
-                                                <option value="3">周三</option>
-                                                <option value="4">周四</option>
-                                                <option value="5">周五</option>
-                                                <option value="6">周六</option>
-                                                <option value="7">周日</option>
-                                            </select>
-                                            <select name="" class="time">
-                                                <option value="00:00:00">00:00:00</option>
-                                                <option value="01:00:00">01:00:00</option>
-                                                <option value="02:00:00">02:00:00</option>
-                                                <option value="03:00:00">03:00:00</option>
-                                                <option value="04:00:00">04:00:00</option>
-                                                <option value="05:00:00">05:00:00</option>
-                                                <option value="06:00:00">06:00:00</option>
-                                                <option value="07:00:00">07:00:00</option>
-                                                <option value="08:00:00" selected>08:00:00</option>
-                                                <option value="09:00:00">09:00:00</option>
-                                                <option value="10:00:00">10:00:00</option>
-                                                <option value="11:00:00">11:00:00</option>
-                                                <option value="12:00:00">12:00:00</option>
-                                                <option value="13:00:00">13:00:00</option>
-                                                <option value="14:00:00">14:00:00</option>
-                                                <option value="15:00:00">15:00:00</option>
-                                                <option value="16:00:00">16:00:00</option>
-                                                <option value="17:00:00">17:00:00</option>
-                                                <option value="18:00:00">18:00:00</option>
-                                                <option value="19:00:00">19:00:00</option>
-                                                <option value="20:00:00">20:00:00</option>
-                                                <option value="21:00:00">21:00:00</option>
-                                                <option value="22:00:00">22:00:00</option>
-                                                <option value="23:00:00">23:00:00</option>
-                                            </select>
-                                            ~
-                                        </div>
-
-                                        <div class="pull-left" id="add_person_con_timeEnd">
-                                            <select name="" class="week">
-                                                <option value="1">周一</option>
-                                                <option value="2">周二</option>
-                                                <option value="3">周三</option>
-                                                <option value="4">周四</option>
-                                                <option value="5">周五</option>
-                                                <option value="6">周六</option>
-                                                <option value="7">周日</option>
-                                            </select>
-                                            <select name="" class="time">
-                                                <option value="00:00:00">00:00:00</option>
-                                                <option value="01:00:00">01:00:00</option>
-                                                <option value="02:00:00">02:00:00</option>
-                                                <option value="03:00:00">03:00:00</option>
-                                                <option value="04:00:00">04:00:00</option>
-                                                <option value="05:00:00">05:00:00</option>
-                                                <option value="06:00:00">06:00:00</option>
-                                                <option value="07:00:00">07:00:00</option>
-                                                <option value="08:00:00">08:00:00</option>
-                                                <option value="09:00:00">09:00:00</option>
-                                                <option value="10:00:00">10:00:00</option>
-                                                <option value="11:00:00">11:00:00</option>
-                                                <option value="12:00:00" selected>12:00:00</option>
-                                                <option value="13:00:00">13:00:00</option>
-                                                <option value="14:00:00">14:00:00</option>
-                                                <option value="15:00:00">15:00:00</option>
-                                                <option value="16:00:00">16:00:00</option>
-                                                <option value="17:00:00">17:00:00</option>
-                                                <option value="18:00:00">18:00:00</option>
-                                                <option value="19:00:00">19:00:00</option>
-                                                <option value="20:00:00">20:00:00</option>
-                                                <option value="21:00:00">21:00:00</option>
-                                                <option value="22:00:00">22:00:00</option>
-                                                <option value="23:00:00">23:00:00</option>
-                                            </select>
-                                            <select name="" id="add_person_con_frequency">
-                                                <option value="1">1</option>
-                                                <option value="2" selected>2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                        </div>
-                                        <div class="btn btn-xs" ng-click="showalreadytime.alreadyAddtime()"><i
-                                                class="glyphicon glyphicon-ok"></i></div>
-                                    </div>
-                                </div>
-                                <!--<script src="js/adddate.js"></script>-->
-                            </div>
-                            <div class="clear">
-                                <button class="pull-right" ng-click="add_personnel()">确定</button>
-                                <button class="pull-right" onclick="onlad.last_step(this)">上一步</button>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-	</div>
-</div>
-
-<div class="panel-group" id="accordion">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h3 class="panel-title">
-                    <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i></span>
-				<a data-toggle="collapse" data-parent="#accordion"
-				   href="#collapseOne" onclick="return false">查看区域人员
-				</a>
-			</h3>
-		</div>
-		<div id="collapseOne" class="panel-collapse collapse">
-			<div class="panel-body">
-		面板内容
-			</div>
-		</div>
-	</div>
-	</div>
-</div>
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">
-                    <a>
-                    <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i></span>
-                        <span ng-click="deletepolylayer(properdata)">删除该区域</span>
-                    </a>
-		</h3>
-	</div>
-</div>`;
+                                        '<div class="pull-left" id="add_person_con_timeEnd">'+
+                                            '<select name="" class="week">'+
+            '<option value="1">周一</option>'+
+            '<option value="2">周二</option>'+
+            '<option value="3">周三</option>'+
+            '<option value="4">周四</option>'+
+            '<option value="5">周五</option>'+
+            '<option value="6">周六</option>'+
+            '<option value="7">周日</option>'+
+                                            '</select>'+
+                                            '<select name="" class="time">'+
+            '<option value="00:00:00">00:00:00</option>'+
+            '<option value="01:00:00">01:00:00</option>'+
+            '<option value="02:00:00">02:00:00</option>'+
+            '<option value="03:00:00">03:00:00</option>'+
+            '<option value="04:00:00">04:00:00</option>'+
+            '<option value="05:00:00">05:00:00</option>'+
+            '<option value="06:00:00">06:00:00</option>'+
+            '<option value="07:00:00">07:00:00</option>'+
+            '<option value="08:00:00">08:00:00</option>'+
+            '<option value="09:00:00">09:00:00</option>'+
+            '<option value="10:00:00">10:00:00</option>'+
+            '<option value="11:00:00">11:00:00</option>'+
+            '<option value="12:00:00" selected>12:00:00</option>'+
+            '<option value="13:00:00">13:00:00</option>'+
+            '<option value="14:00:00">14:00:00</option>'+
+            '<option value="15:00:00">15:00:00</option>'+
+            '<option value="16:00:00">16:00:00</option>'+
+            '<option value="17:00:00">17:00:00</option>'+
+            '<option value="18:00:00">18:00:00</option>'+
+            '<option value="19:00:00">19:00:00</option>'+
+            '<option value="20:00:00">20:00:00</option>'+
+            '<option value="21:00:00">21:00:00</option>'+
+            '<option value="22:00:00">22:00:00</option>'+
+            '<option value="23:00:00">23:00:00</option>'+
+                                            '</select>'+
+                                            '<select name="" id="add_person_con_frequency">'+
+                                                '<option value="1">1</option>'+
+                                                '<option value="2" selected>2</option>'+
+                                                '<option value="3">3</option>'+
+                                                '<option value="4">4</option>'+
+                                                '<option value="5">5</option>'+
+                                            '</select></div>'+
+                                        '<div class="btn btn-xs" ng-click="showalreadytime.alreadyAddtime()"><i class="glyphicon glyphicon-ok"></i></div>'+
+                                    '</div></div></div>'+
+                            '<div class="clear">'+
+                                '<button class="pull-right" ng-click="add_personnel()">确定</button>'+
+                                '<button class="pull-right" onclick="onlad.last_step(this)">上一步</button>'+
+                            '</div>'+
+                        '</div></div></li></div></div>'+
+'<div class="panel-group" id="accordion">'+
+	'<div class="panel panel-default">'+
+		'<div class="panel-heading">'+
+			'<h3 class="panel-title">'+
+                    '<span class="pull-right text-muted">'+
+                    '<i class="fa fa-fw fa-angle-right text"></i></span>'+
+				'<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="return false">查看区域人员</a>'+
+			'</h3>'+
+		'</div>'+
+		'<div id="collapseOne" class="panel-collapse collapse">' +
+            '<div class="panel-body">面板内容</div>' +
+            '</div></div></div></div>' +
+            '<div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title"><a><span class="pull-right text-muted"><i class="fa fa-fw fa-angle-right text"></i></span>' +
+            '<span ng-click="deletepolylayer(properdata)">删除该区域</span></a></h3></div></div>';
 
           $('#menu-1').html($compile(menu)($scope))
         }
@@ -1210,24 +1156,67 @@ app.controller('gridmapctl',
         console.log($scope.properdata)
         $scope.properdata.position = e;
         //var parent=$(dom).parent();
-        $http({
-          method: 'POST',
-          url: $rootScope.applicationServerpath + 'spotarea/spotareapeopleDelete',
-          data: $scope.properdata
-        }).then(function (data) {
-          console.log('删除人员成功！')
-          $('#haveChosenPeople>div').eq(e).remove();
-          for(var i=0;i<$scope.allareamap.length;i++){
-            if($scope.allareamap[i].areaID==$scope.properdata.areaId){
-              console.log($scope.allareamap[i])
-              $scope.allareamap[i].persons.splice(e,1)
+
+        $scope.deleteAddpeopledao = function (title) {
+          console.log(title)
+          var modalInstance = $modal.open(
+            {
+              template: '<div class="modal-header">  ' +
+              '<h3 class="no-margin">请注意!</h3>  ' +
+              '</div>' +
+              '<div class="modal-body">' +
+              '<span>' +
+              "区域人员删除后无法恢复，请确定要删除？" +
+              '</span>' +
+              '</div>' +
+              '<div class="modal-footer">' +
+              '<button class="btn btn-primary" ng-click="titleok()">删除</button>' +
+              '<button class="btn btn-warning" ng-click="titlecancel()">取消</button>' +
+              '</div> ',
+              controller: function ($scope, $modalInstance) {
+                $scope.titleok = function () {
+                  departmentAndPersonsService.deletedepartmenttitle(title._id,$rootScope.applicationServerpath,function(e){
+                    console.log(e)
+                    // departmentAndPersonsService.getpersontitleTodepartment(title.departmentID,$rootScope.applicationServerpath,function (title) {
+                    //   var obj={};
+                    //   console.log(e+JSON.stringify(title))
+                    // })
+                  })
+                  $modalInstance.close(true);
+                };
+                $scope.titlecancel = function () {
+                  $modalInstance.dismiss(false);
+                };
+              }
+
             }
-          }
-          console.log($scope.allareamap);
-          localStorageService.update('spotarea',$scope.allareamap);
-          // $scope.allareamap
-        })
+          );
+        }
       }
+      // function (e, dom) {
+      //   console.log(e)
+      //   //console.log(dom)
+      //   console.log($scope.properdata)
+      //   $scope.properdata.position = e;
+      //   //var parent=$(dom).parent();
+      //   $http({
+      //     method: 'POST',
+      //     url: $rootScope.applicationServerpath + 'spotarea/spotareapeopleDelete',
+      //     data: $scope.properdata
+      //   }).then(function (data) {
+      //     console.log('删除人员成功！')
+      //     $('#haveChosenPeople>div').eq(e).remove();
+      //     for(var i=0;i<$scope.allareamap.length;i++){
+      //       if($scope.allareamap[i].areaID==$scope.properdata.areaId){
+      //         console.log($scope.allareamap[i])
+      //         $scope.allareamap[i].persons.splice(e,1)
+      //       }
+      //     }
+      //     console.log($scope.allareamap);
+      //     localStorageService.update('spotarea',$scope.allareamap);
+      //     // $scope.allareamap
+      //   })
+      // }
 
       $scope.add_personnel = function () {
         console.log('区域人员信息');
@@ -1298,6 +1287,7 @@ app.controller('gridmapctl',
                 var newspot = $rootScope.parseGeojsonFromDb(resp.data);
                 // 将所有网格区域存到缓存中
               }
+              $scope.deleteAddpeople=newspot;
               localStorageService.update('spotarea', newspot);
               //console.log('服务器返回数据');
               $scope.isAllreadyDrawGridArea = false;
@@ -1403,6 +1393,7 @@ app.controller('gridmapctl',
         })
         MGeocoder.getAddress(currentcount);
       }
+      $scope.currentdate=new Date().format("yyyy-MM-dd hh:mm");
       $scope.historypath = {
         isline: false,
         dom: function () {
@@ -1415,7 +1406,11 @@ app.controller('gridmapctl',
           var start = $('.search-dateStartTime').val();
           var end = $('.search-dateEndTime').val();
           $scope.filterpeoplepath.oldpath = {n: '', a: '', d: ''};
-          console.log(new Date(start), new Date(end));
+          console.log({
+            personID: personID,
+            startTime: start,
+            endTime: end
+          });
           $http(
             {
               method: 'POST',
@@ -1429,6 +1424,7 @@ app.controller('gridmapctl',
           ).then(function (resp) {
             console.log('fasongchenggong ~~~~~~~');
             var data = resp.data;
+            console.log(data)
             if (!data) {
               return;
             }

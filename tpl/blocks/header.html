@@ -178,16 +178,17 @@
                         <div class="text-center">
                             <div class="inline">
                                 <div ui-jq="easyPieChart" ui-options="{
-                          percent: 65,
+                          percent:0,
                           lineWidth: 50,
                           trackColor: '{{app.color.light}}',
                           barColor: '{{app.color.info}}',
                           scaleColor: false,
                           size: 100,
-                          rotate: 90,
+                          rotate: 0,
                           lineCap: 'butt',
                           animate: 2000
                         }">
+                                    <!--{{currentperson?0:currentperson/movingObjs.length*movingObjs.length}}-->
                                 </div>
                                 <div class="line pull-in"></div>
                                 <div class="text-xs">

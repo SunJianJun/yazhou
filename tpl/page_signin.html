@@ -29,7 +29,7 @@
     <img src="./sanyagridmobileapp.png">
 
   </div>
-    <div id="scanningqrcode" class="text-center" ng-show="iscode">
+    <div id="scanningqrcode" class="text-center" ng-show="iscode" ng-if="login_id">
         <img class="img-responsive" src={{applicationServerpath+'personalinfo/create_qrcode?text='+login_id}}/>
     </div>
 </div>

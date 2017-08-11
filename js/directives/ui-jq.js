@@ -18,19 +18,16 @@
  */
 angular.module('ui.jq', ['ui.load']).
   value('uiJqConfig', {}).
-  directive('uiJq', ['uiJqConfig', 'JQ_CONFIG', 'uiLoad', '$timeout', function uiJqInjectingFunction(uiJqConfig, JQ_CONFIG, uiLoad, $timeout) {
-
+  directive('uiJq', ['uiJqConfig', 'JQ_CONFIG', 'uiLoad', '$timeout','$interval','$rootScope', function uiJqInjectingFunction(uiJqConfig, JQ_CONFIG, uiLoad, $timeout,$interval,$rootScope) {
   return {
     restrict: 'A',
     compile: function uiJqCompilingFunction(tElm, tAttrs) {
-
       if (!angular.isFunction(tElm[tAttrs.uiJq]) && !JQ_CONFIG[tAttrs.uiJq]) {
         throw new Error('ui-jq: The "' + tAttrs.uiJq + '" function does not exist');
       }
       var options = uiJqConfig && uiJqConfig[tAttrs.uiJq];
 
       return function uiJqLinkingFunction(scope, elm, attrs) {
-
         function getOptions(){
           var linkOptions = [];
 
@@ -55,11 +52,26 @@ angular.module('ui.jq', ['ui.load']).
 
         // Call jQuery method and pass relevant options
         function callPlugin() {
+          // var op=
+          var option=getOptions();
           $timeout(function() {
-            elm[attrs.uiJq].apply(elm, getOptions());
+            // console.log(option)
+            elm[attrs.uiJq].apply(elm, option);
           }, 0, false);
+          $interval(function () {
+            var currentper=$rootScope.currentperson?($rootScope.currentperson/$rootScope.movingObjs.length*100):0;
+            if(option.length==1) {
+              option[0].percent = currentper;
+            }
+            try {
+              if ($rootScope.currentperson) {
+                // console.log('收到更新指令')
+                // console.log(option)
+                elm[attrs.uiJq].apply(elm, option);
+              }
+            }catch (e){}
+          },5000)
         }
-
         function refresh(){
           // If ui-refresh is used, re-fire the the method upon every change
           if (attrs.uiRefresh) {

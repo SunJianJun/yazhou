@@ -308,7 +308,7 @@ app.factory("userService", ['localStorageService', '$http', '$rootScope', functi
       })
         .success(function (data, status, headers, config) {
           if (status == 200) {
-            console.log("getLatestLocationByUserId：" + data);
+            // console.log("getLatestLocationByUserId：" + data);
             if (!data) {
               // 要保存一个获取定位点的时间值
               localStorageService.update("LatestLocation_" + userid, {

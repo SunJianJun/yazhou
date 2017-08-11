@@ -45,7 +45,7 @@ angular.module('app')
       ];
       $rootScope.applicationServerpath = 'http://localhost:2000/';
 
-      // $rootScope.applicationServerpath = 'http://120.76.228.172:2000/';
+      $rootScope.applicationServerpath = 'http://120.76.228.172:2000/';
       console.log('接口测试' + $rootScope.applicationServerpath);
        // $http({
        //   method: 'POST',
