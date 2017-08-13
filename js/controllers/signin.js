@@ -8,7 +8,7 @@ app.controller('SigninFormController', ['$rootScope', '$scope', '$interval', '$h
     //$scope.user.email='admin';
     //$scope.user.password='123456';
     $rootScope.curUser = '';//清空当前账户
-    $scope.user.email = '谭剑';
+    $scope.user.email = 'admin';
     $scope.user.password = '123456';
     // $scope.user.email=$rootScope.curUser.name;
     // $scope.user.password=$rootScope.curUser.idNum;

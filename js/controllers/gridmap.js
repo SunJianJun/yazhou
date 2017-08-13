@@ -348,14 +348,14 @@ app.controller('gridmapctl',
             '<tr>'+
               '<td>是否在工作时间</td>'+
               '<td>'+
-              $scope.peopleinfoistime.istime(data, lastTime)
+              $scope.peopleinfoistime.istime(data, lastTime)+
             '</td><td></td></tr><tr>'+
               '<td>是否在当前区域</td><td>'+ifworkarea+
             '</td><td>'+
           currentposition ? currentposition : '不在任何网格区域'+
               '</td></tr></table>';
         //returnText +='<p>人员现在在规定区域内</p>';
-        //returnText += `<div>最后一次定位时间 ${lastTime.formate("yyyy年M月d日h时m分s秒")}</div>`;
+        //returnText += '<div>最后一次定位时间 ${lastTime.formate("yyyy年M月d日h时m分s秒")}</div>';
         returnText +='</div></div></div></div></div>';
         $('#peopleinfo').html(returnText).show();
       }
@@ -936,16 +936,15 @@ app.controller('gridmapctl',
           $('#menu-2').addClass('st-effect-1');//右侧弹出框
           $('#menu-1').removeClass('st-effect-1');//右侧弹出框
           //$scope.refreshMap();
+          console.log($scope.properdata);
           var menu = '';
-          console.log(menu);
           menu +='<div class="panel panel-default">'+
-            console.log(menu);
-      '<div class="panel-heading"><h4>'+$scope.properdata.name +
-            '</h4></div>'+
-      '<div class="panel-body">'+
-          '<div class="current_personnel">'+
+              '<div class="panel-heading"><h4>'+
+                  $scope.properdata.name +
+                '</h4></div>'+
+            '<div class="panel-body"><div class="current_personnel">'+
               '<h5 class="font-bold">当前员工</h5>'+
-              '<div class="clear" id="haveChosenPeople">'+
+              '<div class="clear" id="haveChosenPeople">';
 
           menu += $scope.properdata.persons.length ? '' : '<div id="nopeople">当前区域没有人员</div>';
           menu +='<div class="btn btn-default" ng-repeat="aa in properdata.persons" ng-init="abc={index:$index,dom:this}">'+
@@ -1144,7 +1143,7 @@ app.controller('gridmapctl',
         addhtml: function () {
           var forhtml = '';
           for (var index = 0; index < $scope.peopletime.length; index++) {
-            forhtml += `<p title="点击删除" ng-click="showalreadytime.deleteAddtime(${index})">周` + $scope.peopletime[index].timeStart + ' - 周' + $scope.peopletime[index].timeEnd + ' 巡查' + $scope.peopletime[index].frequency + '次</p>';
+            forhtml += '<p title="点击删除" ng-click="showalreadytime.deleteAddtime(${index})">周' + $scope.peopletime[index].timeStart + ' - 周' + $scope.peopletime[index].timeEnd + ' 巡查' + $scope.peopletime[index].frequency + '次</p>';
           }
           $('.alreadyAddtime').html($compile(forhtml)($scope))
         }
@@ -1393,7 +1392,8 @@ app.controller('gridmapctl',
         })
         MGeocoder.getAddress(currentcount);
       }
-      $scope.currentdate=new Date().format("yyyy-MM-dd hh:mm");
+      $scope.threedaysdate=new Date(new Date().setDate(new Date().getDate()-3)).formate("yyyy-MM-dd hh:mm");
+      $scope.currentdate=new Date().formate("yyyy-MM-dd hh:mm");
       $scope.historypath = {
         isline: false,
         dom: function () {
@@ -1490,6 +1490,7 @@ app.controller('gridmapctl',
 
             var currentcount = 0;
             AMap.event.addDomListener(document.getElementById('starthistory'), 'click', function () {
+              $(this).addClass('active').siblings().removeClass('active');
               var count = 0;
               marker.setPosition(lineArr[count])
               count++;
@@ -1505,7 +1506,7 @@ app.controller('gridmapctl',
             }, false);
             AMap.event.addDomListener(document.getElementById('pausehistory'), 'click', function () {
               marker.pauseMove();
-
+              $(this).addClass('active').siblings().removeClass('active')
               console.log(lineArr[currentcount], speed[currentcount][1])
               var shucu = $scope.positioninfo(lineArr[currentcount], function (e) {
 
@@ -1513,11 +1514,13 @@ app.controller('gridmapctl',
                 //在指定位置打开信息窗体
                 //构建信息窗体中显示的内容
                 var info = '';
-                info += `<div>
-                   <div>地址：${$rootScope.address}</div>
-                  <div>位置：${lineArr[currentcount]}</div>
-                  <div>时间：${speed[currentcount][1].formate("M月d日 hh:mm")}</div>
-          </div>`;
+                info += '<div><div>地址：' +
+                    $rootScope.address +
+                    '</div><div>位置：' +
+                    lineArr[currentcount] +
+                    '</div><div>时间：' +
+                    speed[currentcount][1].formate("M月d日 hh:mm")+
+                    '</div></div>';
                 var Element = $compile(info)($scope)
 
                 var infowindow3 = new AMap.InfoWindow({
@@ -1535,12 +1538,14 @@ app.controller('gridmapctl',
 //console.log(infowindow3)
             }, false);
             AMap.event.addDomListener(document.getElementById('resumehistory'), 'click', function () {
+              $(this).siblings().removeClass('active');
               marker.resumeMove();
             }, false);
             AMap.event.addDomListener(document.getElementById('stophistory'), 'click', function () {
               //lineArr=[];
               //marker.stopMove();
               //marker.close(true);
+              $(this).siblings().removeClass('active');
               $scope.map.remove(passedPolyline);
               $scope.map.remove(polyline);
               $scope.map.remove(marker);
@@ -1549,14 +1554,10 @@ app.controller('gridmapctl',
 
             $scope.historypath.isline = true;
             var peopletable = '';
-            peopletable += `<div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">位置列表</h3>
-                  </div>
-                  <div class="panel-body">`;
-            peopletable += `<table class="table table-hover table-condensed"><th>位置</th><th>时间</th><th>所在区域</th>`;
-            peopletable += locationtable;
-            peopletable += '</table></div></div>';
+            peopletable += '<div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">位置列表</h3></div><div class="panel-body">';
+            peopletable += '<table class="table table-hover table-condensed"><th>位置</th><th>时间</th><th>所在区域</th>'+
+                locationtable+
+            '</table></div></div>';
             $('#Location_list').html(peopletable);
           })
         }

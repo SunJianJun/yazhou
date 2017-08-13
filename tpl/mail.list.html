@@ -15,7 +15,7 @@
 
                 <ul id="scrolldIV"
                     class="list-group list-group-lg no-radius m-b-none m-t-n-xxs mail-list-hei mail-list-win">
-                    <li ng-repeat="mail in currenttalk" ng-class="mail.sender._id==curUser._id&&'transfer'"
+                    <li ng-repeat="mail in currenttalk" ng-model="currenttalk" ng-class="mail.sender._id==curUser._id&&'transfer'"
                         class="list-group-item clearfix b-l-3x">
                         <a class="avatar thumb pull-left m-r">
                             <img ng-src='http://120.76.228.172:2000/person/personPic?pid={{(mail.sender==curUser._id)?mail.receiver._id:(mail.sender._id||mail.sender)}}'/>

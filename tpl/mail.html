@@ -35,7 +35,6 @@
                       <a class="media friend">
                         <div class="media-body">
                           <h4>{{fold.name}}</h4>
-
                         </div>
                       </a>
                       <a class="media friend" ng-repeat="person in fold.persons"  ng-if="person.person._id!=curUser._id" ng-click="mailList(person.person._id,person.person.name)">

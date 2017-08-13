@@ -5,6 +5,7 @@ app.controller('abstracttypeCtrl', function ($scope, $compile, $window, $rootSco
                                              //, $ionicBackdrop,$ionicPopup,$ionicModal,departmentAndPersonsService
 ) {
     $scope.abstracttype = {};
+    $scope.currentdocument='';//当前部门
     $scope.loadCase=function() {   //加载 事件
         $http({
             method: 'POST',
@@ -199,14 +200,13 @@ app.controller('abstracttypeCtrl', function ($scope, $compile, $window, $rootSco
     $scope.newcase = function (type) {
         console.log(type)
         if(!type){return;}
-      var typeDepartment = $('#newtypeDepartment').val();
         $http({
             method: 'POST',
             url: $rootScope.applicationServerpath + 'abstracttyperoute/sendAAbstracttype',
             data: {
                 typeName: type,
                 createparent:$rootScope.curUser._id,
-              department:typeDepartment
+              department:$scope.currentdocument
             }
         }).then(function (resp) {
             if (resp.data) {

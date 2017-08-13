@@ -16,6 +16,11 @@ app.controller('messageDetailCtrl', [
         $scope.currenttalk=[];
         $scope.unSendMessage.text = '';
 
+        //滚动条自动滚动到底部
+        $scope.scrolldIV = function () {
+            var div = document.getElementById('scrolldIV');
+            div.scrollTop = div.scrollHeight;
+        };
         /**
          * 视频路径处理
          */
@@ -41,9 +46,9 @@ app.controller('messageDetailCtrl', [
         $scope.getcurrenttalk = function (sender, receiver) {//从缓存中获取俩人对话
           var newmes = localStorageService.get("messagesListboth" + sender + '_' + receiver);
             console.log(newmes)
-          if(!$scope.currenttalk&&!$scope.currenttalk.length){
+          //if(!$scope.currenttalk&&!$scope.currenttalk.length){
               $scope.currenttalk=newmes
-          }
+          //}
           var ispush=false,isnewupdate=[];//筛选出更新的信息
           if(newmes&&newmes.length) {
             for (var a = 0; a < newmes.length; a++) {
@@ -75,11 +80,6 @@ app.controller('messageDetailCtrl', [
             $scope.getcurrenttalk($scope.fold, $rootScope.curUser._id)
         }, $rootScope.messageRefreshTime)
 
-        //滚动条自动滚动到底部
-        $scope.scrolldIV = function () {
-            var div = document.getElementById('scrolldIV');
-            div.scrollTop = div.scrollHeight;
-        };
         $scope.messageFirstRun = true;
 
 
@@ -92,6 +92,7 @@ app.controller('messageDetailCtrl', [
                     name: $rootScope.curUser.name
                 };
             }
+            $scope.getcurrenttalk(newMessage.sender,$rootScope.curUser._id);
             localToolService.insertANewMessageToMessageList(newMessage.receiver, newMessage.sender._id, newMessage);
             // 把时间格式化一下
             newMessage.create_date = new Date(newMessage.create_date).formate('yyyy-MM-dd hh:mm:ss');
@@ -100,20 +101,24 @@ app.controller('messageDetailCtrl', [
             $scope.messageDetils = ChatService.getAmountMessageByBothId($scope.messageNum,
                 $stateParams.senderId, $rootScope.curUser._id);
             $timeout(function () {
-                var div = document.getElementById('scrolldIV');
-                div.scrollTop = div.scrollHeight;
                 $scope.unSendMessage = {};
                 $scope.unSendMessage.text = '';
                 $scope.unSendMessage.video = '';
                 $scope.unSendMessage.image = '';
-            }, 0);
+                console.log('置底层')
+            },0);
             // //console.log("取当前消息列表："+JSON.stringify($scope.messageDetils));
             // $ionicLoading.hide();
         };
-
+        $scope.$watch('currenttalk',function(){
+            $timeout(function () {
+            console.log('发生变化')
+            $scope.scrolldIV();
+        },100)
+        })
         $scope.$on('sendMessageOK', function (event, newMessage) {
             // $scope.isRefreshFromServer=false;
-            $scope.renew(newMessage);
+                $scope.renew(newMessage);
         });
         //上传之后，得到返回值，给消息对应的字段赋值
         $scope.sendMessage = function () {
@@ -237,14 +242,14 @@ app.controller('messageDetailCtrl', [
             console.log($scope.messageNum);
             $timeout(function () {
                 $scope.messageDetils = messageService.getAmountMessageByBothId($scope.messageNum,
-                    $stateParams.senderID, $rootScope.curUser._id);
+                    $scope.fold, $rootScope.curUser._id);
                 $scope.$broadcast('scroll.refreshComplete');
                 $scope.scrolldIV();
             }, 200);
         };
         //刷新消息
         $scope.refreshMessages = function () {
-            $scope.curSender = localStorageService.get("messagedetail" + $stateParams.senderID, 30);
+            $scope.curSender = localStorageService.get("messagedetail" + $scope.fold, 30);
             console.log($rootScope.curUser);
             if (!$rootScope.curUser) {
                 $rootScope.refreshCurUser();
@@ -252,7 +257,8 @@ app.controller('messageDetailCtrl', [
             }
 
             //消息详细
-            $scope.messageDetils = messageService.getMessageByBothId($stateParams.senderID, $rootScope.curUser._id);
+            $scope.currenttalk = messageService.getMessageByBothId($scope.fold, $rootScope.curUser._id);
+            console.log($scope.currenttalk)
             console.log($rootScope.curUser._id + " messageDetailCtrl $ionicView.beforeEnter " + $stateParams.startTime + '<>' + $scope.messages);
             var curTime = new Date(),
                 startTime = new Date(new Date().setDate(new Date().getDate() - 2));
@@ -267,23 +273,23 @@ app.controller('messageDetailCtrl', [
 
             //stTime=stTime==curTime?startTime.formate("yyyy-MM-dd"):stTime;
 
-            if (!$scope.messageDetils) {
-                // messageService.initMessageListInTimeSpanByPersonIds($stateParams.receiverID,$rootScope.curUser._id,startTime,curTime,$rootScope.applicationServerpath);//获取到与联系人一定时间内的聊天记录
+            if (!$scope.currenttalk) {
+                 messageService.initMessageListInTimeSpanByPersonIds($stateParams.receiverID,$rootScope.curUser._id,startTime,curTime,$rootScope.applicationServerpath);//获取到与联系人一定时间内的聊天记录
                 // return;
             }
-            /*
-             for (var index = 0; index < $scope.messageDetils.length; index++) {
-             var item = $scope.messageDetils[index];
+
+             for (var index = 0; index < $scope.currenttalk.length; index++) {
+             var item = $scope.currenttalk[index];
              // 设置这个消息状态为已读，发到服务器端
-             messageService.readMessageByID(item._id, $rootScope.applicationServer);
+                messageService.readMessageByID(item._id, $rootScope.applicationServerpath);
              }
-             */
+
 
             //设置当前显示数量为4
             $scope.messageNum = $scope.messageFirstRun ? 4 : $scope.messageNum;
             $scope.messageFirstRun = false;//不是第一次刷新了，可显示消息数量不再直接设为4条
             $scope.messageDetils = messageService.getAmountMessageByBothId($scope.messageNum,
-                $stateParams.senderID, $rootScope.curUser._id);
+                $scope.fold, $rootScope.curUser._id);
             $timeout(function () {
                 $scope.scrolldIV();
             }, 0);
@@ -306,7 +312,7 @@ app.controller('messageDetailCtrl', [
             console.log("on messagesListboth" + bothid + '<>' + bothid.receiver_id + '<>' + bothid.sender_id);
             $scope.getcurrenttalk(bothid.sender_id, bothid.receiver_id)
             //如果是当前sender，就加载
-            if (bothid.sender_id == $stateParams.senderID && bothid.receiver_id == $rootScope.curUser._id) {
+            if (bothid.sender_id == $scope.fold && bothid.receiver_id == $rootScope.curUser._id) {
                 $scope.refreshMessages();
                 $scope.engineStop();
                 $scope.engineRun();
