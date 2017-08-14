@@ -44,7 +44,8 @@ app.controller('messageDetailCtrl', [
                 $rootScope.applicationServerpath)
         }
         $scope.getcurrenttalk = function (sender, receiver) {//从缓存中获取俩人对话
-          var newmes = localStorageService.get("messagesListboth" + sender + '_' + receiver);
+          console.log(sender, receiver)
+          var newmes =messageService.getMessageByBothId(sender, receiver)
             console.log(newmes)
           //if(!$scope.currenttalk&&!$scope.currenttalk.length){
               $scope.currenttalk=newmes
@@ -85,6 +86,7 @@ app.controller('messageDetailCtrl', [
 
         // 等到消息发送成功之后，刷新消息界面，并重置未发送消息
         $scope.renew = function (newMessage) {
+          console.log(newMessage)
             // $scope.messageDetils=$scope.messageDetils?$scope.messageDetils:new Array();
             if (!newMessage.sender._id && newMessage.sender == $rootScope.curUser._id) {
                 newMessage.sender = {
@@ -92,7 +94,8 @@ app.controller('messageDetailCtrl', [
                     name: $rootScope.curUser.name
                 };
             }
-            $scope.getcurrenttalk(newMessage.sender,$rootScope.curUser._id);
+
+            $scope.getcurrenttalk(newMessage.receiver,$rootScope.curUser._id);
             localToolService.insertANewMessageToMessageList(newMessage.receiver, newMessage.sender._id, newMessage);
             // 把时间格式化一下
             newMessage.create_date = new Date(newMessage.create_date).formate('yyyy-MM-dd hh:mm:ss');
@@ -147,8 +150,22 @@ app.controller('messageDetailCtrl', [
             // if(!$scope.isRefreshFromServer){
             messageService.sendMessage($scope.unSendMessage, $rootScope.curUser._id, $scope.fold, $rootScope.applicationServerpath);
             $scope.scrolldIV();
-            // $scope.isRefreshFromServer=true;
-            // }
+
+          var unreadPersons = localStorageService.get("recentChatPersons");//添加到消息列表
+          var isunreadPersons=true;
+          for(var i=0;i<unreadPersons.length;i++){
+            if(unreadPersons[i]._id==$scope.fold){
+              isunreadPersons=false;
+            }
+          }
+          if(isunreadPersons) {
+            var pers=localStorageService.get("PersonInfo_"+$scope.fold,360)
+            pers.updatemes=new Date().formate('yyyy-MM-dd hh:mm:ss');
+            unreadPersons.push(pers)
+            localStorageService.update("recentChatPersons", unreadPersons);
+          }
+
+
             $timeout(function () {
                 // $ionicLoading.hide();//60秒后，不管成不成功，都取消进度栏
             }, 60000);
@@ -276,14 +293,21 @@ app.controller('messageDetailCtrl', [
             if (!$scope.currenttalk) {
                  messageService.initMessageListInTimeSpanByPersonIds($stateParams.receiverID,$rootScope.curUser._id,startTime,curTime,$rootScope.applicationServerpath);//获取到与联系人一定时间内的聊天记录
                 // return;
-            }
+            }else {
 
-             for (var index = 0; index < $scope.currenttalk.length; index++) {
-             var item = $scope.currenttalk[index];
-             // 设置这个消息状态为已读，发到服务器端
+              for (var index = 0; index < $scope.currenttalk.length; index++) {
+                var item = $scope.currenttalk[index];
+                // 设置这个消息状态为已读，发到服务器端
                 messageService.readMessageByID(item._id, $rootScope.applicationServerpath);
-             }
-
+              }
+            }
+         var unreadPersons = localStorageService.get("recentChatPersons");
+          for(var i=0;i<unreadPersons.length;i++){
+            if(unreadPersons[i]._id==$scope.fold){
+              unreadPersons[i].nodu=null
+            }
+          }
+          localStorageService.update("recentChatPersons",unreadPersons);
 
             //设置当前显示数量为4
             $scope.messageNum = $scope.messageFirstRun ? 4 : $scope.messageNum;

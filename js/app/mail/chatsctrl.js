@@ -9,7 +9,7 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
   //最近消息的发送人
   $scope.unreadPersons = {};
   // $scope.unreadPersons=localStorageService.get("recentChatPersons");
-  localStorageService.clear('recentChatPersons');
+  // localStorageService.clear('recentChatPersons');
   // $scope.unreadPersons = (localStorageService.get('recentChatPersons') && localStorageService.get('recentChatPersons').length)?localStorageService.get('recentChatPersons'):[];
 
 
@@ -203,11 +203,12 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
   $scope.testclicktrue=true;
   $scope.testclick = function (pObj) {
     $scope.unreadPersons = localStorageService.get("recentChatPersons");
-    // console.log($scope.unreadPersons)
+    console.log($scope.unreadPersons)
 
     if($scope.testclicktrue) {
       console.log('再次插入')
-      messtr = '<li ng-repeat="fold in unreadPersons" ui-sref-active="active">' +
+      messtr = '<li ng-repeat="'+"fold in unreadPersons|orderBy:'updatemes':true"+
+        '" ui-sref-active="active">' +
         '<a class="media friend" ng-click="mailList(fold._id,fold.name)">' +
         '<div class="media-left">' +
         '<img ng-src=' +
@@ -218,8 +219,8 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
         '<h4>' +
         '{{fold.name}}' +
         '</h4>' +
-        '<p >' +
-        '{{fold.content}}' +
+        '<p>' +
+        '{{fold.updatemes}}' +
         '</p>' +
         '</div>' +
         '<div class="media-right">' +
@@ -291,6 +292,7 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
         // console.log("UnreadMessageS人员：" + JSON.stringify(localStorageService.get("PersonInfo_"+data[index].sender)));
         var pObj = localStorageService.get("PersonInfo_" + data[index].sender,360);
         if (pObj) {
+          pObj.updatemes=data[index].create_date;
           // console.log(temppp);
           for(var aa in res){
             if(aa==pObj._id){
@@ -309,7 +311,7 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
           }
         }
       }
-      // console.log(temppp)
+      console.log(temppp)
       localStorageService.update("recentChatPersons", temppp)
       $scope.testclick();
       // $scope.$apply();//用$apply来强制刷新数据

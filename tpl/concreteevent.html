@@ -9,19 +9,9 @@
         <div class="panel">
             <div class="panel-body">
             <ul id="myTab" class="nav nav-tabs casedepertment_list">
-                <li class="active">
-                    <a href="#casedepertment1" onclick="return false" data-toggle="tab">
-                        崖州区城市管理局
-                    </a>
-                </li>
-                <li>
-                    <a href="#casedepertment2" onclick="return false" data-toggle="tab">
-                        崖州区农林局
-                    </a>
-                </li>
-                <li>
-                    <a href="#casedepertment3" onclick="return false" data-toggle="tab">
-                        崖州区海洋渔业水务局
+                <li class="" ng-repeat="dep in alldocuments" ng-class="iscurrentaddclass(dep._id)">
+                    <a ng-click="checkoutdepartmentevent(dep._id)" data-toggle="tab">
+                        {{dep.name}}
                     </a>
                 </li>
                 <li class="pull-right">

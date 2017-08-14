@@ -778,6 +778,19 @@ app.factory('departmentAndPersonsService', ['localStorageService', 'dateService'
               console.log(resp.data.error)
             }
         })
+      },
+      //获得所有部门
+      getAllDepartments:function (applicationServer,callback) {
+        $http({
+          method: 'POST',
+          url: applicationServer + 'personadminroute/getAllDepartments'
+        }).success(function(resp){
+          if(resp.success){
+            callback(resp.success);
+          }else{
+            console.log(resp.data)
+          }
+        })
       }
 
     }

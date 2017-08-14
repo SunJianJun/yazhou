@@ -1,16 +1,24 @@
 /**
  * Created by Administrator on 2017/6/8.
  */
-app.controller('abstracttypeCtrl', function ($scope, $compile, $window, $rootScope, localStorageService, $http, $state, userService, dateService, messageService, $stateParams
+app.controller('abstracttypeCtrl',
+  function ($scope, $compile, $window, $rootScope, localStorageService,departmentAndPersonsService, $http, $state, userService, dateService, messageService, $stateParams,$timeout
                                              //, $ionicBackdrop,$ionicPopup,$ionicModal,departmentAndPersonsService
 ) {
     $scope.abstracttype = {};
+    // console.log(localStorageService.get("LatestLocation_58e0c199e978587014e67a50",300))
     $scope.currentdocument='';//当前部门
+    $scope.alldocuments='';//所有部门列表
+    $scope.iscurrentaddclass=function (id) {
+      if(id==$scope.currentdocument){
+        return 'active'
+      }
+    }
     $scope.loadCase=function() {   //加载 事件
         $http({
             method: 'POST',
             url: $rootScope.applicationServerpath + 'mobilegrid/getAllAbstracttypetodep',
-          data:{departmentID:'123'}
+          data:{departmentID:$scope.currentdocument}
         }).then(function (yresp) {
             console.log(yresp.data)
           if(yresp.data.error){
@@ -70,13 +78,13 @@ app.controller('abstracttypeCtrl', function ($scope, $compile, $window, $rootSco
         getSTEPS(stepID);
         return ['1','2','3'];
     }
-    $scope.loadCase();
 
-    $scope.abstracttypeEdit = function (dom) {
+    $scope.abstracttypeEdit = function (dom,depid) {
+      // console.log(depid)
         $http({
             method: 'POST',
             url: $rootScope.applicationServerpath + 'abstractsteproute/getAllAbstractstep',
-            data:{department:'崖州区城市管理局'}
+            data:{department:$scope.currentdocument}
         }).then(function (resp) {
             console.log('获取步骤')
             var data=resp.data;
@@ -197,6 +205,7 @@ app.controller('abstracttypeCtrl', function ($scope, $compile, $window, $rootSco
     $scope.newabstracttype=function(){
         $('#newabstracttype').show();
     }
+    //新建一个事件
     $scope.newcase = function (type) {
         console.log(type)
         if(!type){return;}
@@ -216,6 +225,7 @@ app.controller('abstracttypeCtrl', function ($scope, $compile, $window, $rootSco
             $('#newabstracttype').hide();
         })
     }
+    //删除一个事件
     $scope.removecase = function (id) {
         $http({
             method: 'POST',
@@ -229,5 +239,18 @@ app.controller('abstracttypeCtrl', function ($scope, $compile, $window, $rootSco
             }
         })
     }
+    //切换一个当前部门列表
+    $scope.checkoutdepartmentevent=function (id) {
+      console.log(id)
+      $scope.currentdocument=id;
+      $scope.loadCase();
+    }
+      departmentAndPersonsService.getAllDepartments($rootScope.applicationServerpath,function (dep) {
+        console.log(dep)
+        $scope.currentdocument=dep[0]._id
+        $scope.alldocuments=dep;
+        $scope.loadCase();
+      })
+
 
 })

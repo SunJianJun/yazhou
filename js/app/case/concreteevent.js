@@ -1,16 +1,22 @@
 /**
  * Created by Administrator on 2017/6/8.
  */
-app.controller('concreteeventCtrl', function ($scope, $rootScope, localStorageService, $http, $state, userService, dateService, messageService, $stateParams
+app.controller('concreteeventCtrl', function ($scope, $rootScope, localStorageService,departmentAndPersonsService, $http, $state, userService, dateService, messageService, $stateParams
                                               //, $ionicBackdrop,$ionicPopup,$ionicModal,departmentAndPersonsService
 ) {
     $scope.casetypes = {};
-    $scope.onload = function () {
+  $scope.currentdocument='';
+  $scope.iscurrentaddclass=function (id) {
+    if(id==$scope.currentdocument){
+      return 'active'
+    }
+  }
+    $scope.onload = function (depart) {
         console.log('加载具体事件')
         $http({
             method: 'POST',
             url: $rootScope.applicationServerpath + 'mobilegrid/getAllconcreteevent',//获取到所有具体事件
-            data:{departmentID:'58c3a5e9a63cf24c16a50b8d'}
+            data:{departmentID:depart}
         }).then(function (resp) {
             var data = resp.data.success;
             data.forEach(function (val, key) {
@@ -27,7 +33,6 @@ app.controller('concreteeventCtrl', function ($scope, $rootScope, localStorageSe
             $rootScope.casetypes = data;
         })
     }
-    $scope.onload();
     $scope.concreteeventGo = function (id,name) {
         $state.go('app.concretestep', {
             'id': id,
@@ -87,4 +92,16 @@ app.controller('concreteeventCtrl', function ($scope, $rootScope, localStorageSe
         //    var steps=resp.data.steps;
         //})
     }
+  //切换一个当前部门列表
+  $scope.checkoutdepartmentevent=function (id) {
+    console.log(id)
+    $scope.currentdocument=id;
+    $scope.onload($scope.currentdocument);
+  }
+  departmentAndPersonsService.getAllDepartments($rootScope.applicationServerpath,function (dep) {
+    console.log(dep)
+    $scope.currentdocument=dep[0]._id;
+    $scope.alldocuments=dep;
+    $scope.onload($scope.currentdocument);
+  })
 })

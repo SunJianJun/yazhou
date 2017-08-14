@@ -9,19 +9,9 @@
         <div class="panel">
             <div class="panel-body">
                 <ul id="myTab" class="nav nav-tabs casedepertment_list">
-                    <li class="active">
-                        <a href="#casedepertment1" onclick="return false" data-toggle="tab">
-                            崖州区城市管理局
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#casedepertment2" onclick="return false" data-toggle="tab">
-                            崖州区农林局
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#casedepertment3" onclick="return false" data-toggle="tab">
-                            崖州区海洋渔业水务局
+                    <li class="" ng-repeat="dep in alldocuments" ng-class="iscurrentaddclass(dep._id)">
+                        <a ng-click="checkoutdepartmentevent(dep._id)" data-toggle="tab">
+                            {{dep.name}}
                         </a>
                     </li>
 
@@ -51,64 +41,9 @@
                             </td>
                             <td>{{case.newer}}</td>
                             <td>
-                                <button ng-click="abstracttypeEdit($event)">编辑</button>
+                                <button ng-click="abstracttypeEdit($event,case._id)">编辑</button>
                                 <button ng-click="removecase(case._id)">删除</button>
                             </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tab-pane fade" id="casedepertment2">
-                        <table class="table">
-                            <tbody>
-                            <tr>
-                                <th>编号</th>
-                                <th>事件</th>
-                                <th>步骤</th>
-                                <th>时间</th>
-                                <th>操作</th>
-                            </tr>
-                            <tr ng-repeat="case in abstracttype">
-                                <td>{{case._id}}</td>
-                                <td class="abstracttypeName">{{case.typeName}}</td>
-                                <td class="abstracttypeStep">
-                                    <select name="" class="w-sm">
-                                        <option value="{{step._id}}" ng-repeat="step in case.step | orderBy:'no'">{{step.no}}-{{step.type}}</option>
-                                    </select>
-                                </td>
-                                <td>{{case.newer}}</td>
-                                <td>
-                                    <button ng-click="abstracttypeEdit($event)">编辑</button>
-                                    <button ng-click="removecase(case._id)">删除</button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="tab-pane fade" id="casedepertment3">
-                        <table class="table">
-                            <tbody>
-                            <tr>
-                                <th>编号</th>
-                                <th>事件</th>
-                                <th>步骤</th>
-                                <th>时间</th>
-                                <th>操作</th>
-                            </tr>
-                            <tr ng-repeat="case in abstracttype">
-                                <td>{{case._id}}</td>
-                                <td class="abstracttypeName">{{case.typeName}}</td>
-                                <td class="abstracttypeStep">
-                                    <select name="" class="w-sm">
-                                        <option value="{{step._id}}" ng-repeat="step in case.step | orderBy:'no'">{{step.no}}-{{step.type}}</option>
-                                    </select>
-                                </td>
-                                <td>{{case.newer}}</td>
-                                <td>
-                                    <button ng-click="abstracttypeEdit($event)">编辑</button>
-                                    <button ng-click="removecase(case._id)">删除</button>
-                                </td>
                             </tr>
                             </tbody>
                         </table>

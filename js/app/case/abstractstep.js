@@ -103,8 +103,7 @@ app.controller('abstractstepCtrl',
         };
         $http({
             method: 'POST',
-            url: $rootScope.applicationServerpath + 'abstractsteproute/getAllAbstractstep',
-            data: {department: '崖州区城市管理局'}
+            url: $rootScope.applicationServerpath + 'abstractsteproute/getAllAbstractstep'
         }).then(function (resp) {
             console.log('获取步骤')
             var data = resp.data

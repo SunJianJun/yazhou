@@ -11,9 +11,7 @@
                         <td style="width:150px;">所属单位：</td>
                         <td>
                             <select name="department">
-                                <option value="崖州区城市管理局">崖州区城市管理局</option>
-                                <option value="崖州区农林局">崖州区农林局</option>
-                                <option value="崖州区海洋渔业水务局">崖州区海洋渔业水务局</option>
+                                <option ng-repeat="dep in alldocuments" value="{{dep._id}}">{{dep.name}}</option>
                             </select>
                         </td>
                     </tr>

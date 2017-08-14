@@ -44,23 +44,16 @@ angular.module('app')
       ];
       $rootScope.applicationServerpath = 'http://localhost:2000/';
 
-       //$rootScope.applicationServerpath = 'http://120.76.228.172:2000/';
+       // $rootScope.applicationServerpath = 'http://120.76.228.172:2000/';
       console.log('接口测试' + $rootScope.applicationServerpath);
-        //$http({
+        // $http({
         //  method: 'POST',
-        //  url: $rootScope.applicationServerpath + 'message/sendAbnormalMessage',
-        //  data: {
-        //    senderID: "58e0c199e978587014e67a50",
-        //    type: "takeoff",
-        //    receiverType: "title",
-        //    messageObj: {text: "请假1"},
-        //    receiverInfo: ['59520e5d7b6d7fa011adcc73']
-        //  }
-        //}).then(function (resp) {
+        //  url: $rootScope.applicationServerpath + 'personadminroute/getAllDepartments'
+        // }).then(function (resp) {
         //  console.log('返回数据')
         //  console.log(resp.data)
         //  // console.log(JSON.stringify(resp.data.success))
-        //})
+        // })
 
       // 桌面端的用户需要登录信息，用户名就是人名，密码第一次可以是身份证号，之后可以修改，pwd
       $rootScope.confirmUser = function (callback) {

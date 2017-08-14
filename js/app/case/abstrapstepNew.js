@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/7/13.
  */
-app.controller('abstrapstepNew', function ($scope, $compile, $rootScope, $window, localStorageService, $http, $state, userService, dateService, messageService, $stateParams) {
+app.controller('abstrapstepNew', function ($scope, $compile, $rootScope, $window, localStorageService,departmentAndPersonsService, $http, $state, userService, dateService, messageService, $stateParams) {
   console.log('获取抽象表编辑')
   console.log($stateParams.id)
 
@@ -10,7 +10,12 @@ app.controller('abstrapstepNew', function ($scope, $compile, $rootScope, $window
     $rootScope.abstractstepN = ''
   } else {
     console.log($rootScope.abstractstepN)
+    $scope.alldocuments;
 
+    departmentAndPersonsService.getAllDepartments($rootScope.applicationServerpath,function (dep) {
+      console.log(dep)
+      $scope.alldocuments=dep;
+    })
     if ($rootScope.abstractstepN) {
       //console.log($rootScope.abstractstepN.power.go)
       $scope.activities = $rootScope.abstractstepN.argument;

@@ -74,10 +74,9 @@
           'glyphicon-chevron-down': !collapsed
         }"></span></a>
             {{node.name}}
-            <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span
-                    class="glyphicon glyphicon-remove"></span></a>
+            <!--<a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span class="glyphicon glyphicon-remove"></span></a>-->
             <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem({depart:node})" style="margin-right: 8px;"><span
-                    class="glyphicon glyphicon-plus"></span></a>
+                    class="glyphicon glyphicon-chevron-right"></span></a>
           </div>
 
           <!--人员-->
@@ -87,10 +86,9 @@
             <!--<li><h1>person.person</h1></li>-->
             <div ng-repeat="person in node.persons" class="wrapper-xs">
               <div>{{person.name}}
-              <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span
-                      class="glyphicon glyphicon-remove"></span></a>
+              <!--<a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span class="glyphicon glyphicon-remove"></span></a>-->
               <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem({person:person,node:node})" style="margin-right: 8px;"><span
-                      class="glyphicon glyphicon-plus"></span></a>
+                      class="glyphicon glyphicon-align-right"></span></a>
               </div>
             </div>
 
