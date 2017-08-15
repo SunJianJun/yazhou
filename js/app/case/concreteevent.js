@@ -55,25 +55,25 @@ app.controller('concreteeventCtrl', function ($scope, $rootScope, localStorageSe
     $scope.newabstracttype = function () {
         $http({  //获取抽象表中的类型
             method: 'POST',
-            url: $rootScope.applicationServerpath + 'mobilegrid/getAllAbstracttypetodep'//获取抽象表中的类型
+            url: $rootScope.applicationServerpath + 'mobilegrid/getAllAbstracttypetodep',//获取抽象表中的类型
+            data:{departmentID:$scope.currentdocument}
         }).then(function (resp){
             var data = resp.data.success;
             console.log(data)
             $scope.typeArr = data;
-            $('#newabstracttype').show();
+            $('#newabstracttype').removeClass('hide');
         })
     }
     $scope.newcase = function (name) {
         var typeName = $('#newtypeType').val();
-        var typeDepartment = $('#newtypeDepartment').val();
-        console.log(name, typeName,typeDepartment);
+        console.log(name, typeName,$scope.currentdocument);
         $http({
             method: 'POST',
             url: $rootScope.applicationServerpath + 'mobilegrid/sendnewEvent',//新建一个事件
             data: {
                 name: name,
                 type: typeName,
-                departmentID:typeDepartment,
+                departmentID:$scope.currentdocument,
                 newwho:$rootScope.curUser._id
             }
         }).then(function (resp) {
@@ -96,6 +96,7 @@ app.controller('concreteeventCtrl', function ($scope, $rootScope, localStorageSe
   $scope.checkoutdepartmentevent=function (id) {
     console.log(id)
     $scope.currentdocument=id;
+      $('#newabstracttype').addClass('hide');
     $scope.onload($scope.currentdocument);
   }
   departmentAndPersonsService.getAllDepartments($rootScope.applicationServerpath,function (dep) {

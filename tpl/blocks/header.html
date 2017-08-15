@@ -8,7 +8,7 @@
     </button>
     <!-- brand -->
     <a href="#/" class="navbar-brand text-lt">
-        <i class="fa fa-btc"></i>
+        <i class="fa fa-dashboard"></i>
         <img src="img/logo.png" alt="." class="hide">
         <span class="hidden-folded m-l-xs">{{app.name}}</span>
     </a>
@@ -66,9 +66,9 @@
                                         <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>待办案件</a>
                                         <div class="m-b-sm">
                                             <div class="btn-group">
-                                                <label class="btn btn-sm btn-info" ng-class="mapEngine.engineConfig.showdarpmentevent?'active':''" ng-click="mapEngine.engineConfig.showdarpmentevent=true"><i class="fa fa-check text-active"></i>
+                                                <label class="btn btn-sm btn-info" ng-class="mapEngine.engineConfig.showdarpmentevent?'active':''" ng-click="showdarpment_event(true)"><i class="fa fa-check text-active"></i>
                                                     显示</label>
-                                                <label class="btn btn-sm btn-danger" ng-class="mapEngine.engineConfig.showdarpmentevent?'':'active'" ng-click="mapEngine.engineConfig.showdarpmentevent=false"><i class="fa fa-check text-active"></i>
+                                                <label class="btn btn-sm btn-danger" ng-class="mapEngine.engineConfig.showdarpmentevent?'':'active'" ng-click="showdarpment_event(false)"><i class="fa fa-check text-active"></i>
                                                     隐藏</label>
                                                 <!--<label class="btn btn-sm btn-primary" ng-model="radioModel" btn-radio="'N/A'"><i class="fa fa-check text-active"></i> N/A</label>-->
                                             </div>
@@ -98,9 +98,9 @@
                                         <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>摄像头</a>
                                         <div class="m-b-sm">
                                             <div class="btn-group">
-                                                <label class="btn btn-sm btn-info" ng-class="mapEngine.engineConfig.showcameraposition?'active':''" ng-click="mapEngine.engineConfig.showcameraposition=true" ng-model="mapEngine.engineConfig.showcameraposition"><i class="fa fa-check text-active"></i>
+                                                <label class="btn btn-sm btn-info" ng-class="mapEngine.engineConfig.showcameraposition?'active':''" ng-click="showcamera_position(true)"><i class="fa fa-check text-active"></i>
                                                     显示</label>
-                                                <label class="btn btn-sm btn-danger" ng-class="mapEngine.engineConfig.showcameraposition?'':'active'" ng-click="mapEngine.engineConfig.showcameraposition=false" ng-model="mapEngine.engineConfig.showcameraposition"><i class="fa fa-check text-active"></i>
+                                                <label class="btn btn-sm btn-danger" ng-class="mapEngine.engineConfig.showcameraposition?'':'active'" ng-click="showcamera_position(false)"><i class="fa fa-check text-active"></i>
                                                     隐藏</label>
                                                 <!--<label class="btn btn-sm btn-primary" ng-model="radioModel" btn-radio="'N/A'"><i class="fa fa-check text-active"></i> N/A</label>-->
                                             </div>
@@ -277,10 +277,10 @@
                     <div class="list-group scroll-y mail-list-win">
                         <a href class="media list-group-item" ng-repeat="notifications in promptboth"
                            ng-click="messageperomt(notifications)">
-                    <span class="media-body block m-b-none">
-                      收到一条{{notifications.type=='stepgo'?'审核通过消息':(notifications.type=='broadcast'?'系统消息':(notifications.type=='event'?'事件消息':(notifications.type=='backoff'?'事件被驳回':'')))}}来自{{notifications.name}}的消息<br>
-                        <!--<small class="text-muted">{{notifications.create_date}}</small>-->
-                    </span>
+                        <span class="media-body block m-b-none">
+                          收到一条{{notifications.type=='stepgo'?'审核通过消息':(notifications.type=='broadcast'?'系统消息':(notifications.type=='event'?'事件消息':(notifications.type=='backoff'?'事件被驳回':'')))}}来自{{notifications.name}}的消息<br>
+                            <!--<small class="text-muted">{{notifications.create_date}}</small>-->
+                        </span>
                         </a>
                     </div>
                     <div class="panel-footer text-sm">

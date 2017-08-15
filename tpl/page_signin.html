@@ -10,10 +10,10 @@
       </div>
       <div class="list-group list-group-sm">
         <div class="list-group-item">
-          <input type="text" placeholder="User" class="form-control no-border" ng-model="user.email" required>
+          <input type="text" placeholder="用户名" class="form-control no-border" ng-model="user.email" required>
         </div>
         <div class="list-group-item">
-           <input type="password" placeholder="Password" class="form-control no-border" ng-model="user.password" required>
+           <input type="password" placeholder="6位审核密码" class="form-control no-border" ng-model="user.password" required>
         </div>
       </div>
       <button type="submit" class="btn btn-lg btn-primary btn-block" ng-click="login()" ng-disabled='form.$invalid'>登录</button>
@@ -25,11 +25,14 @@
       </p>
     </form>
   </div>
-  <div class="text-center" ng-hide="iscode">
+  <div class="text-center current_dialogue" ng-hide="iscode">
     <img src="./sanyagridmobileapp.png">
-
   </div>
-    <div id="scanningqrcode" class="text-center" ng-show="iscode" ng-if="login_id">
-        <img class="img-responsive" src={{applicationServerpath+'personalinfo/create_qrcode?text='+login_id}}/>
+    <div id="scanningqrcode" class="text-center current_dialogue" ng-show="iscode">
+        <img class="img-responsive" ng-src="{{sigineurl(login_id)}}"/>
+      <div class="codemodel hide" ng-click="resultcode()">
+        <span></span>
+        <p>二维码失效 <br> 请点击刷新 </p>
+      </div>
     </div>
 </div>

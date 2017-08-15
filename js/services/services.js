@@ -391,9 +391,6 @@ app.factory("userService", ['localStorageService', '$http', '$rootScope', functi
 app.factory('gridmapService', ['$http', '$rootScope', 'localStorageService',
   function ($http, $rootScope, localStorageService){
   return {
-    ceshi:function () {
-      console.log('这是测试数据');
-    },
     spotareagrid: function (callback) {//加载多边形绘制区域图层
       var spotarea = localStorageService.get('spotarea', 60 * 1);
       console.log('从服务获取')
@@ -418,6 +415,31 @@ app.factory('gridmapService', ['$http', '$rootScope', 'localStorageService',
       }else {
         console.log(spotarea)
         callback(spotarea)
+      }
+    },
+    getdarpmenteventposition:function(department,currentperson,applicationServer){
+      console.log(department)
+      var event = localStorageService.get('darpmenteventposition_'+currentperson, 60);
+      if (!event) {
+        console.log('缓存没有,获取');
+        $http(
+            {
+              method: 'POST',
+              url:applicationServer + 'maproute/geteventposition',
+              data:{departmentID:department}
+            }
+        ).then(function (resp) {
+          //console.log(resp.data.success);
+          console.log('从服务器获取数据！');
+          if (resp.data.success) {
+            $rootScope.$broadcast('darpmenteventposition',resp.data.success);
+            localStorageService.update('darpmenteventposition_'+currentperson,resp.data.success);
+          }else{
+            console.log(resp.data)
+          }
+        });
+      }else {
+        $rootScope.$broadcast('darpmenteventposition',event);
       }
     }
   }

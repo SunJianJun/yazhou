@@ -58,7 +58,11 @@ app.controller('SigninFormController', ['$rootScope', '$scope', '$interval', '$h
 
     $scope.iscode = false;
 
-
+    $scope.sigineurl= function (id) {
+      if(!id){return;}
+      //console.log(id)
+       return $rootScope.applicationServerpath+'personalinfo/create_qrcode?text='+id;
+    }
     $scope.loadlogin = function (uuid) {
 
       $scope.logintimer = $interval(function () {
@@ -70,7 +74,7 @@ app.controller('SigninFormController', ['$rootScope', '$scope', '$interval', '$h
                 data: {_id:uuid}
               }).then(function (resp) {
               console.log('返回数据')
-              console.log(resp.data)
+              //console.log(resp.data)
               var success = resp.data.success, error = resp.data.error;
               if (success) {
                 if (success.person) {
@@ -83,7 +87,10 @@ app.controller('SigninFormController', ['$rootScope', '$scope', '$interval', '$h
               }
               if (error) {
                 $interval.cancel($scope.logintimer);
+                $('.codemodel').removeClass('hide');
+                localStorageService.clear('loadloginID')
                 console.log(resp.data)
+
                 return;
               }
             if ($rootScope.curUser) {
@@ -127,11 +134,17 @@ app.controller('SigninFormController', ['$rootScope', '$scope', '$interval', '$h
         }
       })
     }else{
+      $scope.login_id =loadloginID;
       $scope.loadlogin(loadloginID);
     }
   }
   $scope.showdownload = function () {
     $scope.iscode = false;
   }
+  $scope.resultcode=function(){
+    $scope.showscanningqrcode()
+    $('.codemodel').addClass('hide');
+  }
+
   }]
 );
