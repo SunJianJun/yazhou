@@ -432,8 +432,8 @@ app.factory('gridmapService', ['$http', '$rootScope', 'localStorageService',
           //console.log(resp.data.success);
           console.log('从服务器获取数据！');
           if (resp.data.success) {
-            $rootScope.$broadcast('darpmenteventposition',resp.data.success);
             localStorageService.update('darpmenteventposition_'+currentperson,resp.data.success);
+            $rootScope.$broadcast('darpmenteventposition',resp.data.success);
           }else{
             console.log(resp.data)
           }
@@ -441,6 +441,19 @@ app.factory('gridmapService', ['$http', '$rootScope', 'localStorageService',
       }else {
         $rootScope.$broadcast('darpmenteventposition',event);
       }
+    },
+    geteventlaseperson:function(eventID){//人员统计接口
+      $http({
+        method: 'POST',
+        url: $rootScope.applicationServerpath + 'mobilegrid/geteventlaseperson',
+        data:{eventID:eventID}
+      }).then(function (resp){
+        if(resp.data.success){
+          console.log(resp.data.success)
+        }else{
+          console.log(resp.data.error)
+        }
+      })
     }
   }
 }]);
@@ -1166,6 +1179,34 @@ app.factory('messageService', ['localStorageService', 'dateService', '$http', '$
         } else {
           return message;
         }
+      },
+      readAbnormal:function(abnormalID,messID,curUserID,decision,callback){
+        $http({
+         method: 'POST',
+         url: $rootScope.applicationServerpath + 'message/readtAbnormalMessage',//人员统计接口
+          data:{
+            abnormalID:abnormalID,
+            messID:messID,
+            curUserID:curUserID,
+            decision:decision
+          }
+        }).then(function (resp) {
+         console.log('返回数据')
+         console.log(resp.data)
+          if(resp.data){
+            var mes=localStorageService.get('messagespromptboth'+curUserID,24*60)
+            if(mes) {
+              for (var i = 0; i < mes.length; i++) {
+                if (mes[i]._id == messID) {
+                  mes.splice(i, 1)
+                }
+              }
+              localStorageService.update('messagespromptboth' + curUserID, mes);
+              $rootScope.promptboth=mes;
+            }
+            callback(resp.data)
+          }
+        })
       }
     };
   }
@@ -1176,6 +1217,7 @@ app.factory('ChatService', ['localStorageService', 'localToolService', 'dateServ
   var service = {};
 
   service.showModal = function () {
+
   };
 
   /***************************************************/

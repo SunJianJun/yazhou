@@ -243,7 +243,8 @@ app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filte
   $scope.savedepartmenttitle=function () {
     var deptitle=$('#departmenttitlesort li');
     for(var i=0,titarr=[];i<deptitle.length;i++){
-      titarr.push({grade:i+1,_id:deptitle[i].title,name:deptitle[i].innerText,parentTitle:deptitle[i-1]?deptitle[i-1].title:null})
+      //console.log($(deptitle[i]).find('i').html())
+      titarr.push({grade:i+1,_id:deptitle[i].title,name:$(deptitle[i]).find('i').html(),parentTitle:deptitle[i-1]?deptitle[i-1].title:null})
     }
     console.log(titarr)
     $http(
@@ -254,6 +255,7 @@ app.controller('departmentworkerCtrl', ['$scope', '$rootScope', '$http', '$filte
       }
     ).then(function (resp) {
       console.log(resp);
+      alert('保存职务成功')
     })
   }
   //部门新建一个职务

@@ -333,7 +333,7 @@
             <div class="clear">
               <ul class="sortable-list connectList w-md col show" id="departmenttitlesort">
                 <li class="form-control-static" ng-repeat="depinfo in item.data.depinfo|orderBy:'grade'" title="{{depinfo._id}}">
-                    {{depinfo.name}}
+                    <i>{{depinfo.name}}</i>
                     <span class="close" ng-click="deletetitle(depinfo)" ng-show="item.editing">×</span>
                 </li>
               </ul>

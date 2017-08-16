@@ -13,7 +13,6 @@ app.controller('gridmapctl',
                 //}
             ];
             $rootScope.eventpositionObjs = [];//案件位置
-            $scope.markerinfo = true;
             if ($scope.map) {
                 $scope.map.clearMap();
             }
@@ -75,7 +74,7 @@ app.controller('gridmapctl',
                 showOnlineWarning: true,
                 showOffdutyWarning: true,
                 showLastMessage: true,
-                showdarpmentevent: false,//显示部门事件
+                showdarpmentevent: true,//显示部门事件
                 showspotarea: true,  //显示区域
                 showcameraposition: false //显示摄像头
             };
@@ -112,9 +111,17 @@ app.controller('gridmapctl',
             $rootScope.showdarpment_event = function (e) {
                 if (e) {
                     $rootScope.mapEngine.engineConfig.showdarpmentevent = true;
-
+                    $scope.geteventposition();
                 } else {
                     $rootScope.mapEngine.engineConfig.showdarpmentevent = false;
+                    if ($rootScope.eventpositionObjs && $rootScope.eventpositionObjs.length > 0) {
+                        for (var indd = 0; indd < $rootScope.eventpositionObjs.length; indd++) {
+                            if ($rootScope.eventpositionObjs[indd].mark) {
+                                // 重置marker
+                                $scope.map.remove($rootScope.eventpositionObjs[indd].mark);
+                            }
+                        }
+                    }
                 }
                 console.log($rootScope.mapEngine.engineConfig.showdarpmentevent);
             }
@@ -557,7 +564,6 @@ app.controller('gridmapctl',
                 });
                 infowindow3.open($scope.map, $scope.map.position);
                 var str = JSON.stringify(personObj.latestLocation);
-console.log(personObj)
                 $scope.drawMapMarkerObj(personObj._id, personObj.latestLocation.Location, personObj.name, personObj.latestLocation.getDate, infowindow3);
                 //console.log("显示用户的详细信息 assemblePersonMapInfo,这是每一轮循环必做之事：ended");
             };
@@ -621,8 +627,6 @@ console.log(personObj)
                             } else {
                                 $rootScope.movingObjs[indd].infoWin = newinfoWin;
                             }
-                            if ($scope.markerinfo) {
-                                console.log($scope.markerinfo)
                                 AMap.event.addListener($rootScope.movingObjs[indd].mark, 'click', function () {
                                     var opened = $rootScope.movingObjs[indd].infoWin.getIsOpen();
                                     console.log('进入'+opened)
@@ -631,9 +635,7 @@ console.log(personObj)
                                     } else {
                                         $rootScope.movingObjs[indd].infoWin.close();
                                     }
-                                    $scope.markerinfo = false;
                                 });
-                            }
                             //debugger;
                             break;
                         }
@@ -1636,23 +1638,24 @@ console.log(personObj)
                             newMark.setLabel(label);
                         }
                         // 重置信息窗口
-                        //if ($rootScope.eventpositionObjs[index].infoWin) {
-                        //    var openeda = $rootScope.eventpositionObjs[index].infoWin.getIsOpen();
-                        //    if (openeda) {
-                        //        $rootScope.eventpositionObjs[index].infoWin = info;
-                        //    }
-                        //} else {
-                        //    $rootScope.eventpositionObjs[index].infoWin = info;
-                        //}
-                        //AMap.event.addListener($rootScope.eventpositionObjs[index].mark, 'click', function () {
-                        //    var opened = $rootScope.eventpositionObjs[index].infoWin.getIsOpen();
-                        //    console.log('进入'+opened)
-                        //    if (!opened) {
-                        //        $rootScope.eventpositionObjs[index].infoWin.open($scope.map, position);
-                        //    } else {
-                        //        $rootScope.eventpositionObjs[index].infoWin.close();
-                        //    }
-                        //});
+                        if ($rootScope.eventpositionObjs[index].infoWin) {
+                            var openeda = $rootScope.eventpositionObjs[index].infoWin.getIsOpen();
+                            if (openeda) {
+                                $rootScope.eventpositionObjs[index].infoWin = info;
+                            }
+                        } else {
+                            $rootScope.eventpositionObjs[index].infoWin = info;
+                        }
+                        AMap.event.addListener($rootScope.eventpositionObjs[index].mark, 'click', function () {
+                            var opened = $rootScope.eventpositionObjs[index].infoWin.getIsOpen();
+                            console.log('进入'+opened)
+                            if (!opened) {
+                                $rootScope.eventpositionObjs[index].infoWin.open($scope.map, position);
+                            } else {
+                                $rootScope.eventpositionObjs[index].infoWin.close();
+                            }
+                        });
+                        break;
                     }
                 }
             };
@@ -1667,7 +1670,7 @@ console.log(personObj)
                         '><div class="info-top"><div>' +
                         $rootScope.eventpositionObjs[index].name+
                          '</div></div><div class="info-middle" style="background-color: white;">' +
-                        '时间:' + $rootScope.eventpositionObjs[index].newer + '<br>' +
+                        '时间:' + $rootScope.eventpositionObjs[index].newer +
                         '<br>当前正在进行的状态 <br>' +
                             // 直接加个链接，不好点，太小，改成直接点框就跳转
                         btntext +
@@ -1691,6 +1694,7 @@ console.log(personObj)
             //返回服务器地图位置
             $scope.$on('darpmenteventposition', function (event,data) {
                 $rootScope.eventpositionObjs=data;
+                console.log(data)
                 $scope.assembleeventMapInfo()
             })
             /*

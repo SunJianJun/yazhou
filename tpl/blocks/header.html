@@ -278,7 +278,7 @@
                         <a href class="media list-group-item" ng-repeat="notifications in promptboth"
                            ng-click="messageperomt(notifications)">
                         <span class="media-body block m-b-none">
-                          收到一条{{notifications.type=='stepgo'?'审核通过消息':(notifications.type=='broadcast'?'系统消息':(notifications.type=='event'?'事件消息':(notifications.type=='backoff'?'事件被驳回':'')))}}来自{{notifications.name}}的消息<br>
+                          收到一条{{notifications.type=='stepgo'?'审核通过消息':(notifications.type=='broadcast'?'系统消息':(notifications.type=='event'?'事件消息':(notifications.type=='backoff'?'事件被驳回':(notifications.type=='takeoff'?'请假消息':''))))}}来自{{notifications.name}}的消息<br>
                             <!--<small class="text-muted">{{notifications.create_date}}</small>-->
                         </span>
                         </a>

@@ -44,16 +44,16 @@ angular.module('app')
       ];
       $rootScope.applicationServerpath = 'http://localhost:2000/';
 
-        //$rootScope.applicationServerpath = 'http://120.76.228.172:2000/';
+        $rootScope.applicationServerpath = 'http://120.76.228.172:2000/';
       console.log('接口测试' + $rootScope.applicationServerpath);
          //$http({
          // method: 'POST',
-         // url: $rootScope.applicationServerpath + 'maproute/geteventposition',
-         //  data:{departmentID:["58c3a5e9a63cf24c16a50b8c","58c3a5e9a63cf24c16a50b8d"]}
+         // url: $rootScope.applicationServerpath + 'mobilegrid/geteventlaseperson',//人员统计接口
+         //  data:{eventID:"598fbbc1e667b1840f9eb9c5"}
          //}).then(function (resp) {
          // console.log('返回数据')
          // console.log(resp.data.success)
-         // // console.log(JSON.stringify(resp.data.success))
+         //  console.log(JSON.stringify(resp.data.success))
          //})
 
       // 桌面端的用户需要登录信息，用户名就是人名，密码第一次可以是身份证号，之后可以修改，pwd
@@ -104,7 +104,6 @@ angular.module('app')
                       console.log(resp.data);
                       $modalInstance.close(true);
                     }
-                    ;
                   });
                 };
                 $scope.initialize = function () {
@@ -117,7 +116,6 @@ angular.module('app')
                         //说明服务器端新定位点保存成功
                         $modalInstance.dimiss("initializePersons");
                       }
-                      ;
                     });
                 };
               },
@@ -172,10 +170,10 @@ angular.module('app')
         }
       });
       window.setInterval(function () {
-        var promptboth = localStorageService.get('messagespromptboth' + $rootScope.curUser._id, 24)
+        var promptboth = localStorageService.get('messagespromptboth' + $rootScope.curUser._id, 24*60)
         if (promptboth) {
           for (var i = 0; i < promptboth.length; i++) {
-            var info = localStorageService.get('PersonInfo_' + promptboth[i].sender, 24);
+            var info = localStorageService.get('PersonInfo_' + promptboth[i].sender, 24*60);
             if (info) promptboth[i].name = info.name;
           }
           $rootScope.promptboth = promptboth;
@@ -184,21 +182,40 @@ angular.module('app')
 
       }, $rootScope.locationRefreshTime)
       $scope.messageperomt = function (mes) {
-        $scope.currentpromptmes = mes;
-        console.log($scope.currentpromptmes)
-        messageService.readMessagepromptByID($scope.currentpromptmes._id, $rootScope.applicationServerpath)
+        console.log(mes)
+        console.log(mes.type)
+        if(mes.type=="takeoff"){
+          var abtn='<button class="btn btn-primary" ng-click="abnormal(true)">同意</button>'+
+              '<button class="btn btn-warning" ng-click="abnormal(false)">拒绝</button>';
+        }else if(mes.type=="stepgo"||mes.type=="takeoff"){
+          if(mes.eventstepID){
+            $state.go('app.concreteargu', {
+              'caseid': mes.eventstepID
+            })
+            return;
+          }else{
+            var abtn='<button class="btn btn-warning" ng-click="cancel()">确定</button>';
+            console.log('没有事件步骤信息')
+          }
+        }else{
+          var abtn='<button class="btn btn-primary" ng-click="replypromptmes(currentpromptmes.sender)">回复</button>' +
+              '<button class="btn btn-warning" ng-click="cancel()">确定</button>';
+        }
+        //messageService.readMessagepromptByID(mes._id, $rootScope.applicationServerpath)
         var mescount = mes.text ? mes.text : (mes.image ? '<img ng-src="http://120.76.228.172:2000/' + mes.image + '"/>' : (mes.video ? '<video ng-src="http://120.76.228.172:2000/' + mes.video + '"/>' : (mes.voice ? '<video ng-src="http://120.76.228.172:2000/' + mes.voice + '"/>' : '无消息内容')))
         console.log(mescount)
         var modalInstance = $modal.open({
           template: '<div class="modal-header">  ' +
-          '<h3>{{currentpromptmes.name}}</h3>  ' +
+          ' <span ng-click="cancel()" class="close">×</span>' +
+          '<h3>' +
+          mes.name+
+          '</h3> ' +
           '<div class="modal-body">' +
           '<div class="clear wrapper-xs">' +
           mescount +
           '</div>' +
           '<div class="modal-footer">' +
-          '<button class="btn btn-primary" ng-click="replypromptmes(currentpromptmes.sender)">回复</button>' +
-          '<button class="btn btn-warning" ng-click="cancel()">确定</button>' +
+          abtn +
           '</div>  ',
           controller: function ($scope, $modalInstance) {
             $scope.ok = function () {
@@ -207,13 +224,26 @@ angular.module('app')
             $scope.cancel = function () {
               $modalInstance.dismiss(false);
             };
+            //请假是否同意
+            $scope.abnormal=function(e){
+              if(e){
+                console.log('同意')
+                messageService.readAbnormal(mes.abnormalID,mes._id,$rootScope.curUser._id,"approve",function(){
+                  $modalInstance.dismiss(false);
+                })
+              }else{
+                console.log('拒绝')
+                messageService.readAbnormal(mes.abnormalID,mes._id,$rootScope.curUser._id,"reject",function(){
+                  $modalInstance.dismiss(false);
+                })
+              }
+            };
             $scope.replypromptmes = function (e) {
               console.log('回复消息')
               console.log(e)
             };
           }
         });
-        console.log(mes)
       }
       // 2对用户超时事件进行捕捉，还未使用
       /**
