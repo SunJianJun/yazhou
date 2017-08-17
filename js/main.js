@@ -45,16 +45,16 @@ angular.module('app')
       $rootScope.applicationServerpath = 'http://localhost:2000/';
 
         $rootScope.applicationServerpath = 'http://120.76.228.172:2000/';
-      console.log('接口测试' + $rootScope.applicationServerpath);
-         //$http({
+      console.log('当前地址' + $rootScope.applicationServerpath);
+         // $http({
          // method: 'POST',
-         // url: $rootScope.applicationServerpath + 'mobilegrid/geteventlaseperson',//人员统计接口
-         //  data:{eventID:"598fbbc1e667b1840f9eb9c5"}
-         //}).then(function (resp) {
+         // url: $rootScope.applicationServerpath + 'spotarea/getASpotareatoperson',//人员统计接口
+         //  data:{personID:"58e0c199e978587014e67a50"}
+         // }).then(function (resp) {
          // console.log('返回数据')
-         // console.log(resp.data.success)
+         // console.log(resp.data)
          //  console.log(JSON.stringify(resp.data.success))
-         //})
+         // })
 
       // 桌面端的用户需要登录信息，用户名就是人名，密码第一次可以是身份证号，之后可以修改，pwd
       $rootScope.confirmUser = function (callback) {
@@ -187,12 +187,10 @@ angular.module('app')
         if(mes.type=="takeoff"){
           var abtn='<button class="btn btn-primary" ng-click="abnormal(true)">同意</button>'+
               '<button class="btn btn-warning" ng-click="abnormal(false)">拒绝</button>';
-        }else if(mes.type=="stepgo"||mes.type=="takeoff"){
+        }else if(mes.type=="stepgo"||mes.type=="event"){
           if(mes.eventstepID){
-            $state.go('app.concreteargu', {
-              'caseid': mes.eventstepID
-            })
-            return;
+            var abtn='<button class="btn btn-primary" ng-click="eventgo(\''+mes.eventstepID+'\')">查看</button>' +
+              '<button class="btn btn-warning" ng-click="cancel()">确定</button>';
           }else{
             var abtn='<button class="btn btn-warning" ng-click="cancel()">确定</button>';
             console.log('没有事件步骤信息')
@@ -207,16 +205,16 @@ angular.module('app')
         var modalInstance = $modal.open({
           template: '<div class="modal-header">  ' +
           ' <span ng-click="cancel()" class="close">×</span>' +
-          '<h3>' +
-          mes.name+
-          '</h3> ' +
+          '<h4>' +
+           '来自'+mes.name+mescount+'消息'+
+          '</h4> ' +
           '<div class="modal-body">' +
-          '<div class="clear wrapper-xs">' +
           mescount +
           '</div>' +
           '<div class="modal-footer">' +
           abtn +
-          '</div>  ',
+          '</div>' +
+          '</div>',
           controller: function ($scope, $modalInstance) {
             $scope.ok = function () {
               $modalInstance.close(true);
@@ -237,6 +235,11 @@ angular.module('app')
                   $modalInstance.dismiss(false);
                 })
               }
+            };
+            $scope.eventgo=function (stepID) {
+              $state.go('app.concreteargu', {
+                'caseid':stepID
+              })
             };
             $scope.replypromptmes = function (e) {
               console.log('回复消息')

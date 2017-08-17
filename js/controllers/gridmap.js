@@ -1689,12 +1689,10 @@ app.controller('gridmapctl',
                     //infowindow4.open($scope.map, $scope.map.position);
                     $scope.draweventposition($rootScope.eventpositionObjs[index]._id,$rootScope.eventpositionObjs[index].position,$rootScope.eventpositionObjs[index].name,$rootScope.eventpositionObjs[index].newer,infowindow4);
                 }
-                console.log($rootScope.eventpositionObjs)
             };
             //返回服务器地图位置
             $scope.$on('darpmenteventposition', function (event,data) {
                 $rootScope.eventpositionObjs=data;
-                console.log(data)
                 $scope.assembleeventMapInfo()
             })
             /*

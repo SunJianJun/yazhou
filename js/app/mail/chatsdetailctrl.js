@@ -1,6 +1,6 @@
 app.controller('messageDetailCtrl', [
-    '$scope', '$http', '$state','$sce', 'localStorageService', 'localToolService', 'ChatService', 'messageService', '$rootScope', 'departmentAndPersonsService', '$timeout', '$stateParams',
-    function ($scope, $http, $state,$sce, localStorageService, localToolService, ChatService, messageService, $rootScope, departmentAndPersonsService, $timeout, $stateParams, sendMessage) {
+    '$scope', '$http', '$state','$sce','$modal', 'localStorageService', 'localToolService', 'ChatService', 'messageService', '$rootScope', 'departmentAndPersonsService', '$timeout', '$stateParams',
+    function ($scope, $http, $state,$sce,$modal, localStorageService, localToolService, ChatService, messageService, $rootScope, departmentAndPersonsService, $timeout, $stateParams, sendMessage) {
 
         console.log('----NO2--------messageDetailCtrl');
 
@@ -46,7 +46,6 @@ app.controller('messageDetailCtrl', [
         $scope.getcurrenttalk = function (sender, receiver) {//从缓存中获取俩人对话
           console.log(sender, receiver)
           var newmes =messageService.getMessageByBothId(sender, receiver)
-            console.log(newmes)
           //if(!$scope.currenttalk&&!$scope.currenttalk.length){
               $scope.currenttalk=newmes
           //}
@@ -116,7 +115,7 @@ app.controller('messageDetailCtrl', [
         $scope.$watch('currenttalk',function(){
             $timeout(function () {
             console.log('发生变化')
-            $scope.scrolldIV();
+            // $scope.scrolldIV();
         },100)
         })
         $scope.$on('sendMessageOK', function (event, newMessage) {
@@ -148,6 +147,8 @@ app.controller('messageDetailCtrl', [
 
             console.log("取当前消息unSendMessage：" + JSON.stringify($scope.unSendMessage));
             // if(!$scope.isRefreshFromServer){
+          $scope.currenttalk.push({create_date:new Date().formate('yyyy-MM-dd hh:mm:ss'),sender:{_id:$rootScope.curUser._id},receiver:$scope.fold,type:'message',text:$scope.unSendMessage.text,video:$scope.unSendMessage.video,voice:$scope.unSendMessage.voice,image:$scope.unSendMessage.image});
+          console.log($scope.currenttalk);
             messageService.sendMessage($scope.unSendMessage, $rootScope.curUser._id, $scope.fold, $rootScope.applicationServerpath);
             $scope.scrolldIV();
 
@@ -172,34 +173,6 @@ app.controller('messageDetailCtrl', [
         }
 
 
-        // 图片显示
-        $scope.showImage = function (imageUrl) {
-            console.log("展示的图片路径：" + imageUrl);
-            $scope.curImage = imageUrl;
-            $scope.showModal('templates/imagehover.html');
-        };
-
-        // 视频播放
-        $scope.playVideo = function (videoUrl) {
-            $scope.curVideo = videoUrl;
-            $scope.showModal('templates/videohover.html');
-        };
-
-        $scope.showModal = function (templateUrl) {
-            $ionicModal.fromTemplateUrl(templateUrl, {
-                scope: $scope,
-                animation: 'slide-in-up'
-            }).then(function (modal) {
-                $scope.modal = modal;
-                $scope.modal.show();
-            });
-        }
-
-        // Close the modal
-        $scope.closeModal = function () {
-            $scope.modal.hide();
-            $scope.modal.remove();
-        };
 
         //上传之后，得到返回值，给消息对应的字段赋值
         $scope.afterUpload = function (fileResponse) {
@@ -349,31 +322,40 @@ app.controller('messageDetailCtrl', [
 
         // 图片显示
         $scope.showImage = function (imageUrl) {
-            $scope.curImage = imageUrl;
-            $scope.showModal('templates/imagehover.html');
+            $scope.curImage = '<img class="img-responsive" src=\''+$rootScope.applicationServerpath+imageUrl+'\'/>';
+          $scope.showModal($scope.curImage);
         };
 
         // 视频播放
         $scope.playVideo = function (videoUrl) {
-            $scope.curVideo = videoUrl;
-            $scope.showModal('templates/videohover.html');
+          // console.log()
+
+            $scope.curVideo = '<video class="img-responsive" src=\''+$rootScope.applicationServerpath+videoUrl+'\' controls autoplay></video>';
+            $scope.showModal($scope.curVideo);
         };
+      // 音频播放
+      $scope.playVoice = function (voiceUrl) {
+        console.log('<audio src=\''+$rootScope.applicationServerpath+voiceUrl+'\' controls autoplay></audio>')
+        $scope.curVoice = '<audio src=\''+$rootScope.applicationServerpath+voiceUrl+'\' controls autoplay></audio>';
+        $scope.showModal($scope.curVoice);
+      };
 
         $scope.showModal = function (templateUrl) {
-            $ionicModal.fromTemplateUrl(templateUrl, {
-                scope: $scope,
-                animation: 'slide-in-up'
-            }).then(function (modal) {
-                $scope.modal = modal;
-                $scope.modal.show();
-            });
+          var modalInstance = $modal.open({
+            template: '<div class="modal-header no-border">  ' +
+            '<span ng-click="cancel()" class="close clear">×</span>' +
+            '</div>'+
+            '<div class="modal-body">' +
+            templateUrl +
+            '</div>' +
+            '</div>',
+            controller: function ($scope, $modalInstance) {
+              $scope.cancel = function () {
+                $modalInstance.dismiss(false);
+              };
+            }
+          });
         }
-
-        // Close the modal
-        $scope.closeModal = function () {
-            $scope.modal.hide();
-            $scope.modal.remove()
-        };
 
 
         // 上传服务器,后面是上传的类型，普通图片commonImge和身份证IDCard

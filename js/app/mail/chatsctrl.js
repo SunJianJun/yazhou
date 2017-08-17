@@ -203,7 +203,6 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
   $scope.testclicktrue=true;
   $scope.testclick = function (pObj) {
     $scope.unreadPersons = localStorageService.get("recentChatPersons");
-    console.log($scope.unreadPersons)
 
     if($scope.testclicktrue) {
       console.log('再次插入')
@@ -311,7 +310,6 @@ app.controller('ChatsCtrl', function ($scope, $rootScope, $compile, localStorage
           }
         }
       }
-      console.log(temppp)
       localStorageService.update("recentChatPersons", temppp)
       $scope.testclick();
       // $scope.$apply();//用$apply来强制刷新数据

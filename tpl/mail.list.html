@@ -28,19 +28,13 @@
                             <p>
                                 <a>
                                     <span ng-if="mail.text">{{mail.text}}</span>
-                                    <img ng-if="mail.image" ng-src="{{'http://120.76.228.172:2000/'+mail.image}}"/>
+                                    <img ng-if="mail.image" ng-src="{{'http://120.76.228.172:2000/'+mail.image}}" ng-click="showImage(mail.image)"/>
                                     <!--<img ng-if="mail.video" src="img/a33bcffdaa6befde23b429e73dc309f2.jpg" ng-click="">-->
-                                    <video ng-if="mail.video" id="infomedia"
-                                           ng-src="{{videoUrl(mail.video)}}" controls="controls">
-                                    </video>
-                                    <!--http://120.76.228.172:2000/-->
-                                    <!--<div ng-if="mail.voice">{{'http://120.76.228.172:2000/'+mail.voice}}</div>-->
-                                    <audio ng-if="mail.voice" ng-src="{{videoUrl(mail.voice)}}" width="320" height="240"
-                                           controls="controls"></audio>
+                                    <img ng-if="mail.video" id="infomedia"
+                                           src="img/thisvideo.png" ng-click="playVideo(mail.video)"/>
+                                    <img ng-if="mail.voice" src="img/thisvoice.png" ng-click="playVoice(mail.voice)"/>
                                 </a>
-                                <!--<span class="label bg-light m-l-sm" ng-hide="mail.transfer">{{mail.state=='unread'?'未读':'已读'}}</span>-->
                             </p>
-                            <!--<div class="text-ellipsis m-t-xs">{{mail.content | limitTo:100}}</div>-->
                         </div>
                     </li>
                 </ul>

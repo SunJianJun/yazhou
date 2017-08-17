@@ -5826,6 +5826,9 @@ div.info .info-middle a{
 .no-margin{
     margin:0!important;
 }
+.no-border{
+    border:0!important;
+}
 .casedepertment_list li.active>a{
     background-color:#d0d6d6!important;
 }
